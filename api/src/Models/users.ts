@@ -2,15 +2,14 @@ import mongoose, { Document, Schema } from "mongoose";
 import * as bcrypt from "bcrypt";
 
 interface Props extends Document {
-    _id: any
-    name: any;
+    name: any,
     facebookId: string,
     googleId: string,
     thumbnail: Buffer,
     role: string,
     email: string,
     password: string,
-    created: any
+    created: any,
     cohorte: any,
     standup: any,
     pairprograming: any,
