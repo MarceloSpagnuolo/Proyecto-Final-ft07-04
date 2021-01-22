@@ -1,25 +1,50 @@
 .Navigation-Container {
-    background-color: black;
-    height: 10rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
+  background-color: black;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .Navigation-Logo {
-    width: 7.5rem;
-    border-radius: 50%;
-    margin: 1.25rem 1.25rem 1.25rem 1.25rem;
-    box-shadow: 0 0 1.25rem white;
+  width: 4rem;
+  border-radius: 50%;
+  margin: 0.625rem 0.625rem 0.625rem 1.25rem;
+  /* box-shadow: 0 0 1.25rem white; */
 }
 
 .Navigation-Henry {
-    background-color: yellow;
-    padding: 0 0.625rem 0 0.625rem;
-    margin: 0;
+  background-color: yellow;
+  padding: 0 0.625rem 0.3rem 1rem;
+  margin: 0;
+  font-weight: 900;
+  border-radius: 0 1rem 1rem 0;
+  margin-right: 0.3rem;
 }
 
 .Navigation-Manager {
-    color: yellow;
-    margin: 0;
+  color: yellow;
+  margin: 0;
+}
+
+.Navigation-Titulo {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Navigation-Icono {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  padding: 3px;
+  background-color: yellow;
+  border-radius: 5px;
+}
+
+.Navigation-Raya {
+  background-color: black;
+  padding: 1.4px 10px 1.4px 10px;
+  margin: 2px;
+  border-radius: 2px;
 }
