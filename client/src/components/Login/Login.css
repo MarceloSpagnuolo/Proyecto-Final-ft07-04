@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro'), url('https://fonts.cdnfonts.com/s/12183/SourceSansPro-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Source Sans Pro'), url('https://fonts.cdnfonts.com/s/12183/SourceSansPro-Bold.woff') format('woff');
+}
+
+.loginManager {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    align-items: center;
+}
+
+.divLoginH1 {
+    position: relative;
+    height: 100px;
+    right: 110px;
+}
+
+.loginH11 {
+    position: absolute;
+    left: 18px;
+    font-size: 70px;
+}
+
+.loginH12 {
+    position: absolute;
+    font-size: 70px;
+    left: -20px;
+    top: 30px;
+    color: #f0db1d;
+}
+.loginH2{
+    position: relative;
+    bottom: -60px;
+}
+
+.divFormLogin {
+    position: relative;
+    top: 100px
+}
+
+.formLogin {
+    overflow: hidden;
+    position: relative;
+    left: 10px;
+    top: 10px;
+}
+
+.nameInput {
+    position: relative;
+    left: 30px;
+    top: 10px;
+    padding: 5px;
+    background-color: white;
+}
+
+.LoginDiv-Campos input {
+    width: 90%;
+    height: 50px;
+    border-radius: 30px;
+    border: 1px solid rgb(172, 169, 169);
+    background-color: rgba(255, 255, 255, 0.212);
+    transition: background-color 5000s;
+    outline-style: none;
+}
+
+input:visited {
+    background-color: transparent !important;
+}
+
+.btnLogin {
+    position: relative;
+    width: 90%;
+    height: 50px;
+    border-radius: 30px;
+    color: white;
+    background-color: black;
+    border: none;
+    top: 40px;
+    left: 15px;
+}
