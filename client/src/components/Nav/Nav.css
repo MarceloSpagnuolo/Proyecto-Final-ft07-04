@@ -5,6 +5,9 @@
         background-color: black;
         width: 102.7%;
     }
+    .nombre{
+        display: none;
+    }
 }
 
 @media screen and (min-width: 1100px) {
@@ -16,8 +19,14 @@
     }
 }
 
-.pruebaNav img {
+.nombre{
     position: relative;
     top: 30px;
-    left: 40px
+    left: 100px
+}
+
+.logo{
+    position: absolute;
+    width: 90px;
+    top: 10px
 }

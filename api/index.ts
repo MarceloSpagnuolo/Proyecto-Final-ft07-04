@@ -1,4 +1,3 @@
-// const server = require('./src/app.js')
 import server from "./src/app"
 import mongoose from "mongoose"
 
