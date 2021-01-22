@@ -6,7 +6,14 @@ import "./Nav.css";
 const Navigation = () => {
   return (
     <Navbar sticky="top" bg="dark" variant="dark" expand="lg">
-      <Navbar.Brand href="#home">Henry Manager</Navbar.Brand>
+      <img
+        alt=""
+        src="https://cdn.discordapp.com/attachments/801584401611620383/802229191889387610/HM-BLANCO.png"
+        width="70"
+        //height="30"
+        id="Navigation-Logo"
+        className="d-inline-block align-top"
+      />{" "}
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
