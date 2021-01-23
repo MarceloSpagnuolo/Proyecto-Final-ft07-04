@@ -6,7 +6,7 @@ const Invitacion = (): JSX.Element => {
 
     return (
         <div id="super">
-            <h1>Panel de Control</h1>
+            <h1>Panel de Control de Alumnos</h1>
             <h2>Invita nuevos alumnos</h2>
             <div className="container">
                 <div id="tittle">
