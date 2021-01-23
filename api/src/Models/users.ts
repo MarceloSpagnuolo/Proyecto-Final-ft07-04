@@ -17,7 +17,6 @@ interface Props extends Document {
 
 
 const UserSchema: Schema<Props> = new Schema({
-    _id: Schema.Types.ObjectId,
     name: {
         firsname: { type: String, required: true },
         lastname: { type: String, required: true }

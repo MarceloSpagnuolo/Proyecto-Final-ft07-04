@@ -1,11 +1,17 @@
 import mongoose, { Document, Schema } from "mongoose";
+import users from "./users";
 
 const SantdUpSchema: Schema = new Schema({
-    PM: [{User: [{type: Schema.Types.ObjectId, ref: 'User' }]}, {User: [{type: Schema.Types.ObjectId, ref: 'User' }]}],
+    PM: [{_id: false, User: {type: Schema.Types.ObjectId, ref: 'User' }}],
     Grupo: Number,
     Cohorte : [{ type: Schema.Types.ObjectId, ref: 'Cohorte' }]
 });
 
+const modelito = mongoose.model("Group", SantdUpSchema);
 
+export default modelito
 
-export default mongoose.model("Group", SantdUpSchema);
+// {
+//     _id:false,
+//     field :{type:String}
+//  }
