@@ -1,10 +1,8 @@
-// const express = require('express');
 import express from "express"
 // const bodyParser = require('body-parser');
 import bodyParser from "body-parser"
-// const routes = require('./routes/index.js');
 import User from "./Models/users"
-// import mongoose from "./db"
+import routes from "./Routes/index";
 
 
 
@@ -24,7 +22,8 @@ server.use((req: any, res: any, next: any) => {
   next();
 });
 
-// server.use('/', Users);
+// Acá se colocan las rutas
+server.use('/', routes);
 
 
 
@@ -37,15 +36,5 @@ server.use((err: any, req: any, res: any, next: any) => { // eslint-disable-line
   res.status(status).send(message);
 });
 
-server.get('/', (req: any, res: any) => {
-    console.log("entre aca")
-
-    User.find((err: any, users: any) => {
-        console.log(users);
-    });
-    res.json({
-        status: 'API Works!'
-    })
-})
 
 export default server
