@@ -3,16 +3,15 @@ import * as bcrypt from "bcrypt";
 
 interface Props extends Document {
     name: any,
-    facebookId?: string,
-    googleId?: string,
-    thumbnail?: Buffer,
+    githubId: string,
+    googleId: string,
+    thumbnail: Buffer,
     role: string,
     email: string,
     password: string,
     created: any,
-    cohorte?: any,
-    standup?: any,
-    pairprograming?: any,
+    cohorte: any,
+    standup: any,
 }
 
 
@@ -30,15 +29,12 @@ const UserSchema: Schema<Props> = new Schema({
     created: { type: Date, default: Date.now },
     cohorte: { type: mongoose.Schema.Types.ObjectId, ref: "Cohortes" },
     standup: { type: mongoose.Schema.Types.ObjectId, ref: "Standups" },
-    pairprograming: [{ type: mongoose.Schema.Types.ObjectId, ref: "PairProgramins" }], 
 });
-
 UserSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
     const salt = await bcrypt.genSaltSync(10);
     const hash = await bcrypt.hashSync(this.password, salt);
-    this.password = hash;
-    
+    this.password = hash;    
 });
 
 UserSchema.method('comparePassword', function (password: string): boolean {
