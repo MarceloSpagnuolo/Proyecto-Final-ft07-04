@@ -1,15 +1,10 @@
-// const server = require('./src/app.js')
 import server from "./src/app"
-import mongoose from "mongoose"
-
-const URI = 'mongodb://localhost/development';
-
-// mongoose.connect(URI, { useNewUrlParser: true })
-//   .then(db => console.log('DB is connected'))
-//   .catch(err => console.error(err));
+import connectDB from './src/db'
+import Insert from "./insert"
 
 server.listen(3001, () => {
-    mongoose.connect(URI, { useNewUrlParser: true })
-  .then(db => console.log('DB is connected', "listening at 3001"))
-  .catch(err => console.error(err));
+  //Genera la conexión en el puerto establecida en db.ts
+  // Se le pasa un parámetro como true o false. Si es true, borra la DB e inserta una nueva.
+  // Si es false, no hace nada, sólo se conecta.
+  connectDB(true);
 })

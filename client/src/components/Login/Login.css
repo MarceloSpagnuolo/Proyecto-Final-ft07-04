@@ -20,6 +20,11 @@
     overflow-y:none;
 }
 @media screen and (max-width: 1100px) {
+    .gridLogin{
+        margin-right: 0;
+        position: relative;
+        bottom: 30px;
+    }
     .imgLoginMax {
         display: none;
     }
@@ -61,7 +66,6 @@
         top: 100px
     }
     .formLogin {
-        overflow: hidden;
         position: relative;
         left: 10px;
         top: 10px;
@@ -146,7 +150,7 @@
     }
     .loginH2 {
         position: absolute;
-        bottom: 130px;
+        bottom: 90px;
         right: 45vw;
         margin-left: 50vw;
         font-size: 28px;
@@ -157,7 +161,6 @@
         top: 100px
     }
     .formLogin {
-        overflow: hidden;
         position: relative;
         left: 10px;
         top: 90px;
