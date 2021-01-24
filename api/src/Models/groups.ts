@@ -1,5 +1,4 @@
-import mongoose, { Document, Schema } from "mongoose";
-import users from "./users";
+import mongoose, { Schema } from "mongoose";
 
 const SantdUpSchema: Schema = new Schema({
     PM: [{_id: false, User: {type: Schema.Types.ObjectId, ref: 'User' }}],
@@ -7,11 +6,6 @@ const SantdUpSchema: Schema = new Schema({
     Cohorte : [{ type: Schema.Types.ObjectId, ref: 'Cohorte' }]
 });
 
-const modelito = mongoose.model("Group", SantdUpSchema);
+const Standup = mongoose.model("Group", SantdUpSchema);
 
-export default modelito
-
-// {
-//     _id:false,
-//     field :{type:String}
-//  }
+export default Standup
