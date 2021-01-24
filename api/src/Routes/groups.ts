@@ -87,7 +87,6 @@ router.delete("/PM", async (req, res) => {
 
   group.PM.pull({ User: PM });
 
-  console.log(group);
   group.save();
 
   !group ? res.send("hubo un error").status(400) : res.json(group);

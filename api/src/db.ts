@@ -14,10 +14,11 @@ const connectDB = async (reset: Boolean) => {
         family: 4
     })
         console.log(`Database connected : ${con.connection.host}:3001`)
+        // Condición que borra la DB e inserta valores por defecto
         if(reset) {
             mongoose.connection.dropDatabase()
             .then((c) => {
-                console.log("borré la DB")
+                console.log("DB Borrada")
                 Insert()
             })
         }
