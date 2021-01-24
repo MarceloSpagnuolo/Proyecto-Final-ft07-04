@@ -2,7 +2,7 @@ import React from 'react';
 import alumnos from '../../assets/Alumnos.png';
 import cohortes from '../../assets/Cohortes.png';
 import topImg from '../../assets/topBanner.png';
-import Invitacion from 'components/InvitacionAlumnos/Invitacion';
+import Invitacion from 'components/PanelControlStudents/InvitacionAlumnos/Invitacion';
 import './Home.css';
 
 const Home = (): JSX.Element => {
