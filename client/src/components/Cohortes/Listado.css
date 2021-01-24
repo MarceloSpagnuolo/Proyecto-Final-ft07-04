@@ -1,0 +1,65 @@
+.Listado-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 100%;
+}
+
+.Listado-Table {
+  overflow-y: auto;
+  width: 100%;
+}
+
+.Listado-Td {
+  border: 1px solid lightgray;
+}
+
+.Listado-Th {
+  border: 1px solid lightgray;
+}
+
+#Listado-Align {
+  text-align: center;
+}
+
+#Listado-Tr:nth-child(even) {
+  background-color: rgb(236, 236, 236);
+}
+
+@media screen and (max-width: 758px) {
+  .Listado-Table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.8rem;
+  }
+
+  .Listado-Boton {
+    height: 40px;
+    width: 100%;
+    background-color: yellow;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (min-width: 758px) {
+  .Listado-Table {
+    border-collapse: collapse;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.4rem;
+  }
+
+  .Listado-Boton {
+    height: 60px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: yellow;
+    font-size: 1.2rem;
+  }
+
+  .Listado-Boton:hover {
+    background-color: lightyellow;
+    cursor: pointer;
+  }
+}
