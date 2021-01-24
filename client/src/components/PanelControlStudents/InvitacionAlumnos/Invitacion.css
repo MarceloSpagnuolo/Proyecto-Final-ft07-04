@@ -1,4 +1,4 @@
-#super {
+#super-invitation {
     margin: 6%;
 }
 
@@ -10,14 +10,14 @@
     font-weight: 300;
 }
 
-.container {
+.container-invitation-students {
     display: flex;
     border: 1px solid grey;
     border-radius: 20px;
     flex-direction: column;
 }
 
-.container h3 {
+.container-invitation-students h3 {
     font-weight: 300;
     margin-bottom: 0;
 }
@@ -68,7 +68,7 @@
 }
 
 @media (min-width: 500px) {
-    .container {
+    .container-invitation-students {
         border-radius: 40px;
     }
 
@@ -78,7 +78,7 @@
 }
 
 @media (min-width: 720px) {
-    .container {
+    .container-invitation-students {
         border-radius: 50px;
     }
 }
