@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
-// const User = require('../Models/users.ts');
 import Group from "../Models/groups";
+
 
 //TRAE TODOS LOS STANDUP
 router.get("/", async (req, res) => {
@@ -12,11 +12,9 @@ router.get("/", async (req, res) => {
 
 //CREA UN STANDUP
 //Por ahora se pide que se pasen todos los datos.
-//
+//Si no se pasa valor de PM1 o PM2, el mismo deja un espacio vacío en el array.
 router.post("/", async (req, res) => {
   const { PM1, PM2, NumeroGrupo, CohorteId } = req.body;
-
-  console.log(PM2, "SOY EL PM2")
 
   const group = new Group({
     PM: [{ User: PM1 }, { User: PM2 }],
@@ -48,10 +46,10 @@ router.put("/", async (req, res) => {
 //Se debe pasar el ID de la colección, el ID del PM nuevo y el posicionamiento del Array al cual modificar.
 router.put("/PM", async (req, res) => {
   const { id, index, PM } = req.body;
-  const group = await Group.findById(id)
+  const group = await Group.findById(id);
 
-  group.PM.set(index, {User: PM})
-  group.save()
+  group.PM.set(index, { User: PM });
+  group.save();
 
   !group ? res.send("hubo un error").status(400) : res.json(group);
 });
@@ -81,19 +79,18 @@ router.delete("/", async (req, res) => {
   !group ? res.send("hubo un error").status(400) : res.json(group);
 });
 
-
 // BORRA UN PM DEL STANDUP
 // Se debe pasar el ID del PM a borrar más el ID De la colección donde se encuentra el mismo.
 router.delete("/PM", async (req, res) => {
-    const { id, PM } = req.body;
-    const group = await Group.findById(id)
-  
-    group.PM.pull({User: PM})
+  const { id, PM } = req.body;
+  const group = await Group.findById(id);
 
-    console.log(group)
-    group.save()
-  
-    !group ? res.send("hubo un error").status(400) : res.json(group);
+  group.PM.pull({ User: PM });
+
+  console.log(group);
+  group.save();
+
+  !group ? res.send("hubo un error").status(400) : res.json(group);
 });
 
 export default router;

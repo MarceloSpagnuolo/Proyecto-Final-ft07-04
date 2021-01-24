@@ -3,7 +3,7 @@ import * as bcrypt from "bcrypt";
 
 interface Props extends Document {
     name: any,
-    facebookId: string,
+    githubId: string,
     googleId: string,
     thumbnail: Buffer,
     role: string,
@@ -12,32 +12,29 @@ interface Props extends Document {
     created: any,
     cohorte: any,
     standup: any,
-    pairprograming: any,
 }
 
 
 const UserSchema: Schema<Props> = new Schema({
     name: {
-        firsname: { type: String, required: true },
-        lastname: { type: String, required: true }
+        firstname: { type: String, required: true,trim:true },
+        lastname: { type: String, required: true,trim:true }
     },
     facebookId: String,
     googleId: String,
     thumbnail: Buffer,
     role: String,
-    email: String,
-    password: String,
+    email: {type:String,trim:true,unique:true},
+    password: {type:String,trim:true},
     created: { type: Date, default: Date.now },
     cohorte: { type: mongoose.Schema.Types.ObjectId, ref: "Cohortes" },
     standup: { type: mongoose.Schema.Types.ObjectId, ref: "Standups" },
-    pairprograming: [{ type: mongoose.Schema.Types.ObjectId, ref: "PairProgramins" }],
 });
-
-UserSchema.pre("save", function (next) {
+UserSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(this.password, salt);
-    this.password = hash;
+    const salt = await bcrypt.genSaltSync(10);
+    const hash = await bcrypt.hashSync(this.password, salt);
+    this.password = hash;    
 });
 
 UserSchema.method('comparePassword', function (password: string): boolean {
@@ -45,4 +42,6 @@ UserSchema.method('comparePassword', function (password: string): boolean {
     return false;
 });
 
-export default mongoose.model("Users", UserSchema);
+const User = mongoose.model("User", UserSchema);
+
+export default User
