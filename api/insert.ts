@@ -1,5 +1,6 @@
 import User from "./src/Models/users"
 import Group from "./src/Models/groups"
+import Cohorte from "./src/Models/cohorte"
 
 
 
@@ -175,11 +176,31 @@ const groups = [
 }
 ]
 
+const cohortes = [
+    {
+        _id: "600b9852935003272c8b6901",
+        Start: "8/02/2121",
+        Alumnos: 10,
+        Instructor: {User: "600b9852935003272c8b6116"},
+        Created: "21/01/2121"
+    },
+    {
+        _id: "600b9852935003272c8b6902",
+        Start: "1/03/2121",
+        Alumnos: 0,
+        Instructor: {User: "600b9852935003272c8b6117"},
+        Created: "24/01/2121"
+    },
+]
+
     users.forEach(async c =>  {
       await User.create(c)
     })
     groups.forEach(async c => {
         await Group.create(c)
+    })
+    cohortes.forEach(async c => {
+        await Cohorte.create(c)
     })
     console.log("Insert completo")
 }
