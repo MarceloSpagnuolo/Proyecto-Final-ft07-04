@@ -5,13 +5,10 @@ const Invitacion = (): JSX.Element => {
 
 
     return (
-        <div id="super">
-            <h1>Panel de Control</h1>
-            <h2>Invita nuevos alumnos</h2>
-            <div className="container">
-                <div id="tittle">
-                    <h3>Este es tu panel de control de alumnos, desde aqui podras gestionar los alumnos tanto nuevos como ya inscritos. para añadir un nuevo alumno es muy fácil:</h3>
-                </div>
+        <div id="super-invitation">
+
+            <h1>Invita nuevos alumnos</h1>
+            <div className="container-invitation-students">
                 <div>
                     <table>
                         <thead>
