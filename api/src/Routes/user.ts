@@ -3,9 +3,7 @@ const router = express.Router();
 import User from "../Models/users";
 
 router.get("/", (req, res) => {
-  console.log("entre aca");
   User.find((err: any, users: any) => {
-    console.log(users);
   });
   res.json({
     status: "API Works!",
