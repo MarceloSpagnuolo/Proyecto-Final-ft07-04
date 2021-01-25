@@ -1,10 +1,20 @@
-// const mongoose = require('mongoose');
-import mongoose from "mongoose"
 
-// const URI = 'mongodb://localhost/development';
+import mongoose from 'mongoose'
 
-// mongoose.connect(URI, { useNewUrlParser: true })
-//   .then(db => console.log('DB is connected'))
-//   .catch(err => console.error(err));
+const connectDB = async () => {
+    try {
+        //database Name
+        const databaseName='development';
+        const con = await mongoose.connect(`mongodb://localhost/${databaseName}`, { 
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true
+    });
+        console.log(`Database connected : ${con.connection.host}:3001`)
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+        process.exit(1)
+    }
+}
 
-export default mongoose;
+export default connectDB
