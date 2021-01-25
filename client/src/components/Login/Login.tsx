@@ -40,7 +40,7 @@ const Login = (): JSX.Element => {
                         <form className="formLogin">
                             <div className="LoginDiv-Campos">
                                 <label className="nameInput" htmlFor="email">Email registrado</label><br></br>
-                                <input autoFocus={true} size={40} type="email" id="emaill" name="email" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} />
+                                <input autoFocus={true} size={40} type="email" id="email" name="email" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} />
                             </div>
                             <div className="LoginDiv-Campos">
                                 <label className="nameInput" htmlFor="password">Contraseña</label><br></br>
