@@ -1,6 +1,6 @@
 import React from "react";
 import "./students.css";
-
+import estudiantes from "./mocks";
 
 const Students = (): JSX.Element => {
 
@@ -11,12 +11,12 @@ const Students = (): JSX.Element => {
                     <h1>Mis Estudiantes</h1>
                     <div className="student-filter">
                         <div className="student-search">
-                            <input type="search" name="search-Student" placeholder="Busca un estudiante" className="" />
-                            <input type="submit" className="" />
+                            <input type="search" name="search-Student" placeholder="Busca un estudiante" className="student-input-search" />
+                            <input type="submit" id="student-input-submit" />
                         </div>
-                        <select name="cohortes" id="" className="student-cohortes">
+                        <select name="cohortes" id="" className="student-selector">
                             {/* iterar sobre la cantidad de cohortes */}
-                            <option value="Ver Todos" selected className="">Ver Todos</option>
+                            <option value="Ver Todos" selected >Ver Todos</option>
                             <option value="Cohorte 1" className="">Cohorte 1</option>
                             <option value="Cohorte 2" className="">Cohorte 2</option>
                             <option value="Cohorte 3" className="">Cohorte 3</option>
@@ -26,23 +26,24 @@ const Students = (): JSX.Element => {
                 </div>
                 <table className="student-table">
                     <thead className="student-table-titles">
-                        <tr className="student-table-fila">
-                            <th className="">Nombre y Apellido</th>
-                            <th className="">Fecha de Registro</th>
-                            <th className="">E-mail</th>
-                            <th className="">Cohorte</th>
-                            <th className="">Grupo Standup</th>
+                        <tr id="student-table-tr">
+                            <th className="student-table-th">Nombre y Apellido</th>
+                            <th className="student-table-th">Fecha de Registro</th>
+                            <th className="student-table-th">E-mail</th>
+                            <th className="student-table-th">Cohorte</th>
+                            <th className="student-table-th">Grupo Standup</th>
                         </tr>
                     </thead>
                     <tbody className="student-table-body">
-                        {/* iterar sobre cada usuario */}
-                        <tr className="student-table-fila">
-                            <td className="">nombre</td>
-                            <td className="">fecha registro</td>
-                            <td className="">email</td>
-                            <td className="">cohorte</td>
-                            <td className="">Grupo Standup</td>
-                        </tr>
+                        {estudiantes && estudiantes.length > 0 && estudiantes.map((alum) => (
+                            <tr id="student-table-tr">
+                                <td className="student-table-td">{alum.name}</td>
+                                <td className="student-table-td">{alum.dateRegistro}</td>
+                                <td className="student-table-td">{alum.email}</td>
+                                <td className="student-table-td">{alum.cohorte}</td>
+                                <td className="student-table-td">{alum.standUp}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

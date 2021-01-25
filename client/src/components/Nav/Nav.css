@@ -22,7 +22,7 @@
     }
     .activeDiv {
         position: fixed;
-        transform: translateX(100%);
+        transform: translateX(110%);
         transition-property: all;
         transform-origin: left;
         transition: 0.5s;
