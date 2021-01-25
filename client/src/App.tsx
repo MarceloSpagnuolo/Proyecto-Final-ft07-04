@@ -6,6 +6,7 @@ import Cohortes from "components/Cohortes/Cohortes";
 import Activos from "components/Cohortes/Activos";
 import PanelControlStudents from 'components/PanelControlStudents/panelControl';
 import Home from 'components/Home/Home';
+import GrupoDetail from "components/GrupoDetail/GrupoDetail"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route exact path='/' component={Login} />
       <Route exact path='/PanelControlStudent' component={PanelControlStudents} />
       <Route exact path='/Home' component={Home} />
+      <Route exact path='/GrupoDetail' component={GrupoDetail} />
     </>
   );
 }
