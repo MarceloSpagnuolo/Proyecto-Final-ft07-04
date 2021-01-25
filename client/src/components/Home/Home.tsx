@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import alumnos from '../../assets/Alumnos.png';
 import cohortes from '../../assets/Cohortes.png';
 import topImg from '../../assets/topBanner.png';
@@ -16,7 +17,9 @@ const Home = (): JSX.Element => {
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore error aspernatur est consequuntur aliquam obcaecati fugiat necessitatibus, sint magnam accusantium, dolorem atque illo facere quisquam voluptatibus, modi ipsa architecto! Voluptates!</p>
             <br />
             <div className="container-home">
-                <img src={alumnos} alt="Redirect Alumnos" onClick={() => PanelControlStudents} />
+                <Link rel="stylesheet" to="/PanelControlStudent">
+                    <img src={alumnos} alt="Redirect Alumnos" onClick={() => PanelControlStudents} />
+                </Link>
                 <img src={cohortes} alt="" />
             </div>
         </div>

@@ -3,7 +3,6 @@ import './Invitacion.css';
 
 const Invitacion = (): JSX.Element => {
 
-
     return (
         <div id="super-invitation">
 

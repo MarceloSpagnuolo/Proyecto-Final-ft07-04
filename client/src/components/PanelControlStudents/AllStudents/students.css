@@ -35,7 +35,8 @@
 
 #student-input-submit {
     padding: 5px;
-    background-color: hsl(168deg 100% 39%);
+    background-color: #0f6151;
+    color: white;
 }
 
 .student-selector {
@@ -62,11 +63,28 @@
     background-color: white;
 }
 
-.student-table-th, .student-table-td {
-    padding: 10px;
+.student-table-th,
+.student-table-td {
+    padding: 1%;
     box-shadow: inset 0px 1px 2px #949090;
 }
 
-@media screen and (max-width:768px) {
-    
+@media screen and (max-width:600px) {
+    .student-titles h1 {
+        font-size: 28px;
+    }
+
+    .student-titles {
+        flex-wrap: wrap;
+        padding-top: 0;
+    }
+
+    .student-super-container {
+        padding: 3.5%;
+    }
+
+    #less {
+        display: none;
+    }
+
 }

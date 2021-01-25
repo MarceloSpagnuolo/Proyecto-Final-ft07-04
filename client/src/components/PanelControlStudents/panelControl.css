@@ -1,6 +1,7 @@
 .react-tabs {
   -webkit-tap-highlight-color: transparent;
 }
+
 /* #PC-tabs {
   -webkit-tap-highlight-color: transparent;
 } */
@@ -17,6 +18,7 @@
   margin: 0 0 10px;
   padding: 0;
 }
+
 /* #PCS-tab{
   border: 2px solid transparent;
   padding: 15px 20px;
@@ -80,17 +82,21 @@
 .react-tabs__tab-panel--selected {
   display: block;
 }
+
 /* aqui termina el archivo css */
 
-.PCS-container {
-
-}
 
 .PCS-intro {
-
+  margin-left: 20px
 }
 
-.PCS-tabs {
+
+@media screen and (max-width:600px) {
+
+  .PCS-intro h1,
+  h3 {
+    font-weight: lighter;
+    text-align: center;
+  }
 
 }
-

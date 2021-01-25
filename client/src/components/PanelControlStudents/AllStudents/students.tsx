@@ -27,21 +27,21 @@ const Students = (): JSX.Element => {
                 <table className="student-table">
                     <thead className="student-table-titles">
                         <tr id="student-table-tr">
-                            <th className="student-table-th">Nombre y Apellido</th>
-                            <th className="student-table-th">Fecha de Registro</th>
-                            <th className="student-table-th">E-mail</th>
-                            <th className="student-table-th">Cohorte</th>
-                            <th className="student-table-th">Grupo Standup</th>
+                            <th className="student-table-th">Nombre</th>
+                            <th className="student-table-th" id="less">Fecha</th>
+                            <th className="student-table-th" >E-mail</th>
+                            <th className="student-table-th" id="less">Cohorte</th>
+                            <th className="student-table-th" id="less">Grupo Standup</th>
                         </tr>
                     </thead>
                     <tbody className="student-table-body">
                         {estudiantes && estudiantes.length > 0 && estudiantes.map((alum) => (
                             <tr id="student-table-tr">
                                 <td className="student-table-td">{alum.name}</td>
-                                <td className="student-table-td">{alum.dateRegistro}</td>
+                                <td className="student-table-td" id="less">{alum.dateRegistro}</td>
                                 <td className="student-table-td">{alum.email}</td>
-                                <td className="student-table-td">{alum.cohorte}</td>
-                                <td className="student-table-td">{alum.standUp}</td>
+                                <td className="student-table-td" id="less">{alum.cohorte}</td>
+                                <td className="student-table-td" id="less">{alum.standUp}</td>
                             </tr>
                         ))}
                     </tbody>
