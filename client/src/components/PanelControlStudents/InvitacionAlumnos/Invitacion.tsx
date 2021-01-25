@@ -3,6 +3,10 @@ import './Invitacion.css';
 
 const Invitacion = (): JSX.Element => {
 
+    function handleSubmit(e: any): void {
+        console.log(e);
+    }
+
     return (
         <div id="super-invitation">
 
@@ -12,17 +16,17 @@ const Invitacion = (): JSX.Element => {
                     <table>
                         <thead>
                             <tr id="recibe">
-                                <input type="file" id="file" />
-                                <input type="email" placeholder="correo@nuevo.alumno" id="email" />
+                                <input name="file" type="file" id="file" />
+                                <input name="email" type="email" placeholder="correo@nuevo.alumno" id="email" />
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><input type="text" id="cuerpo" placeholder=" Mensaje de invitación." /></tr>
+                            <tr><input name="text" type="text" id="cuerpo" placeholder=" Mensaje de invitación." /></tr>
                         </tbody>
                     </table>
                 </div>
                 <div id="submit">
-                    <input type="submit" />
+                    <input type="submit" onClick={(e) => handleSubmit(e)} />
                 </div>
             </div>
         </div>
