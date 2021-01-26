@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import "./Nav.css";
 
 const Nav = () => {
@@ -36,18 +37,13 @@ const Nav = () => {
                         </div> : null}
                     </div>
                     <div>
-                        <div onClick={() => divChange("b")} className="mlP">Alumnos</div>
-                        {display1 === "b" ? <div className="containermlH">
-                            <div className="mlH">Invitaciones</div>
-                            <div className="mlH">Gestión de Alumnos</div>
-                        </div> : null}
+                        <Link rel="stylesheet" to="/PanelControlStudent">
+                            <div className="mlP" >Alumnos</div>
+                        </Link>
                     </div>
                     <div >
-                        <div onClick={() => divChange("c")} className="mlP">Cohortes</div>
-                        {display1 === "c" ? <div className="containermlH">
-                            <div className="mlH">Gestión de Cohortes</div>
-                            <div className="mlH">Gestión de Grupos</div>
-                        </div> : null}
+                        <Link rel="stylesheet" to="/Cohortes">
+                            <div className="mlP">Cohortes</div></Link>
                     </div>
                 </div>
             </div>
