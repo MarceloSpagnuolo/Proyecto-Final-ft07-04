@@ -4,7 +4,7 @@ import './Invitacion.css';
 const Invitacion = (): JSX.Element => {
 
     function handleSubmit(e: any): void {
-        console.log(e);
+        console.log(e.target.value);
     }
 
     return (
