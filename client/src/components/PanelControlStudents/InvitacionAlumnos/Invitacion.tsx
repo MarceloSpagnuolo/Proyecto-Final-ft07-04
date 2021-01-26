@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import './Invitacion.css';
+import { sendInvitation } from '../../../Store/Actions/Users';
 
 const Invitacion = (): JSX.Element => {
 
-    function handleSubmit(e: any): void {
-        console.log(e.target.value);
+    const dispatch = useDispatch();
+    const [invitation, setInvi] = useState({})
+
+    function handleOnChange(e: any): void {
+        setInvi({
+            ...invitation,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    function handleSubmit(): void {
+        console.log(invitation, "soy el submit");
+        dispatch(sendInvitation(invitation))
     }
 
     return (
@@ -16,17 +29,21 @@ const Invitacion = (): JSX.Element => {
                     <table>
                         <thead>
                             <tr id="recibe">
-                                <input name="file" type="file" id="file" />
-                                <input name="email" type="email" placeholder="correo@nuevo.alumno" id="email" />
+                                <input name="file" type="file" id="file" onChange={(e) => handleOnChange(e)} />
+                                <input name="email" type="email" placeholder="correo@nuevo.alumno" id="email"
+                                    onChange={(e) => handleOnChange(e)} />
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><input name="text" type="text" id="cuerpo" placeholder=" Mensaje de invitación." /></tr>
+                            <tr>
+                                <input name="msj" type="text" id="cuerpo" placeholder=" Mensaje de invitación."
+                                    onChange={(e) => handleOnChange(e)} />
+                            </tr>
                         </tbody>
                     </table>
                 </div>
                 <div id="submit">
-                    <input type="submit" onClick={(e) => handleSubmit(e)} />
+                    <input type="submit" onClick={() => handleSubmit()} />
                 </div>
             </div>
         </div>
