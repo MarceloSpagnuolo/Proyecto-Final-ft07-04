@@ -2,8 +2,8 @@ var fs = require("fs")
 const mailgunLoader = require("mailgun-js")
 const jwt = require('jsonwebtoken');
 const mailgun = mailgunLoader({
-  apiKey: "ee88a4918226f8f65ddd7b1d2b21a3f8-3d0809fb-f6bf0951",
-  domain: "sandbox2b110fa331aa4c138c477da2dc662ad1.mailgun.org",
+  apiKey: "cec77882dc9c949c5ac3e00e30ffd4dc-07bc7b05-698c1857",
+  domain: "sandboxb98db98cae9149118449975a51ae58ea.mailgun.org",
 });
 
 function Registro(email: string) {
