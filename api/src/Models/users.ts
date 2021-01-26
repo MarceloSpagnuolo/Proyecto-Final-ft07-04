@@ -13,6 +13,7 @@ interface Props extends Document {
     created: any,
     cohorte: any,
     standup: any,
+    comparePassword(password: string,passwordDB:string):boolean;
 }
 
 
@@ -39,8 +40,8 @@ UserSchema.pre("save", async function (next) {
     this.password = hash;    
 });
 
-UserSchema.method('comparePassword', function (password: string): boolean {
-    if (bcrypt.compareSync(password, this.password)) return true;
+UserSchema.method('comparePassword', async function (password: string, passwordDB:string) {
+    if (await bcrypt.compareSync(password, passwordDB)) return true;
     return false;
 });
 
