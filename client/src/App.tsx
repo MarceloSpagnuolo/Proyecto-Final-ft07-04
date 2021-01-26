@@ -5,6 +5,7 @@ import Nav from "components/Nav/Nav";
 import Invitacion from 'components/InvitacionAlumnos/Invitacion';
 import Home from 'components/Home/Home';
 import GrupoDetail from "components/GrupoDetail/GrupoDetail"
+import Registro from "components/Registro/Registro"
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route exact path='/invitation' component={Invitacion} />
       <Route exact path='/Home' component={Home} />
       <Route exact path='/GrupoDetail' component={GrupoDetail} />
+      <Route exact path='/Registro' component={Registro} />
     </>
   );
 }
