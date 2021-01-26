@@ -32,6 +32,7 @@ router.put("/", async (req, res) => {
   const { id, NumeroGrupo, CohorteId } = req.body;
   const group = await Group.findOneAndUpdate(
     { _id: id },
+
     req.body,
     { upsert: true }
   );

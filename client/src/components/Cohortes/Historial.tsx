@@ -16,6 +16,7 @@ function Historial(props: any) {
             <th className="Listado-Th">Instructor</th>
             <th></th>
           </tr>
+
           {props.listado.Cohortes.cohortes.length > 0 && props.listado.Cohortes.cohortes.map((elem: any) => {
             
             return (elem.Active === false) ?(
@@ -34,6 +35,7 @@ function Historial(props: any) {
                   <button className="Listado-Boton">Detalle</button>
                 </td>
               </tr>
+
             ):null;
           })}
         </tbody>

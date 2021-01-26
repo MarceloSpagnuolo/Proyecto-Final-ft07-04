@@ -57,6 +57,7 @@
 }
 
 @media screen and (max-width: 768px) {
+
   #Cohorte-Tab {
     width: 100%;
   }
@@ -64,6 +65,7 @@
   #Cohorte-TabList {
     font-size: 0.9rem;
   }
+
 }
 @media screen and (min-width: 768px) {
   #Cohorte-TabList {

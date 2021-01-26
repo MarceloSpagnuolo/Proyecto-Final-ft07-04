@@ -52,7 +52,7 @@ const Login = (): JSX.Element => {
                         <h1 className="loginH12">Manager</h1>
                     </div>
                     <div className="loginH2">
-                        <h2> ¿Listo parra cambiar tu vida?</h2>
+                        <h2> ¿Listo para cambiar tu vida?</h2>
                     </div>
                     <div className="textoChiquitin">
                         <p>Soy un texto de relleno solo diré que esta es una página mas chiquita que la grande pero igualmente de útil</p>
