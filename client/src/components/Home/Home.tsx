@@ -4,6 +4,7 @@ import alumnos from '../../assets/Alumnos.png';
 import cohortes from '../../assets/Cohortes.png';
 import topImg from '../../assets/topBanner.png';
 import PanelControlStudents from 'components/PanelControlStudents/panelControl';
+import Cohortes from 'components/Cohortes/Cohortes';
 import './Home.css';
 
 const Home = (): JSX.Element => {
@@ -20,7 +21,9 @@ const Home = (): JSX.Element => {
                 <Link rel="stylesheet" to="/PanelControlStudent">
                     <img src={alumnos} alt="Redirect Alumnos" onClick={() => PanelControlStudents} />
                 </Link>
-                <img src={cohortes} alt="" />
+                <Link rel="stylesheet" to="/Cohortes">
+                    <img src={cohortes} alt="Redirect Cohortes" onClick={() => Cohortes} />
+                </Link>
             </div>
         </div>
     )
