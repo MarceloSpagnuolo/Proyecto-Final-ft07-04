@@ -13,13 +13,15 @@ router.get("/", async (req, res) => {
 //SE CREA UN COHORTE.
 //Cualquier dato que no se pase, queda como vacío en la colección.
 router.post('/', async (req, res) => {
-    const {Start, Alumnos, Instructor, Created} = req.body;
+    const {fechaInicio, nroCohorte, Instructor, Created} = req.body;
+    console.log(req.body, "SOY EL BODY")
 
     const cohorte = new Cohorte({
-        Start,
-        Alumnos,
+      Nombre: "Webft" + nroCohorte,
+        Start: fechaInicio,
         Instructor: [{ User: Instructor }],
-        Created
+        Created,
+        Active: true
     })
     cohorte.save()
 
@@ -31,14 +33,16 @@ router.post('/', async (req, res) => {
 //Se pide que pasen todos los datos, incluso los que no quieren actualizar.
 // La actualización de instructor se hace en otra ruta por ser más complicado.
 router.put('/', async (req, res) => {
-    const { id, Start, Alumnos, Created } = req.body;
+    const { id,Active, Nombre, Start, Alumnos, Created } = req.body;
 
     const cohorte = await Cohorte.findOneAndUpdate(
         { _id: id },
         {
+          Nombre,
           Start,
           Alumnos,
-          Created
+          Created,
+          Active
         },
         { upsert: true }
       );

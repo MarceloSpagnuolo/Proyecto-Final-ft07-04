@@ -70,4 +70,10 @@ router.delete("/delete/:id", async (req, res) => {
  
 });
 
+router.get("/cohorte/:id", async (req, res) => {
+  const {id} = req.params
+  const usuarios = await User.find({cohorte: id})
+  !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
+})
+
 export default router;

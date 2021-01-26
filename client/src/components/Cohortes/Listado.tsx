@@ -2,28 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Listado.css";
 
-const cohortes = [
-  {
-    nro: 7,
-    fecha: "01/08/2020",
-    alumnos: 200,
-    instructor: "Bart Simpsons",
-  },
-  {
-    nro: 8,
-    fecha: "01/09/2020",
-    alumnos: 198,
-    instructor: "Fulano Detal",
-  },
-  {
-    nro: 9,
-    fecha: "01/10/2020",
-    alumnos: 199,
-    instructor: "La Mona Gimenez",
-  },
-];
-
-function Listado() {
+function Listado(props: any) {
   return (
     <div className="Listado-Container">
       <h2>Cohortes Activos</h2>
@@ -35,26 +14,26 @@ function Listado() {
             <th className="Listado-Th">Alum</th>
             <th className="Listado-Th">Instructor</th>
           </tr>
-          {cohortes.map((elem) => {
-            return (
-              <tr key={elem.nro} id="Listado-Tr">
+          {props.listado.Cohortes.cohortes.length > 0 && props.listado.Cohortes.cohortes.map((elem: any) => {
+            return  (elem.Active === true) ?(
+              <tr key={elem._id} id="Listado-Tr">
                 <td className="Listado-Td" id="Listado-Align">
-                  {elem.nro}
+                  {elem._id}
                 </td>
                 <td className="Listado-Td" id="Listado-Align">
-                  {elem.fecha}
+                  {elem.Start}
                 </td>
                 <td className="Listado-Td" id="Listado-Align">
-                  {elem.alumnos}
+                  {elem.Alumnos}
                 </td>
-                <td className="Listado-Td">{elem.instructor}</td>
+                <td className="Listado-Td">{elem.Instructor[0].User}</td>
                 <td className="Listado-Td">
-                  <Link to={`/activos/${elem.nro}`}>
+                  <Link to={`/activos/${elem._id}`}>
                     <button className="Listado-Boton">Detalle</button>
                   </Link>
                 </td>
               </tr>
-            );
+            ):null;
           })}
         </tbody>
       </table>

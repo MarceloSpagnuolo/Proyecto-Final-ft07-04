@@ -12,8 +12,6 @@ export default async function Insert() {
         role: "admin",
         email: "admin@soyadmin.com",
         password: "D3ltaG@mma",
-        cohorte: "600b9852935003272c8b6901",
-        standup: "600b9852935003272c8b6801"
     },
     {
         _id: "600b9852935003272c8b6101",
@@ -66,7 +64,7 @@ export default async function Insert() {
         role: "alumno",
         email: "edu@gmail.com",
         password: "Trabajomuydur0",
-        cohorte: "600b9852935003272c8b6902",
+        cohorte: "600b9852935003272c8b6901",
         standup: "600b9852935003272c8b6802"
     },
     {
@@ -75,7 +73,7 @@ export default async function Insert() {
         role: "alumno",
         email: "carla@gmail.com",
         password: "Yafueusarcontraseña",
-        cohorte: "600b9852935003272c8b6902",
+        cohorte: "600b9852935003272c8b6901",
         standup: "600b9852935003272c8b6802"
     },
     {
@@ -84,7 +82,7 @@ export default async function Insert() {
         role: "alumno",
         email: "andres@gmail.com",
         password: "bastaplz1234",
-        cohorte: "600b9852935003272c8b6902",
+        cohorte: "600b9852935003272c8b6901",
         standup: "600b9852935003272c8b6802"
     },
     {
@@ -93,7 +91,7 @@ export default async function Insert() {
         role: "alumno",
         email: "carlos@gmail.com",
         password: "nosequeponer1234",
-        cohorte: "600b9852935003272c8b6902",
+        cohorte: "600b9852935003272c8b6901",
         standup: "600b9852935003272c8b6802"
     },
     {
@@ -102,7 +100,7 @@ export default async function Insert() {
         role: "alumno",
         email: "rodrigo@gmail.com",
         password: "mandalelaRep3",
-        cohorte: "600b9852935003272c8b6902",
+        cohorte: "600b9852935003272c8b6901",
         standup: "600b9852935003272c8b6802"
     },
     {
@@ -179,17 +177,28 @@ const groups = [
 const cohortes = [
     {
         _id: "600b9852935003272c8b6901",
-        Start: "8/02/2121",
+        Nombre: "Webft10",
+        Start: "8/02/2021",
         Alumnos: 10,
         Instructor: {User: "600b9852935003272c8b6116"},
-        Created: "21/01/2121"
+        Created: "21/01/2021"
     },
     {
         _id: "600b9852935003272c8b6902",
-        Start: "1/03/2121",
+        Start: "1/03/2021",
+        Nombre: "Webft11",
         Alumnos: 0,
         Instructor: {User: "600b9852935003272c8b6117"},
-        Created: "24/01/2121"
+        Created: "24/01/2021"
+    },
+    {
+        _id: "600b9852935003272c8b6903",
+        Start: "28/05/2020",
+        Nombre: "Webft04",
+        Alumnos: 150,
+        Instructor: {User: "600b9852935003272c8b6117"},
+        Created: "20/03/2020",
+        Active: false
     },
 ]
 
