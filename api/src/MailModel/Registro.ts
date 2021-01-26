@@ -1,16 +1,13 @@
 var fs = require("fs")
 const mailgunLoader = require("mailgun-js")
 const jwt = require('jsonwebtoken');
-const {
-  MAILGUN_KEY, 
-  MAILGUN_DOMAIN
-} = process.env;
 const mailgun = mailgunLoader({
-  apiKey: MAILGUN_KEY,
-  domain: MAILGUN_DOMAIN,
+  apiKey: `${process.env.MAILGUN_KEY}`,
+  domain: `${process.env.MAILGUN_DOMAIN}`,
 });
 
 function Registro(email: string) {
+  console.log(email, "ENTRE ACA 1")
 
   const token = jwt.sign({ email}, "secreto", { expiresIn: 1800 });
 
@@ -25,7 +22,6 @@ function Registro(email: string) {
   modelEmail = modelEmail.replace("%givenname%", email);
   modelEmail = modelEmail.replace("%resetlink%", datatemplate);
   modelEmail = modelEmail.replace("%direccion%", copypaste);
-
   mailgun.messages().send({
     from: 'Henry App <SoyHenry@henry.com>',
     to: email,
@@ -33,8 +29,10 @@ function Registro(email: string) {
     html: modelEmail
   }, function (err: any, info: any) {
     if (err) {
+      console.log("Entre aca 3")
       console.error('Error: ' + err);
     } else {
+      console.log("Entre aca 4")
       console.error('Response: ' + info);
     }
   });
