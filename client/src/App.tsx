@@ -9,6 +9,7 @@ import Cohortes from "components/Cohortes/Cohortes";
 import Activos from "components/Cohortes/Activos";
 import PanelControlStudents from "components/PanelControlStudents/panelControl";
 
+
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
         path="/PanelControlStudent"
         component={PanelControlStudents}
       />
+
     </>
   );
 }

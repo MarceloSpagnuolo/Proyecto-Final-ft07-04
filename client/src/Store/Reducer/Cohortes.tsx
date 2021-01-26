@@ -1,3 +1,4 @@
+import { ERROR_MESSAGE } from "Store/Constants/Users";
 import {
   GET_COHORTES,
   POST_COHORTE,
@@ -17,6 +18,16 @@ const inicialState: Store = {
 
 function Cohortes(state = inicialState, action: any) {
   switch (action.type) {
+    case GET_COHORTES:
+    return {...state, cohortes: action.payload}
+    case POST_COHORTE:
+      return {
+        ...state,
+        cohortes: state.cohortes.concat(action.payload),
+      };
+    case ERROR_MESSAGE: {
+      alert(action.message);
+    }
   }
   return state;
 }

@@ -17,3 +17,4 @@ const CohorteSchema: Schema = new Schema({
 const Cohorte = mongoose.model("Cohorte", CohorteSchema);
 
 export default Cohorte;
+

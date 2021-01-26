@@ -3,11 +3,11 @@ import express from "express"
 import bodyParser from "body-parser"
 import User from "./Models/users"
 import routes from "./Routes/index";
-
+const cors = require('cors')
 
 const server = express();
-
-// server.name = 'API';
+server.use(cors());
+// server.name = 'API';;
 
 server.use(express.static("src/archivos")); //acceso publico al directorio src
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));

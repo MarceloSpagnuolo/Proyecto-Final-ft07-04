@@ -1,63 +1,24 @@
-import React from "react";
+
+import React, { useEffect } from "react";
 import "./Activos.css";
 import Swal from "sweetalert2";
-
-const Alumnos = [
-  {
-    id: 1,
-    nombre: "Juan Perez",
-    email: "juan@perez.com",
-    alta: "01/01/2020",
-    grupo: 1,
-  },
-  {
-    id: 2,
-    nombre: "Pedro Perez",
-    email: "pedro@perez.com",
-    alta: "01/01/2020",
-    grupo: 1,
-  },
-  {
-    id: 3,
-    nombre: "Marcela Perez",
-    email: "marcela@perez.com",
-    alta: "01/01/2020",
-    grupo: 1,
-  },
-  {
-    id: 4,
-    nombre: "Dolores Depanza",
-    email: "dolores@depanza.com",
-    alta: "01/01/2020",
-    grupo: 1,
-  },
-  {
-    id: 5,
-    nombre: "Mokana Lopez",
-    email: "mokana@lopez.com",
-    alta: "01/01/2020",
-    grupo: 1,
-  },
-  {
-    id: 6,
-    nombre: "Madonna Santa",
-    email: "madonma@santa.com",
-    alta: "01/01/2020",
-    grupo: 2,
-  },
-  {
-    id: 7,
-    nombre: "Jesus Nazareno",
-    email: "jesus@nazareno.com",
-    alta: "01/01/2020",
-    grupo: 2,
-  },
-];
+import {  useDispatch, useSelector } from "react-redux";
+import {getUsersbyCohorte} from "../../Store/Actions/Users"
 
 function Activos(props: any) {
+  const dispatch = useDispatch()
+  const state: any = useSelector(state => state)
+  const users = state.Users.users
   const { id } = props.match.params;
 
-  function handleDel(id: number, nombre: string) {
+
+  useEffect(() => {
+    dispatch(getUsersbyCohorte(id))
+  }, []);
+
+  console.log(users)
+
+  function handleDel(id: string, nombre: string) {
     Swal.fire({
       title: "¿Está seguro?",
       text: `Está por eliminar a ${nombre} de este Cohorte`,
@@ -78,7 +39,8 @@ function Activos(props: any) {
     });
   }
 
-  function handleMig(id: number, nombre: string) {
+
+  function handleMig(id: string, nombre: string) {
     Swal.fire({
       title: `Ingrese al cohorte que migra ${nombre}`,
       input: "text",
@@ -115,7 +77,8 @@ function Activos(props: any) {
       </div>
       <br />
       <div>
-        <span>Alumnos: 200</span>
+
+        <span>Alumnos: {users.length - 1}</span>
       </div>
       <div className="Listado-Container">
         <h3>Alumnos</h3>
@@ -132,21 +95,23 @@ function Activos(props: any) {
                   StandUp
                 </th>
               </tr>
-              {Alumnos.map((elem) => {
-                return (
+
+              {users.length > 0 && users.map((elem:any) => {
+                return (elem.role === "alumno") ?(
                   <tr id="Listado-Tr">
-                    <td className="Listado-Td">{elem.nombre}</td>
+                    <td className="Listado-Td">{elem.name.firstname + " " + elem.name.lastname}</td>
                     <td className="Listado-Td">{elem.email}</td>
                     <td className="Listado-Td" id="Prueba">
-                      {elem.alta}
+                      {elem.created}
                     </td>
                     <td className="Listado-Td" id="Prueba">
-                      {elem.grupo}
+                      {elem.standup}
                     </td>
                     <td className="Listado-Td">
                       <button
                         className="Listado-Boton"
-                        onClick={() => handleDel(elem.id, elem.nombre)}
+
+                        onClick={() => handleDel(elem._id, elem.name.firstname)}
                       >
                         Quitar
                       </button>
@@ -154,13 +119,14 @@ function Activos(props: any) {
                     <td className="Listado-Td">
                       <button
                         className="Listado-Boton"
-                        onClick={() => handleMig(elem.id, elem.nombre)}
+
+                        onClick={() => handleMig(elem._id, elem.name.nombre)}
                       >
                         Migrar
                       </button>
                     </td>
                   </tr>
-                );
+                ): null;
               })}
             </tbody>
           </table>

@@ -57,7 +57,8 @@
 }
 
 @media screen and (max-width: 768px) {
-  #Cohorte-Tabs {
+
+  #Cohorte-Tab {
     width: 100%;
   }
 
@@ -65,11 +66,7 @@
     font-size: 0.9rem;
   }
 
-  #Cohorte-Tab {
-    background-color: red;
-  }
 }
-
 @media screen and (min-width: 768px) {
   #Cohorte-TabList {
     font-size: 1.2rem;

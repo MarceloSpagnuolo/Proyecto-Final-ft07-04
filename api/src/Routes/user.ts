@@ -2,19 +2,29 @@ import express from "express";
 const router = express.Router();
 import User from "../Models/users";
 
-router.get("/", (req, res) => {
-  User.find((err: any, users: any) => {});
-  res.json({
-    status: "API Works!",
-  });
+
+
+// Trae todos los usuarios
+router.get("/", async (req, res) => {
+  const result = await User.find();
+
+  !result ? res.send("Hubo un error").status(400) : res.json(result);
 });
 
 //guardar usuario
 // users/register
 router.post("/register", async (req, res) => {
-  const { firstname, lastname, thumbnail, role, email, password } = req.body;
 
-  console.log(req.body, "soy el user del back");
+  const {
+    firstname,
+    lastname,
+    thumbnail,
+    role,
+    email,
+    password,
+    cohorte,
+    standup,
+  } = req.body;
 
   try {
     //revisar usuario a registrar sea unico
@@ -54,6 +64,19 @@ router.delete("/delete/:id", async (req, res) => {
     console.log(error);
     res.status(400).send({ success: false, msg: "Hubo un  error" });
   }
+});
+
+
+// Modificar un usuario por id
+router.put('/modify/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const user = await User.findOneAndUpdate({ _id: id}, req.body);
+
+
+  if(!user) {
+    res.status(404).send("No existe un usuario con ese id");
+  } else { res.status(200).json(user); }
 });
 
 export default router;
