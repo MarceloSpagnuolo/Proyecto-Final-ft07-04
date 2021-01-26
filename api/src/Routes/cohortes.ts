@@ -33,21 +33,11 @@ router.post('/', async (req, res) => {
 //Se pide que pasen todos los datos, incluso los que no quieren actualizar.
 // La actualización de instructor se hace en otra ruta por ser más complicado.
 router.put('/', async (req, res) => {
-    const { id,Active, Nombre, Start, Alumnos, Created } = req.body;
+  const { id } = req.body;
 
-    const cohorte = await Cohorte.findOneAndUpdate(
-        { _id: id },
-        {
-          Nombre,
-          Start,
-          Alumnos,
-          Created,
-          Active
-        },
-        { upsert: true }
-      );
+  const cohorte = await Cohorte.findOneAndUpdate({ _id: id },req.body,{ upsert: true });
 
-      !cohorte ? res.send("hubo un error").status(400) : res.json(cohorte)
+    !cohorte ? res.send("hubo un error").status(400) : res.json(cohorte)
 })
 
 //ACTUALIZA UN INSTRUCTOR
