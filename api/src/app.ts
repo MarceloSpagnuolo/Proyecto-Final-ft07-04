@@ -7,7 +7,7 @@ import routes from "./Routes/index";
 
 const server = express();
 
-// server.name = 'API';
+// server.name = 'API';;
 
 server.use(express.static("src/archivos")); //acceso publico al directorio src
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
