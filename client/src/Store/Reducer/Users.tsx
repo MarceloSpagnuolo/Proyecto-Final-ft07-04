@@ -12,8 +12,14 @@ const inicialState: Store = {
 
 function Users(state = inicialState, action: any) {
   switch (action.type) {
+    case POST_USER:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    default:
+      return state;
   }
-  return state;
 }
 
 export default Users;

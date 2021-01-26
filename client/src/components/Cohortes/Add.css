@@ -14,7 +14,7 @@
 }
 
 .Add-Form {
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 
 .Add-Form-Campos {
@@ -121,7 +121,7 @@
   .Add-Frase {
     text-align: center;
     width: 100%;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-family: cursive;
   }
 

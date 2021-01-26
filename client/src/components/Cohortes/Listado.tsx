@@ -30,7 +30,7 @@ function Listado() {
       <table className="Listado-Table">
         <tbody>
           <tr>
-            <th className="Listado-Th">Nro</th>
+            <th className="Listado-Th">Cohte</th>
             <th className="Listado-Th">Inicio</th>
             <th className="Listado-Th">Alum</th>
             <th className="Listado-Th">Instructor</th>

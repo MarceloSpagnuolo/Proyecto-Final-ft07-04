@@ -8,7 +8,7 @@ import "components/Cohortes/Cohortes.css";
 function Cohortes() {
   return (
     <div>
-      <Tabs id="Cohorte-Tab">
+      <Tabs id="Cohorte-Tabs">
         <TabList id="Cohorte-TabList">
           <Tab>Cohortes</Tab>
           <Tab>Nuevo Cohorte</Tab>
