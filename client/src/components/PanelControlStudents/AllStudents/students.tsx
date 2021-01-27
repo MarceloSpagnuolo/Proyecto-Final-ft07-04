@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./students.css";
-import estudiantes from "./mocks";
+import { getStudents } from "../../../Store/Actions/Users";
 
 const Students = (): JSX.Element => {
+    const dispatch = useDispatch()
+    const users: any = useSelector((state: any) => state.Users.users)
+
+    console.log(users, "soy los usuarios front")
+    useEffect(() => {
+        dispatch(getStudents())
+    }, [])
 
     return (
         <div className="student-super-container">
@@ -35,10 +43,10 @@ const Students = (): JSX.Element => {
                         </tr>
                     </thead>
                     <tbody className="student-table-body">
-                        {estudiantes && estudiantes.length > 0 && estudiantes.map((alum) => (
+                        {users && users.length > 0 && users.map((alum: any) => (
                             <tr id="student-table-tr">
-                                <td className="student-table-td">{alum.name}</td>
-                                <td className="student-table-td" id="less">{alum.dateRegistro}</td>
+                                <td className="student-table-td">{`${alum.name.firstname} ${alum.name.lastname}`}</td>
+                                <td className="student-table-td" id="less">{alum.created}</td>
                                 <td className="student-table-td">{alum.email}</td>
                                 <td className="student-table-td" id="less">{alum.cohorte}</td>
                                 <td className="student-table-td" id="less">{alum.standUp}</td>

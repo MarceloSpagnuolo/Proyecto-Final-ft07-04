@@ -1,6 +1,9 @@
 import express from "express";
 const router = express.Router();
 import User from "../Models/users";
+import Cohorte from "../Models/cohorte";
+import Group from "../Models/groups";
+
 
 router.get("/", (req, res) => {
   User.find((err: any, users: any) => {
@@ -8,6 +11,19 @@ router.get("/", (req, res) => {
   res.json({
     status: "API Works!",
   });
+});
+
+
+router.get("/estudiantes", async (req, res) => {
+
+  await User.find({ $or: [{ role: "alumno" }, { role: "PM" }] }, function (err, users) {
+    Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+      Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+        res.json(usersCOM).status(200);
+      })
+    });
+  });
+
 });
 
 //guardar usuario
@@ -47,10 +63,10 @@ router.post("/register", async (req, res) => {
 
     //guardar usuario
     let result = await usuario.save();
-        res.status(200).json({ success: true, result });
+    res.status(200).json({ success: true, result });
   } catch (error) {
-        console.log(error);
-        res.status(400).send({ success: false, msg: "Hubo un  error" });
+    console.log(error);
+    res.status(400).send({ success: false, msg: "Hubo un  error" });
   }
 });
 
@@ -66,8 +82,8 @@ router.delete("/delete/:id", async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(400).send({ success: false, msg: "Hubo un  error" });
-  }  
- 
+  }
+
 });
 
 export default router;

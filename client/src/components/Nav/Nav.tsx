@@ -38,12 +38,12 @@ const Nav = () => {
                     </div>
                     <div>
                         <Link rel="stylesheet" to="/PanelControlStudent">
-                            <div className="mlP" >Alumnos</div>
+                            <div className="mlP" onClick={() => setDisplay(!display)} >Alumnos</div>
                         </Link>
                     </div>
                     <div >
                         <Link rel="stylesheet" to="/Cohortes">
-                            <div className="mlP">Cohortes</div></Link>
+                            <div className="mlP" onClick={() => setDisplay(!display)}>Cohortes</div></Link>
                     </div>
                 </div>
             </div>

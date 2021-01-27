@@ -1,9 +1,10 @@
 // const { Router } = require("express");
-import {Router} from "express"
-import userRoute from "./user"
-import groupRoute from "./groups"
-import cohorteRoute from "./cohortes"
-import mailRoute from "./mailgun"
+import {Router} from "express";
+import userRoute from "./user";
+import groupRoute from "./groups";
+import cohorteRoute from "./cohortes";
+import mailRoute from "./mailgun";
+import multerRoute from "./multer";
 
 const router = Router();
 
@@ -12,6 +13,7 @@ router.use("/users", userRoute)
 router.use("/standup", groupRoute)
 router.use("/cohorte", cohorteRoute)
 router.use('/mails', mailRoute)
+router.use('/multer', multerRoute)
 
 
 // module.exports = router;

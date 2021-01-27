@@ -9,7 +9,7 @@ const server = express();
 
 // server.name = 'API';
 
-server.use(express.static("src/archivos")); //acceso publico al directorio src
+server.use(express.static("src/ArchivosMulter")); //acceso publico al directorio src
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
 server.use((req: any, res: any, next: any) => {
