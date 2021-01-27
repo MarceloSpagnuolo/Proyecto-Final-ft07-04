@@ -122,7 +122,7 @@ function Activos(props: any) {
                       <button
                         className="Listado-Boton"
 
-                        onClick={() => handleMig(elem._id, elem.name.nombre)}
+                        onClick={() => handleMig(elem._id, elem.name.firstname)}
                       >
                         Migrar
                       </button>
