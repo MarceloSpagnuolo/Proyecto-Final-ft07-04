@@ -17,6 +17,15 @@ const url = "http://localhost:3001";
 export const postUser = (payload: any) => async (dispatch: any) => {
   try {
     const res = await axios.post(`${url}/users/register`, payload);
+    if(res){
+      const {email,password} = payload;
+      const datos = {email,password};
+      const newToken = await axios.post(`${url}/auth/login`, datos);
+      if(newToken){
+        localStorage.setItem('userToken', newToken.data);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${newToken.data}`;
+      }
+    }
     dispatch({
       type: POST_USER,
       payload: res.data,

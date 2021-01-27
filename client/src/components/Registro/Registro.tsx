@@ -3,6 +3,7 @@ import { useLocation } from "react-router";
 import jwt from "jsonwebtoken";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { postUser } from "Store/Actions/Users";
 import { SSL_OP_NO_QUERY_MTU } from "constants";
 import "./Registro.css";
@@ -22,6 +23,8 @@ const Registro = (props: any): JSX.Element => {
   const [mailTok, setToken] = useState(useLocation().search);
   const [estado, setEstado] = useState<Registro>({});
   const dispatch = useDispatch();
+  const history = useHistory();
+  const user:any = useSelector((state:any) => state.Users.user)
 
   useEffect(() => {
     /*     if (mailTok.includes("registro")) {
@@ -39,6 +42,14 @@ const Registro = (props: any): JSX.Element => {
     } */
     setEstado({ email: "lu4huf@gmail.com" });
   }, []);
+
+  
+
+  useEffect(() => {
+
+      if(Object.keys(user).length !== 0 ) history.push('/home');
+
+  }, [user])
 
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
     setEstado({
@@ -63,7 +74,7 @@ const Registro = (props: any): JSX.Element => {
     if (!estado.githubId) {
       Swal.fire("Es obligatorio tener cuenta en GitHub");
     }
-    // dispatch(postUser(estado));
+    dispatch(postUser(estado));
   }
 
   return (
@@ -133,7 +144,7 @@ const Registro = (props: any): JSX.Element => {
         {/* </form> */}
         <div className="btnRegistro">
           <button className="" onClick={() => handleSubmit()}>
-            Entrar
+            Registrarse
           </button>
         </div>
       </div>
