@@ -37,10 +37,9 @@ function Users(state = inicialState, action: any) {
     default:
       return state;
     case GET_USER_BY_TOKEN:
-      console.log(action, "soy el REDUCER")
-      return {...state, user: action.payload}  
+      return { ...state, user: action.payload }
 
-     case GET_USERS_BY_COHORTE:    
+    case GET_USERS_BY_COHORTE:
       return { ...state, users: action.payload };
     case DELETE_USER_COHORTE:
       return {
@@ -53,18 +52,18 @@ function Users(state = inicialState, action: any) {
           }
         }),
       };
-      case MIGRAR_USER_COHORTE:
-        return {
-          ...state,
-          users: state.users.map((us) => {
-            if (us._id === action.payload._id) {
-              return action.payload;
-            } else {
-              return us;
-            }
-          }),
-        };
-    
+    case MIGRAR_USER_COHORTE:
+      return {
+        ...state,
+        users: state.users.map((us) => {
+          if (us._id === action.payload._id) {
+            return action.payload;
+          } else {
+            return us;
+          }
+        }),
+      };
+
   }
 }
 

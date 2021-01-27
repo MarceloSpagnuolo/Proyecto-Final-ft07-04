@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import './Invitacion.css';
 import { sendInvitation } from '../../../Store/Actions/Users';
+import Swal from "sweetalert2";
 
 interface inv {
     file?: any;
@@ -30,7 +31,21 @@ const Invitacion = (): JSX.Element => {
     }
 
     function handleSubmit(): any {
-        dispatch(sendInvitation(invitation))
+        if (invitation.file || invitation.email) {
+            dispatch(sendInvitation(invitation))
+            Swal.fire(
+                "Listo",
+                "Sus emails han sido enviados con éxito",
+                "success"
+            )
+        } else {
+            Swal.fire(
+                "Error",
+                "Por favor, debe ingresar un email",
+                "error"
+            )
+        }
+
     }
 
     return (
