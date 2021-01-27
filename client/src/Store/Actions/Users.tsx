@@ -12,6 +12,21 @@ import {
 
 const url = "http://localhost:3001";
 
+export const postUser = (payload: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.post(`${url}/users/register`, payload);
+    dispatch({
+      type: POST_USER,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      payload: "Problemas al registrar el usuario",
+    });
+  }
+};
+
 export const getUsersbyCohorte = (id: any) => async (dispatch: any) => {
   try {
     const res = await axios.get(`${url}/users/cohorte/${id}`);
