@@ -2,12 +2,17 @@ import React from "react";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import "./Add.css";
 
+import {postCohorte} from "../../Store/Actions/Cohortes"
+import {  useDispatch, useSelector } from "react-redux";
+
 interface AddForm {
   nroCohorte: Number;
   fechaInicio: Date;
 }
 
 function Add() {
+
+  const dispatch = useDispatch()
   const initialValues: AddForm = {
     nroCohorte: 0,
     fechaInicio: new Date(),
@@ -23,12 +28,14 @@ function Add() {
               var errors: { [k: string]: any } = {};
               if (values.nroCohorte < 1)
                 errors.nroCohorte = "Debe Ingresar Nro de Cohorte";
-              if (values.fechaInicio)
+
+              if (!values.fechaInicio)
                 errors.fechaInicio = "Debe Ingresar una fecha válida";
 
               return errors;
             }}
-            onSubmit={(values) => {}}
+
+            onSubmit={(values) => {dispatch(postCohorte(values))}}
           >
             {({ isSubmitting, isValid }) => (
               <>

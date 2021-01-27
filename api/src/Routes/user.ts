@@ -5,12 +5,13 @@ import Cohorte from "../Models/cohorte";
 import Group from "../Models/groups";
 
 
-router.get("/", (req, res) => {
-  User.find((err: any, users: any) => {
-  });
-  res.json({
-    status: "API Works!",
-  });
+
+
+// Trae todos los usuarios
+router.get("/", async (req, res) => {
+  const result = await User.find();
+
+  !result ? res.send("Hubo un error").status(400) : res.json(result);
 });
 
 
@@ -29,6 +30,7 @@ router.get("/estudiantes", async (req, res) => {
 //guardar usuario
 // users/register
 router.post("/register", async (req, res) => {
+
   const {
     firstname,
     lastname,
@@ -38,7 +40,6 @@ router.post("/register", async (req, res) => {
     password,
     cohorte,
     standup,
-    pairprograming,
   } = req.body;
 
   try {
@@ -56,20 +57,16 @@ router.post("/register", async (req, res) => {
       password,
       thumbnail,
       role,
-      cohorte,
-      standup,
-      pairprograming,
     });
 
     //guardar usuario
     let result = await usuario.save();
-    res.status(200).json({ success: true, result });
+    res.status(200).json(result);
   } catch (error) {
     console.log(error);
-    res.status(400).send({ success: false, msg: "Hubo un  error" });
+    res.sendStatus(400);
   }
 });
-
 
 //eliminar usuario
 // users/delete/:id
@@ -83,7 +80,41 @@ router.delete("/delete/:id", async (req, res) => {
     console.log(error);
     res.status(400).send({ success: false, msg: "Hubo un  error" });
   }
-
 });
+
+
+// Modificar un usuario por id
+router.put('/modify/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const user = await User.findOneAndUpdate({ _id: id}, req.body);
+
+
+  if(!user) {
+    res.status(404).send("No existe un usuario con ese id");
+  } else { res.status(200).json(user); }
+});
+
+router.get("/cohorte/:id", async (req, res) => {
+  const {id} = req.params
+  const usuarios = await User.find({cohorte: id})
+  !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
+})
+
+router.delete("/cohorte/:id", async (req, res) => {
+  const {id} = req.params;
+  const usuarios = await User.findOneAndUpdate({_id: id}, {cohorte: null})
+  !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
+})
+
+router.put("/cohorte/:id", async (req,res) => {
+  const {id} = req.params;
+  const {cohorteName} = req.body;
+  console.log(req.body)
+  const cohorte = await Cohorte.findOne({Nombre: cohorteName})
+  console.log(cohorte)
+  const usuarios = await User.findOneAndUpdate({_id: id}, {cohorte: cohorte._id})
+  !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
+})
 
 export default router;
