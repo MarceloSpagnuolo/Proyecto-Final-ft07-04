@@ -1,0 +1,266 @@
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro'), url('https://fonts.cdnfonts.com/s/12183/SourceSansPro-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Source Sans Pro'), url('https://fonts.cdnfonts.com/s/12183/SourceSansPro-Bold.woff') format('woff');
+}
+
+.btnLogin:hover {
+    background-color: #f0c91d;
+}
+.gridLogin{
+    overflow-x:none;
+    overflow-y:none;
+}
+@media screen and (max-width: 1100px) {
+    .gridLogin{
+        margin-right: 0;
+        position: relative;
+        bottom: 30px;
+    }
+    .imgLoginMax {
+        display: none;
+    }
+    .loginManager {
+        position: relative;
+        top: -30px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        font-family: 'Source Sans Pro';
+        font-weight: 400;
+        align-items: center;
+    }
+    .divLoginH1 {
+        position: relative;
+        height: 100px;
+        right: 110px;
+    }
+    .loginH11 {
+        position: absolute;
+        left: 18px;
+        top: 30px;
+        font-size: 70px;
+    }
+    .loginH12 {
+        position: absolute;
+        font-size: 70px;
+        left: -20px;
+        top: 60px;
+        color: #f0c91d;
+    }
+    .loginH2 {
+        position: relative;
+        bottom: -90px;
+        left: 10px;
+    }
+    .divFormLogin {
+        position: relative;
+        top: 100px
+    }
+    .formLogin {
+        position: relative;
+        left: 10px;
+        top: 10px;
+    }
+    .nameInput {
+        position: relative;
+        left: 30px;
+        top: 10px;
+        padding: 5px;
+        background-color: white;
+    }
+    .LoginDiv-Campos input {
+        width: 90%;
+        height: 50px;
+        border-radius: 30px;
+        border: 1px solid rgb(172, 169, 169);
+        background-color: rgba(255, 255, 255, 0.212);
+        transition: background-color 5000s;
+        outline-style: none;
+        padding-left: 20px;
+        font-family: 'Source Sans Pro';
+    }
+    input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0px 1000px rgb(255, 255, 255) inset;
+    }
+    input:visited {
+        background-color: transparent !;
+        transition: background-color 5000s !important;
+    }
+    .btnLogin {
+        font-family: 'Source Sans Pro';
+        position: relative;
+        width: 95%;
+        height: 50px;
+        border-radius: 30px;
+        color: white;
+        background-color: black;
+        border: none;
+        top: 40px;
+        left: 15px;
+        cursor: pointer;
+        font-size: 18px;
+        letter-spacing: 2px
+    }
+    .textoChiquitin {
+        max-width: 290px;
+        position: relative;
+        top: 90px;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    .loginManager {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        font-family: 'Source Sans Pro';
+        font-weight: 400;
+        align-items: center;
+        right: 100px;
+        grid-area: box2;
+    }
+    .divLoginH1 {
+        position: relative;
+        height: 100px;
+        right: 110px;
+    }
+    .loginH11 {
+        position: absolute;
+        left: -35px;
+        top: 20px;
+        font-size: 100px;
+    }
+    .loginH12 {
+        position: absolute;
+        font-size: 100px;
+        left: -90px;
+        top: 60px;
+        color: #f0c91d;
+    }
+    .loginH2 {
+        position: absolute;
+        bottom: 90px;
+        right: 45vw;
+        margin-left: 50vw;
+        font-size: 28px;
+        white-space: nowrap;
+    }
+    .divFormLogin {
+        position: relative;
+        top: 100px
+    }
+    .formLogin {
+        position: relative;
+        left: 10px;
+        top: 90px;
+    }
+    .nameInput {
+        position: relative;
+        left: 30px;
+        top: 10px;
+        padding: 5px;
+        background-color: white;
+    }
+    .LoginDiv-Campos {
+        margin-top: 25px;
+    }
+    .LoginDiv-Campos input {
+        width: 90%;
+        height: 50px;
+        border-radius: 30px;
+        border: 1px solid rgb(172, 169, 169);
+        background-color: rgba(255, 255, 255, 0.212);
+        transition: background-color 5000s;
+        outline-style: none;
+        padding-left: 20px;
+        font-family: 'Source Sans Pro';
+    }
+    input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0px 1000px rgb(255, 255, 255) inset;
+    }
+    input:visited {
+        background-color: transparent !;
+        transition: background-color 5000s !important;
+    }
+    .btnLogin {
+        font-family: 'Source Sans Pro';
+        position: relative;
+        width: 95%;
+        height: 50px;
+        border-radius: 30px;
+        color: white;
+        background-color: black;
+        border: none;
+        top: 150px;
+        left: 15px;
+        cursor: pointer;
+        font-size: 23px;
+        letter-spacing: 2px;
+        outline-style: none;
+    }
+    .textoChiquitin {
+        max-width: 380px;
+        position: relative;
+        top: 160px;
+        text-align: center;
+        font-size: 25px;
+    }
+    .imgLoginMax img {
+        position: absolute;
+        grid-area: box1;
+        width: 1200px;
+        min-height: 700px;
+    }
+    .imgLoginMax {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 1630px) {
+    .imgLoginMax img {
+        position: absolute;
+        grid-area: box1;
+        width: 70vw;
+        min-height: 800px;
+    }
+}
+
+@media only screen and (max-width: 1420px) {
+    .imgLoginMax img {
+        position: absolute;
+        grid-area: box1;
+        width: 70vw;
+        min-height: 700px;
+        top: 90px;
+    }
+}
+
+@media only screen and (max-width: 1220px) {
+    .imgLoginMax img {
+        position: absolute;
+        grid-area: box1;
+        width: 60vw;
+        min-height: 700px;
+        top: 90px;
+    }
+    .loginH2 {
+        right: 35vw;
+    }
+}
+
+@media (min-height:641px) and (max-height:861px) {
+    .loginH2 {
+        display: none;
+    }
+}

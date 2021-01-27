@@ -1,0 +1,102 @@
+.react-tabs {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* #PC-tabs {
+  -webkit-tap-highlight-color: transparent;
+} */
+
+/* #PCS-tabList {
+  display: flex;
+  border-bottom: 2px solid yellow;
+  margin: 0 0 0px;
+  justify-content: space-evenly;
+} */
+
+.react-tabs__tab-list {
+  border-bottom: 1px solid #aaa;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+/* #PCS-tab{
+  border: 2px solid transparent;
+  padding: 15px 20px;
+} */
+
+.react-tabs__tab {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+/* #PCS-tab--selected {
+  background: yellow;
+  border-color: black;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+} */
+
+.react-tabs__tab--selected {
+  background: #fff;
+  border-color: #aaa;
+  color: black;
+  border-radius: 5px 5px 0 0;
+}
+
+/* #PCS-tab--disabled {
+  color: Gray;
+} */
+
+.react-tabs__tab--disabled {
+  color: GrayText;
+  cursor: default;
+}
+
+.react-tabs__tab:focus {
+  box-shadow: 0 0 5px hsl(208, 99%, 50%);
+  border-color: hsl(208, 99%, 50%);
+  outline: none;
+}
+
+.react-tabs__tab:focus:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -5px;
+  background: #fff;
+}
+
+.react-tabs__tab-panel {
+  display: none;
+}
+
+
+.react-tabs__tab-panel--selected {
+  display: block;
+}
+
+/* aqui termina el archivo css */
+
+
+.PCS-intro {
+  margin-left: 20px
+}
+
+
+@media screen and (max-width:600px) {
+
+  .PCS-intro h1,
+  h3 {
+    font-weight: lighter;
+    text-align: center;
+  }
+
+}
