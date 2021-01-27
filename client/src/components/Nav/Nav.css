@@ -100,7 +100,6 @@
     margin-top: 10px;
     margin-left: 10px;
   }
-
 }
 
 @media screen and (min-width: 1100px) {
@@ -117,7 +116,7 @@
     top: 40px;
     cursor: pointer;
   }
-  #divIdList > div {
+  #divIdList>div {
     display: flex;
     font-family: "Source Sans Pro";
   }
@@ -141,7 +140,7 @@
 }
 
 .mlP:hover {
-  color: rgba(255, 255, 255, 0.705);
+  color: rgba(255, 255, 255, 0.705) !important;
 }
 
 .mlH:hover {
@@ -149,7 +148,7 @@
 }
 
 .pruebaNav {
-    z-index: 99;
+  z-index: 99;
 }
 
 .nombre {
@@ -164,3 +163,4 @@
   top: 10px;
   z-index: 2;
 }
+

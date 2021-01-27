@@ -36,6 +36,9 @@ const Nav = () => {
     localStorage.removeItem("userToken")
     window.location.href = "/"
   }
+  function linkTo(string: string): void {
+    window.location.href = `/${string}`
+  }
 
   return (
     <div className="pruebaNav">
@@ -78,12 +81,12 @@ const Nav = () => {
                 ) : null}
               </div>
               <div>
-                <div onClick={() => divChange("b")} className="mlP">
+                <div onClick={() => linkTo("PanelControlStudent")} className="mlP">
                   Alumnos
                 </div>
               </div>
               <div>
-                <div onClick={() => divChange("c")} className="mlP">
+                <div onClick={() => linkTo("cohortes")} className="mlP">
                   Cohortes
                 </div>
               </div>
