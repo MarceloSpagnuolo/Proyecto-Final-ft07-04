@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 
 function Historial(props: any) {
-  console.log(props)
   return (
     <div className="Listado-Container">
       <h2>Cohortes Finalizados</h2>

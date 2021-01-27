@@ -174,19 +174,28 @@ const groups = [
   const cohortes = [
     {
       _id: "600b9852935003272c8b6901",
-      Nombre: "ft01",
-      Start: "8/02/2121",
+      Nombre: "Webft01",
+      Start: "8/02/2021",
       Alumnos: 10,
       Instructor: { User: "600b9852935003272c8b6116" },
-      Created: "21/01/2121",
+      Created: "21/01/2021",
     },
     {
       _id: "600b9852935003272c8b6902",
-      Nombre: "ft02",
-      Start: "1/03/2121",
+      Nombre: "Webft02",
+      Start: "1/03/2021",
       Alumnos: 0,
       Instructor: { User: "600b9852935003272c8b6117" },
-      Created: "24/01/2121",
+      Created: "24/01/2021",
+    },
+    {
+      _id: "600b9852935003272c8b6903",
+      Nombre: "Webft03",
+      Start: "1/03/2020",
+      Alumnos: 0,
+      Instructor: { User: "600b9852935003272c8b6117" },
+      Created: "5/01/2021",
+      Active: false
     },
   ];
 

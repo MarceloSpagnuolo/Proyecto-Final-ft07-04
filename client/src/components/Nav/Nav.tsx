@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./Nav.css";
 
 const Nav = () => {
@@ -28,9 +29,11 @@ const Nav = () => {
             </div>
             <div className={display ? "containerNavList" : "activeDiv"} id="divIdList">
                 <div className="divListasMobile">
+                    {useLocation().pathname !== "/" ?
+                    <>
                     <div >
                         <div onClick={() => divChange("a")} className="mlP">Pepito</div>
-                        {display1 === "a" ? <div className="containermlH">
+                    {display1 === "a" ? <div className="containermlH">
                             <div className="mlH">Mi Perfil</div>
                             <div className="mlH">Logout</div>
                         </div> : null}
@@ -49,6 +52,8 @@ const Nav = () => {
                             <div className="mlH">Gestión de Grupos</div>
                         </div> : null}
                     </div>
+                    </>
+                    : null}
                 </div>
             </div>
         </div>

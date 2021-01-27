@@ -45,7 +45,6 @@ const Registro = (props: any): JSX.Element => {
       ...estado,
       [e.target.name]: e.target.value,
     });
-    console.log(estado);
   }
 
   function handleSubmit() {
@@ -65,7 +64,6 @@ const Registro = (props: any): JSX.Element => {
       Swal.fire("Es obligatorio tener cuenta en GitHub");
     }
     // dispatch(postUser(estado));
-    console.log(estado)
   }
 
   return (
