@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 const CohorteSchema: Schema = new Schema({
     Nombre: String,
     Start: String || Date,
-    Alumnos: Number,
+    Alumnos: {type: Number, default: 0},
     Instructor: [
       { _id: false, User: { type: Schema.Types.ObjectId, ref: "User" } },
     ],

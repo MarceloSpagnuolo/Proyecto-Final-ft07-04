@@ -14,7 +14,6 @@ router.get("/", async (req, res) => {
 //Cualquier dato que no se pase, queda como vacío en la colección.
 router.post('/', async (req, res) => {
     const {fechaInicio, nroCohorte, Instructor, Created} = req.body;
-    console.log(req.body, "SOY EL BODY")
 
     const cohorte = new Cohorte({
       Nombre: "Webft" + nroCohorte,

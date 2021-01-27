@@ -26,7 +26,6 @@ export const getCohortes = () => async (dispatch: any) => {
 };
 
 export const postCohorte = (payload: any) => async (dispatch: any) => {
-  console.log(payload, "SOY EL PAYLOAD")
   try {
     const res = await axios.post(`${url}/cohorte`, payload);
     dispatch({

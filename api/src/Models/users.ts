@@ -25,7 +25,7 @@ const UserSchema: Schema<Props> = new Schema({
     githubId: String,
     googleId: String,
     thumbnail: Buffer,
-    role: String,
+    role: {type: String, default: "alumno"},
     github: {type: String, unique: true},
     email: {type:String,trim:true,unique:true},
     password: {type:String,trim:true},

@@ -152,9 +152,9 @@ export default async function Insert() {
     },
     {
         _id: "600b9852935003272c8b6117",
-        name: {firstname: "Agustin", lastname: "Con-apellido"},
+        name: {firstname: "Agustin", lastname: "Amani"},
         role: "instructor",
-        email: "miguel@gmail.com",
+        email: "Amani@gmail.com",
         password: "SoyunInstructor123",
         cohorte: "600b9852935003272c8b6902",
     }

@@ -14,7 +14,6 @@ function Cohortes() {
     dispatch(getCohortes())
   }, []);
 
-  console.log(cohortes)
 
   return (
     <div>
