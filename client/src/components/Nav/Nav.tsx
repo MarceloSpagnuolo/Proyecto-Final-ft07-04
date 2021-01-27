@@ -1,4 +1,4 @@
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect } from "react-router-dom";
 import React, { useState, useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserByToken } from "Store/Actions/Users";
@@ -9,6 +9,8 @@ const Nav = () => {
   const [display, setDisplay] = useState<boolean>(false);
   const [display1, setDisplay1] = useState<string>("");
   const dispatch = useDispatch();
+  const user: any = useSelector((state: any) => state.Users.user);
+  const location = useLocation();
 
   useEffect(() => {
     const token = localStorage.getItem("userToken");
@@ -33,13 +35,16 @@ const Nav = () => {
   }
 
   function LogOut(): void {
-    localStorage.removeItem("userToken")
-    window.location.href = "/"
+    localStorage.removeItem("userToken");
+    window.location.href = "/";
+  }
+  function linkTo(string: string): void {
+    window.location.href = `/${string}`
   }
 
   return (
     <div className="pruebaNav">
-      <Link to="/home" >
+      <Link to="/home">
         <img
           className="logo"
           alt=""
@@ -51,7 +56,7 @@ const Nav = () => {
         alt=""
         src="https://cdn.discordapp.com/attachments/764979688446885898/802016303111602226/hm.png"
       />
-      {useLocation().pathname !== "/" ? (
+      {location.pathname !== "/" && !location.pathname.includes("registro") ? (
         <>
           <div
             className={display ? "btnNavbar x" : "btnNavbar"}
@@ -68,22 +73,24 @@ const Nav = () => {
             <div className="divListasMobile">
               <div>
                 <div onClick={() => divChange("a")} className="mlP">
-                  Pepito
+                  {user.name && user.name.firstname}
                 </div>
                 {display1 === "a" ? (
                   <div className="containermlH">
                     <div className="mlH">Mi Perfil</div>
-                    <div className="mlH" onClick={LogOut} >Logout</div>
+                    <div className="mlH" onClick={LogOut}>
+                      Logout
+                    </div>
                   </div>
                 ) : null}
               </div>
               <div>
-                <div onClick={() => divChange("b")} className="mlP">
+                <div onClick={() => linkTo("PanelControlStudent")} className="mlP">
                   Alumnos
                 </div>
               </div>
               <div>
-                <div onClick={() => divChange("c")} className="mlP">
+                <div onClick={() => linkTo("cohortes")} className="mlP">
                   Cohortes
                 </div>
               </div>

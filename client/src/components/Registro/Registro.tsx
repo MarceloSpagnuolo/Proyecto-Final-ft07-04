@@ -24,32 +24,27 @@ const Registro = (props: any): JSX.Element => {
   const [estado, setEstado] = useState<Registro>({});
   const dispatch = useDispatch();
   const history = useHistory();
-  const user:any = useSelector((state:any) => state.Users.user)
+  const user: any = useSelector((state: any) => state.Users.user);
 
   useEffect(() => {
-    /*     if (mailTok.includes("registro")) {
-      setToken(mailTok.split("=")[1]);
-      const email = jwt.decode(mailTok);
-      if (!email) {
+    if (mailTok.includes("mailToken")) {
+      const decodeToken: Object | any = jwt.decode(mailTok.split("=")[1]);
+      console.log(decodeToken.email);
+      if (!decodeToken) {
         alert("Error de Token");
-        window.location.href = "/";
+        //window.location.href = "/";
       } else {
-        setEstado({ email: email });
+        setEstado({ email: decodeToken.email });
       }
     } else {
       alert("Usuario no autorizado");
       window.location.href = "/";
-    } */
-    setEstado({ email: "lu4huf@gmail.com" });
+    }
   }, []);
 
-  
-
   useEffect(() => {
-
-      if(Object.keys(user).length !== 0 ) history.push('/home');
-
-  }, [user])
+    if (Object.keys(user).length !== 0) history.push("/home");
+  }, [user]);
 
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
     setEstado({
@@ -79,7 +74,11 @@ const Registro = (props: any): JSX.Element => {
 
   return (
     <>
-      <img className="backImgRegistro" src="https://cdn.discordapp.com/attachments/764979688446885898/803742896964370432/fondo.png" alt="" />
+      <img
+        className="backImgRegistro"
+        src="https://cdn.discordapp.com/attachments/764979688446885898/803742896964370432/fondo.png"
+        alt=""
+      />
       <div className="divContainerRegistro">
         <h1 className="titleRegistro">REGISTRO</h1>
         {/* <form className=""> */}
