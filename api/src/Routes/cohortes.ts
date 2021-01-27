@@ -13,6 +13,7 @@ router.get("/", async (req, res) => {
 //SE CREA UN COHORTE.
 //Cualquier dato que no se pase, queda como vacío en la colección.
 router.post('/', async (req, res) => {
+
     const {fechaInicio, nroCohorte, Instructor, Created} = req.body;
 
     const cohorte = new Cohorte({
@@ -32,6 +33,7 @@ router.post('/', async (req, res) => {
 //Se pide que pasen todos los datos, incluso los que no quieren actualizar.
 // La actualización de instructor se hace en otra ruta por ser más complicado.
 router.put('/', async (req, res) => {
+
   const { id } = req.body;
 
   const cohorte = await Cohorte.findOneAndUpdate({ _id: id },req.body,{ upsert: true });

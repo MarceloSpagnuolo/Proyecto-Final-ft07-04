@@ -4,6 +4,7 @@ import User from "../Models/users";
 import Cohorte from "../Models/cohorte";
 
 
+
 // Trae todos los usuarios
 router.get("/", async (req, res) => {
   const result = await User.find();
@@ -14,6 +15,7 @@ router.get("/", async (req, res) => {
 //guardar usuario
 // users/register
 router.post("/register", async (req, res) => {
+
   const {
     firstname,
     lastname,
@@ -40,19 +42,16 @@ router.post("/register", async (req, res) => {
       password,
       thumbnail,
       role,
-      cohorte,
-      standup,
     });
 
     //guardar usuario
     let result = await usuario.save();
-        res.status(200).json({ success: true, result });
+    res.status(200).json(result);
   } catch (error) {
-        console.log(error);
-        res.status(400).send({ success: false, msg: "Hubo un  error" });
+    console.log(error);
+    res.sendStatus(400);
   }
 });
-
 
 //eliminar usuario
 // users/delete/:id
@@ -65,9 +64,9 @@ router.delete("/delete/:id", async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(400).send({ success: false, msg: "Hubo un  error" });
-  }  
- 
+  }
 });
+
 
 // Modificar un usuario por id
 router.put('/modify/:id', async (req, res) => {

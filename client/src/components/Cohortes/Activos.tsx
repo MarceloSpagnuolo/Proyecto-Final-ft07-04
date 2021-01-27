@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import "./Activos.css";
 import Swal from "sweetalert2";
@@ -38,6 +39,7 @@ function Activos(props: any) {
     });
   }
 
+
   function handleMig(id: string, nombre: string) {
     Swal.fire({
       title: `Ingrese al cohorte que migra ${nombre}`,
@@ -77,6 +79,7 @@ function Activos(props: any) {
       </div>
       <br /> */}
       <div>
+
         <span>Alumnos: {users.length - 1}</span>
       </div>
       <div className="Listado-Container">
@@ -94,6 +97,7 @@ function Activos(props: any) {
                   StandUp
                 </th>
               </tr>
+
               {users.length > 0 && users.map((elem:any) => {
                 return (elem.role === "alumno") ?(
                   <tr id="Listado-Tr">
@@ -108,6 +112,7 @@ function Activos(props: any) {
                     <td className="Listado-Td">
                       <button
                         className="Listado-Boton"
+
                         onClick={() => handleDel(elem._id, elem.name.firstname)}
                       >
                         Quitar
@@ -116,6 +121,7 @@ function Activos(props: any) {
                     <td className="Listado-Td">
                       <button
                         className="Listado-Boton"
+
                         onClick={() => handleMig(elem._id, elem.name.nombre)}
                       >
                         Migrar

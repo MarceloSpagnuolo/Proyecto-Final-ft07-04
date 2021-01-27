@@ -20,6 +20,13 @@ const inicialState: Store = {
 
 function Users(state = inicialState, action: any) {
   switch (action.type) {
+    case POST_USER:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    default:
+      return state;
     case GET_USERS_BY_COHORTE:
       return { ...state, users: action.payload };
     case DELETE_USER_COHORTE:
@@ -45,7 +52,6 @@ function Users(state = inicialState, action: any) {
           }),
         };
   }
-  return state;
 }
 
 export default Users;
