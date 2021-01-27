@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import "./Login.css"
-import { loginAction } from "../../Store/Actions/AuthAction";
+import { getUserByToken } from "../../Store/Actions/Users";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-
+import { Redirect, useHistory } from "react-router-dom";
+import clienteAxios from '../../config/axios';
 
 
 interface Logeado {
@@ -17,11 +17,20 @@ const Login = (): JSX.Element => {
     
     const [inputs, setInputs] = useState<Logeado>()
 
-
     //utilizar usedispatch 
     const dispatch = useDispatch();
     //constante que guarda la action para hacer login al backend
-    const userLogin = async(credentials:any) => dispatch(loginAction(credentials));
+    const userLogin = async(newToken:any) => dispatch(getUserByToken(newToken));
+
+    const user:any = useSelector((state:any) => state.Users.user)
+
+    const history = useHistory();
+
+    useEffect(() => {
+
+        if(Object.keys(user).length !== 0 ) history.push('/home');
+
+    }, [user])
 
     function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
         setInputs({
@@ -30,12 +39,24 @@ const Login = (): JSX.Element => {
         })
     }
 
-    function handleSubmit() {
+    async function handleSubmit() {
        //validaciones
        
+        //
+        try {
+            const newToken = await clienteAxios.post('auth/login', inputs);
+            if (newToken) {
+                console.log(newToken.data)
+               await userLogin(newToken.data);
+              
+                
+            }
+        } catch (error) {
+            
+        }
        
-       //llamar action
-       userLogin(inputs)
+
+     
 
     }
 

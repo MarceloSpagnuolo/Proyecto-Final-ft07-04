@@ -15,7 +15,7 @@ router.use("/standup", groupRoute)
 router.use("/cohorte", cohorteRoute)
 
 router.use("/mails", mailgunRoute)
-router.use("/auth", authRoute)
+router.use("/auth/login", authRoute)
 
 
 // module.exports = router;

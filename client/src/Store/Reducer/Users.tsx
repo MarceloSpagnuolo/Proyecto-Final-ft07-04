@@ -6,6 +6,7 @@ import {
   GET_USERS_BY_COHORTE,
   DELETE_USER_COHORTE,
   MIGRAR_USER_COHORTE,
+  GET_USER_BY_TOKEN,
 } from "../Constants/Users";
 
 interface Store {
@@ -27,7 +28,11 @@ function Users(state = inicialState, action: any) {
       };
     default:
       return state;
-    case GET_USERS_BY_COHORTE:
+
+    case GET_USER_BY_TOKEN:
+      return {...state, user: action.payload}  
+
+     case GET_USERS_BY_COHORTE:    
       return { ...state, users: action.payload };
     case DELETE_USER_COHORTE:
       return {
