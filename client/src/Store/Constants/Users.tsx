@@ -4,3 +4,5 @@ export const GET_USERS = "GET_USERS";
 export const PUT_USERS = "PUT_USERS";
 export const GET_USERS_BY_COHORTE = "GET_USERS_BY_COHORTE";
 export const ERROR_MESSAGE = "ERROR_MESSAGE"
+export const GET_USER_BY_TOKEN = "GET_USER_BY_TOKEN"
+
