@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css"
 import { getUserByToken } from "../../Store/Actions/Users";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,21 +14,21 @@ interface Logeado {
 
 const Login = (): JSX.Element => {
 
-    
+
     const [inputs, setInputs] = useState<Logeado>()
 
     //utilizar usedispatch 
     const dispatch = useDispatch();
     //constante que guarda la action para hacer login al backend
-    const userLogin = async(newToken:any) => dispatch(getUserByToken(newToken));
+    const userLogin = async (newToken: any) => dispatch(getUserByToken(newToken));
 
-    const user:any = useSelector((state:any) => state.Users.user)
+    const user: any = useSelector((state: any) => state.Users.user)
 
     const history = useHistory();
 
     useEffect(() => {
 
-        if(Object.keys(user).length !== 0 ) history.push('/home');
+        if (Object.keys(user).length !== 0) history.push('/home');
 
     }, [user])
 
@@ -40,24 +40,16 @@ const Login = (): JSX.Element => {
     }
 
     async function handleSubmit() {
-       //validaciones
-       
-        //
+
         try {
             const newToken = await clienteAxios.post('auth/login', inputs);
             if (newToken) {
                 console.log(newToken.data)
-               await userLogin(newToken.data);
-              
-                
+                await userLogin(newToken.data);
             }
         } catch (error) {
-            
+
         }
-       
-
-     
-
     }
 
 
