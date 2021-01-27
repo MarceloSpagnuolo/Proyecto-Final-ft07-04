@@ -1,36 +1,90 @@
 .student-super-container {
-
+    padding: 30px;
+    background-color: yellow;
 }
 
 .student-container {
-    margin: 35px;
     border: 2px solid black;
     border-radius: 15px;
 }
 
 .student-titles {
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    background-color: black;
+    border-radius: 15px 15px 0px 0px;
+    color: white;
     justify-content: space-around;
+    padding: 10px;
 }
 
 .student-filter {
     display: flex;
     align-items: center;
+    margin-left: 10px;
 }
 
 .student-search {
+    display: grid;
+}
 
+.student-input-search {
+    padding: 7px;
+    margin-bottom: 7px;
+}
+
+#student-input-submit {
+    padding: 5px;
+    background-color: #0f6151;
+    color: white;
+}
+
+.student-selector {
+    margin-left: 10px;
+    padding: 7px;
 }
 
 .student-table {
-
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .student-table-titles {
+    color: white;
+    background-color: #0f6151;
+}
 
+#student-table-tr:nth-child(even) {
+    background-color: rgb(190, 182, 182);
 }
 
 .student-table-body {
+    background-color: white;
+}
+
+.student-table-th,
+.student-table-td {
+    padding: 1%;
+    box-shadow: inset 0px 1px 2px #949090;
+}
+
+@media screen and (max-width:600px) {
+    .student-titles h1 {
+        font-size: 28px;
+    }
+
+    .student-titles {
+        flex-wrap: wrap;
+        padding-top: 0;
+    }
+
+    .student-super-container {
+        padding: 3.5%;
+    }
+
+    #less {
+        display: none;
+    }
 
 }

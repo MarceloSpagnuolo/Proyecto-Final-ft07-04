@@ -95,17 +95,12 @@
     #super p {
         width: 35%;
         margin-left: 35px;
-        color: black;
     }
 
     .container-home {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: center;
-    }
-
-    .container-home img {
-        width: 40%;
-        margin-left: 5px;
+        margin: 3%;
     }
 }

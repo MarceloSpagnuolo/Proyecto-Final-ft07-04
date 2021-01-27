@@ -2,6 +2,8 @@ import express from "express";
 const router = express.Router();
 import User from "../Models/users";
 import Cohorte from "../Models/cohorte";
+import Group from "../Models/groups";
+
 
 
 
@@ -10,6 +12,19 @@ router.get("/", async (req, res) => {
   const result = await User.find();
 
   !result ? res.send("Hubo un error").status(400) : res.json(result);
+});
+
+
+router.get("/estudiantes", async (req, res) => {
+
+  await User.find({ $or: [{ role: "alumno" }, { role: "PM" }] }, function (err, users) {
+    Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+      Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+        res.json(usersCOM).status(200);
+      })
+    });
+  });
+
 });
 
 //guardar usuario
