@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserByToken } from "Store/Actions/Users";
@@ -26,6 +27,7 @@ const Nav = () => {
       setDisplay1("");
       return;
     }
+
     setDisplay1(a);
     return;
   }

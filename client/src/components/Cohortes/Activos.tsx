@@ -1,8 +1,9 @@
+
 import React, { useEffect } from "react";
 import "./Activos.css";
 import Swal from "sweetalert2";
 import {  useDispatch, useSelector } from "react-redux";
-import {getUsersbyCohorte} from "../../Store/Actions/Users"
+import {getUsersbyCohorte, deleteUserCohorte, migrarUserCohorte} from "../../Store/Actions/Users"
 
 function Activos(props: any) {
   const dispatch = useDispatch()
@@ -14,8 +15,6 @@ function Activos(props: any) {
   useEffect(() => {
     dispatch(getUsersbyCohorte(id))
   }, []);
-
-  console.log(users)
 
   function handleDel(id: string, nombre: string) {
     Swal.fire({
@@ -29,14 +28,17 @@ function Activos(props: any) {
       confirmButtonText: "Si, eliminar",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
+        dispatch(deleteUserCohorte(id))
+        Swal.fire(          
           "Eliminado!",
           `${nombre} no pertenece más a este Cohorte.`,
           "success"
         );
       }
+      dispatch(getUsersbyCohorte(props.match.params.id))
     });
   }
+
 
   function handleMig(id: string, nombre: string) {
     Swal.fire({
@@ -50,12 +52,14 @@ function Activos(props: any) {
       confirmButtonText: "Migrar",
     }).then((result) => {
       if (result.isConfirmed) {
+        dispatch(migrarUserCohorte(id, result.value))
         Swal.fire(
           "Migrado!",
           `${nombre} ha sido migrad@ al cohorte ${result.value}`,
           "success"
         );
       }
+      dispatch(getUsersbyCohorte(props.match.params.id))
     });
   }
 
@@ -64,7 +68,7 @@ function Activos(props: any) {
       <h2>Cohorte Activo</h2>
       <span>Cohorte: {id}</span>
       <br />
-      <div>
+      {/* <div>
         <span>Inicio:</span>
         <button className="Activos-Boton">Cambiar</button>
       </div>
@@ -73,8 +77,9 @@ function Activos(props: any) {
         <span>Instructor:</span>
         <button className="Activos-Boton">Cambiar/Cargar</button>
       </div>
-      <br />
+      <br /> */}
       <div>
+
         <span>Alumnos: {users.length - 1}</span>
       </div>
       <div className="Listado-Container">
@@ -92,6 +97,7 @@ function Activos(props: any) {
                   StandUp
                 </th>
               </tr>
+
               {users.length > 0 && users.map((elem:any) => {
                 return (elem.role === "alumno") ?(
                   <tr id="Listado-Tr">
@@ -106,6 +112,7 @@ function Activos(props: any) {
                     <td className="Listado-Td">
                       <button
                         className="Listado-Boton"
+
                         onClick={() => handleDel(elem._id, elem.name.firstname)}
                       >
                         Quitar
@@ -114,7 +121,8 @@ function Activos(props: any) {
                     <td className="Listado-Td">
                       <button
                         className="Listado-Boton"
-                        onClick={() => handleMig(elem._id, elem.name.nombre)}
+
+                        onClick={() => handleMig(elem._id, elem.name.firstname)}
                       >
                         Migrar
                       </button>

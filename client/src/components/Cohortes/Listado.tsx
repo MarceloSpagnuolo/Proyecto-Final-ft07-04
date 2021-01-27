@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Listado.css";
 
+
 function Listado(props: any) {
   return (
     <div className="Listado-Container">
@@ -9,6 +10,7 @@ function Listado(props: any) {
       <table className="Listado-Table">
         <tbody>
           <tr>
+
             <th className="Listado-Th">Nro</th>
             <th className="Listado-Th">Inicio</th>
             <th className="Listado-Th">Alum</th>
@@ -33,8 +35,9 @@ function Listado(props: any) {
                   </Link>
                 </td>
               </tr>
+
             ):null;
-          })}
+           })}
         </tbody>
       </table>
     </div>

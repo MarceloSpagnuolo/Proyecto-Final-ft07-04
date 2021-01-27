@@ -1,9 +1,9 @@
 import React from "react";
 import "./Listado.css";
+import { Link } from "react-router-dom";
 
 
 function Historial(props: any) {
-  console.log(props)
   return (
     <div className="Listado-Container">
       <h2>Cohortes Finalizados</h2>
@@ -16,6 +16,7 @@ function Historial(props: any) {
             <th className="Listado-Th">Instructor</th>
             <th></th>
           </tr>
+
           {props.listado.Cohortes.cohortes.length > 0 && props.listado.Cohortes.cohortes.map((elem: any) => {
             
             return (elem.Active === false) ?(
@@ -31,9 +32,12 @@ function Historial(props: any) {
                 </td>
                 <td className="Listado-Td">{elem.Instructor[0].User}</td>
                 <td className="Listado-Td">
+                  <Link to={`/activos/${elem._id}`}>
                   <button className="Listado-Boton">Detalle</button>
+                  </Link>
                 </td>
               </tr>
+
             ):null;
           })}
         </tbody>

@@ -7,7 +7,6 @@ const mailgun = mailgunLoader({
 });
 
 function Registro(email: string) {
-  console.log(email, "ENTRE ACA 1")
 
   const token = jwt.sign({ email}, "secreto", { expiresIn: 1800 });
 
@@ -29,10 +28,8 @@ function Registro(email: string) {
     html: modelEmail
   }, function (err: any, info: any) {
     if (err) {
-      console.log("Entre aca 3")
       console.error('Error: ' + err);
     } else {
-      console.log("Entre aca 4")
       console.error('Response: ' + info);
     }
   });
