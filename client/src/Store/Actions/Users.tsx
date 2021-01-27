@@ -1,5 +1,6 @@
 import axios from "axios";
 import jwt from 'jsonwebtoken';
+import { uploadAction } from "../../components/PanelControlStudents/InvitacionAlumnos/actionUpdate";
 import {
   GET_USERS,
   POST_USER,
@@ -9,11 +10,49 @@ import {
   ERROR_MESSAGE,
   DELETE_USER_COHORTE,
   MIGRAR_USER_COHORTE,
-  GET_USER_BY_TOKEN, 
+  GET_USER_BY_TOKEN,
+  GET_STUDENTS,
 } from "../Constants/Users";
 
 const url = "http://localhost:3001";
 
+  
+export const sendInvitation = (payload: any) => async (dispatch: any) => {
+    try {
+        if (payload.file) {
+            const upFile: any = await uploadAction(payload);
+            const res: any = await axios.post(`${url}/mails`, upFile)
+        } else {
+            const res: any = await axios.post(`${url}/mails`, payload)
+        }
+    }
+    catch (e) {
+        dispatch({
+            type: ERROR_MESSAGE,
+            payload: "Error al invitar alumnos"
+        })
+    }
+}
+
+
+export const getStudents = () => async (dispatch: any) => {
+    try {
+        const res: any = await axios.get(`${url}/users/estudiantes`);
+        dispatch({
+            type: GET_STUDENTS,
+            payload: res.data
+        })
+    }
+    catch (e) {
+        dispatch({
+            type: ERROR_MESSAGE,
+            payload: "Error al traer alumnos"
+        })
+    }
+}
+  
+  
+  
 export const postUser = (payload: any) => async (dispatch: any) => {
   try {
     const res = await axios.post(`${url}/users/register`, payload);

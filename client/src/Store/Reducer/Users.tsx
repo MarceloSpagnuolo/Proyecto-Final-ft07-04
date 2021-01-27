@@ -1,3 +1,4 @@
+
 import {
   GET_USERS,
   POST_USER,
@@ -7,6 +8,7 @@ import {
   DELETE_USER_COHORTE,
   MIGRAR_USER_COHORTE,
   GET_USER_BY_TOKEN,
+  GET_STUDENTS,
 } from "../Constants/Users";
 
 interface Store {
@@ -21,6 +23,12 @@ const inicialState: Store = {
 
 function Users(state = inicialState, action: any) {
   switch (action.type) {
+    case GET_STUDENTS: {
+      return {
+        ...state,
+        users: action.payload
+      }
+    }
     case POST_USER:
       return {
         ...state,
@@ -28,7 +36,6 @@ function Users(state = inicialState, action: any) {
       };
     default:
       return state;
-
     case GET_USER_BY_TOKEN:
       return {...state, user: action.payload}  
 
@@ -56,6 +63,7 @@ function Users(state = inicialState, action: any) {
             }
           }),
         };
+    
   }
 }
 

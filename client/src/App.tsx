@@ -7,7 +7,8 @@ import GrupoDetail from "components/GrupoDetail/GrupoDetail"
 import Registro from "components/Registro/Registro"
 import Cohortes from "components/Cohortes/Cohortes";
 import Activos from "components/Cohortes/Activos";
-import PanelControlStudents from "components/PanelControlStudents/panelControl";
+import PanelControlStudents from 'components/PanelControlStudents/panelControl';
+import Students from 'components/PanelControlStudents/AllStudents/students';
 
 
 function App() {
@@ -20,12 +21,8 @@ function App() {
       <Route exact path='/Registro' component={Registro} />
       <Route exact path="/cohortes" component={Cohortes} />
       <Route exact path="/activos/:id" component={Activos} />
-      <Route
-        exact
-        path="/PanelControlStudent"
-        component={PanelControlStudents}
-      />
-
+      <Route exact path='/PanelControlStudent' component={PanelControlStudents} />
+      <Route exact path='/Home' component={Home} />
     </>
   );
 }

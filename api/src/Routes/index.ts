@@ -1,11 +1,11 @@
-// const { Router } = require("express");
 import {Router} from "express"
 import userRoute from "./user"
 import groupRoute from "./groups"
 import cohorteRoute from "./cohortes"
-
+import multerRoute from "./multer";
 import mailgunRoute from "./mailgun"
 import authRoute from "./auth"
+
 
 const router = Router();
 
@@ -13,9 +13,10 @@ const router = Router();
 router.use("/users", userRoute)
 router.use("/standup", groupRoute)
 router.use("/cohorte", cohorteRoute)
-
+router.use('/multer', multerRoute)
 router.use("/mails", mailgunRoute)
 router.use("/auth/login", authRoute)
+
 
 
 // module.exports = router;

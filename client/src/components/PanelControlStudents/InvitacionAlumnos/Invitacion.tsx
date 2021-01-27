@@ -1,8 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import './Invitacion.css';
+import { sendInvitation } from '../../../Store/Actions/Users';
+
+interface inv {
+    file?: any;
+    email?: string;
+    msj?: string;
+}
 
 const Invitacion = (): JSX.Element => {
 
+    const dispatch = useDispatch();
+    const [invitation, setInvi] = useState<inv>({})
+
+    function handleOnChange(e: any): void {
+        if (e.target.name !== "file") {
+            setInvi({
+                ...invitation,
+                [e.target.name]: e.target.value,
+            })
+        } else {
+            setInvi({
+                ...invitation,
+                [e.target.name]: e.target.files,
+            })
+        }
+
+    }
+
+    function handleSubmit(): any {
+        dispatch(sendInvitation(invitation))
+    }
 
     return (
         <div id="super-invitation">
@@ -13,17 +42,21 @@ const Invitacion = (): JSX.Element => {
                     <table>
                         <thead>
                             <tr id="recibe">
-                                <input type="file" id="file" />
-                                <input type="email" placeholder="correo@nuevo.alumno" id="email" />
+                                <input name="file" type="file" id="file" onChange={(e) => handleOnChange(e)} accept="png jpg jpeg gif xlsx" />
+                                <input name="email" type="email" placeholder="correo@nuevo.alumno" id="email"
+                                    onChange={(e) => handleOnChange(e)} />
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><input type="text" id="cuerpo" placeholder=" Mensaje de invitación." /></tr>
+                            <tr>
+                                <input name="msj" type="text" id="cuerpo" placeholder=" Mensaje de invitación."
+                                    onChange={(e) => handleOnChange(e)} />
+                            </tr>
                         </tbody>
                     </table>
                 </div>
                 <div id="submit">
-                    <input type="submit" />
+                    <input type="submit" onClick={() => handleSubmit()} />
                 </div>
             </div>
         </div>
