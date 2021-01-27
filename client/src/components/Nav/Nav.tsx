@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import React, { useState, useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserByToken } from "Store/Actions/Users";
@@ -30,6 +30,11 @@ const Nav = () => {
 
     setDisplay1(a);
     return;
+  }
+
+  function LogOut(): void {
+    localStorage.removeItem("userToken")
+    window.location.href = "/"
   }
 
   return (
@@ -68,7 +73,7 @@ const Nav = () => {
                 {display1 === "a" ? (
                   <div className="containermlH">
                     <div className="mlH">Mi Perfil</div>
-                    <div className="mlH">Logout</div>
+                    <div className="mlH" onClick={LogOut} >Logout</div>
                   </div>
                 ) : null}
               </div>
@@ -76,23 +81,11 @@ const Nav = () => {
                 <div onClick={() => divChange("b")} className="mlP">
                   Alumnos
                 </div>
-                {display1 === "b" ? (
-                  <div className="containermlH">
-                    <div className="mlH">Invitaciones</div>
-                    <div className="mlH">Gestión de Alumnos</div>
-                  </div>
-                ) : null}
               </div>
               <div>
                 <div onClick={() => divChange("c")} className="mlP">
                   Cohortes
                 </div>
-                {display1 === "c" ? (
-                  <div className="containermlH">
-                    <div className="mlH">Gestión de Cohortes</div>
-                    <div className="mlH">Gestión de Grupos</div>
-                  </div>
-                ) : null}
               </div>
             </div>
           </div>
