@@ -15,7 +15,6 @@ router.get("/", async (req, res) => {
 router.post('/', async (req, res) => {
 
     const {fechaInicio, nroCohorte, Instructor, Created} = req.body;
-    console.log(req.body, "SOY EL BODY")
 
     const cohorte = new Cohorte({
       Nombre: "Webft" + nroCohorte,

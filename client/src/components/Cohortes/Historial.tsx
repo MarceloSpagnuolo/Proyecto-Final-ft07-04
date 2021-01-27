@@ -1,5 +1,6 @@
 import React from "react";
 import "./Listado.css";
+import { Link } from "react-router-dom";
 
 
 function Historial(props: any) {
@@ -32,7 +33,9 @@ function Historial(props: any) {
                 </td>
                 <td className="Listado-Td">{elem.Instructor[0].User}</td>
                 <td className="Listado-Td">
+                  <Link to={`/activos/${elem._id}`}>
                   <button className="Listado-Boton">Detalle</button>
+                  </Link>
                 </td>
               </tr>
 
