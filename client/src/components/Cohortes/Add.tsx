@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import "./Add.css";
-
-import {postCohorte} from "../../Store/Actions/Cohortes"
-import {  useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import { postCohorte } from "../../Store/Actions/Cohortes"
+import { useDispatch, useSelector } from "react-redux";
 
 interface AddForm {
   nroCohorte: Number;
@@ -35,7 +35,14 @@ function Add() {
               return errors;
             }}
 
-            onSubmit={(values) => {dispatch(postCohorte(values))}}
+            onSubmit={(values) => {
+              dispatch(postCohorte(values));
+              Swal.fire(
+                "Listo",
+                "Hemos generado su cohorte con exito",
+                "success"
+              )
+            }}
           >
             {({ isSubmitting, isValid }) => (
               <>
@@ -83,9 +90,8 @@ function Add() {
                     <br />
                     <button
                       type="submit"
-                      className={`submit ${
-                        isSubmitting || !isValid ? "disabled" : "enabled"
-                      }`}
+                      className={`submit ${isSubmitting || !isValid ? "disabled" : "enabled"
+                        }`}
                       id="Add-Btn-Submit"
                       disabled={isSubmitting || !isValid}
                     >
