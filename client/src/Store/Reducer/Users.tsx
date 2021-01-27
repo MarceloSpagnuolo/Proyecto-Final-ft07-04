@@ -37,6 +37,7 @@ function Users(state = inicialState, action: any) {
     default:
       return state;
     case GET_USER_BY_TOKEN:
+      console.log(action, "soy el REDUCER")
       return {...state, user: action.payload}  
 
      case GET_USERS_BY_COHORTE:    

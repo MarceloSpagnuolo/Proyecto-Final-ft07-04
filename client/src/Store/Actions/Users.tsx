@@ -94,13 +94,11 @@ export const getUsersbyCohorte = (id: any) => async (dispatch: any) => {
 
 
   export const getUserByToken = (payload:any) => async (dispatch:any) => {
-    console.log(payload)
     try {
       localStorage.setItem('userToken', payload);
-     
       axios.defaults.headers.common['Authorization'] = `Bearer ${payload}`;
       const usuario = jwt.decode(payload);
-      console.log(usuario)
+      console.log(usuario ,"soy el accion");
       dispatch({
         type: GET_USER_BY_TOKEN,
         payload: usuario,

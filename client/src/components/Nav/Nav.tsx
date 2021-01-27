@@ -34,11 +34,13 @@ const Nav = () => {
 
   return (
     <div className="pruebaNav">
-      <img
-        className="logo"
-        alt=""
-        src="https://cdn.discordapp.com/attachments/764979688446885898/802330293691482143/HM-BLANCO.png"
-      />
+      <Link to="/home" >
+        <img
+          className="logo"
+          alt=""
+          src="https://cdn.discordapp.com/attachments/764979688446885898/802330293691482143/HM-BLANCO.png"
+        />
+      </Link>
       <img
         className="nombre"
         alt=""

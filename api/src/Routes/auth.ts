@@ -24,7 +24,7 @@ router.post('/', (req, res, next) => {
 		if (!user) res.status(400).json({ msg: 'Email o Password incorrecto' })
 		else {
 			//crear y asignar un token
-			res.send(jwt.sign(user, process.env.TOKEN_SECRET));
+			res.send(jwt.sign(user, "secreto"));
 			
 		}
 	})(req, res, next);
