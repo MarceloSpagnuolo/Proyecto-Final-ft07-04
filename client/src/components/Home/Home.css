@@ -52,11 +52,52 @@
     flex-direction: row;
 }
 
+
+
 #alumnos-title-home {
     background-color: black;
     color: white;
     height: 30px;
     font-family: 'Roboto', sans-serif;
+}
+
+#home-imagen-flechita {
+    width: 3%;
+    height: 3%;
+    margin-left: 30%
+}
+
+#home-imagen-flechita2 {
+    width: 3%;
+    height: 3%;
+    margin-left: 80%
+}
+
+#home-flechita-derecha {
+    width: 35%;
+    height: 35%;
+    margin-left: 65%;
+    margin-top: 20%
+
+}
+
+#home-estudiantes-div-instrucciones {
+    display: flex;
+    border: 3px solid black;    
+    width: 80%;
+    margin-left: 11.9%
+}
+
+#home-estudiantes-h4-instrucciones {
+    text-align: center;
+}
+
+#home-estudiantes-div-instrucciones2 {
+    border-style: solid;
+    border-color: black;
+    width: 80%;
+    margin-left: 11.9%;
+    background-color: rgb(245, 245, 94);
 }
 
 #alumnos-content {
@@ -69,8 +110,8 @@
 
 
 #home-estudiantes-boton {
-    width: 50%;
-    padding-left: 200px;
+    width: 80%;
+    padding-left: 11.9%;
     object-fit: cover;
     height: 200px;
 }
