@@ -3,6 +3,7 @@ const router = express.Router();
 import User from "../Models/users";
 import Cohorte from "../Models/cohorte";
 import Group from "../Models/groups";
+import axios from 'axios';
 
 
 
@@ -115,6 +116,26 @@ router.put("/cohorte/:id", async (req,res) => {
   console.log(cohorte)
   const usuarios = await User.findOneAndUpdate({_id: id}, {cohorte: cohorte._id})
   !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
+})
+
+// Ruta para verificar el usuario de GitHub
+
+async function getUser(username : any) {
+  try {
+    const response = await axios.get(`https://api.github.com/users/${username}`);
+    return response;
+  }
+  catch (error) {
+    //console.error(error);
+  }
+}
+
+
+router.get('/github/:username', async(req, res) => {
+  let { username }  = req.params;
+  let userStatus : any = await getUser(username);
+  //console.log(userStatus);
+  (userStatus === undefined) ? res.send(false) : res.send(true);
 })
 
 export default router;
