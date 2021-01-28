@@ -9,6 +9,8 @@ export default async function Insert() {
         role: "admin",
         email: "admin@soyadmin.com",
         password: "D3ltaG@mma",
+        github: "admin",
+        created: Date() 
     },
     {
         _id: "600b9852935003272c8b6101",
@@ -16,7 +18,9 @@ export default async function Insert() {
         role: "alumno",
         email: "alan@gmail.com",
         password: "NoMerobenp1z",
-        cohorte: "600b9852935003272c8b6901",
+        github: "AlanCasella",
+        created: Date(),
+        cohorte: "600b9852935003272c8b6902",
         standup: "600b9852935003272c8b6801"
     },
     {
@@ -25,7 +29,9 @@ export default async function Insert() {
         role: "alumno",
         email: "marce@gmail.com",
         password: "Soy4nacontraseña",
-        cohorte: "600b9852935003272c8b6901",
+        github: "MarceloSpagnuolo",
+        created: Date(),
+        cohorte: "600b9852935003272c8b6902",
         standup: "600b9852935003272c8b6801"
     },
     {
@@ -34,7 +40,9 @@ export default async function Insert() {
         role: "alumno",
         email: "Eli@gmail.com",
         password: "Vaca4444",
-        cohorte: "600b9852935003272c8b6901",
+        github: "EliezerBabi",
+        created: Date(),
+        cohorte: "600b9852935003272c8b6902",
         standup: "600b9852935003272c8b6801"
     },
     {
@@ -43,7 +51,9 @@ export default async function Insert() {
         role: "alumno",
         email: "chano@gmail.com",
         password: "Culiao123",
-        cohorte: "600b9852935003272c8b6901",
+        github: "ChanoNieto",
+        created: Date(),
+        cohorte: "600b9852935003272c8b6902",
         standup: "600b9852935003272c8b6801"
     },
     {
@@ -52,7 +62,9 @@ export default async function Insert() {
         role: "alumno",
         email: "david@gmail.com",
         password: "Soycallado123",
-        cohorte: "600b9852935003272c8b6901",
+        github: "DavidNose",
+        created: Date(),
+        cohorte: "600b9852935003272c8b6902",
         standup: "600b9852935003272c8b6801"
     },
     {
@@ -61,7 +73,9 @@ export default async function Insert() {
         role: "alumno",
         email: "edu@gmail.com",
         password: "Trabajomuydur0",
-        cohorte: "600b9852935003272c8b6901",
+        github: "EduardoCortez",
+        created: Date(),
+        cohorte: "600b9852935003272c8b6902",
         standup: "600b9852935003272c8b6802"
     },
     {
@@ -70,7 +84,9 @@ export default async function Insert() {
         role: "alumno",
         email: "carla@gmail.com",
         password: "Yafueusarcontraseña",
-        cohorte: "600b9852935003272c8b6901",
+        github: "CarlaRamirez",
+        created: Date(),
+        cohorte: "600b9852935003272c8b6902",
         standup: "600b9852935003272c8b6802"
     },
     {
@@ -79,7 +95,9 @@ export default async function Insert() {
         role: "alumno",
         email: "andres@gmail.com",
         password: "bastaplz1234",
-        cohorte: "600b9852935003272c8b6901",
+        github: "AndresGaray",
+        created: Date(),
+        cohorte: "600b9852935003272c8b6902",
         standup: "600b9852935003272c8b6802"
     },
     {
@@ -88,7 +106,9 @@ export default async function Insert() {
         role: "alumno",
         email: "carlos@gmail.com",
         password: "nosequeponer1234",
-        cohorte: "600b9852935003272c8b6901",
+        github: "CarlosCastro",
+        created: Date(),
+        cohorte: "600b9852935003272c8b6902",
         standup: "600b9852935003272c8b6802"
     },
     {
@@ -97,7 +117,9 @@ export default async function Insert() {
         role: "alumno",
         email: "rodrigo@gmail.com",
         password: "mandalelaRep3",
-        cohorte: "600b9852935003272c8b6901",
+        github: "RodrigoVellido",
+        created: Date(),
+        cohorte: "600b9852935003272c8b6902",
         standup: "600b9852935003272c8b6802"
     },
     {
@@ -106,6 +128,8 @@ export default async function Insert() {
         role: "admin",
         email: "martinan@gmail.com",
         password: "SoyunaTL123",
+        github: "MartinaScomazzon",
+        created: Date(),
     },
     {
         _id: "600b9852935003272c8b6112",
@@ -113,7 +137,10 @@ export default async function Insert() {
         role: "PM",
         email: "jorgebueno@gmail.com",
         password: "SoyunPM123",
-        standup: "600b9852935003272c8b6802"
+        github: "JorgeMalo",
+        created: Date(),
+        standup: "600b9852935003272c8b6802",
+        cohorte: "600b9852935003272c8b6901",
     },
     {
         _id: "600b9852935003272c8b6113",
@@ -121,7 +148,10 @@ export default async function Insert() {
         role: "PM",
         email: "miguel@gmail.com",
         password: "SoyotrindePM23",
-        standup: "600b9852935003272c8b6802"
+        github: "MiguelHernandez",
+        created: Date(),
+        standup: "600b9852935003272c8b6802",
+        cohorte: "600b9852935003272c8b6901",
     },
     {
         _id: "600b9852935003272c8b6114",
@@ -129,15 +159,21 @@ export default async function Insert() {
         role: "PM",
         email: "mineto@gmail.com",
         password: "Cansadodepass1234",
-        standup: "600b9852935003272c8b6801"
+        github: "AgusMineto",
+        created: Date(),
+        standup: "600b9852935003272c8b6801",
+        cohorte: "600b9852935003272c8b6901",
     },
     {
         _id: "600b9852935003272c8b6115",
         name: {firstname: "Tony", lastname: "Tralice"},
         role: "PM",
         email: "tony@gmail.com",
+        github: "TonyTralice",
+        created: Date(),
         password: "contraseñasDuras123",
-        standup: "600b9852935003272c8b6801"
+        standup: "600b9852935003272c8b6801",        
+        cohorte: "600b9852935003272c8b6901",
     },
     {
         _id: "600b9852935003272c8b6116",
@@ -145,16 +181,56 @@ export default async function Insert() {
         role: "instructor",
         email: "diego@gmail.com",
         password: "Uruguayo123",
-        cohorte: "600b9852935003272c8b6901",
+        github: "DiegoRodrigez",
+        created: Date(),
+        cohorte: "600b9852935003272c8b6902",
     },
     {
         _id: "600b9852935003272c8b6117",
         name: {firstname: "Agustin", lastname: "Amani"},
         role: "instructor",
         email: "Amani@gmail.com",
+        github: "AgustinAmani",
+        created: Date(),
         password: "SoyunInstructor123",
-        cohorte: "600b9852935003272c8b6902",
-    }
+        cohorte: "600b9852935003272c8b6903",
+    },
+    {
+        _id: "600b9852935003272c8b6118",
+        name: {firstname: "Wanda", lastname: "Cirone"},
+        role: "alumno",
+        email: "Wanda@gmail.com",
+        github: "WandaCirone",
+        created: Date(),
+        password: "SoyWandaFT04",
+    },
+    {
+        _id: "600b9852935003272c8b6119",
+        name: {firstname: "Tomas", lastname: "Deane"},
+        role: "alumno",
+        email: "Tomasito@gmail.com",
+        github: "TomasDeane22",
+        created: Date(),
+        password: "JobPreparations",
+    },
+    {
+        _id: "600b9852935003272c8b6120",
+        name: {firstname: "Luz", lastname: "Borchardt"},
+        role: "alumno",
+        email: "Luz@gmail.com",
+        github: "LuzBorchardt",
+        created: Date(),
+        password: "SoyCoFounder1",
+    },
+    {
+        _id: "600b9852935003272c8b6121",
+        name: {firstname: "Martin", lastname: "Borchardt"},
+        role: "alumno",
+        email: "Martincito@gmail.com",
+        github: "MartinBorchardt",
+        created: Date(),
+        password: "SoyELFounder22",
+    },
 ]
 const groups = [
     {
@@ -175,27 +251,27 @@ const groups = [
     {
       _id: "600b9852935003272c8b6901",
       Nombre: "Webft01",
-      Start: "8/02/2021",
-      Alumnos: 10,
+      Start: "8/02/2020",
+      Alumnos: 4,
       Instructor: { User: "600b9852935003272c8b6116" },
-      Created: "21/01/2021",
+      Created: "10/01/2020",      
+      Active: false
     },
     {
       _id: "600b9852935003272c8b6902",
       Nombre: "Webft02",
-      Start: "1/03/2021",
-      Alumnos: 0,
+      Start: "1/10/2020",
+      Alumnos: 10,
       Instructor: { User: "600b9852935003272c8b6117" },
-      Created: "24/01/2021",
+      Created: "7/09/2020",
     },
     {
       _id: "600b9852935003272c8b6903",
       Nombre: "Webft03",
-      Start: "1/03/2020",
+      Start: "1/03/2021",
       Alumnos: 0,
       Instructor: { User: "600b9852935003272c8b6117" },
       Created: "5/01/2021",
-      Active: false
     },
   ];
 
