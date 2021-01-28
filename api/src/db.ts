@@ -4,9 +4,8 @@ import Insert from '../insert';
 
 const connectDB = async (reset: Boolean) => {
     try {
-        //database Name
-        const databaseName='development';
-        const con = await mongoose.connect(`mongodb://localhost/${databaseName}`, { 
+        const databaseName : any = process.env.MONGODB_URI;
+        const con = await mongoose.connect(databaseName, { 
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
