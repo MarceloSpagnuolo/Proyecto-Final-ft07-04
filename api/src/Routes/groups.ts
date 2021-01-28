@@ -2,7 +2,6 @@ import express from "express";
 const router = express.Router();
 import Group from "../Models/groups";
 
-
 //TRAE TODOS LOS STANDUP
 router.get("/", async (req, res) => {
   const result = await Group.find();
@@ -17,9 +16,9 @@ router.post("/", async (req, res) => {
   const { PM1, PM2, NumeroGrupo, CohorteId } = req.body;
 
   const group = new Group({
-    PM: [{ User: PM1 }, { User: PM2 }],
+    PM: [PM1, PM2],
     Grupo: NumeroGrupo,
-    Cohorte: [CohorteId],
+    Cohorte: CohorteId,
   });
   group.save();
 
@@ -46,7 +45,7 @@ router.put("/PM", async (req, res) => {
   const { id, index, PM } = req.body;
   const group = await Group.findById(id);
 
-  group.PM.set(index, { User: PM });
+  group.PM.set(index, PM);
   group.save();
 
   !group ? res.send("hubo un error").status(400) : res.json(group);
@@ -60,7 +59,7 @@ router.post("/PM", async (req, res) => {
   const group = await Group.findOneAndUpdate(
     { _id: id },
     {
-      $push: { PM: [{ User: PM }] },
+      $push: { PM: [PM] },
     },
     { upsert: true }
   );
@@ -83,7 +82,7 @@ router.delete("/PM", async (req, res) => {
   const { id, PM } = req.body;
   const group = await Group.findById(id);
 
-  group.PM.pull({ User: PM });
+  group.PM.pull(PM);
 
   group.save();
 
