@@ -4,6 +4,7 @@ import {
   POST_COHORTE,
   DEL_COHORTE,
   PUT_COHORTES,
+  GET_ACTIVE_COHORTES,
 } from "../Constants/Cohortes";
 
 interface Store {
@@ -19,17 +20,25 @@ const inicialState: Store = {
 function Cohortes(state = inicialState, action: any) {
   switch (action.type) {
     case GET_COHORTES:
-    return {...state, cohortes: action.payload}
+      return { ...state, cohortes: action.payload };
     case POST_COHORTE:
       return {
         ...state,
         cohortes: state.cohortes.concat(action.payload),
       };
+    case GET_ACTIVE_COHORTES:
+      return {
+        ...state,
+        cohortes: action.payload,
+      };
     case ERROR_MESSAGE: {
       alert(action.message);
+      return { state };
+    }
+    default: {
+      return state;
     }
   }
-  return state;
 }
 
 export default Cohortes;
