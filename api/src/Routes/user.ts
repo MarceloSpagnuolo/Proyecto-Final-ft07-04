@@ -160,4 +160,12 @@ router.get('/?firstname&lastname', async (req, res) => {
 
 });
 
+// Ruta para buscar usuario por id
+
+router.get('/:id', async (req, res) =>{
+  const { id } = req.params;
+  const user = await User.find({_id: id});
+  !user ? res.send('Hubo un problema') : res.json(user);
+})
+
 export default router;
