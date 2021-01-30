@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import './Invitacion.css';
 import { sendInvitation } from '../../../Store/Actions/Users';
 import Swal from "sweetalert2";
+import XLSX from "xlsx";
 
 interface inv {
     file?: any;
@@ -15,17 +16,36 @@ const Invitacion = (): JSX.Element => {
     const dispatch = useDispatch();
     const [invitation, setInvi] = useState<inv>({})
 
-    function handleOnChange(e: any): void {
+    const handleOnChange = (e: any) => {
+        let hojas: any = [];
         if (e.target.name !== "file") {
             setInvi({
                 ...invitation,
                 [e.target.name]: e.target.value,
             })
         } else {
+            let reader = new FileReader();
+            reader.readAsArrayBuffer(e.target.files[0])
+            reader.onloadend = async (resOfRead: any) => {
+                console.log(resOfRead, "soy el resultado de carga")
+                var data = new Uint8Array(resOfRead.target.result); //codificamos el result
+                var excel = XLSX.read(data, { type: 'array' }); //leemos el archivo codificado  cuidado que se genera un bucle y se rompe todo
+                console.log(excel, " soy el excel")
+                // excel.SheetNames.forEach((sheet: any) => {
+                //     var parseoHojas = XLSX.sheet_to_row_object_array(excel.Sheets[sheet]);
+                //     hojas.push({
+                //         data: parseoHojas,
+                //         sheet
+                //     })
+                // })
+                console.log(hojas, "soy las hojas")
+            }
             setInvi({
                 ...invitation,
-                [e.target.name]: e.target.files,
+                [e.target.name]: e.target.files[0],
+
             })
+
         }
 
     }

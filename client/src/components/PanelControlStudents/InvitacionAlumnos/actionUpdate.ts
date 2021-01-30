@@ -18,10 +18,10 @@ export const uploadAction = async (invitation: any) => {
   var path = `ArchivosMulter\\${name}`;//agrego la ruta real de donde se guarda el archivo;
   const invitacionModif = {
     ...invitation,           //modifico la invitacion para pasar la ruta donde se guardo el archivo
-    file: path
+    file: { fd, config }
   }
   try {
-    await axios.post(`${URL}/multer/subirArchivo`, fd, config); //envio el archivo(SOLO) a guardarse en el back(api)
+    // await axios.post(`${URL}/multer/subirArchivo`, fd, config); //envio el archivo(SOLO) a guardarse en el back(api)
     return invitacionModif; //devuelvo la invitacion modificada con la ruta del archivo para usar en la action
   } catch (err) {
     console.log(err);
