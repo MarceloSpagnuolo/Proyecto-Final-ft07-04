@@ -5,8 +5,29 @@ import Cohorte from "../Models/cohorte";
 import Group from "../Models/groups";
 import axios from 'axios';
 
+// Ruta para buscar un usuario por nombre y apellido (queryStrings)
+router.get('/search?', async (req, res) => {
+  const { firstname, lastname } = req.query; 
+  let user;
 
+  if(lastname === "undefined" || lastname === "") {
+    user = await User.find({$or: [{"name.firstname": firstname}, {"name.lastname": firstname}]}, "+name");
+  } else {
+    user = await User.find( {$or: [{"name.firstname": firstname, "name.lastname": lastname}, {"name.firstname": lastname, "name.lastname": firstname}]}, "+name");
+  }
 
+  !user ? res.send('Hubo un error') : res.json(user);
+});
+
+router.post('/prueba', async (req, res) => {
+  const { firstname, lastname } = req.body; 
+  
+  var search = {"name.firstname": firstname}
+
+  const user = await User.find({"name.firstname": firstname}, "+name")
+
+  !user ? res.send('Hubo un error') : res.json(user);
+});
 
 // Trae todos los usuarios
 router.get("/", async (req, res) => {
@@ -98,9 +119,24 @@ router.put('/modify/:id', async (req, res) => {
 
 router.get("/cohorte/:id", async (req, res) => {
   const {id} = req.params
-  const usuarios = await User.find({cohorte: id})
-  !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
-})
+  if(id !== "todos") {
+    await User.find({cohorte: id}, function (err, users) {
+      Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+        Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+          res.json(usersCOM).status(200);
+        })
+      });
+    })
+  } else {
+    await User.find({role: "alumno"}, function (err, users) {
+      Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+        Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+          res.json(usersCOM).status(200);
+        })
+      });
+    });}
+  
+  });
 
 router.delete("/cohorte/:id", async (req, res) => {
   const {id} = req.params;
@@ -111,9 +147,7 @@ router.delete("/cohorte/:id", async (req, res) => {
 router.put("/cohorte/:id", async (req,res) => {
   const {id} = req.params;
   const {cohorteName} = req.body;
-  console.log(req.body)
   const cohorte = await Cohorte.findOne({Nombre: cohorteName})
-  console.log(cohorte)
   const usuarios = await User.findOneAndUpdate({_id: id}, {cohorte: cohorte._id})
   !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
 })
@@ -139,25 +173,33 @@ router.get('/github/:username', async(req, res) => {
 })
 
 // Ruta para buscar un usuario por nombre y apellido (req.body)
+// NO USADA AL FINAL, DESCOMENTAR SI ES NECESARIO
 
-router.get('/name', async (req, res) => {
-  const { name } = req.body;
-  const firstname : string = name.firstname;
-  const lastname : string = name.lastname; 
-  const user = await User.find({name: { firstname, lastname}});
-  !user ? res.send('Hubo un error') : res.json(user); 
+// router.get('/name', async (req, res) => {
+//   const { name } = req.body;
+//   const firstname : string = name.firstname;
+//   const lastname : string = name.lastname; 
+//   const user = await User.find({name: { firstname, lastname}});
+//   !user ? res.send('Hubo un error') : res.json(user); 
 
-});
+// });
 
 // Ruta para buscar un usuario por nombre y apellido (queryStrings)
-
-router.get('/?firstname&lastname', async (req, res) => {
+router.get('/search?', async (req, res) => {
   const { firstname, lastname } = req.query; 
-  // const firstname : string = name.firstname;
-  // const lastname : string = name.lastname; 
-  const user = await User.find({name: { firstname, lastname}});
-  !user ? res.send('Hubo un error') : res.json(user); 
+  let user;
 
+  if(lastname === "undefined" || lastname === "") {
+    user = await User.find({$or: [{"name.firstname": firstname}, {"name.lastname": firstname}]}, "+name");
+  } else {
+    user = await User.find( {$or: [{"name.firstname": firstname, "name.lastname": lastname}, {"name.firstname": lastname, "name.lastname": firstname}]}, "+name");
+  }
+
+  !user ? res.send('Hubo un error') : res.json(user);
 });
+
+
+
+
 
 export default router;

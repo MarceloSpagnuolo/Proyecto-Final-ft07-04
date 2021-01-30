@@ -9,6 +9,7 @@ import {
   MIGRAR_USER_COHORTE,
   GET_USER_BY_TOKEN,
   GET_STUDENTS,
+  SEARCH_BY_NAME,
 } from "../Constants/Users";
 
 interface Store {
@@ -63,6 +64,12 @@ function Users(state = inicialState, action: any) {
           }
         }),
       };
+      case SEARCH_BY_NAME:
+        console.log("ENTRE AL REDUCER")
+        return {
+          ...state,
+          users: action.payload
+        }
 
   }
 }

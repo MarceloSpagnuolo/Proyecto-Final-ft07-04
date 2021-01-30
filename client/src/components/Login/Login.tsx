@@ -48,7 +48,7 @@ const Login = (): JSX.Element => {
                 await userLogin(newToken.data);
             }
         } catch (error) {
-
+            console.log("algo")
         }
     }
 
