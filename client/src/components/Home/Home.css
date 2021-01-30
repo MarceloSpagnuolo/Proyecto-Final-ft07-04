@@ -1,181 +1,387 @@
-#super p {
-    width: 280px;
-    margin-left: 20px 0px 20px 25px;
-    color: rgb(119, 119, 119);
-    margin-bottom: 0;
+#fondo-amarillo {
+    background-color: #F6DE00;
+    padding: 50px 100px;
 }
 
-#super h2 {
+#fondo-blanco {
+    width: 90%;
+    background-color: white;
+    padding: 50px;
+    border-radius: 50px;
+    color: rgba(199, 108, 85, 0.74);
+    box-shadow: 5px 5px 30px;
+    margin-right: 0px;
+}
+
+#foto-header {
+    width: 100%;
+    height: 500px;
+    border-radius: 50px 50px 0px 0px;
+    margin-bottom: 30px;
+}
+
+#contenido-home {
+    display: grid;
+    margin: 0px;
+    width: 100%;
+    grid-template-columns: 33% 33% 33%;
+}
+#titulo-home {
+    padding-left: 25%;
+
+}
+#panel-estudiantes {
+    padding-left: 25%;
+}
+
+#panel-estudiantes p{
+    
     font-family: 'Roboto', sans-serif;
-    font-size: 2.441rem;
-    margin-left: 200px;
-    margin-top: 0px;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #414141;
+    margin-bottom: 25px;
+    text-align: left;
 }
+#panel-cohortes {
+    padding-left: 25%;
+    }
 
-#super h1 {
+#panel-cohortes p{
+    
     font-family: 'Roboto', sans-serif;
-    font-size: 3.052rem;
-    margin-left: 20px;
-    margin-bottom: 5px;
-    margin-top: 35px;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #414141;
+    margin-bottom: 25px;
+    text-align: left;
 }
-
-#super {
-    margin: 0;
-    margin-top: 3px;
-}
-
-#img-sup {
-    width: 100% !important;
-    height: 80px;
-}
-
-#bar-yellow {
-    position: absolute;
-    top: 300px;
-    left:-50px;
-    width: 33%;
-    height: 20px;
-
-
-    background-color: rgb(245, 245, 94);
-}
-
-.container-home {
-    display: flex;
-    flex-direction: column;
-}
-
-
-#container-home-estudiantes { 
-    display: flex;
-    flex-direction: row;
-}
-
-
-
-#alumnos-title-home {
-    background-color: black;
-    color: white;
-    height: 30px;
-    font-family: 'Roboto', sans-serif;
-}
-
-#home-imagen-flechita {
-    width: 3%;
-    height: 3%;
-    margin-left: 30%
-}
-
-#home-imagen-flechita2 {
-    width: 3%;
-    height: 3%;
-    margin-left: 80%
-}
-
-#home-flechita-derecha {
-    width: 35%;
-    height: 35%;
-    margin-left: 65%;
-    margin-top: 20%
-
-}
-
-#home-estudiantes-div-instrucciones {
-    display: flex;
-    border: 3px solid black;    
-    width: 80%;
-    margin-left: 11.9%
-}
-
-#home-estudiantes-h4-instrucciones {
-    text-align: center;
-}
-
-#home-estudiantes-div-instrucciones2 {
-    border-style: solid;
-    border-color: black;
-    width: 80%;
-    margin-left: 11.9%;
-    background-color: rgb(245, 245, 94);
-}
-
-#alumnos-content {
-    background-color: black;
-    color: white;
-    height: 30px;
-    font-size: 1.563rem;
-
-}
-
 
 #home-estudiantes-boton {
-    width: 80%;
-    padding-left: 11.9%;
-    object-fit: cover;
-    height: 200px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    color: white;
+    width: 66%;       
+    height: 60px;
+    border-radius: 50px;
+    border: none;
+    background-color: #414141;
+    cursor: pointer;
 }
 
-@media (min-width: 400px) {
-    #img-sup {
-        width: 400px;
-        height: 140px;
-    }
-
-    #super h2 {
-        margin-left: 30px;
-    }
-
-    #super h1 {
-        margin-left: 30px;
-    }
-
-    #bar-yellow {
-        width: 70%;
-        height: 22px;
-        margin-left: 5%;
-    }
-
-    #super p {
-        width: 60%;
-        margin-left: 45px;
-        font-size: 20px;
-    }
-
-    .container-home img {
-        width: 480px;
-        margin-left: 30px;
-    }
+#titulo-home h4{
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color: #FE6E0E;
 }
 
-@media (min-width: 800px) {
-    #img-sup {
+#titulo-home h2{
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.441rem;
+    text-transform: capitalize;
+    color: #414141;
+    margin: 0px;
+}
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    #fondo-amarillo {
+        width: 100%;
+        background-color: #F6DE00;
+        padding: 15px;
+    }
+
+    #fondo-blanco {
+        width: 80%;
+        background-color: white;
+        padding: 20px;
+        border-radius: 25px;
+        color: rgba(199, 108, 85, 0.74);
+        box-shadow: 5px 5px 30px;
+    }
+
+    #foto-header {
+        width: 100%;
         height: 200px;
+        border-radius: 15px 15px 0px 0px;
+        margin-bottom: 30px;
     }
 
-    #super h2 {
-        margin-left: 40px;
+
+    #contenido-home {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 3fr;
+        margin: 0px;
+        width: 100%;
     }
 
-    #super h1 {
-        margin-left: 40px;
+    #titulo-home {
+        padding-left: 0;
+        
+    }
+    #titulo-home h4{
+        margin: 0px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        text-transform: uppercase;
+        color: #FE6E0E;
+        margin-bottom: 15px;
+    }
+    
+    #titulo-home h2{
+        
+        font-family: 'Roboto', sans-serif;
+        font-size: 2.441rem;
+        text-transform: capitalize;
+        color: #414141;
+        margin: 0px;
+        margin-bottom: 25px;
+    }
+    #panel-estudiantes {
+        padding-left: 0;
+    }
+    
+    #panel-estudiantes p{
+        
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #414141;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+    #panel-cohortes {
+        padding-left: 0;
+        }
+    
+    #panel-cohortes p{
+        
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #414141;
+        margin-bottom: 25px;
+        text-align: left;
     }
 
-    #bar-yellow {
-        width: 60%;
-        height: 23px;
-        margin-left: 2.5%;
+    #home-estudiantes-boton {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        color: white;
+        width: 100%;       
+        height: 40px;
+        border-radius: 50px;
+        border: none;
+        background-color: #414141;
+        margin-bottom: 25px;
+    }
+    
+
+
+
+}
+
+@media only screen and (min-device-width : 480px) and (max-device-width : 768px) {
+    #fondo-amarillo {
+        width: 100%;
+        background-color: #F6DE00;
+        padding: 15px;
     }
 
-    #super p {
-        width: 35%;
-        margin-left: 35px;
+    #fondo-blanco {
+        width: 80%;
+        background-color: white;
+        padding: 20px;
+        border-radius: 25px;
+        color: rgba(199, 108, 85, 0.74);
+        box-shadow: 5px 5px 30px;
     }
 
-    .container-home {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: center;
-        margin: 3%;
+    #foto-header {
+        width: 100%;
+        height: 200px;
+        border-radius: 15px 15px 0px 0px;
+        margin-bottom: 30px;
+    }
+
+
+    #contenido-home {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 3fr;
+        margin: 0px;
+        width: 100%;
+    }
+
+    #titulo-home {
+        padding-left: 0;
+        
+    }
+    #titulo-home h4{
+        margin: 0px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        text-transform: uppercase;
+        color: #FE6E0E;
+        margin-bottom: 15px;
+    }
+    
+    #titulo-home h2{
+        
+        font-family: 'Roboto', sans-serif;
+        font-size: 2.441rem;
+        text-transform: capitalize;
+        color: #414141;
+        margin: 0px;
+        margin-bottom: 25px;
+    }
+    #panel-estudiantes {
+        padding-left: 0;
+    }
+    
+    #panel-estudiantes p{
+        
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #414141;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+    #panel-cohortes {
+        padding-left: 0;
+        }
+    
+    #panel-cohortes p{
+        
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #414141;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+
+    #home-estudiantes-boton {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        color: white;
+        width: 100%;       
+        height: 40px;
+        border-radius: 50px;
+        border: none;
+        background-color: #414141;
+        margin-bottom: 25px;
+    }
+    
+
+
+
+}
+
+
+
+
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    #fondo-amarillo {
+        width: 100%;
+        background-color: #F6DE00;
+        padding: 35px;
+    }
+
+    #fondo-blanco {
+        width: 85%;
+        background-color: white;
+        padding: 30px;
+        border-radius: 25px;
+        color: rgba(199, 108, 85, 0.74);
+        box-shadow: 5px 5px 30px;
+    }
+
+    #foto-header {
+        width: 100%;
+        height: 330px;
+        border-radius: 15px 15px 0px 0px;
+        margin-bottom: 30px;
+    }
+
+
+    #contenido-home {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 3fr;
+        margin: 0px;
+        width: 100%;
+    }
+
+    #titulo-home {
+        margin: 0 auto;
+        padding-left: 0;
+        
+    }
+  
+    #titulo-home h2{
+        max-width: 370px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 2.441rem;
+        text-transform: capitalize;
+        color: #414141;
+        margin-bottom: 25px;
+    }
+    
+    #titulo-home h4{
+        margin: 0px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        text-transform: uppercase;
+        color: #FE6E0E;
+        margin-bottom: 15px;
+    }
+    
+    #panel-estudiantes {
+        margin: 0 auto;
+        padding-left: 0;
+    }
+    
+    #panel-estudiantes p{
+        max-width: 370px;        
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.25rem;
+        line-height: 1.5;
+        color: #414141;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+    #panel-cohortes {
+        margin: 0 auto;
+        padding-left: 0;
+    }
+    
+    #panel-cohortes p{
+        max-width: 370px;                
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.25rem;
+        line-height: 1.5;
+        color: #414141;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+
+    #home-estudiantes-boton {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        color: white;
+        width: 66%;       
+        height: 40px;
+        border-radius: 50px;
+        border: none;
+        background-color: #414141;
+        margin-bottom: 25px;
+        justify-self: center;
     }
 }

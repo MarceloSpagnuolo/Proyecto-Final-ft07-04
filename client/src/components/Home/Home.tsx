@@ -13,53 +13,30 @@ const flechitaDerecha = "https://image.flaticon.com/icons/png/512/25/25426.png"
 const Home = (): JSX.Element => {
 
     return (
-        <div id="super">
-            <img id="img-sup" src={topImg} alt="banner superior" />
-            <h1>Bienvenido al panel del administrador</h1>
-
-            <div id="bar-yellow"></div>
-
-            <br />
-            <div id="container-home">
-                    <Link rel="stylesheet" to="/PanelControlStudent">
-                        <img id='home-estudiantes-boton' src={alumnos} alt="Redirect Alumnos" onClick={() => PanelControlStudents} />
-                    </Link>
-                    {/* <div> ESTO NO ES NECESARIO: El texto "alumnos" debe estar editado adentro de la imagen
-                        <div id='alumnos-content'><h1>Alumnos</h1></div>
-                        <div id='alumnos-title-home'></div>
-                    </div> */}
-                <div>
-                    <img id="home-imagen-flechita" src={flechita} alt="flechita">
-                    </img>
-                </div>
-                <div id="home-estudiantes-div-instrucciones">
-                    <h4 id="home-estudiantes-h4-instrucciones">Haciendo click en este botón podrá moverse al administrador de alumnos. También pude moverse a través de los botones de la barra de navegación. Aquí Podrá gestionar a todos los alumnos de la aplicación.</h4>
-                    <div>                        
-                    <img src={flechitaDerecha} alt="flechitaDerecha" id="home-flechita-derecha"></img>
+        <div id='fondo-amarillo'>
+            {/*  <h1>Bienvenido al panel del administrador</h1> */}
+            <div id='fondo-blanco'>
+                <img id="foto-header" src={topImg} alt="banner superior" />
+                <div id='contenido-home'>
+                    <div id='titulo-home'>
+                        <h4>ESTA ES LA HENRY APP</h4>
+                        <h2>Gestiona Tus Cohortes y Alumnos</h2>
                     </div>
-                    <div id="home-estudiantes-div-instrucciones2">
-                        
-                    <h4 id="home-estudiantes-h4-instrucciones">Podrá también administrar los cohortes y grupos a los que pertecene aquí</h4>
-                </div>
-                </div>
-                <div>
-                    <img id="home-imagen-flechita2" src={flechita} alt="flechita">
-                    </img>
-                </div>
-
-                <br />
-                <Link rel="stylesheet" to="/Cohortes">
-                    <img id='home-estudiantes-boton' src={cohortes} alt="Redirect Cohortes" onClick={() => Cohortes} />
-                </Link>
-                <div>
-                    <img id="home-imagen-flechita" src={flechita} alt="flechita">
-                    </img>
-                </div>
-                <div id="home-estudiantes-div-instrucciones">
-                    <h4 id="home-estudiantes-h4-instrucciones">Aquí accederá al administrador de cohortes, donde podrá gstionar los cohortes existentes, crear nuevos o visualizar los finalizados</h4>
+                    <div id='panel-estudiantes'>
+                        <p>Para gestionar alumnos puedes hacer click en el botón, o acceder a través de la barra de navegacion</p>
+                        <Link rel="stylesheet" to="/PanelControlStudent">
+                            <button id='home-estudiantes-boton' onClick={() => PanelControlStudents}>Panel Alumnos</button>
+                        </Link>
+                    </div>
+                    <div id='panel-cohortes'>
+                        <p id="home-estudiantes-h4-instrucciones">Para administrar cohortes haz click en el botón o usa los controles de la barra de navegacion</p>
+                        <Link rel="stylesheet" to="/Cohortes">
+                            <button id='home-estudiantes-boton' onClick={() => Cohortes}>Panel cohortes</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
