@@ -138,4 +138,26 @@ router.get('/github/:username', async(req, res) => {
   (userStatus === undefined) ? res.send(false) : res.send(true);
 })
 
+// Ruta para buscar un usuario por nombre y apellido (req.body)
+
+router.get('/name', async (req, res) => {
+  const { name } = req.body;
+  const firstname : string = name.firstname;
+  const lastname : string = name.lastname; 
+  const user = await User.find({name: { firstname, lastname}});
+  !user ? res.send('Hubo un error') : res.json(user); 
+
+});
+
+// Ruta para buscar un usuario por nombre y apellido (queryStrings)
+
+router.get('/?firstname&lastname', async (req, res) => {
+  const { firstname, lastname } = req.query; 
+  // const firstname : string = name.firstname;
+  // const lastname : string = name.lastname; 
+  const user = await User.find({name: { firstname, lastname}});
+  !user ? res.send('Hubo un error') : res.json(user); 
+
+});
+
 export default router;
