@@ -164,8 +164,16 @@ router.get('/?firstname&lastname', async (req, res) => {
 
 router.get('/:id', async (req, res) =>{
   const { id } = req.params;
-  const user = await User.find({_id: id});
-  !user ? res.send('Hubo un problema') : res.json(user);
+  const user = await User.find({_id: id}, function (err, users) {
+    Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+      Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+        res.json(usersCOM).status(200);
+      });
+    })})
+                 
+
+  //console.log(user);
+  //!user ? res.send('Hubo un problema') : res.send(user);
 })
 
 export default router;
