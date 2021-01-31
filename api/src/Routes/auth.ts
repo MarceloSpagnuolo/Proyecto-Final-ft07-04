@@ -2,11 +2,11 @@ import express from "express";
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-import User from "../Models/users";
+
 
 router.use(passport.initialize())
 
-import { Request } from "express"
+
 
 
 
@@ -19,13 +19,13 @@ require('./passport-config')(passport);
 
 router.post('/', (req, res, next) => {
 
-	passport.authenticate("local", { session: false }, (err:any, user:any, info:any) => {
+	passport.authenticate("local", { session: false }, (err: any, user: any, info: any) => {
 		if (err) throw err;
 		if (!user) res.status(400).json({ msg: 'Email o Password incorrecto' })
 		else {
 			//crear y asignar un token
-			res.send(jwt.sign(user, "secreto"));
-			
+			res.send(jwt.sign(user, process.env.SECRET));
+
 		}
 	})(req, res, next);
 });
