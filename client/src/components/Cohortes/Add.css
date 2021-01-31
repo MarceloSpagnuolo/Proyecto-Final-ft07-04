@@ -94,12 +94,16 @@
     cursor: pointer;
   }
 
+  #Add-Btn-Submit:disabled {
+    cursor: no-drop;
+  }
+
   #Add-Btn-Submit:hover {
     box-shadow: 0 0 5px yellow inset;
   }
 
   .Add-Form-Input-Cohorte {
-    width: 7rem;
+    width: 18rem;
     height: 3rem;
     font-size: 2rem;
     border-radius: 10px;
@@ -153,7 +157,7 @@
   }
 
   .Add-Form-Input-Cohorte {
-    width: 7rem;
+    width: 14rem;
     height: 2rem;
     font-size: 1.5rem;
     border-radius: 10px;

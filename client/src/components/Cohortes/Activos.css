@@ -10,8 +10,9 @@
 .Activos-Boton {
   display: inline-block;
   height: 40px;
-  background-color: yellow;
+  background-color: #f6de00;
   border-radius: 10px;
+  margin-left: 10px;
 }
 
 #Prueba {
@@ -32,7 +33,59 @@
 @media screen and (min-width: 768px) {
   .Activos-Table {
     overflow-y: scroll;
-    height: 500px;
+    height: 100%;
     width: 100%;
   }
+}
+
+.Listado-Select {
+  font-size: 1.2rem;
+  width: 80%;
+}
+
+.Modal-Botones {
+  display: flex;
+  padding: 1rem;
+  justify-content:end;
+}
+
+.Modal-Cancel {
+  width: 45%;
+  margin: 5px;
+  height: 40px;
+  font-size: 1.2rem;
+  background-color: red;
+  color: white;
+}
+
+.Modal-Cancel:hover {
+  opacity: .6;
+  cursor: pointer;
+}
+
+.Modal-Migrar {
+  width: 45%;
+  margin: 5px;
+  height: 40px;
+  font-size: 1.2rem;
+  background-color: rgb(87, 87, 253);
+  color: white;
+  border-radius: 5px;
+}
+
+.Modal-Migrar:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+.Modal-Migrar:disabled {
+  background-color: lightgray;
+  color: gray;
+  cursor: no-drop;
+}
+
+.Listado-Container-Select {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
