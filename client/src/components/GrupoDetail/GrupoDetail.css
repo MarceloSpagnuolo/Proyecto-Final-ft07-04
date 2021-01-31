@@ -83,6 +83,10 @@
     }
     .wq {
         max-height: 50px;
+        display: flex;
+    }
+    .wq button{
+        margin-left: 100pxs;
     }
     .pmContainerName p {
         position: relative;

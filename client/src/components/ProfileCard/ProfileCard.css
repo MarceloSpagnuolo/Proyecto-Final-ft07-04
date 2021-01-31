@@ -50,8 +50,9 @@ button.primary {
     width: 100px;
     margin-bottom: 0;
     outline-style: none;
-    cursor: pointer;   
+    cursor: pointer;
 }
+
 button.primary:hover {
     opacity: 0.7;
 }
@@ -62,11 +63,12 @@ button.primary:hover {
     left: 78px;
 }
 
-.ghost >a {
+.ghost>a {
     position: absolute;
     left: 170px;
     bottom: 3px;
 }
+
 .ghost img {
     height: 25px;
 }
@@ -75,18 +77,20 @@ button.primary.ghost {
     background-color: transparent;
     color: #000000;
 }
-.divCGP{
+
+.divCGP {
     display: flex;
     flex-direction: column;
     position: absolute;
-    background-color:  #f5d856a8;
+    background-color: #f5d856a8;
     width: 35px;
     height: 75px;
     right: 10px;
     top: 0;
     box-shadow: 1px 1px 10px 1px rgba(187, 187, 187, 0.562);
 }
-.divCGP span{
+
+.divCGP span {
     margin-top: 5px;
     font-size: 23px;
     font-family: 'Source Sans Pro';
@@ -95,11 +99,22 @@ button.primary.ghost {
     -webkit-text-stroke: 1px rgb(180, 175, 175)
 }
 
-.divHub img{
+.divHub img {
     width: 90px;
     cursor: pointer;
 }
 
-.divHub img:hover{
+.divHub img:hover {
     opacity: 0.7;
+}
+
+.btnXPC {
+    position: absolute;
+    left: 10px;
+    top:5px;
+    height: 25px;
+    width: 25px;
+    background-color: rgb(240, 18, 18);
+    color: white;
+    border: none;
 }

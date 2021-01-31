@@ -39,8 +39,6 @@ router.post("/register", async (req, res) => {
     role,
     email,
     password,
-    cohorte,
-    standup,
   } = req.body;
 
   try {
@@ -88,39 +86,38 @@ router.delete("/delete/:id", async (req, res) => {
 router.put('/modify/:id', async (req, res) => {
   const { id } = req.params;
 
-  const user = await User.findOneAndUpdate({ _id: id}, req.body);
+  const user = await User.findOneAndUpdate({ _id: id }, req.body);
 
-
-  if(!user) {
+  if (!user) {
     res.status(404).send("No existe un usuario con ese id");
   } else { res.status(200).json(user); }
 });
 
 router.get("/cohorte/:id", async (req, res) => {
-  const {id} = req.params
-  const usuarios = await User.find({cohorte: id})
+  const { id } = req.params
+  const usuarios = await User.find({ cohorte: id })
   !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
 })
 
 router.delete("/cohorte/:id", async (req, res) => {
-  const {id} = req.params;
-  const usuarios = await User.findOneAndUpdate({_id: id}, {cohorte: null})
+  const { id } = req.params;
+  const usuarios = await User.findOneAndUpdate({ _id: id }, { cohorte: null })
   !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
 })
 
-router.put("/cohorte/:id", async (req,res) => {
-  const {id} = req.params;
-  const {cohorteName} = req.body;
-  console.log(req.body)
-  const cohorte = await Cohorte.findOne({Nombre: cohorteName})
-  console.log(cohorte)
-  const usuarios = await User.findOneAndUpdate({_id: id}, {cohorte: cohorte._id})
+router.put("/cohorte/:id", async (req, res) => {
+  const { id } = req.params;
+  const { cohorteName } = req.body;
+  const cohorte = await Cohorte.findOne({ Nombre: cohorteName })
+  const usuarios = await User.findOneAndUpdate({ _id: id }, { cohorte: cohorte._id })
   !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
 })
+
+
 
 // Ruta para verificar el usuario de GitHub
 
-async function getUser(username : any) {
+async function getUser(username: any) {
   try {
     const response = await axios.get(`https://api.github.com/users/${username}`);
     return response;
@@ -131,11 +128,27 @@ async function getUser(username : any) {
 }
 
 
-router.get('/github/:username', async(req, res) => {
-  let { username }  = req.params;
-  let userStatus : any = await getUser(username);
-  //console.log(userStatus);
+router.get('/github/:username', async (req, res) => {
+  let { username } = req.params;
+  let userStatus: any = await getUser(username);
   (userStatus === undefined) ? res.send(false) : res.send(true);
 })
+
+//////////////////////////////////////////////////////////////////////////////
+
+/// Rutas para usar en grupos///////
+
+router.get("/groupUsers/:id", async (req, res) => {
+  const { id } = req.params;
+  const users = await User.find({ standup: id, });
+  res.json(users)
+})
+
+router.get("/usercohorte/:id", async (req, res) => {
+  const { id } = req.params
+  const usuarios = await User.find({ cohorte: id, standup: null })
+  !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
+})
+
 
 export default router;

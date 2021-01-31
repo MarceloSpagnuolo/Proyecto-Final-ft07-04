@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import Group from "../Models/groups";
+import User from "../Models/users"
 
 //TRAE TODOS LOS STANDUP
 router.get("/", async (req, res) => {
@@ -78,13 +79,14 @@ router.delete("/", async (req, res) => {
 
 // BORRA UN PM DEL STANDUP
 // Se debe pasar el ID del PM a borrar más el ID De la colección donde se encuentra el mismo.
-router.delete("/PM", async (req, res) => {
-  const { id, PM } = req.body;
+router.delete("/PM/:id/:PM", async (req, res) => {
+  console.log(req.body, "soy el baack")
+  const { id, PM } = req.params;
   const group = await Group.findById(id);
-
   group.PM.pull(PM);
-
   group.save();
+  const user = await User.findByIdAndUpdate(PM, { standup: null })
+  user.save();
 
   !group ? res.send("hubo un error").status(400) : res.json(group);
 });

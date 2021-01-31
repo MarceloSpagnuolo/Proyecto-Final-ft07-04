@@ -1,4 +1,5 @@
 
+import { DefaultRootState } from "react-redux";
 import {
   GET_USERS,
   POST_USER,
@@ -9,11 +10,12 @@ import {
   MIGRAR_USER_COHORTE,
   GET_USER_BY_TOKEN,
   GET_STUDENTS,
+  USERS_GROUP
 } from "../Constants/Users";
 
 interface Store {
   user: Object;
-  users: Array<any>;
+  users: Array<any>  ;
 }
 
 const inicialState: Store = {
@@ -24,6 +26,12 @@ const inicialState: Store = {
 function Users(state = inicialState, action: any) {
   switch (action.type) {
     case GET_STUDENTS: {
+      return {
+        ...state,
+        users: action.payload
+      }
+    }
+    case USERS_GROUP: {
       return {
         ...state,
         users: action.payload

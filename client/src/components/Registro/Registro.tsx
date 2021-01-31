@@ -29,7 +29,6 @@ const Registro = (props: any): JSX.Element => {
   useEffect(() => {
     if (mailTok.includes("mailToken")) {
       const decodeToken: Object | any = jwt.decode(mailTok.split("=")[1]);
-      console.log(decodeToken.email);
       if (!decodeToken) {
         alert("Error de Token");
         //window.location.href = "/";
