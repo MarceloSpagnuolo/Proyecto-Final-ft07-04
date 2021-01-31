@@ -13,9 +13,9 @@ import { Request } from "express"
 
 require('./passport-config')(passport);
 
-const cors = require('cors')
+// const cors = require('cors')
 
-router.use(cors());
+// router.use(cors());
 
 router.post('/', (req, res, next) => {
 

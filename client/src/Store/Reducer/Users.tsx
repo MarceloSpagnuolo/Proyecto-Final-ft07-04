@@ -1,4 +1,3 @@
-
 import {
   GET_USERS,
   POST_USER,
@@ -9,7 +8,10 @@ import {
   MIGRAR_USER_COHORTE,
   GET_USER_BY_TOKEN,
   GET_STUDENTS,
+  SEARCH_BY_NAME,
+  ERROR_MESSAGE,
 } from "../Constants/Users";
+import Swal from "sweetalert2";
 
 interface Store {
   user: Object;
@@ -26,45 +28,48 @@ function Users(state = inicialState, action: any) {
     case GET_STUDENTS: {
       return {
         ...state,
-        users: action.payload
-      }
+        users: action.payload,
+      };
     }
     case POST_USER:
       return {
         ...state,
         user: action.payload,
       };
-    default:
-      return state;
     case GET_USER_BY_TOKEN:
-      return { ...state, user: action.payload }
-
+      return { ...state, user: action.payload };
+        
     case GET_USERS_BY_COHORTE:
       return { ...state, users: action.payload };
     case DELETE_USER_COHORTE:
       return {
         ...state,
-        users: state.users.map((us) => {
-          if (us._id === action.payload._id) {
-            return action.payload;
-          } else {
-            return us;
-          }
-        }),
+        users: state.users.filter((user) => user._id !== action.payload._id),
       };
     case MIGRAR_USER_COHORTE:
       return {
         ...state,
-        users: state.users.map((us) => {
-          if (us._id === action.payload._id) {
-            return action.payload;
-          } else {
-            return us;
-          }
-        }),
+        users: state.users.filter((user) => user._id !== action.payload._id),
       };
-
+      case SEARCH_BY_NAME:
+        console.log("ENTRE AL REDUCER")
+        return {
+          ...state,
+          users: action.payload
+        }
+    case ERROR_MESSAGE: {
+      Swal.fire(
+        "Error",
+        action.message,
+        "error"
+      );
+      return state;
+    };
+    default: {
+      return state;
+    }
   }
 }
-
+          
 export default Users;
+          
