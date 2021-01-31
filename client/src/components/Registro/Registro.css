@@ -38,7 +38,7 @@
     min-width: 160px;
 }
 
-.nombreRegisto input {
+.nombreRegisto Field {
     width: 40vw;
     max-width: 195px;
     font-size: 15px;
@@ -109,6 +109,13 @@
     width: 300px;
     color: white;
     font-size: 20px;
+    cursor: pointer;
+}
+
+.btnRegistro button:disabled {
+    cursor: no-drop;
+    background-color: lightgray;
+    color: gray;
 }
 
 .backImgRegistro {

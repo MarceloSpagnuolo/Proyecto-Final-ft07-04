@@ -180,13 +180,13 @@ async function getUser(username : any) {
 
 router.get('/github/:username', async(req, res) => {
   let { username }  = req.params;
-  let userStatus : any = await getUser(username);
-  //console.log(userStatus);
-  (userStatus === undefined) ? res.send(false) : res.send(true);
+
+  const userStatus = username !== undefined ? await getUser(username) : username;
+
+  (userStatus === undefined) ? res.send(false).status(200) : res.send(true).status(200);
 })
 
 // Ruta para buscar un usuario por nombre y apellido (req.body)
-
 router.get('/name', async (req, res) => {
   const { name } = req.body;
   const firstname : string = name.firstname;
@@ -217,10 +217,6 @@ router.get('/:id', async (req, res) =>{
         res.json(usersCOM).status(200);
       });
     })})
-                 
-
-  //console.log(user);
-  //!user ? res.send('Hubo un problema') : res.send(user);
 })
 
 export default router;
