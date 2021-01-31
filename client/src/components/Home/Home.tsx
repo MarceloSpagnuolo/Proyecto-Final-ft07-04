@@ -57,20 +57,20 @@ const Home = ()=> {
                         <h2>Gestiona Tu StandUp Y Tu Cohorte</h2>
                     </div>
                     <div id='panel-estudiantes'>
-                        <p>Para gestionar tu StandUp puedes hacer click en el botón, o acceder a través de la barra de navegacion</p>
+                        <p>Para gestionar tu StandUp haz click en el botón, o accede a través de la barra de navegacion</p>
                         <Link rel="stylesheet" to="MisAlumnos">
                             <button id='home-estudiantes-boton'>Mi Standup</button>
                         </Link>
                     </div>
                     <div id='panel-cohortes'>
                         <p id="home-estudiantes-h4-instrucciones">Para ver tu Cohorte haz click en el botón o usa los controles de la barra de navegacion</p>
-                        <Link rel="stylesheet" to="/Cohortes">
+                        <Link rel="stylesheet" to="MiCohorte">
                             <button id='home-estudiantes-boton'>Mi Cohorte</button>
                         </Link>
                     </div>
-                    <div id='panel-cohortes'>
-                        <p id="home-estudiantes-h4-instrucciones">Para ver tu rendimiento haz click en el botón o usa los controles de la barra de navegacion</p>
-                        <Link rel="stylesheet" to="/Rendimiento">
+                    <div id='panel-rendimiento'>
+                        <p >Para ver tu rendimiento haz click en el botón o usa los controles de la barra de navegacion</p>
+                        <Link rel="stylesheet" to="MisDatos">
                             <button id='home-estudiantes-boton'>Mi Rendimiento</button>
                         </Link>
                     </div>
@@ -93,7 +93,7 @@ const Home = ()=> {
                             <button id='home-estudiantes-boton' >Mi Cohorte</button>
                         </Link>
                     </div>
-                    <div id='panel-Rendimiento'>
+                    <div id='panel-cohortes'>
                         <p id="home-estudiantes-h4-instrucciones">Para ver tu rendimiento haz click en este botón o usa los controles de la barra de navegacion</p>
                         <Link rel="stylesheet" to="/MiRendimiento">
                             <button id='home-estudiantes-boton' >Mi rendimiento</button>
