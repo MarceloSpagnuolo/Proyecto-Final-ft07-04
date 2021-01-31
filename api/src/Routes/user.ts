@@ -3,6 +3,7 @@ const router = express.Router();
 import User from "../Models/users";
 import Cohorte from "../Models/cohorte";
 import Group from "../Models/groups";
+import axios from 'axios';
 
 // Trae todos los usuarios
 router.get("/", async (req, res) => {
@@ -163,5 +164,63 @@ router.get("/disponibles" , async (req, res) => {
   }
   final ? res.json(final) : res.sendStatus(400);
 });
+
+// Ruta para verificar el usuario de GitHub
+
+async function getUser(username : any) {
+  try {
+    const response = await axios.get(`https://api.github.com/users/${username}`);
+    return response;
+  }
+  catch (error) {
+    //console.error(error);
+  }
+}
+
+
+router.get('/github/:username', async(req, res) => {
+  let { username }  = req.params;
+  let userStatus : any = await getUser(username);
+  //console.log(userStatus);
+  (userStatus === undefined) ? res.send(false) : res.send(true);
+})
+
+// Ruta para buscar un usuario por nombre y apellido (req.body)
+
+router.get('/name', async (req, res) => {
+  const { name } = req.body;
+  const firstname : string = name.firstname;
+  const lastname : string = name.lastname; 
+  const user = await User.find({name: { firstname, lastname}});
+  !user ? res.send('Hubo un error') : res.json(user); 
+
+});
+
+// Ruta para buscar un usuario por nombre y apellido (queryStrings)
+
+router.get('/?firstname&lastname', async (req, res) => {
+  const { firstname, lastname } = req.query; 
+  // const firstname : string = name.firstname;
+  // const lastname : string = name.lastname; 
+  const user = await User.find({name: { firstname, lastname}});
+  !user ? res.send('Hubo un error') : res.json(user); 
+
+});
+
+// Ruta para buscar usuario por id
+
+router.get('/:id', async (req, res) =>{
+  const { id } = req.params;
+  const user = await User.find({_id: id}, function (err, users) {
+    Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+      Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+        res.json(usersCOM).status(200);
+      });
+    })})
+                 
+
+  //console.log(user);
+  //!user ? res.send('Hubo un problema') : res.send(user);
+})
 
 export default router;
