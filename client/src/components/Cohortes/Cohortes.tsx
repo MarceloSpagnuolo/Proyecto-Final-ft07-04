@@ -14,6 +14,7 @@ function Cohortes() {
   const cohortes: any = useSelector(Cohortes => Cohortes)
   useEffect(() => {
     dispatch(getCohortes())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 

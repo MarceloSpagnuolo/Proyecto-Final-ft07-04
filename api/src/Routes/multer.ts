@@ -19,7 +19,6 @@ const upload = multer({storage});
 
 
 router.post("/subirArchivo", upload.single('file'), async (req, res) => {
-    console.log(req.body.file, "soy el back")
     res.send("todo oki");
 })
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Login.css"
 import { getUserByToken } from "../../Store/Actions/Users";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import {useHistory } from "react-router-dom";
 import clienteAxios from '../../config/axios';
 
 
@@ -29,7 +29,7 @@ const Login = (): JSX.Element => {
     useEffect(() => {
 
         if (Object.keys(user).length !== 0) history.push('/home');
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user])
 
     function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
@@ -44,7 +44,7 @@ const Login = (): JSX.Element => {
         try {
             const newToken = await clienteAxios.post('auth/login', inputs);
             if (newToken) {
-                console.log(newToken.data)
+                
                 await userLogin(newToken.data);
             }
         } catch (error) {
@@ -57,7 +57,7 @@ const Login = (): JSX.Element => {
         <>
             <div className="gridLogin">
                 <div className="imgLoginMax">
-                    <img src="https://cdn.discordapp.com/attachments/764979688446885898/802048383844876298/cowork.png" />
+                    <img src="https://cdn.discordapp.com/attachments/764979688446885898/802048383844876298/cowork.png" alt=""/>
                 </div>
                 <div className="loginManager">
                     <div className="divLoginH1">

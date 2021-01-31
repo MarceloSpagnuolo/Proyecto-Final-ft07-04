@@ -111,9 +111,7 @@ router.delete("/cohorte/:id", async (req, res) => {
 router.put("/cohorte/:id", async (req,res) => {
   const {id} = req.params;
   const {cohorteName} = req.body;
-  console.log(req.body)
   const cohorte = await Cohorte.findOne({Nombre: cohorteName})
-  console.log(cohorte)
   const usuarios = await User.findOneAndUpdate({_id: id}, {cohorte: cohorte._id})
   !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
 })

@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { postUser } from "Store/Actions/Users";
-import { SSL_OP_NO_QUERY_MTU } from "constants";
+// import { SSL_OP_NO_QUERY_MTU } from "constants";
 import "./Registro.css";
 
 interface Registro {
@@ -29,7 +29,6 @@ const Registro = (props: any): JSX.Element => {
   useEffect(() => {
     if (mailTok.includes("mailToken")) {
       const decodeToken: Object | any = jwt.decode(mailTok.split("=")[1]);
-      console.log(decodeToken.email);
       if (!decodeToken) {
         alert("Error de Token");
         //window.location.href = "/";
@@ -40,10 +39,12 @@ const Registro = (props: any): JSX.Element => {
       alert("Usuario no autorizado");
       window.location.href = "/";
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (Object.keys(user).length !== 0) history.push("/home");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
@@ -129,7 +130,7 @@ const Registro = (props: any): JSX.Element => {
           />
         </div>
         <div className="iconGitRegistro">
-          <img src="https://cdn.discordapp.com/attachments/764979688446885898/803751928596004926/GitHubLogo.png" />
+          <img src="https://cdn.discordapp.com/attachments/764979688446885898/803751928596004926/GitHubLogo.png" alt=""/>
         </div>
         <div className="gitRegistro">
           <input

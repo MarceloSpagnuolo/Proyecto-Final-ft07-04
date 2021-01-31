@@ -3,7 +3,7 @@ import { Formik, Field, ErrorMessage, Form } from "formik";
 import "./Add.css";
 import Swal from "sweetalert2";
 import { postCohorte } from "../../Store/Actions/Cohortes"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 
 interface AddForm {
   nroCohorte: Number;
