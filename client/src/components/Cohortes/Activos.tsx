@@ -30,6 +30,7 @@ function Activos(props: any) {
   useEffect(() => {
     dispatch(getCohorte(id));
     dispatch(getUsersbyCohorte(id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

@@ -50,10 +50,12 @@ const Registro = (props: any): JSX.Element => {
         .then(() => window.location.href="/")
       //window.location.href = "/";
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (Object.keys(user).length !== 0) history.push("/home");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const initialValues = {
