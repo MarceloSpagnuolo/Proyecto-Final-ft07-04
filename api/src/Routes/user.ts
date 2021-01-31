@@ -5,20 +5,6 @@ import Cohorte from "../Models/cohorte";
 import Group from "../Models/groups";
 import axios from 'axios';
 
-// Ruta para buscar un usuario por nombre y apellido (queryStrings)
-router.get('/search?', async (req, res) => {
-  const { firstname, lastname } = req.query; 
-  let user;
-
-  if(lastname === "undefined" || lastname === "") {
-    user = await User.find({$or: [{"name.firstname": firstname}, {"name.lastname": firstname}]}, "+name");
-  } else {
-    user = await User.find( {$or: [{"name.firstname": firstname, "name.lastname": lastname}, {"name.firstname": lastname, "name.lastname": firstname}]}, "+name");
-  }
-
-  !user ? res.send('Hubo un error') : res.json(user);
-});
-
 // Trae todos los usuarios
 router.get("/", async (req, res) => {
   const result = await User.find();
