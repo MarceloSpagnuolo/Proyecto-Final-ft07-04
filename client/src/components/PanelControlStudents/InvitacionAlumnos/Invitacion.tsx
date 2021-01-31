@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import './Invitacion.css';
 import { sendInvitation } from '../../../Store/Actions/Users';
 import Swal from "sweetalert2";
-import XLSX from "xlsx";
+import * as XLSX from "xlsx";
 
 interface inv {
     file?: any;
@@ -27,18 +27,16 @@ const Invitacion = (): JSX.Element => {
             let reader = new FileReader();
             reader.readAsArrayBuffer(e.target.files[0])
             reader.onloadend = async (resOfRead: any) => {
-                console.log(resOfRead, "soy el resultado de carga")
                 var data = new Uint8Array(resOfRead.target.result); //codificamos el result
                 var excel = XLSX.read(data, { type: 'array' }); //leemos el archivo codificado  cuidado que se genera un bucle y se rompe todo
-                console.log(excel, " soy el excel")
-                // excel.SheetNames.forEach((sheet: any) => {
-                //     var parseoHojas = XLSX.sheet_to_row_object_array(excel.Sheets[sheet]);
-                //     hojas.push({
-                //         data: parseoHojas,
-                //         sheet
-                //     })
-                // })
-                console.log(hojas, "soy las hojas")
+                 excel.SheetNames.forEach((sheetName: any) => {
+                     var parseoHojas = XLSX.utils.sheet_to_json(excel.Sheets[sheetName]);
+                     hojas.push({
+                         data: parseoHojas,
+                         sheetName
+                     })
+                 })
+                console.log(hojas[0].data, "soy las hojas")
             }
             setInvi({
                 ...invitation,
