@@ -9,10 +9,10 @@ function Listado() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getActiveCohortes());
+    dispatch(getActiveCohortes(true));
   }, []);
 
-  return (
+   return (
     <div className="Listado-Container">
       <h2>Cohortes Activos</h2>
       <table className="Listado-Table">
@@ -38,7 +38,7 @@ function Listado() {
                     {elem.Alumnos}
                   </td>
                   <td className="Listado-Td">
-                    {elem.Instructor.name.firstname +
+                    {elem.Instructor !== null && elem.Instructor.name.firstname +
                       " " +
                       elem.Instructor.name.lastname}
                   </td>

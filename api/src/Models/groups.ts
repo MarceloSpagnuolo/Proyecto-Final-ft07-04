@@ -1,9 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 
 const SantdUpSchema: Schema = new Schema({
-  PM: [{ _id: false, user: { type: Schema.Types.ObjectId, ref: "User" } }],
+  PM: [{ _id: false, type: Schema.Types.ObjectId, ref: "User" }],
   Grupo: Number,
-  Cohorte: [{ type: Schema.Types.ObjectId, ref: "Cohorte" }],
+  Cohorte: { type: Schema.Types.ObjectId, ref: "Cohorte" },
 });
 
 const Standup = mongoose.model("Group", SantdUpSchema);

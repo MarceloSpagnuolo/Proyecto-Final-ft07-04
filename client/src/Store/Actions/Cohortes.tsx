@@ -7,13 +7,11 @@ import {
   PUT_COHORTES,
   ERROR_MESSAGE,
   GET_ACTIVE_COHORTES,
+  GET_COHORTE,
+  PUT_INSTRUCTOR,
 } from "../Constants/Cohortes";
 
 const url = "http://localhost:3001";
-
-export const getCohortesActivos = () => async (dispatch: any) => {
-  const res = await axios.get(`${url}`);
-};
 
 export const getCohortes = () => async (dispatch: any) => {
   try {
@@ -45,9 +43,10 @@ export const postCohorte = (payload: any) => async (dispatch: any) => {
   }
 };
 
-export const getActiveCohortes = () => async (dispatch: any) => {
+//Action que busque cohortes activos o no, recibe un booleano
+export const getActiveCohortes = (payload: Boolean) => async (dispatch: any) => {
   try {
-    const res = await axios.get(`${url}/cohorte/active`);
+    const res = await axios.get(`${url}/cohorte/active/${payload}`);
     dispatch({
       type: GET_ACTIVE_COHORTES,
       payload: res.data,
@@ -55,7 +54,37 @@ export const getActiveCohortes = () => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      message: "Problemas con los cohortes activos",
+      message: "Problemas con los cohortes",
     });
   }
+};
+
+export const getCohorte = (id: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.get(`${url}/cohorte/${id}`);
+    dispatch({
+      type: GET_COHORTE,
+      payload: res.data,
+    });
+  } catch(e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      payload: "Cohorte no encontrado",
+    });
+  };
+};
+
+export const putInstructor = (cohorteId: any, instructorId: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.put(`${url}/cohorte/${cohorteId}`, {Instructor: instructorId});
+    dispatch({
+      type: PUT_INSTRUCTOR,
+      payload: res.data
+    })
+  } catch(e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      payload: "Error al asignar instructor",
+    });
+  };
 };
