@@ -1,7 +1,5 @@
 import axios from "axios";
 import jwt from 'jsonwebtoken';
-import XLSX from "xlsx";
-import { uploadAction } from "../../components/PanelControlStudents/InvitacionAlumnos/actionUpdate";
 import {
   GET_USERS,
   POST_USER,
@@ -18,22 +16,8 @@ const url = "http://localhost:3001";
 
 
 export const sendInvitation = (payload: any) => async (dispatch: any) => {
-  console.log(payload.file, "soy el payload, action")
   try {
-    if (payload.file) {
-      // const upFile: any = await uploadAction(payload);
-
-      const excel = await XLSX.readFile(payload.file[0]); //lee el archivo
-      console.log(excel, "soy el excel front")
-
-      var hojas = await excel.SheetNames; //devuelve un array con el contenido de cada hoja [{}, {0bj2}, {obj3}]
-
-      let datos = await XLSX.utils.sheet_to_json(excel.Sheets[hojas[0]]);
-      console.log(datos, "soy los datos front")
-      // const res: any = await axios.post(`${url}/mails`, upFile)
-    } else {
-      // const res: any = await axios.post(`${url}/mails`, payload)
-    }
+    const res: any = await axios.post(`${url}/mails`, payload)
   }
   catch (e) {
     dispatch({

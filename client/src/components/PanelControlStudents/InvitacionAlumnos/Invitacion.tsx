@@ -24,23 +24,22 @@ const Invitacion = (): JSX.Element => {
                 [e.target.name]: e.target.value,
             })
         } else {
-            let reader = new FileReader();
-            reader.readAsArrayBuffer(e.target.files[0])
-            reader.onloadend = async (resOfRead: any) => {
+            let reader = new FileReader();  //instanciamos nuevo archivo a leer
+            reader.readAsArrayBuffer(e.target.files[0]) //se lee el archivo
+            reader.onloadend = async (resOfRead: any) => {  //cuando termina de leerlo
                 var data = new Uint8Array(resOfRead.target.result); //codificamos el result
-                var excel = XLSX.read(data, { type: 'array' }); //leemos el archivo codificado  cuidado que se genera un bucle y se rompe todo
-                 excel.SheetNames.forEach((sheetName: any) => {
-                     var parseoHojas = XLSX.utils.sheet_to_json(excel.Sheets[sheetName]);
-                     hojas.push({
-                         data: parseoHojas,
-                         sheetName
-                     })
-                 })
-                console.log(hojas[0].data, "soy las hojas")
+                var excel = XLSX.read(data, { type: 'array' }); //leemos el archivo codificado
+                excel.SheetNames.forEach((pagina: any) => { //si es un excel con mas de una hoja lo mapeamos
+                    var parseoHojas = XLSX.utils.sheet_to_json(excel.Sheets[pagina]);//parseamos a JSON
+                    hojas.push({    //pusheamos al array
+                        data: parseoHojas,
+                        pagina  //nombre de la hoja
+                    })
+                })
             }
             setInvi({
                 ...invitation,
-                [e.target.name]: e.target.files[0],
+                [e.target.name]: hojas,
 
             })
 
