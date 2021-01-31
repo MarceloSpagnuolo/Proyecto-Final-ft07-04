@@ -11,6 +11,7 @@ import {
   MIGRAR_USER_COHORTE,
   GET_USER_BY_TOKEN,
   GET_STUDENTS,
+  SEARCH_BY_NAME,
 } from "../Constants/Users";
 const url = "http://localhost:3001";
 
@@ -86,23 +87,23 @@ export const getUsersbyCohorte = (id: any) => async (dispatch: any) => {
 };
 
 
-export const getUserByToken = (payload: any) => async (dispatch: any) => {
-  try {
-    localStorage.setItem('userToken', payload);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${payload}`;
-    const usuario = jwt.decode(payload);
-    console.log(usuario, "soy el accion");
-    dispatch({
-      type: GET_USER_BY_TOKEN,
-      payload: usuario,
-    });
-  } catch (e) {
-    dispatch({
-      type: ERROR_MESSAGE,
-      message: 'No se encuentra el usuario',
-    });
-  }
-};
+  export const getUserByToken = (payload:any) => async (dispatch:any) => {
+    try {
+      localStorage.setItem('userToken', payload);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${payload}`;
+      const usuario = jwt.decode(payload);
+      dispatch({
+        type: GET_USER_BY_TOKEN,
+        payload: usuario,
+      });
+    } catch (e) {
+      dispatch({
+        type: ERROR_MESSAGE,
+        message: 'No se encuentra el usuario',
+      });
+    }
+  };
+
 
 export const deleteUserCohorte = (id: any) => async (dispatch: any) => {
   try {
@@ -134,3 +135,17 @@ export const migrarUserCohorte = (id: any, cohorteName: string) => async (dispat
   }
 };
 
+export const SearchByName = (payload: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.get(`${url}/users/search?firstname=${payload[0]}&lastname=${payload[1]}`);
+    dispatch({
+      type: SEARCH_BY_NAME,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Problemas para crear el usuario",
+    });
+  }
+};
