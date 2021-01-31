@@ -30,7 +30,7 @@ function Add() {
             validate={async (values) => {
               var errors: { [k: string]: any } = {};
               const regDate = /^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(values.fechaInicio.toString())
-              const regNombre = await axios.get(`${url}/cohorte/nombre/${values.Nombre}`);
+              const regNombre = values.Nombre.length > 0 ? await axios.get(`${url}/cohorte/nombre/${values.Nombre}`) : { data: false};
               let hoy: Date = new Date();
               if (values.Nombre.length < 1) {
                 errors.Nombre = "Debe Ingresar el nombre del Cohorte";

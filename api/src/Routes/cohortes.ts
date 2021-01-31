@@ -82,7 +82,7 @@ router.get("/active/:estado", async (req, res) => {
   const { estado } = req.params;
   await Cohorte.find({ Active: estado }, function (err, cohortes) {
     User.populate(cohortes, { path: "Instructor" }, function (err, completo) {
-      completo ? res.json(completo) : res.send(err).send(400);
+      completo ? res.json(completo) : res.send(err).status(400);
     });
   }).sort({Nombre: 1});
 });
@@ -92,7 +92,7 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params;
   await Cohorte.find({_id: id }, function (err, cohorte) {
     User.populate(cohorte, { path: "Instructor"}, function (err, completo) {
-      completo ? res.json(completo) : res.send(err).send(400);
+      completo ? res.json(completo) : res.send(err).status(400);
     });
   });
 });

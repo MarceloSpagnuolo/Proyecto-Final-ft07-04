@@ -61,7 +61,7 @@ function Inactivos(props: any) {
                         {elem.created}
                       </td>
                       <td className="Listado-Td" id="Prueba">
-                        {elem.standup}
+                        {elem.standup.Grupo}
                       </td>
                     </tr>
                   ) : null;

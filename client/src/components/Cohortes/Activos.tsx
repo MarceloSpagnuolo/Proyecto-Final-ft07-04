@@ -195,7 +195,7 @@ function Activos(props: any) {
                         {elem.created}
                       </td>
                       <td className="Listado-Td" id="Prueba">
-                        {elem.standup}
+                        {elem.standup.Grupo}
                       </td>
                       <td className="Listado-Td">
                         <button
