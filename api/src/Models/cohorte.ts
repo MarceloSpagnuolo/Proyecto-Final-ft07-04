@@ -5,7 +5,7 @@ const CohorteSchema: Schema = new Schema({
   Start: String || Date,
   Alumnos: { type: Number, default: 0 },
   Instructor: { _id: false, type: Schema.Types.ObjectId, ref: "User", default: null },
-  Created: { type: Date, default: Date.now },
+  Created: { type: Date || String, default: Date.now },
   Active: {
     type: Boolean,
     default: true,

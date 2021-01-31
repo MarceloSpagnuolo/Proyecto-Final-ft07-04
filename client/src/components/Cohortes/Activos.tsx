@@ -192,7 +192,7 @@ function Activos(props: any) {
                       </td>
                       <td className="Listado-Td">{elem.email}</td>
                       <td className="Listado-Td" id="Prueba">
-                        {elem.created}
+                        {elem.created.substr(8,2)+"/"+elem.created.substr(5,2)+"/"+elem.created.substr(0,4)}
                       </td>
                       <td className="Listado-Td" id="Prueba">
                         {elem.standup.Grupo}

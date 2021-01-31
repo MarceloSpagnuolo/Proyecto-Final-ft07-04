@@ -118,15 +118,15 @@ router.get("/cohorte/:id", async (req, res) => {
           res.json(usersCOM).status(200);
         })
       });
-    })
+    }).sort({name: 1});
   } else {
-    await User.find({role: "alumno"}, function (err, users) {
+    await User.find({role: "alumno" || "PM" }, function (err, users) {
       Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
         Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
           res.json(usersCOM).status(200);
         })
       });
-    });}
+    }).sort({name: 1});}
   
   });
 

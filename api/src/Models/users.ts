@@ -10,7 +10,7 @@ interface Props extends Document {
   github: string;
   email: string;
   password: string;
-  created: any;
+  created: Date;
   cohorte: any;
   standup: any;
   comparePassword(password: string, passwordDB: string): boolean;
