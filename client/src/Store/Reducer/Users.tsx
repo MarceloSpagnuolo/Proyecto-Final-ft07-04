@@ -8,6 +8,7 @@ import {
   MIGRAR_USER_COHORTE,
   GET_USER_BY_TOKEN,
   GET_STUDENTS,
+  SEARCH_BY_NAME,
   ERROR_MESSAGE,
 } from "../Constants/Users";
 import Swal from "sweetalert2";
@@ -50,6 +51,12 @@ function Users(state = inicialState, action: any) {
         ...state,
         users: state.users.filter((user) => user._id !== action.payload._id),
       };
+      case SEARCH_BY_NAME:
+        console.log("ENTRE AL REDUCER")
+        return {
+          ...state,
+          users: action.payload
+        }
     case ERROR_MESSAGE: {
       Swal.fire(
         "Error",

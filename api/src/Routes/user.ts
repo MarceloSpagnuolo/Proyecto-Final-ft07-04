@@ -5,6 +5,20 @@ import Cohorte from "../Models/cohorte";
 import Group from "../Models/groups";
 import axios from 'axios';
 
+// Ruta para buscar un usuario por nombre y apellido (queryStrings)
+router.get('/search?', async (req, res) => {
+  const { firstname, lastname } = req.query; 
+  let user;
+
+  if(lastname === "undefined" || lastname === "") {
+    user = await User.find({$or: [{"name.firstname": firstname}, {"name.lastname": firstname}]}, "+name");
+  } else {
+    user = await User.find( {$or: [{"name.firstname": firstname, "name.lastname": lastname}, {"name.firstname": lastname, "name.lastname": firstname}]}, "+name");
+  }
+
+  !user ? res.send('Hubo un error') : res.json(user);
+});
+
 // Trae todos los usuarios
 router.get("/", async (req, res) => {
   const result = await User.find();
@@ -96,10 +110,25 @@ router.put("/modify/:id", async (req, res) => {
 
 //Devuelve todos los usuarios de un cohorte
 router.get("/cohorte/:id", async (req, res) => {
-  const { id } = req.params;
-  const usuarios = await User.find({ cohorte: id });
-  !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios);
-});
+  const {id} = req.params
+  if(id !== "todos") {
+    await User.find({cohorte: id}, function (err, users) {
+      Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+        Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+          res.json(usersCOM).status(200);
+        })
+      });
+    })
+  } else {
+    await User.find({role: "alumno"}, function (err, users) {
+      Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+        Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+          res.json(usersCOM).status(200);
+        })
+      });
+    });}
+  
+  });
 
 //Elimina la asignacion de un usuario a un cohorte, recibe el id del usuario
 //Resta la cantidad de alumnos del modelo cohorte
@@ -187,24 +216,29 @@ router.get('/github/:username', async(req, res) => {
 })
 
 // Ruta para buscar un usuario por nombre y apellido (req.body)
-router.get('/name', async (req, res) => {
-  const { name } = req.body;
-  const firstname : string = name.firstname;
-  const lastname : string = name.lastname; 
-  const user = await User.find({name: { firstname, lastname}});
-  !user ? res.send('Hubo un error') : res.json(user); 
+// NO USADA AL FINAL, DESCOMENTAR SI ES NECESARIO
 
-});
+// router.get('/name', async (req, res) => {
+//   const { name } = req.body;
+//   const firstname : string = name.firstname;
+//   const lastname : string = name.lastname; 
+//   const user = await User.find({name: { firstname, lastname}});
+//   !user ? res.send('Hubo un error') : res.json(user); 
+
+// });
 
 // Ruta para buscar un usuario por nombre y apellido (queryStrings)
-
-router.get('/?firstname&lastname', async (req, res) => {
+router.get('/search?', async (req, res) => {
   const { firstname, lastname } = req.query; 
-  // const firstname : string = name.firstname;
-  // const lastname : string = name.lastname; 
-  const user = await User.find({name: { firstname, lastname}});
-  !user ? res.send('Hubo un error') : res.json(user); 
+  let user;
 
+  if(lastname === "undefined" || lastname === "") {
+    user = await User.find({$or: [{"name.firstname": firstname}, {"name.lastname": firstname}]}, "+name");
+  } else {
+    user = await User.find( {$or: [{"name.firstname": firstname, "name.lastname": lastname}, {"name.firstname": lastname, "name.lastname": firstname}]}, "+name");
+  }
+
+  !user ? res.send('Hubo un error') : res.json(user);
 });
 
 // Ruta para buscar usuario por id

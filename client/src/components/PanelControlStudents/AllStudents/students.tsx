@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./students.css";
 import { getStudents } from "../../../Store/Actions/Users";
+import SearchBar from "../searchBar"
 
 const Students = (): JSX.Element => {
     const dispatch = useDispatch()
@@ -13,6 +14,7 @@ const Students = (): JSX.Element => {
 
     return (
         <div className="student-super-container">
+            <SearchBar />
             <div className="student-container">
                 <div className="student-titles">
                     <h1>Mis Estudiantes</h1>
@@ -42,7 +44,7 @@ const Students = (): JSX.Element => {
                         </tr>
                     </thead>
                     <tbody className="student-table-body">
-                        {users && users.length > 0 && users.map((alum: any) => (
+                        {users && users.length > 0 && users.map((alum: any) => (alum.role !== "instructor") ? (
                             <tr id="student-table-tr">
                                 <td className="student-table-td">{`${alum.name.firstname} ${alum.name.lastname}`}</td>
                                 <td className="student-table-td" id="less">{alum.created}</td>
@@ -50,7 +52,7 @@ const Students = (): JSX.Element => {
                                 <td className="student-table-td" id="less">{alum.cohorte && alum.cohorte.Nombre}</td>
                                 <td className="student-table-td" id="less">{alum.standup && alum.standup.Grupo}</td>
                             </tr>
-                        ))}
+                        ):null)}
                     </tbody>
                 </table>
             </div>
