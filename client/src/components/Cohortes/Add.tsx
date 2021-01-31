@@ -3,19 +3,22 @@ import { Formik, Field, ErrorMessage, Form } from "formik";
 import "./Add.css";
 import Swal from "sweetalert2";
 import { postCohorte } from "../../Store/Actions/Cohortes"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 
 interface AddForm {
-  nroCohorte: Number;
+  Nombre: String;
   fechaInicio: Date;
 }
+
+const url = "http://localhost:3001"
 
 function Add() {
 
   const dispatch = useDispatch()
   const initialValues: AddForm = {
-    nroCohorte: 0,
-    fechaInicio: new Date(),
+    Nombre: "",
+    fechaInicio: new Date("    /  /  "),
   };
 
   return (
@@ -24,14 +27,23 @@ function Add() {
         <div className="Add-Form-Body">
           <Formik
             initialValues={initialValues}
-            validate={(values) => {
+            validate={async (values) => {
               var errors: { [k: string]: any } = {};
-              if (values.nroCohorte < 1)
-                errors.nroCohorte = "Debe Ingresar Nro de Cohorte";
-
-              if (!values.fechaInicio)
+              const regDate = /^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(values.fechaInicio.toString())
+              const regNombre = await axios.get(`${url}/cohorte/nombre/${values.Nombre}`);
+              let hoy: Date = new Date();
+              if (values.Nombre.length < 1) {
+                errors.Nombre = "Debe Ingresar el nombre del Cohorte";
+              } else if (regNombre.data) {
+                errors.Nombre = "Ese nombre ya existe"
+              }
+              if (!values.fechaInicio) {
                 errors.fechaInicio = "Debe Ingresar una fecha válida";
-
+              } else if (!regDate) {
+                errors.fechaInicio = "Fecha inválida"
+              } else if (new Date(values.fechaInicio) < hoy) {
+                errors.fechaInicio = "La fecha no puede ser inferior a hoy"
+              } 
               return errors;
             }}
 
@@ -56,15 +68,16 @@ function Add() {
                   <Form className="Add-Form">
                     <div className="Add-Form-Campos">
                       <label htmlFor="Add" className="Add-Form-Label">
-                        Nro. Cohorte*
+                        Nombre Cohorte*
                       </label>
                       <br />
                       <Field
                         className="Add-Form-Input-Cohorte"
-                        type="number"
-                        name="nroCohorte"
+                        type="text"
+                        name="Nombre"
+                        autoFocus="true"
                       />
-                      <ErrorMessage name="nroCohorte">
+                      <ErrorMessage name="Nombre">
                         {(message) => (
                           <div className="Add-Form-Error">{message}</div>
                         )}

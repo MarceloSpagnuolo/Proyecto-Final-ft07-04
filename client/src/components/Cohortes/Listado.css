@@ -38,7 +38,7 @@
   .Listado-Boton {
     height: 40px;
     width: 100%;
-    background-color: yellow;
+    background-color: #fede00;
     border-radius: 10px;
   }
 }
@@ -54,7 +54,7 @@
     height: 60px;
     width: 100%;
     border-radius: 10px;
-    background-color: yellow;
+    background-color: #fede00;
     font-size: 1.2rem;
   }
 

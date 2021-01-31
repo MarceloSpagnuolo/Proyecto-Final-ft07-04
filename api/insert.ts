@@ -232,6 +232,24 @@ export default async function Insert() {
       created: Date(),
       password: "SoyELFounder22",
     },
+    {
+      _id: "600b9852935003272c8b6122",
+      name: { firstname: "Pepito", lastname: "Pepote" },
+      role: "instructor",
+      email: "pepito@pepote.com",
+      github: "PepitoPepote",
+      created: Date(),
+      password: "pppppp22",
+    },
+    {
+      _id: "600b9852935003272c8b6123",
+      name: { firstname: "Esteban", lastname: "Quito" },
+      role: "instructor",
+      email: "esteban@quito.com",
+      github: "QuitoEsteban",
+      created: Date(),
+      password: "esteban2021",
+    },
   ];
   const groups = [
     {
@@ -254,7 +272,7 @@ export default async function Insert() {
       Nombre: "Webft01",
       Start: "8/02/2020",
       Alumnos: 4,
-      Instructor: "600b9852935003272c8b6116",
+      Instructor: "600b9852935003272c8b6117",
       Created: "10/01/2020",
       Active: false,
     },
@@ -263,7 +281,7 @@ export default async function Insert() {
       Nombre: "Webft02",
       Start: "1/10/2020",
       Alumnos: 10,
-      Instructor: "600b9852935003272c8b6117",
+      Instructor: "600b9852935003272c8b6116",
       Created: "7/09/2020",
     },
     {

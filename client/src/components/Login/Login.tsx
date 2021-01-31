@@ -4,6 +4,7 @@ import { getUserByToken } from "../../Store/Actions/Users";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import clienteAxios from '../../config/axios';
+import Swal from "sweetalert2";
 
 
 interface Logeado {
@@ -28,7 +29,24 @@ const Login = (): JSX.Element => {
 
     useEffect(() => {
 
-        if (Object.keys(user).length !== 0) history.push('/home');
+        if (Object.keys(user).length !== 0){ 
+            const Toast = Swal.mixin( {
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: 'Logueado correctamente'
+            })
+            history.push('/home');  
+        } 
 
     }, [user])
 
