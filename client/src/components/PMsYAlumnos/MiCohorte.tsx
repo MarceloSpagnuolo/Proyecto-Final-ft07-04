@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import "./Activos.css";
+import React, { useEffect} from "react";
+import "./MiCohorte.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsersbyCohorte } from "../../Store/Actions/Users";
+import {  getUsersbyCohorte } from "../../Store/Actions/Users";
 import { getCohorte } from "Store/Actions/Cohortes";
 
-function Inactivos(props: any) {
+function MiCohorte(props: any) {
   const dispatch = useDispatch();
-  const { users } = useSelector((state: any) => state.Users);
+  const { users, user } = useSelector((state: any) => state.Users);
   const { cohorte } = useSelector((state: any) => state.Cohortes);
   const { id } = props.match.params;
 
@@ -16,10 +16,18 @@ function Inactivos(props: any) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if(user.cohorte && user.cohorte !== id) {
+      window.location.href = "/home"
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user.cohorte]);
+
+
   return (
-    <>
-      <div className="Activos-Container">
-        <h2>Cohorte Inactivo</h2>
+  <>
+      <div className="MiCohorte-Container">
+        <h2>Mi Cohorte</h2>
         <span>Cohorte: {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</span>
         <br />
         <div>
@@ -34,19 +42,19 @@ function Inactivos(props: any) {
         <div>
           <span>Alumnos: {users.length}</span>
         </div>
-        <div className="Listado-Container">
+        <div className="MiCohorte-Container">
           <h3>Alumnos</h3>
-          <div className="Activos-Table">
-            <table className="Activos-Table">
+          <div className="MiCohorte-Table">
+            <table className="MiCohorte-Table">
               <tbody>
                 <tr>
                   <th className="Listado-Th">Nombre</th>
                   <th className="Listado-Th">Email</th>
-                  <th className="Listado-Th" id="Prueba">
+                  <th className="Listado-Th" id="Prueba22">
                     Alta
                 </th>
-                  <th className="Listado-Th" id="Prueba">
-                    StandUp
+                  <th className="Listado-Th" id="Prueba22">
+                    Github
                 </th>
                 </tr>
 
@@ -58,12 +66,12 @@ function Inactivos(props: any) {
                           {elem.name.firstname + " " + elem.name.lastname}
                         </td>
                         <td className="Listado-Td">{elem.email}</td>
-                        <td className="Listado-Td" id="Prueba">
+                        <td className="Listado-Td" id="Prueba22">
                           {elem.created.substr(8, 2) + "/" + elem.created.substr(5, 2) + "/" + elem.created.substr(0, 4)}
                         </td>
-                        <td className="Listado-Td" id="Prueba">
-                          {!!elem.standup && elem.standup.Grupo}
-                        </td>
+                        <td className="Listado-Td" id="Prueba22">
+                          {elem.github}
+                        </td>                        
                       </tr>
                     ) : null;
                   })}
@@ -76,4 +84,4 @@ function Inactivos(props: any) {
   );
 }
 
-export default Inactivos;
+export default MiCohorte;

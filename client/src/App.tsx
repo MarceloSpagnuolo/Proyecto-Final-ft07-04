@@ -9,6 +9,8 @@ import Cohortes from "components/Cohortes/Cohortes";
 import Activos from "components/Cohortes/Activos";
 import Inactivos from "components/Cohortes/Inactivos";
 import PanelControlStudents from 'components/PanelControlStudents/panelControl';
+import MiCohorte from "./components/PMsYAlumnos/MiCohorte"
+import Rendimiento from "./components/PMsYAlumnos/Rendimiento"
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
     <>
       <Nav />
       <Route exact path='/' component={Login} />
+      <Route exact path='/MiCohorte/:id' component={MiCohorte} />
+      <Route exact path='/MisDatos/:id' component={Rendimiento} />
       <Route exact path='/Home' component={Home} />
       <Route exact path='/GrupoDetail' component={GrupoDetail} />
       <Route exact path='/Registro' component={Registro} />

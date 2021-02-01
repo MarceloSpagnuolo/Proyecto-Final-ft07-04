@@ -165,7 +165,7 @@ function Activos(props: any) {
         </div>
         <br />
         <div>
-          <span>Alumnos: {users.length - 1}</span>
+          <span>Alumnos: {users.length}</span>
         </div>
         <div className="Listado-Container">
           <h3>Alumnos</h3>
