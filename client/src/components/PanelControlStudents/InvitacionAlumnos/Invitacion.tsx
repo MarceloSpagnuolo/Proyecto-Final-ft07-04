@@ -5,6 +5,8 @@ import { sendInvitation } from '../../../Store/Actions/Users';
 import Swal from "sweetalert2";
 import * as XLSX from "xlsx";
 
+const URL = "http://localhost:3001";
+
 interface inv {
     file?: any;
     email?: string;
@@ -74,7 +76,8 @@ const Invitacion = (): JSX.Element => {
                     <table>
                         <thead>
                             <tr id="recibe">
-                                <input name="file" type="file" id="file" onChange={(e) => handleOnChange(e)} accept="png jpg jpeg gif xlsx" />
+                                <input name="file" type="file" id="file" onChange={(e) => handleOnChange(e)} accept="xls xlsx" />
+                                <a href={`${URL}/template.xlsx`} download>Descargar Plantilla</a>
                                 <input name="email" type="email" placeholder="correo@nuevo.alumno" id="email"
                                     onChange={(e) => handleOnChange(e)} />
                             </tr>
