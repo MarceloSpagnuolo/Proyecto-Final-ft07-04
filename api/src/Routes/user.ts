@@ -226,8 +226,6 @@ router.get('/search?', async (req, res) => {
     lastname = lastname.charAt(0).toUpperCase() + lastname.slice(1).toLowerCase()
   }
 
-  console.log(firstname, lastname, " soy el nombre")
-
   let user;
 
   if (lastname === "undefined" || lastname === "") {
