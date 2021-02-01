@@ -58,19 +58,19 @@ const Home = ()=> {
                     </div>
                     <div id='panel-estudiantes'>
                         <p>Para gestionar tu StandUp haz click en el botón, o accede a través de la barra de navegacion</p>
-                        <Link rel="stylesheet" to="MisAlumnos">
+                        <Link rel="stylesheet" to={`/Standup/${user.standup}`}>
                             <button id='home-estudiantes-boton'>Mi Standup</button>
                         </Link>
                     </div>
                     <div id='panel-cohortes'>
                         <p id="home-estudiantes-h4-instrucciones">Para ver tu Cohorte haz click en el botón o usa los controles de la barra de navegacion</p>
-                        <Link rel="stylesheet" to="MiCohorte">
+                        <Link rel="stylesheet" to={`/MiCohorte/${user.cohorte}`}>
                             <button id='home-estudiantes-boton'>Mi Cohorte</button>
                         </Link>
                     </div>
                     <div id='panel-rendimiento'>
                         <p >Para ver tu rendimiento haz click en el botón o usa los controles de la barra de navegacion</p>
-                        <Link rel="stylesheet" to="MisDatos">
+                        <Link rel="stylesheet" to={`/MisDatos/${user._id}`}>
                             <button id='home-estudiantes-boton'>Mi Rendimiento</button>
                         </Link>
                     </div>

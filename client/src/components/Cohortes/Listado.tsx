@@ -10,6 +10,7 @@ function Listado() {
 
   useEffect(() => {
     dispatch(getActiveCohortes(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

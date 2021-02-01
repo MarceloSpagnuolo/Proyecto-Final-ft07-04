@@ -9,12 +9,13 @@ export default function SearchBar(props: any) {
     const [alumno, setAlumno] = useState('')
     const dispatch = useDispatch()
     const { cohortes } = useSelector((state: any) => state.Cohortes);
-    const { users } = useSelector((state: any) => state.Users)
+    // const { users } = useSelector((state: any) => state.Users)
 
     const lupita = "https://media.istockphoto.com/vectors/magnifying-glass-icon-magnifier-symbol-concept-search-for-people-to-vector-id1173137813?k=6&m=1173137813&s=170667a&w=0&h=6Ar342lRTbRXSpIe5o8IWeGwtbDsjwzH9p7dTDagvak="
 
     useEffect(() => {
         dispatch(getCohortes())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     function handlerInput(e: any) {
