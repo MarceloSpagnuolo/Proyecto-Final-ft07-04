@@ -17,15 +17,15 @@ function Activos(props: any) {
   const { users } = useSelector((state: any) => state.Users);
   const { cohorte, cohortes } = useSelector((state: any) => state.Cohortes);
   const { id } = props.match.params;
-  const [ display, setDisplay ] = useState(false); //Muestra modal de migracion
-  const [ disponibles, setDisp] = useState([]);   //Cohortes disponibles
-  const [ migra, setMigra ] = useState({alumnoId: "", nombre: ""});
-  const [ nvoCohorte, setCohorte] = useState(""); //Variable para seleccionar un nuevo cohorte al alumno
-  const [ showInst, setInst] = useState(false);   //Variable para mostrar el modal par asignar instructor
-  const [ nvoInst , setNvoInst ] = useState("");  //Variable para el nuevo Instructor
-  const [ instDisp, setInstDisp ] = useState([]); //Instructores disponibles
-  const [ inicio , setInicio ] = useState(Date.now);
-  const [ fecha, setFecha ] = useState(true);
+  const [display, setDisplay] = useState(false); //Muestra modal de migracion
+  const [disponibles, setDisp] = useState([]);   //Cohortes disponibles
+  const [migra, setMigra] = useState({ alumnoId: "", nombre: "" });
+  const [nvoCohorte, setCohorte] = useState(""); //Variable para seleccionar un nuevo cohorte al alumno
+  const [showInst, setInst] = useState(false);   //Variable para mostrar el modal par asignar instructor
+  const [nvoInst, setNvoInst] = useState("");  //Variable para el nuevo Instructor
+  const [instDisp, setInstDisp] = useState([]); //Instructores disponibles
+  const [inicio, setInicio] = useState(Date.now);
+  const [fecha, setFecha] = useState(true);
 
   useEffect(() => {
     dispatch(getCohorte(id));
@@ -34,11 +34,11 @@ function Activos(props: any) {
   }, []);
 
   useEffect(() => {
-    cohorte && cohorte.length >0 && setInicio(cohorte[0].Start);
-  },[cohorte])
+    cohorte && cohorte.length > 0 && setInicio(cohorte[0].Start);
+  }, [cohorte])
 
   async function handleDel(id: string, nombre: string) {
-  Swal.fire({
+    Swal.fire({
       title: "¿Está seguro?",
       text: `Está por eliminar a ${nombre} de este Cohorte y quedará sin ningún Cohorte`,
       icon: "warning",
@@ -61,7 +61,7 @@ function Activos(props: any) {
 
   function handleMig(alumnoId: string, nombre: string) {
     setDisp(cohortes.filter((cohorte: any) => cohorte._id !== id));
-    setMigra({alumnoId, nombre});
+    setMigra({ alumnoId, nombre });
     setDisplay(true);
   };
 
@@ -72,17 +72,17 @@ function Activos(props: any) {
   function handleSubmit(e: any) {
     e.preventDefault();
     dispatch(migrarUserCohorte(migra.alumnoId, nvoCohorte));
-      Swal.fire(
-          "Migrado!",
-          `${migra.nombre} ha sido migrado al cohorte ${nvoCohorte}.`,
-          "success"
-      );
+    Swal.fire(
+      "Migrado!",
+      `${migra.nombre} ha sido migrado al cohorte ${nvoCohorte}.`,
+      "success"
+    );
     setDisplay(false);
   };
 
   async function cambiaInst() {
     const instDisp: any = await axios.get("http://localhost:3001/users/disponibles");
-    if(instDisp.data.length === 0) {
+    if (instDisp.data.length === 0) {
       Swal.fire(
         "No disponible",
         "No existen instructores disponibles para asignar a este Cohorte",
@@ -101,10 +101,10 @@ function Activos(props: any) {
   function handleSubmitInst(e: any) {
     dispatch(putInstructor(id, nvoInst));
     Swal.fire(
-          "Asignado!",
-          `El Instructor ha sido asignado a este cohorte.`,
-          "success"
-      );
+      "Asignado!",
+      `El Instructor ha sido asignado a este cohorte.`,
+      "success"
+    );
   }
 
   function changeInicio(e: any) {
@@ -114,123 +114,123 @@ function Activos(props: any) {
 
   return (
     <>
-    {/* Migración de Cohorte */}
-    <Modal title="Migración de Cohorte" show={display} onClose={() => setDisplay((val) => !val)}>
-      <h4>Seleccione el cohorte al que migra {migra.nombre}</h4>
-      <form>
-        <div className="Listado-Container-Select">
-        <select name="select" className="Listado-Select" onChange={(e) => handleOnchange(e)}>
-          <option value="">Seleccione un Cohorte</option>
-          {disponibles.map((elem: any) => <option value={elem.Nombre}>{elem.Nombre} - Inicio: {elem.Start}</option>)
-          }
-        </select>
-        </div>
-        <div className="Modal-Botones">
-          <button className="Modal-Cancel" onClick={() => setDisplay(false)}>Cancelar</button>
-          <button className="Modal-Migrar" type="submit" onClick={(e) => handleSubmit(e)}
-          disabled={!nvoCohorte}>Migrar</button>
-        </div>
-      </form>
-    </Modal>
+      {/* Migración de Cohorte */}
+      <Modal title="Migración de Cohorte" show={display} onClose={() => setDisplay((val) => !val)}>
+        <h4>Seleccione el cohorte al que migra {migra.nombre}</h4>
+        <form>
+          <div className="Listado-Container-Select">
+            <select name="select" className="Listado-Select" onChange={(e) => handleOnchange(e)}>
+              <option value="">Seleccione un Cohorte</option>
+              {disponibles.map((elem: any) => <option value={elem.Nombre}>{elem.Nombre} - Inicio: {elem.Start}</option>)
+              }
+            </select>
+          </div>
+          <div className="Modal-Botones">
+            <button className="Modal-Cancel" onClick={() => setDisplay(false)}>Cancelar</button>
+            <button className="Modal-Migrar" type="submit" onClick={(e) => handleSubmit(e)}
+              disabled={!nvoCohorte}>Migrar</button>
+          </div>
+        </form>
+      </Modal>
 
-    {/* Selección de Instructor */}
-    <Modal title="Asignación de Instructor al Cohorte" show={showInst} onClose={() => setInst((val) => !val)}>
-      <h4>Seleccione el instructor a asignar al cohorte {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</h4>
-      <form>
-        <div className="Listado-Container-Select">
-          <select name="select" className="Listado-Select" onChange={(e) => handleChangeInst(e)}>
-            <option value="">Seleccione un Instructor</option>
-            {instDisp.map((elem: any) => <option value={elem._id}>{elem.name.firstname+" "+elem.name.lastname}</option>)}
-          </select>
+      {/* Selección de Instructor */}
+      <Modal title="Asignación de Instructor al Cohorte" show={showInst} onClose={() => setInst((val) => !val)}>
+        <h4>Seleccione el instructor a asignar al cohorte {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</h4>
+        <form>
+          <div className="Listado-Container-Select">
+            <select name="select" className="Listado-Select" onChange={(e) => handleChangeInst(e)}>
+              <option value="">Seleccione un Instructor</option>
+              {instDisp.map((elem: any) => <option value={elem._id}>{elem.name.firstname + " " + elem.name.lastname}</option>)}
+            </select>
+          </div>
+          <div className="Modal-Botones">
+            <button className="Modal-Cancel" onClick={() => setDisplay(false)}>Cancelar</button>
+            <button className="Modal-Migrar" type="submit" onClick={(e) => handleSubmitInst(e)}
+              disabled={!nvoInst}>Asignar</button>
+          </div>
+        </form>
+      </Modal>
+      <div className="Activos-Container">
+        <h2>Cohorte Activo</h2>
+        <span>Cohorte: {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</span>
+        <br />
+        <div>
+          <span>Inicio: {cohorte && cohorte.length > 0 && cohorte[0].Start}</span>
         </div>
-        <div className="Modal-Botones">
-          <button className="Modal-Cancel" onClick={() => setDisplay(false)}>Cancelar</button>
-          <button className="Modal-Migrar" type="submit" onClick={(e) => handleSubmitInst(e)}
-          disabled={!nvoInst}>Asignar</button>
+        <br />
+        <div>
+          <span>Instructor: {cohorte && cohorte.length > 0 && cohorte[0].Instructor !== null &&
+            cohorte[0].Instructor.name.firstname + " " + cohorte[0].Instructor.name.lastname}</span>
+          <button className="Activos-Boton" onClick={() => cambiaInst()}>Cambiar/Cargar</button>
         </div>
-      </form>
-    </Modal>
-    <div className="Activos-Container">
-      <h2>Cohorte Activo</h2>
-      <span>Cohorte: {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</span>
-      <br />
-      <div>
-        <span>Inicio: {cohorte && cohorte.length > 0 && cohorte[0].Start}</span>
-      </div>
-      <br />
-      <div>
-        <span>Instructor: {cohorte && cohorte.length > 0 && cohorte[0].Instructor !== null && 
-          cohorte[0].Instructor.name.firstname+" "+cohorte[0].Instructor.name.lastname}</span>
-        <button className="Activos-Boton" onClick={() => cambiaInst()}>Cambiar/Cargar</button>
-      </div>
-      <br />
-      <div>
-        <span>Alumnos: {users.length - 1}</span>
-      </div>
-      <div className="Listado-Container">
-        <h3>Alumnos</h3>
-        <div className="Activos-Table">
-          <table className="Activos-Table">
-            <tbody>
-              <tr>
-                <th className="Listado-Th">Nombre</th>
-                <th className="Listado-Th">Email</th>
-                <th className="Listado-Th" id="Prueba">
-                  Alta
+        <br />
+        <div>
+          <span>Alumnos: {users.length - 1}</span>
+        </div>
+        <div className="Listado-Container">
+          <h3>Alumnos</h3>
+          <div className="Activos-Table">
+            <table className="Activos-Table">
+              <tbody>
+                <tr>
+                  <th className="Listado-Th">Nombre</th>
+                  <th className="Listado-Th">Email</th>
+                  <th className="Listado-Th" id="Prueba">
+                    Alta
                 </th>
-                <th className="Listado-Th" id="Prueba">
-                  StandUp
+                  <th className="Listado-Th" id="Prueba">
+                    StandUp
                 </th>
-              </tr>
+                </tr>
 
-              {users.length > 0 &&
-                users.map((elem: any) => {
-                  return elem.role === "alumno" || elem.role === "PM" ? (
-                    <tr id="Listado-Tr">
-                      <td className="Listado-Td">
-                        {elem.name.firstname + " " + elem.name.lastname}
-                      </td>
-                      <td className="Listado-Td">{elem.email}</td>
-                      <td className="Listado-Td" id="Prueba">
-                        {elem.created.substr(8,2)+"/"+elem.created.substr(5,2)+"/"+elem.created.substr(0,4)}
-                      </td>
-                      <td className="Listado-Td" id="Prueba">
-                        {elem.standup.Grupo}
-                      </td>
-                      <td className="Listado-Td">
-                        <button
-                          className="Listado-Boton"
-                          onClick={() =>
-                            handleDel(
-                              elem._id,
-                              elem.name.firstname + " " + elem.name.lastname
-                            )
-                          }
-                        >
-                          Quitar
+                {users.length > 0 &&
+                  users.map((elem: any) => {
+                    return elem.role === "alumno" || elem.role === "PM" ? (
+                      <tr id="Listado-Tr">
+                        <td className="Listado-Td">
+                          {elem.name.firstname + " " + elem.name.lastname}
+                        </td>
+                        <td className="Listado-Td">{elem.email}</td>
+                        <td className="Listado-Td" id="Prueba">
+                          {elem.created.substr(8, 2) + "/" + elem.created.substr(5, 2) + "/" + elem.created.substr(0, 4)}
+                        </td>
+                        <td className="Listado-Td" id="Prueba">
+                          {elem.standup && elem.standup.Grupo}
+                        </td>
+                        <td className="Listado-Td">
+                          <button
+                            className="Listado-Boton"
+                            onClick={() =>
+                              handleDel(
+                                elem._id,
+                                elem.name.firstname + " " + elem.name.lastname
+                              )
+                            }
+                          >
+                            Quitar
                         </button>
-                      </td>
-                      <td className="Listado-Td">
-                        <button
-                          className="Listado-Boton"
-                          onClick={() =>
-                            handleMig(
-                              elem._id,
-                              elem.name.firstname + " " + elem.name.lastname
-                            )
-                          }
-                        >
-                          Migrar
+                        </td>
+                        <td className="Listado-Td">
+                          <button
+                            className="Listado-Boton"
+                            onClick={() =>
+                              handleMig(
+                                elem._id,
+                                elem.name.firstname + " " + elem.name.lastname
+                              )
+                            }
+                          >
+                            Migrar
                         </button>
-                      </td>
-                    </tr>
-                  ) : null;
-                })}
-            </tbody>
-          </table>
+                        </td>
+                      </tr>
+                    ) : null;
+                  })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 }
