@@ -87,22 +87,22 @@ export const getUsersbyCohorte = (id: any) => async (dispatch: any) => {
 };
 
 
-  export const getUserByToken = (payload:any) => async (dispatch:any) => {
-    try {
-      localStorage.setItem('userToken', payload);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${payload}`;
-      const usuario = jwt.decode(payload);
-      dispatch({
-        type: GET_USER_BY_TOKEN,
-        payload: usuario,
-      });
-    } catch (e) {
-      dispatch({
-        type: ERROR_MESSAGE,
-        message: 'No se encuentra el usuario',
-      });
-    }
-  };
+export const getUserByToken = (payload: any) => async (dispatch: any) => {
+  try {
+    localStorage.setItem('userToken', payload);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${payload}`;
+    const usuario = jwt.decode(payload);
+    dispatch({
+      type: GET_USER_BY_TOKEN,
+      payload: usuario,
+    });
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: 'No se encuentra el usuario',
+    });
+  }
+};
 
 
 export const deleteUserCohorte = (id: any) => async (dispatch: any) => {
@@ -145,7 +145,7 @@ export const SearchByName = (payload: any) => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      message: "Problemas para crear el usuario",
+      message: "Problemas para buscar alumno",
     });
   }
 };
