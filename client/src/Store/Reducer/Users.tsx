@@ -38,7 +38,7 @@ function Users(state = inicialState, action: any) {
       };
     case GET_USER_BY_TOKEN:
       return { ...state, user: action.payload };
-        
+
     case GET_USERS_BY_COHORTE:
       return { ...state, users: action.payload };
     case DELETE_USER_COHORTE:
@@ -51,12 +51,11 @@ function Users(state = inicialState, action: any) {
         ...state,
         users: state.users.filter((user) => user._id !== action.payload._id),
       };
-      case SEARCH_BY_NAME:
-        console.log("ENTRE AL REDUCER")
-        return {
-          ...state,
-          users: action.payload
-        }
+    case SEARCH_BY_NAME:
+      return {
+        ...state,
+        users: action.payload
+      }
     case ERROR_MESSAGE: {
       Swal.fire(
         "Error",
@@ -70,6 +69,5 @@ function Users(state = inicialState, action: any) {
     }
   }
 }
-          
+
 export default Users;
-          
