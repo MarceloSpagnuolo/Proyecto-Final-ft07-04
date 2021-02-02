@@ -4,6 +4,7 @@ import './Invitacion.css';
 import { sendInvitation } from '../../../Store/Actions/Users';
 import Swal from "sweetalert2";
 import * as XLSX from "xlsx";
+import grupoEstudiantes from '../../../assets/grupo-estudiantes.png'
 
 const URL = "http://localhost:3001";
 
@@ -72,28 +73,37 @@ const Invitacion = (): JSX.Element => {
 
             <h1>Invita nuevos alumnos</h1>
             <div className="container-invitation-students">
-                <div>
-                    <table>
+                <div id='fondonegro-invitacion'>
+                    <table id='tabla-panel-control'>
                         <thead>
-                            <tr id="recibe">
-                                <input name="file" type="file" id="file" onChange={(e) => handleOnChange(e)} accept="xls xlsx" />
-                                <a href={`${URL}/template.xlsx`} download>Descargar Plantilla</a>
-                                <input name="email" type="email" placeholder="correo@nuevo.alumno" id="email"
-                                    onChange={(e) => handleOnChange(e)} />
-                            </tr>
+
+
+
+                            <p> si tienes una lista de estudiantes en un archivo de Excel puedes añadirla </p>
+                            <input name="file" type="file" id="file" onChange={(e) => handleOnChange(e)} accept="png jpg jpeg gif xlsx" />
+                            <a id='link-template' href={`${URL}/template.xlsx`} download>Descargar Plantilla</a>
+                            <p> o si prefieres agregar uno a uno tambien puedes hacerlo </p>
+                            <input name="email" type="email" placeholder="    correo@nuevo.alumno" id="invita-por-email"
+                                onChange={(e) => handleOnChange(e)} />
+
+
                         </thead>
                         <tbody>
                             <tr>
-                                <input name="msj" type="text" id="cuerpo" placeholder=" Mensaje de invitación."
+                                <input name="msj" type="text" id="mensaje-invitacion" placeholder="    Mensaje de invitación."
                                     onChange={(e) => handleOnChange(e)} />
                             </tr>
                         </tbody>
                     </table>
+                    <button id='enviar-invitacion' onClick={() => handleSubmit()}>Enviar Invitación</button>
                 </div>
-                <div id="submit">
-                    <input type="submit" onClick={() => handleSubmit()} />
+
+                <div>
+                    <img id='imagen-invitacion-estudiantes' src={grupoEstudiantes}></img>
                 </div>
+
             </div>
+            <p id='texto-decorativo-invitacion'> Aqui podriamos decir algo elegantisimo, como de forma y no de fondo </p>
         </div>
     )
 }
