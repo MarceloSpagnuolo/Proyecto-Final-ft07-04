@@ -8,6 +8,8 @@ import Registro from "components/Registro/Registro"
 import Cohortes from "components/Cohortes/Cohortes";
 import Activos from "components/Cohortes/Activos";
 import PanelControlStudents from 'components/PanelControlStudents/panelControl';
+import Profile from "components/Profile/Profile"
+
 
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
       <Route exact path="/cohortes" component={Cohortes} />
       <Route exact path="/activos/:id" component={Activos} />
       <Route exact path='/PanelControlStudent' component={PanelControlStudents} />
+      <Route path='/Profile/:id' component={Profile} />
     </>
   );
 }

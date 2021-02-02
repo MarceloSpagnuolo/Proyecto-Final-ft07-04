@@ -77,7 +77,7 @@ const Nav = () => {
                 </div>
                 {display1 === "a" ? (
                   <div className="containermlH">
-                    <div className="mlH">Mi Perfil</div>
+                   <Link to="/profile/miPerfil" style={{ textDecoration: 'none' }}><div className="mlH"> Mi Perfil</div></Link>
                     <div className="mlH" onClick={LogOut}>
                       Logout
                     </div>
