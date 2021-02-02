@@ -1,5 +1,5 @@
-import { Link, Redirect } from "react-router-dom";
-import React, { useState, useEffect, Fragment } from "react";
+import { Link} from "react-router-dom";
+import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserByToken } from "Store/Actions/Users";
 import { useLocation } from "react-router-dom";
@@ -66,11 +66,25 @@ const Nav = () => {
             <div className="barritaNav btnb"></div>
             <div className="barritaNav btnc"></div>
           </div>
+        {/* Logica para poder cambiar entre renderizar algo o no dependiendo del usuario */}
+          {(user.role === "admin" || user.role === "instructor") ? 
+          
           <div
             className={display ? "containerNavList" : "activeDiv"}
             id="divIdList"
           >
             <div className="divListasMobile">
+              
+              <div>
+                <div onClick={() => linkTo("PanelControlStudent")} className="mlP">
+                  Alumnos
+                </div>
+              </div>
+              <div>
+                <div onClick={() => linkTo("cohortes")} className="mlP">
+                  Cohortes
+                </div>
+              </div>
               <div>
                 <div onClick={() => divChange("a")} className="mlP">
                   {user.name && user.name.firstname}
@@ -84,18 +98,79 @@ const Nav = () => {
                   </div>
                 ) : null}
               </div>
+            </div>
+          </div> : (user.role === "PM") ?
+            // LOGICA PARA RENDERIZAR PARA EL PM
+            <div
+            className={display ? "containerNavList" : "activeDiv"}
+            id="divIdList"
+          >
+            <div className="divListasMobile">
+              
               <div>
-                <div onClick={() => linkTo("PanelControlStudent")} className="mlP">
-                  Alumnos
+                <div onClick={() => linkTo(`Standup/${user.standup}`)} className="mlP">
+                  Mi Standup
                 </div>
               </div>
               <div>
-                <div onClick={() => linkTo("cohortes")} className="mlP">
-                  Cohortes
+                <div onClick={() => linkTo(`MiCohorte/${user.cohorte}`)} className="mlP">
+                  Mi Cohorte
                 </div>
+              </div>
+              <div>
+                <div onClick={() => linkTo(`MisDatos/${user._id}`)} className="mlP">
+                  Rendimiento
+                </div>
+              </div>
+              <div>
+                <div onClick={() => divChange("a")} className="mlP">
+                  {user.name && user.name.firstname}
+                </div>
+                {display1 === "a" ? (
+                  <div className="containermlH">
+                    <div className="mlH">Mi Perfil</div>
+                    <div className="mlH" onClick={LogOut}>
+                      Logout
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
+        // LOGICA PARA RENDERIZAR LO QUE VE EL ALUMNO
+        : (user.role === "alumno") ? 
+        <div
+        className={display ? "containerNavList" : "activeDiv"}
+        id="divIdList"
+      >
+        <div className="divListasMobile">
+          
+          <div>
+            <div onClick={() => linkTo("MiCohorte")} className="mlP">
+              Mi Cohorte
+            </div>
+          </div>
+          <div>
+            <div onClick={() => linkTo("MisDatos")} className="mlP">
+              Rendimiento
+            </div>
+          </div>
+          <div>
+            <div onClick={() => divChange("a")} className="mlP">
+              {user.name && user.name.firstname}
+            </div>
+            {display1 === "a" ? (
+              <div className="containermlH">
+                <div className="mlH">Mi Perfil</div>
+                <div className="mlH" onClick={LogOut}>
+                  Logout
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+      : null}
         </>
       ) : null}
     </div>

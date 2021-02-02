@@ -3,12 +3,12 @@ var fs = require("fs");
 const mailgunLoader = require("mailgun-js");
 const jwt = require("jsonwebtoken");
 const mailgun = mailgunLoader({
-  apiKey: process.env.MAILGUN_KEY,
-  domain: process.env.MAILGUN_DOMAIN,
+apiKey: process.env.MAILGUN_KEY,
+domain: process.env.MAILGUN_DOMAIN,
 });
 
 function Registro(email: string, msj: string) {
-  const token = jwt.sign({ email }, "secreto", { expiresIn: 259200 });
+  const token = jwt.sign({ email }, process.env.SECRET, { expiresIn: 259200 });
 
   var modelEmail = fs.readFileSync(
     "./src/mailmodel/Registro.html",

@@ -1,25 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getActiveCohortes } from "Store/Actions/Cohortes";
 import "./Listado.css";
 
-function Listado(props: any) {
+function Listado() {
+  const { cohortes } = useSelector((state: any) => state.Cohortes);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getActiveCohortes(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="Listado-Container">
       <h2>Cohortes Activos</h2>
       <table className="Listado-Table">
         <tbody>
           <tr>
-            <th className="Listado-Th">Nro</th>
+            <th className="Listado-Th">Id</th>
             <th className="Listado-Th">Inicio</th>
             <th className="Listado-Th">Alum</th>
             <th className="Listado-Th">Instructor</th>
           </tr>
-          {props.listado.Cohortes.cohortes.length > 0 &&
-            props.listado.Cohortes.cohortes.map((elem: any) => {
+          {cohortes &&
+            cohortes.length > 0 &&
+            cohortes.map((elem: any) => {
               return elem.Active === true ? (
                 <tr key={elem._id} id="Listado-Tr">
                   <td className="Listado-Td" id="Listado-Align">
-                    {elem._id.slice(elem._id.length - 2)}
+                    {elem.Nombre}
                   </td>
                   <td className="Listado-Td" id="Listado-Align">
                     {elem.Start}
@@ -27,7 +38,11 @@ function Listado(props: any) {
                   <td className="Listado-Td" id="Listado-Align">
                     {elem.Alumnos}
                   </td>
-                  <td className="Listado-Td">{elem.Instructor[0].User}</td>
+                  <td className="Listado-Td">
+                    {!!elem.Instructor && !!elem.Instructor.name && elem.Instructor.name.firstname +
+                      " " +
+                      elem.Instructor.name.lastname}
+                  </td>
                   <td className="Listado-Td">
                     <Link to={`/activos/${elem._id}`}>
                       <button className="Listado-Boton">Detalle</button>

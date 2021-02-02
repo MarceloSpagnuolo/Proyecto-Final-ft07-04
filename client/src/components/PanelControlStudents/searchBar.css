@@ -1,0 +1,53 @@
+#inlineFormInputGroup {
+    padding: 10px;
+    border: 1px inset;
+    max-width: 17vw;
+    min-width: 17vw;
+    border-radius: 20px;
+    outline-style: none;
+    background-color: white;
+    opacity: 0.4;
+  }
+  
+  #inlineFormInputGroup:hover{
+    opacity: 1;
+  }
+
+  #SearchBarLabel{
+    margin-left: 20px;
+  }
+  
+  .button-search {
+    position: absolute;
+    margin-left: -36px;
+    top: 1px;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  
+  
+  .button-search:hover {
+    cursor: pointer;
+    background: rgb(224, 210, 210);
+    border: 1px inset;
+    opacity: 0.6;
+  }
+  
+  .icon-S {
+    height: 20px;
+    width: 20px;
+  }
+  .search-nav{
+    display: flex;
+   position: relative;
+   margin-left: 30%;
+  }
+
+  #lupita{
+      width: 3%;
+      height: 3%;
+  }

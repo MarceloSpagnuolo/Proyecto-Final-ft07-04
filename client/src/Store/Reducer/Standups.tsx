@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import {
   GET_STANDUPS,
   PUT_STANDUPS,
@@ -49,9 +50,18 @@ function Standups(state = inicialState, action: any) {
     }
     case ERROR_MESSAGE: {
       alert(action.message);
+    case ERROR_MESSAGE: {
+      Swal.fire(
+        "Error",
+        action.message,
+        "error"
+      );
+      return state;
+      }
+    default: {
+      return state;
     }
   }
-  return state;
 }
 
 export default Standups;

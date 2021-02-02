@@ -1,6 +1,5 @@
 import axios, { AxiosAdapter, AxiosRequestConfig, AxiosResponse, AxiosStatic } from "axios";
 import jwt from 'jsonwebtoken';
-import { uploadAction } from "../../components/PanelControlStudents/InvitacionAlumnos/actionUpdate";
 import {
   GET_USERS,
   POST_USER,
@@ -13,19 +12,15 @@ import {
   GET_USER_BY_TOKEN,
   GET_STUDENTS,
   USERS_GROUP
+  SEARCH_BY_NAME,
 } from "../Constants/Users";
-
 const url = "http://localhost:3001";
 
 
 export const sendInvitation = (payload: any) => async (dispatch: any) => {
   try {
-    if (payload.file) {
-      const upFile: any = await uploadAction(payload);
-      const res: any = await axios.post(`${url}/mails`, upFile)
-    } else {
-      const res: any = await axios.post(`${url}/mails`, payload)
-    }
+
+    const res: any = await axios.post(`${url}/mails`, payload)
   }
   catch (e) {
     dispatch({
@@ -111,6 +106,7 @@ export const getUserByToken = (payload: any) => async (dispatch: any) => {
   }
 };
 
+
 export const deleteUserCohorte = (id: any) => async (dispatch: any) => {
   try {
     const res = await axios.delete(`${url}/users/cohorte/${id}`);
@@ -157,3 +153,17 @@ export const usersGroup = (id: any) => async (dispatch: any) => {
 }
 
 
+export const SearchByName = (payload: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.get(`${url}/users/search?firstname=${payload[0]}&lastname=${payload[1]}`);
+    dispatch({
+      type: SEARCH_BY_NAME,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Problemas para buscar alumno",
+    });
+  }
+};
