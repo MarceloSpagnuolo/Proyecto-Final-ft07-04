@@ -3,7 +3,8 @@
   padding: 25px 100px;
   width: auto;
 }
-#titulo-pc{
+
+#titulo-pc {
   font-family: 'Roboto', sans-serif;
   font-size: 2.441rem;
   text-transform: capitalize;
@@ -11,7 +12,8 @@
   margin-bottom: 25px;
   margin-top: 5px;
 }
-#texto-pc{
+
+#texto-pc {
   margin: 0px;
   font-family: 'Roboto', sans-serif;
   font-size: 1.25rem;
@@ -20,8 +22,8 @@
 }
 
 #tab-container {
-  background: rgb(255,255,255);
-  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(235,235,235,1) 95%);
+  background: rgb(255, 255, 255);
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 95%);
   padding: 50px 100px;
   border-radius: 20px;
   box-shadow: 5px 5px 30px;
@@ -98,10 +100,11 @@
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   .PCS-container {
     background-color: #F6DE00;
-    padding: 25px 15px;
+    padding: 25px 8px;
     width: auto;
   }
-  #titulo-pc{
+
+  #titulo-pc {
     font-family: 'Roboto', sans-serif;
     font-size: 2.441rem;
     font-weight: 600;
@@ -111,7 +114,8 @@
     margin-bottom: 25px;
     margin-top: 5px;
   }
-  #texto-pc{
+
+  #texto-pc {
     margin: 0px;
     text-align: left;
     font-family: 'Roboto', sans-serif;
@@ -120,29 +124,29 @@
     margin-bottom: 45px;
     max-width: 300px;
   }
-  
+
   #tab-container {
-    background: rgb(255,255,255);
-    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(235,235,235,1) 95%);
+    background: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 95%);
     padding: 15px 15px;
     border-radius: 20px;
     box-shadow: 5px 5px 30px;
     color: #25252538;
     width: auto;
-  }  
-  
+  }
+
   .react-tabs {
     -webkit-tap-highlight-color: transparent;
   }
-  
+
   .react-tabs__tab-list {
     border-bottom: 1px solid #aaa;
     margin: 0 0 10px;
     padding: 0;
   }
-  
 
-  
+
+
   .react-tabs__tab {
     display: inline-block;
     border: 1px solid transparent;
@@ -153,29 +157,29 @@
     padding: 6px 12px;
     cursor: pointer;
   }
-  
- 
-  
+
+
+
   .react-tabs__tab--selected {
     background: #fff;
     border-color: #aaa;
     color: black;
     border-radius: 5px 5px 0 0;
   }
-  
 
-  
+
+
   .react-tabs__tab--disabled {
     color: GrayText;
     cursor: default;
   }
-  
+
   .react-tabs__tab:focus {
     box-shadow: 0 0 5px hsl(208, 99%, 50%);
     border-color: hsl(208, 99%, 50%);
     outline: none;
   }
-  
+
   .react-tabs__tab:focus:after {
     content: "";
     position: absolute;
@@ -185,28 +189,29 @@
     bottom: -5px;
     background: #fff;
   }
-  
+
   .react-tabs__tab-panel {
     display: none;
   }
-  
-  
+
+
   .react-tabs__tab-panel--selected {
     display: block;
   }
-   
-  
 
-  }
 
-  @media only screen and (min-device-width : 481px) and (max-device-width : 768px) {
+
+}
+
+@media only screen and (min-device-width : 481px) and (max-device-width : 768px) {
   .PCS-container {
     background-color: #F6DE00;
     padding: 4% 8%;
     width: auto;
     height: auto;
   }
-  #titulo-pc{
+
+  #titulo-pc {
     font-family: 'Roboto', sans-serif;
     font-size: 2.441rem;
     font-weight: 600;
@@ -216,7 +221,8 @@
     margin-bottom: 25px;
     margin-top: 5px;
   }
-  #texto-pc{
+
+  #texto-pc {
     margin: 0px;
     text-align: left;
     font-family: 'Roboto', sans-serif;
@@ -225,29 +231,29 @@
     margin-bottom: 45px;
     max-width: 450px;
   }
-  
+
   #tab-container {
-    background: rgb(255,255,255);
-    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(235,235,235,1) 95%);
+    background: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 95%);
     padding: 15px 15px;
     border-radius: 20px;
     box-shadow: 5px 5px 30px;
     color: #25252538;
     width: auto;
-  }  
-  
+  }
+
   .react-tabs {
     -webkit-tap-highlight-color: transparent;
   }
-  
+
   .react-tabs__tab-list {
     border-bottom: 1px solid #aaa;
     margin: 0 0 10px;
     padding: 0;
   }
-  
 
-  
+
+
   .react-tabs__tab {
     display: inline-block;
     border: 1px solid transparent;
@@ -258,29 +264,29 @@
     padding: 6px 12px;
     cursor: pointer;
   }
-  
- 
-  
+
+
+
   .react-tabs__tab--selected {
     background: #fff;
     border-color: #aaa;
     color: black;
     border-radius: 5px 5px 0 0;
   }
-  
 
-  
+
+
   .react-tabs__tab--disabled {
     color: GrayText;
     cursor: default;
   }
-  
+
   .react-tabs__tab:focus {
     box-shadow: 0 0 5px hsl(208, 99%, 50%);
     border-color: hsl(208, 99%, 50%);
     outline: none;
   }
-  
+
   .react-tabs__tab:focus:after {
     content: "";
     position: absolute;
@@ -290,33 +296,34 @@
     bottom: -5px;
     background: #fff;
   }
-  
+
   .react-tabs__tab-panel {
     display: none;
   }
-  
-  
+
+
   .react-tabs__tab-panel--selected {
     display: block;
   }
-   
-  
-
-  }
 
 
 
+}
 
 
-  
-  @media only screen and (min-device-width : 769px) and (max-device-width : 1024px) {
+
+
+
+
+@media only screen and (min-device-width : 769px) and (max-device-width : 1024px) {
   .PCS-container {
     background-color: #F6DE00;
     padding: 4% 8%;
     width: auto;
     height: auto;
   }
-  #titulo-pc{
+
+  #titulo-pc {
     font-family: 'Roboto', sans-serif;
     font-size: 2.441rem;
     font-weight: 600;
@@ -326,7 +333,8 @@
     margin-bottom: 25px;
     margin-top: 5px;
   }
-  #texto-pc{
+
+  #texto-pc {
     margin: 0px;
     text-align: left;
     font-family: 'Roboto', sans-serif;
@@ -335,29 +343,29 @@
     margin-bottom: 45px;
     max-width: 450px;
   }
-  
+
   #tab-container {
-    background: rgb(255,255,255);
-    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(235,235,235,1) 95%);
+    background: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 95%);
     padding: 15px 15px;
     border-radius: 20px;
     box-shadow: 5px 5px 30px;
     color: #25252538;
     width: auto;
-  }  
-  
+  }
+
   .react-tabs {
     -webkit-tap-highlight-color: transparent;
   }
-  
+
   .react-tabs__tab-list {
     border-bottom: 1px solid #aaa;
     margin: 0 0 10px;
     padding: 0;
   }
-  
 
-  
+
+
   .react-tabs__tab {
     display: inline-block;
     border: 1px solid transparent;
@@ -368,29 +376,29 @@
     padding: 6px 12px;
     cursor: pointer;
   }
-  
- 
-  
+
+
+
   .react-tabs__tab--selected {
     background: #fff;
     border-color: #aaa;
     color: black;
     border-radius: 5px 5px 0 0;
   }
-  
 
-  
+
+
   .react-tabs__tab--disabled {
     color: GrayText;
     cursor: default;
   }
-  
+
   .react-tabs__tab:focus {
     box-shadow: 0 0 5px hsl(208, 99%, 50%);
     border-color: hsl(208, 99%, 50%);
     outline: none;
   }
-  
+
   .react-tabs__tab:focus:after {
     content: "";
     position: absolute;
@@ -400,21 +408,16 @@
     bottom: -5px;
     background: #fff;
   }
-  
+
   .react-tabs__tab-panel {
     display: none;
   }
-  
-  
+
+
   .react-tabs__tab-panel--selected {
     display: block;
   }
-   
-  
-
-  }
 
 
 
-
-
+}
