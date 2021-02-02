@@ -146,9 +146,18 @@ router.get("/groupUsers/:id", async (req, res) => {
 
 router.get("/usercohorte/:id", async (req, res) => {
   const { id } = req.params
-  const usuarios = await User.find({ cohorte: id, standup: null })
-  !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios)
+  const usuarios = await User.find({ role: "alumno", cohorte: id, standup: null})
+  console.log(id)
+  const PM = await User.find({role: "PM", standup: null})
+  !usuarios ? res.send("hubo un error").status(400) : res.json([usuarios, PM])
 })
 
+
+
+//"Rol === alumno => standup === standup vigente///
+ // |       O
+ //\ /     /|\
+ //        / \   persone ne binare
+//rol === PM => standup === standup de OTRO COHORTE MAS NUevO.//// holi //
 
 export default router;

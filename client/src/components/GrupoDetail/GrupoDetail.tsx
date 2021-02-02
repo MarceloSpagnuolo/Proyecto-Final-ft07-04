@@ -1,38 +1,59 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { usersGroup } from "Store/Actions/Users";
+import { getOneStandups, postPm } from "Store/Actions/Standups"
 import "./GrupoDetail.css";
 import ProfileCard from "components/ProfileCard/ProfileCard";
 import axios, { AxiosRequestConfig } from "axios";
-import { ppid } from "process";
 
 
-const GrupoDetail = (): JSX.Element => {
+const GrupoDetail = (props: any): JSX.Element => {
     const [pm, setPm] = useState<string>("")
     const [display, setDisplay] = useState<boolean>(false)
     const [update, setUpdate] = useState<boolean>(false)
     const [singrupo, setSingrupo] = useState<any>([])
+    const [PMsingrupo, setPMSingrupo] = useState<any>([])
     const disptach = useDispatch()
+    const { id } = props.match.params;
     const alumnos: any = useSelector((state: any) => state.Users.users);
+    const Grupo: any = useSelector((state: any) => state.Standups.standup)
     const cg = { c: 1, g: 1 }
-    async function agregar(id: any) {
-        await axios.put(`http://localhost:3001/users/modify/${id}`, { standup: "600b9852935003272c8b6801" });
+    async function agregar(i: any) {
+        await axios.put(`http://localhost:3001/users/modify/${i}`, { standup: id });
         setUpdate(!update)
         return
     }
-    async function eliminarPM(group_id: any, pm: any) {
-         axios.delete(`http://localhost:3001/standup/PM/${group_id}/${pm}`,)
+    async function eliminarPM(pm: any) {
+        axios.delete(`http://localhost:3001/standup/PM/${id}/${pm}`,)
+
     }
     useEffect(() => {
-        disptach(usersGroup("600b9852935003272c8b6801"))
-        const res = axios.get(`http://localhost:3001/users/usercohorte/${"600b9852935003272c8b6902"}`)
-        res.then((r) => {
-            setSingrupo(r.data)
-        })
+        disptach(getOneStandups(id))
+        disptach(usersGroup(id))
+
     }, [update])
+    useEffect(() => {
+        if (!!Grupo && Grupo.length > 0 && !!Grupo[0].Cohorte) {
+            console.log(Grupo[0].Cohorte, "useeffffectttt")
+            axios.get(`http://localhost:3001/users/usercohorte/${Grupo[0].Cohorte}`)
+                .then((r) => {
+                    setSingrupo(r.data[0])
+                    setPMSingrupo(r.data[1])
+                    console.log(r.data, "soy el then")
+                })
+        }
+    }, [!!Grupo && Grupo.length, update])
+
+    console.log(Grupo)
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
+        const datos = {
+            id: id,
+            PM: pm
+        }
+        disptach(postPm(datos))
         e.preventDefault();
+        console.log(datos, "Agrege un PM")
     }
 
     function handleChange(e: React.ChangeEvent<HTMLSelectElement>): void {
@@ -41,7 +62,8 @@ const GrupoDetail = (): JSX.Element => {
     return (
         <div className="divsoteGroupAdd">
             <h1 className="titleG">
-                Grupo 01
+                
+                Grupo {!!Grupo && Grupo.length > 0 && Grupo[0].Grupo}
             </h1>
             <h3 className="subTitleG">
                 Aquí podra gestionar los PMs y alumnos de <br />este grupo
@@ -51,10 +73,10 @@ const GrupoDetail = (): JSX.Element => {
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <select className="selectPMG" value={pm} onChange={(e) => handleChange(e)}>
                         <option value=""></option>
-                        {!!singrupo && singrupo.map((p: any) => {
+                        {!!PMsingrupo && PMsingrupo.map((p: any) => {
                             if (p.role === "PM") {
                                 return (
-                                    <option value="Pepito San Pon">{p.name.lastname}</option>
+                                    <option value={p._id}>{p.name.lastname}</option>
                                 )
                             }
                         })}
@@ -66,11 +88,10 @@ const GrupoDetail = (): JSX.Element => {
             <div className="pmContainerName">
                 {alumnos.length > 0 && alumnos.map((p: any) => {
                     if (p.role === "PM" && p.standup !== null) {
-                        console.log(p._id)
                         return (
                             <div key={"PM" + p._id} className="wq">
                                 <img className="roundPM" src="https://i.pinimg.com/236x/22/cd/5b/22cd5bf661c3d8a8550752b981901531.jpg" alt="user" /><p>{p.name.lastname}</p>
-                                <button onClick={() => { eliminarPM( "600b9852935003272c8b6801", `${p._id}`); setUpdate(!update) }}>X</button>
+                                <button onClick={() => { eliminarPM(`${p._id}`); setUpdate(!update) }}>X</button>
                             </div>
                         )
                     }
@@ -91,9 +112,6 @@ const GrupoDetail = (): JSX.Element => {
                         return (<ProfileCard key={"PC" + a._id} props={a} CG={cg} set={{ a: setUpdate, b: update }} />)
                     }
                 })}
-
-            </div>
-            <div className="divAddToGroup">
 
             </div>
         </div>
