@@ -1,10 +1,24 @@
 import express from "express";
 const router = express.Router();
 import Group from "../Models/groups";
+import User from "../Models/users"
 
 //TRAE TODOS LOS STANDUP
 router.get("/", async (req, res) => {
-  const result = await Group.find();
+  const result = await Group.find().sort({Grupo: 'asc'});
+
+  !result ? res.send("Hubo un error").status(400) : res.json(result);
+});
+
+router.get("/byCohorte/:id", async (req, res) => {
+  const { id } = req.params;
+  const result = await Group.find({ Cohorte: id }).sort({Grupo: 'asc'});;
+
+  !result ? res.send("Hubo un error").status(400) : res.json(result);
+});
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  const result = await Group.find({ _id: id }).sort({Grupo: 'asc'});;
 
   !result ? res.send("Hubo un error").status(400) : res.json(result);
 });
@@ -14,7 +28,6 @@ router.get("/", async (req, res) => {
 //Si no se pasa valor de PM1 o PM2, el mismo deja un espacio vacío en el array.
 router.post("/", async (req, res) => {
   const { PM1, PM2, NumeroGrupo, CohorteId } = req.body;
-
   const group = new Group({
     PM: [PM1, PM2],
     Grupo: NumeroGrupo,
@@ -69,8 +82,8 @@ router.post("/PM", async (req, res) => {
 
 //BORRA UN STANDUP
 //Se pide el ID de la colección a borrar.
-router.delete("/", async (req, res) => {
-  const { id } = req.body;
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
   const group = await Group.findOneAndDelete({ _id: id });
 
   !group ? res.send("hubo un error").status(400) : res.json(group);
@@ -78,13 +91,13 @@ router.delete("/", async (req, res) => {
 
 // BORRA UN PM DEL STANDUP
 // Se debe pasar el ID del PM a borrar más el ID De la colección donde se encuentra el mismo.
-router.delete("/PM", async (req, res) => {
-  const { id, PM } = req.body;
+router.delete("/PM/:id/:PM", async (req, res) => {
+  const { id, PM } = req.params;
   const group = await Group.findById(id);
-
   group.PM.pull(PM);
-
   group.save();
+  const user = await User.findByIdAndUpdate(PM, { standup: null })
+  user.save();
 
   !group ? res.send("hubo un error").status(400) : res.json(group);
 });

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosAdapter, AxiosRequestConfig, AxiosResponse, AxiosStatic } from "axios";
 import jwt from 'jsonwebtoken';
 import {
   GET_USERS,
@@ -11,6 +11,7 @@ import {
   MIGRAR_USER_COHORTE,
   GET_USER_BY_TOKEN,
   GET_STUDENTS,
+  USERS_GROUP
   SEARCH_BY_NAME,
 } from "../Constants/Users";
 const url = "http://localhost:3001";
@@ -18,6 +19,7 @@ const url = "http://localhost:3001";
 
 export const sendInvitation = (payload: any) => async (dispatch: any) => {
   try {
+
     const res: any = await axios.post(`${url}/mails`, payload)
   }
   catch (e) {
@@ -120,7 +122,7 @@ export const deleteUserCohorte = (id: any) => async (dispatch: any) => {
   }
 };
 
-export const migrarUserCohorte = (id: any, cohorteName: string) => async (dispatch: any) => {
+export const migrarUserCohorte = (id: string, cohorteName: string) => async (dispatch: any) => {
   try {
     const res = await axios.put(`${url}/users/cohorte/${id}`, { cohorteName });
     dispatch({
@@ -134,6 +136,22 @@ export const migrarUserCohorte = (id: any, cohorteName: string) => async (dispat
     });
   }
 };
+
+export const usersGroup = (id: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.get(`${url}/users/groupUsers/${id}`,);
+    dispatch({
+      type: USERS_GROUP,
+      payload: res.data
+    })
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Problemas para traer usuarios",
+    });
+  }
+}
+
 
 export const SearchByName = (payload: any) => async (dispatch: any) => {
   try {

@@ -37,8 +37,6 @@ router.post("/register", async (req, res) => {
     role,
     email,
     password,
-    cohorte,
-    standup,
   } = req.body;
 
   try {
@@ -97,6 +95,7 @@ router.put("/modify/:id", async (req, res) => {
 //Devuelve todos los usuarios de un cohorte
 router.get("/cohorte/:id", async (req, res) => {
   const { id } = req.params
+
   if (id !== "todos") {
     await User.find({ cohorte: id }, function (err, users) {
       Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
@@ -121,6 +120,7 @@ router.get("/cohorte/:id", async (req, res) => {
 //Resta la cantidad de alumnos del modelo cohorte
 router.delete("/cohorte/:id", async (req, res) => {
   const { id } = req.params;
+
   //primero traemos el alumno
   const alumno = await User.findById(id);
   if (alumno) {
@@ -181,6 +181,8 @@ router.get("/disponibles", async (req, res) => {
   final ? res.json(final) : res.sendStatus(400);
 });
 
+
+
 // Ruta para verificar el usuario de GitHub
 
 async function getUser(username: any) {
@@ -196,6 +198,7 @@ async function getUser(username: any) {
 
 router.get('/github/:username', async (req, res) => {
   let { username } = req.params;
+
 
   const userStatus = username !== undefined ? await getUser(username) : username;
 
@@ -263,5 +266,31 @@ router.get('/:id', async (req, res) => {
     })
   })
 })
+
+//////////////////////////////////////////////////////////////////////////////
+
+/// Rutas para usar en grupos///////
+
+router.get("/groupUsers/:id", async (req, res) => {
+  const { id } = req.params;
+  const users = await User.find({ standup: id, });
+  res.json(users)
+})
+
+router.get("/usercohorte/:id", async (req, res) => {
+  const { id } = req.params
+  const usuarios = await User.find({ role: "alumno", cohorte: id, standup: null})
+  console.log(id)
+  const PM = await User.find({role: "PM", standup: null})
+  !usuarios ? res.send("hubo un error").status(400) : res.json([usuarios, PM])
+})
+
+
+
+//"Rol === alumno => standup === standup vigente///
+ // |       O
+ //\ /     /|\
+ //        / \   persone ne binare
+//rol === PM => standup === standup de OTRO COHORTE MAS NUevO.//// holi //
 
 export default router;
