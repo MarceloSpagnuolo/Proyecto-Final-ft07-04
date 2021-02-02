@@ -93,6 +93,12 @@ const Home = ()=> {
                             <button id='home-estudiantes-boton' >Mi Cohorte</button>
                         </Link>
                     </div>
+                    <div id='panel-estudiantes'>
+                        <p>Para ver tu standup puedes hacer click en este botón, o acceder a través de la barra de navegacion</p>
+                        <Link rel="stylesheet" to={`/MiGrupo/${user.standup}`}>
+                            <button id='home-estudiantes-boton' >Mi Cohorte</button>
+                        </Link>
+                    </div>
                     <div id='panel-cohortes'>
                         <p id="home-estudiantes-h4-instrucciones">Para ver tu rendimiento haz click en este botón o usa los controles de la barra de navegacion</p>
                         <Link rel="stylesheet" to="/MiRendimiento">

@@ -3,16 +3,15 @@ import { postStandup, getStandups, delStandup, getStandupsByCohorte } from "Stor
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const GrupoCreate = () => {
-    const [num, setNum] = useState<number>(0)
-    const [a, seta] = useState<number>()
+const GrupoCreate = (props: any) => {
     const dispatch = useDispatch();
     const grupos: any = useSelector((state: any) => state.Standups.standups);
-
+    const { id } = props.match.params;
+    // const prueba = "600b9852935003272c8b6902"
+    
     useEffect(() => {
-        dispatch(getStandupsByCohorte("600b9852935003272c8b6902"))
+        dispatch(getStandupsByCohorte(id))
     }, []);
-    const props = "600b9852935003272c8b6902"
 
     function newGrupo() {
         let index: null | number = null;

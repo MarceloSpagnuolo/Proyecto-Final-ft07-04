@@ -151,6 +151,11 @@ const Nav = () => {
             </div>
           </div>
           <div>
+            <div onClick={() => linkTo(`MiGrupo/${user.standup}`)} className="mlP">
+              Mi Grupo
+            </div>
+          </div>
+          <div>
             <div onClick={() => linkTo("MisDatos")} className="mlP">
               Rendimiento
             </div>

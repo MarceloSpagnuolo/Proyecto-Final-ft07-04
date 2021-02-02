@@ -49,8 +49,6 @@ function Standups(state = inicialState, action: any) {
       }
     }
     case ERROR_MESSAGE: {
-      alert(action.message);
-    case ERROR_MESSAGE: {
       Swal.fire(
         "Error",
         action.message,

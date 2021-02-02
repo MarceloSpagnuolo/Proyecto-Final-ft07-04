@@ -29,7 +29,6 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   const { PM1, PM2, NumeroGrupo, CohorteId } = req.body;
   const group = new Group({
-    PM: [PM1, PM2],
     Grupo: NumeroGrupo,
     Cohorte: CohorteId,
   });
@@ -76,6 +75,13 @@ router.post("/PM", async (req, res) => {
     },
     { upsert: true }
   );
+  await User.findOneAndUpdate(
+    {_id: PM},
+    {
+      standup: id
+    },
+    {upsert: true}
+  )
 
   !group ? res.send("hubo un error").status(400) : res.json(group);
 });

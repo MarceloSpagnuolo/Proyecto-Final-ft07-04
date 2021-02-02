@@ -132,7 +132,6 @@ router.delete("/cohorte/:id", async (req, res) => {
     await Cohorte.findOneAndUpdate({ _id: alumno.cohorte }, { Alumnos: newCantidad });
   }
   const usuarios = await User.findOneAndUpdate({ _id: id }, { cohorte: null });
-  console.log(usuarios);
   !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios);
 });
 
@@ -280,7 +279,6 @@ router.get("/groupUsers/:id", async (req, res) => {
 router.get("/usercohorte/:id", async (req, res) => {
   const { id } = req.params
   const usuarios = await User.find({ role: "alumno", cohorte: id, standup: null})
-  console.log(id)
   const PM = await User.find({role: "PM", standup: null})
   !usuarios ? res.send("hubo un error").status(400) : res.json([usuarios, PM])
 })

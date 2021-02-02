@@ -12,6 +12,7 @@ import PanelControlStudents from 'components/PanelControlStudents/panelControl';
 import Grupos from 'components/Grupos/GruposCreate';
 import MiCohorte from "./components/PMsYAlumnos/MiCohorte"
 import Rendimiento from "./components/PMsYAlumnos/Rendimiento"
+import MiGrupo from "./components/PMsYAlumnos/MiGrupo"
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
       <Route exact path="/activos/:id" component={Activos} />
       <Route exact path="/inactivos/:id" component={Inactivos} />
       <Route exact path='/PanelControlStudent' component={PanelControlStudents} />
-      <Route exact path='/Grupos' component={Grupos} />
+      <Route exact path='/Grupos/:id' component={Grupos} />
+      <Route exact path='/MiGrupo/:id' component={MiGrupo} />
     </>
   );
 }
