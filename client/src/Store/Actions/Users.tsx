@@ -11,7 +11,7 @@ import {
   MIGRAR_USER_COHORTE,
   GET_USER_BY_TOKEN,
   GET_STUDENTS,
-  USERS_GROUP
+  USERS_GROUP,
   SEARCH_BY_NAME,
 } from "../Constants/Users";
 const url = "http://localhost:3001";
