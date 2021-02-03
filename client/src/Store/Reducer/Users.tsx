@@ -1,4 +1,3 @@
-
 import {
   GET_USERS,
   POST_USER,
@@ -12,17 +11,23 @@ import {
   USERS_GROUP,
   SEARCH_BY_NAME,
   ERROR_MESSAGE,
+  GET_USER_EDIT,
+  UPDATE_USER_PASSWORD,
+  PUT_NOTAS,
 } from "../Constants/Users";
 import Swal from "sweetalert2";
+import { EMFILE } from "constants";
 
 interface Store {
   user: Object;
-  users: Array<any>  ;
+  users: Array<any>;
+  userToEdit: Array<any>;
 }
 
 const inicialState: Store = {
   user: {},
   users: [],
+  userToEdit: [],
 };
 
 function Users(state = inicialState, action: any) {
@@ -36,8 +41,8 @@ function Users(state = inicialState, action: any) {
     case USERS_GROUP: {
       return {
         ...state,
-        users: action.payload
-      }
+        users: action.payload,
+      };
     }
     case POST_USER:
       return {
@@ -62,16 +67,41 @@ function Users(state = inicialState, action: any) {
     case SEARCH_BY_NAME:
       return {
         ...state,
-        users: action.payload
-      }
+        users: action.payload,
+      };
+    case PUT_NOTAS: {
+      return {
+        ...state,
+        users: state.users.map((user) => {
+          if (user.historia._id === action.payload._id) {
+            user.historia = action.payload;
+            return user;
+          } else {
+            return user;
+          }
+        }),
+      };
+    }
     case ERROR_MESSAGE: {
-      Swal.fire(
-        "Error",
-        action.message,
-        "error"
-      );
+      Swal.fire("Error", action.message, "error");
       return state;
-    };
+    }
+    case UPDATE_USER_PASSWORD:
+      return {
+        ...state,
+        msg: action.payload,
+      };
+    case GET_USER_EDIT:
+      return {
+        ...state,
+        userToEdit: action.payload,
+      };
+    case PUT_USERS: {
+      return {
+        ...state,
+        userToEdit: action.payload,
+      };
+    }
     default: {
       return state;
     }

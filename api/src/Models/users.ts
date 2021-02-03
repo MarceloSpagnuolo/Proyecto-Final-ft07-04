@@ -29,8 +29,9 @@ const UserSchema: Schema<Props> = new Schema({
   email: { type: String, trim: true, unique: true },
   password: { type: String, trim: true },
   created: { type: Date, default: Date.now },
-  cohorte: { type: mongoose.Schema.Types.ObjectId, ref: "Cohortes" },
-  standup: { type: mongoose.Schema.Types.ObjectId, ref: "Standups" },
+  cohorte: { type: mongoose.Schema.Types.ObjectId, ref: "Cohorte" },
+  standup: { type: mongoose.Schema.Types.ObjectId, ref: "Group" },
+  historia: { type: mongoose.Schema.Types.ObjectId, ref: "Histotial"},
 });
 
 UserSchema.pre("save", async function (next) {

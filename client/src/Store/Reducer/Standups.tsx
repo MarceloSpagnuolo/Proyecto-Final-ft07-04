@@ -1,7 +1,6 @@
 import Swal from "sweetalert2";
 import {
   GET_STANDUPS,
-  PUT_STANDUPS,
   POST_PM,
   GET_ONE_STANDUP,
   POST_STANDUP,
