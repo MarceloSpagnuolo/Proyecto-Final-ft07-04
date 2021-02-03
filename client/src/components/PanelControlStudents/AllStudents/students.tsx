@@ -10,7 +10,7 @@ const Students = (): JSX.Element => {
     const users: any = useSelector((state: any) => state.Users.users)
 
     useEffect(() => {
-        dispatch(getStudents())
+        dispatch(getStudents("all"))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -42,9 +42,9 @@ const Students = (): JSX.Element => {
                                 <td className="student-table-td">{alum.email}</td>
                                 <td className="student-table-td" id="less">{alum.github}</td>
                                 <td className="student-table-td" id="links-table">
-                                <Link id="links" to={`/activos/${alum.cohorte && alum.cohorte._id}`}>
-                                    {alum.cohorte && alum.cohorte.Nombre}
-                                </Link>
+                                    <Link id="links" to={`/activos/${alum.cohorte && alum.cohorte._id}`}>
+                                        {alum.cohorte && alum.cohorte.Nombre}
+                                    </Link>
                                 </td>
                                 <td className="student-table-td" id="less">{alum.standup && alum.standup.Grupo}</td>
                             </tr>

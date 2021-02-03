@@ -87,10 +87,7 @@ const Login = (): JSX.Element => {
                     </div>
                 </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </>
+                </>
   );
 };
 
