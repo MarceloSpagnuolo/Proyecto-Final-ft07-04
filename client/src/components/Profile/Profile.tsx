@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
-import {updatePassword,getUsereEdit,updateUser} from 'Store/Actions/Users'; 
+import {updatePassword,getUsereEdit,updateUser} from '../../Store/Actions/Users'; 
 import {Modal} from "./modal";
 import "./Profile.css";
 

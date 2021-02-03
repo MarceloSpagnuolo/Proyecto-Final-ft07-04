@@ -13,7 +13,7 @@ import Carga from "components/Notas/Carga";
 import Grupos from 'components/Grupos/GruposCreate';
 import MiCohorte from "./components/PMsYAlumnos/MiCohorte"
 import Rendimiento from "./components/PMsYAlumnos/Rendimiento"
-import Profile from "components/Profile/Profile"
+import Profile from './components/Profile/Profile'
 import MiGrupo from "./components/PMsYAlumnos/MiGrupo"
 
 function App() {
