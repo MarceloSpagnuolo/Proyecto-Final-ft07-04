@@ -37,8 +37,8 @@ function Carga() {
   return (
     <>
     <div className="Carga-Body">
-      <div>
-        <div>
+      <div className="Carga-Notas">
+        <div className="Carga-Check">
           <select
             name="select"
             className="Carga-Select"
@@ -79,17 +79,17 @@ function Carga() {
                   Requ: {cohorte && cohorte.length > 0 && cohorte[0].Checkpoints.CP1.testsReq}
                 </td>
                 <td></td>
-                <td>
+                <td className="Carga-Td">
                   Tests: {cohorte && cohorte.length > 0 && cohorte[0].Checkpoints.CP2.totalTests}<br />
                   Requ: {cohorte && cohorte.length > 0 && cohorte[0].Checkpoints.CP2.testsReq}
                 </td>
                 <td></td>
-                <td>
+                <td className="Carga-Td">
                   Tests: {cohorte && cohorte.length > 0 && cohorte[0].Checkpoints.CP3.totalTests}<br />
                   Requ: {cohorte && cohorte.length > 0 && cohorte[0].Checkpoints.CP3.testsReq}
                 </td>
                 <td></td>
-                <td>
+                <td className="Carga-Td">
                   Tests: {cohorte && cohorte.length > 0 && cohorte[0].Checkpoints.CP4.totalTests}<br />
                   Requ: {cohorte && cohorte.length > 0 && cohorte[0].Checkpoints.CP4.testsReq}
                 </td>

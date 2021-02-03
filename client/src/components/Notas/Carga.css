@@ -5,6 +5,7 @@
 .Carga-Tabla {
   font-size: 1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 100%;
 }
 
 .Carga-Td {
@@ -46,4 +47,12 @@
 .Carga-Lista span {
   width: 100%;
   text-align: center;
+}
+
+.Carga-Notas {
+  width: 100%;
+}
+
+.Carga-Check {
+  width: fit-content;
 }
