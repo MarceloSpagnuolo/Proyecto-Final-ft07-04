@@ -12,6 +12,7 @@ import PanelControlStudents from 'components/PanelControlStudents/panelControl';
 import Grupos from 'components/Grupos/GruposCreate';
 import MiCohorte from "./components/PMsYAlumnos/MiCohorte"
 import Rendimiento from "./components/PMsYAlumnos/Rendimiento"
+import Profile from "components/Profile/Profile"
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <Route exact path="/inactivos/:id" component={Inactivos} />
       <Route exact path='/PanelControlStudent' component={PanelControlStudents} />
       <Route exact path='/Grupos' component={Grupos} />
+      <Route path='/Profile/:id' component={Profile} />
     </>
   );
 }

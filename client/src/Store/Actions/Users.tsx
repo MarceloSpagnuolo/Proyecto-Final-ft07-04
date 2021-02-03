@@ -13,6 +13,8 @@ import {
   GET_STUDENTS,
   USERS_GROUP,
   SEARCH_BY_NAME,
+  GET_USER_EDIT,
+  UPDATE_USER_PASSWORD,
 } from "../Constants/Users";
 const url = "http://localhost:3001";
 
@@ -167,3 +169,57 @@ export const SearchByName = (payload: any) => async (dispatch: any) => {
     });
   }
 };
+
+
+
+export const updatePassword = (data:Object) => async (dispatch: any) => {
+  try {
+    const res = await axios.put(`${url}/users/change_password`, data);
+    dispatch({
+      type: UPDATE_USER_PASSWORD,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Hubo un problema al intentar actualizar la contraseña",
+    });
+  }
+};
+
+//obtener datos para el perfil de un usuario
+
+export const getUsereEdit = (id:string) => async (dispatch: any) => {
+  
+  try {
+    const res = await axios.get(`${url}/users/${id}`);
+    await dispatch({
+      type: GET_USER_EDIT,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Hubo un problema al obtener el usuario para editar",
+    });
+  }
+};
+
+
+//actualizar usuario 
+export const updateUser = (data:Object) => async (dispatch: any) => {
+  
+  try {
+    const res = await axios.put(`${url}/users/modify`,data);
+    await dispatch({
+      type: PUT_USERS,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Hubo un problema al actualizar el usuario",
+    });
+  }
+};
+

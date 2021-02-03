@@ -12,17 +12,21 @@ import {
   USERS_GROUP,
   SEARCH_BY_NAME,
   ERROR_MESSAGE,
+  GET_USER_EDIT,
+  UPDATE_USER_PASSWORD,
 } from "../Constants/Users";
 import Swal from "sweetalert2";
 
 interface Store {
   user: Object;
   users: Array<any>  ;
+  userToEdit:Array<any>;
 }
 
 const inicialState: Store = {
   user: {},
   users: [],
+  userToEdit:[]
 };
 
 function Users(state = inicialState, action: any) {
@@ -72,6 +76,21 @@ function Users(state = inicialState, action: any) {
       );
       return state;
     };
+    case UPDATE_USER_PASSWORD:
+      return {
+        ...state,
+        msg: action.payload
+      };
+      case GET_USER_EDIT:
+        return {
+          ...state,
+          userToEdit: action.payload
+      };
+      case PUT_USERS:
+        return {
+          ...state,
+          userToEdit: action.payload
+      };
     default: {
       return state;
     }
