@@ -17,7 +17,7 @@ function MiCohorte(props: any) {
   }, []);
 
   useEffect(() => {
-    if(user.cohorte && user.cohorte !== id) {
+    if(user.cohorte && user.cohorte._id !== id) {
       window.location.href = "/home"
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

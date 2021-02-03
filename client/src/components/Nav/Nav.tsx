@@ -86,12 +86,17 @@ const Nav = () => {
                 </div>
               </div>
               <div>
+                <div onClick={() => linkTo("cargaNotas")} className="mlP">
+                  Checkpoints
+                </div>
+              </div>
+              <div>
                 <div onClick={() => divChange("a")} className="mlP">
                   {user.name && user.name.firstname}
                 </div>
                 {display1 === "a" ? (
                   <div className="containermlH">
-                    <div className="mlH">Mi Perfil</div>
+                     <div className="mlH" onClick={() => linkTo("profile/miPerfil")}> Mi Perfil</div>
                     <div className="mlH" onClick={LogOut}>
                       Logout
                     </div>
@@ -108,12 +113,12 @@ const Nav = () => {
             <div className="divListasMobile">
               
               <div>
-                <div onClick={() => linkTo(`Standup/${user.standup}`)} className="mlP">
+                <div onClick={() => linkTo(`MiGrupo/${user.standup._id}`)} className="mlP">
                   Mi Standup
                 </div>
               </div>
               <div>
-                <div onClick={() => linkTo(`MiCohorte/${user.cohorte}`)} className="mlP">
+                <div onClick={() => linkTo(`MiCohorte/${user.cohorte._id}`)} className="mlP">
                   Mi Cohorte
                 </div>
               </div>
@@ -128,7 +133,7 @@ const Nav = () => {
                 </div>
                 {display1 === "a" ? (
                   <div className="containermlH">
-                    <div className="mlH">Mi Perfil</div>
+                      <div className="mlH" onClick={() => linkTo("profile/miPerfil")}> Mi Perfil</div>
                     <div className="mlH" onClick={LogOut}>
                       Logout
                     </div>
@@ -146,12 +151,17 @@ const Nav = () => {
         <div className="divListasMobile">
           
           <div>
-            <div onClick={() => linkTo("MiCohorte")} className="mlP">
+            <div onClick={() => linkTo(`MiCohorte/${user.cohorte._id}`)} className="mlP">
               Mi Cohorte
             </div>
           </div>
           <div>
-            <div onClick={() => linkTo("MisDatos")} className="mlP">
+            <div onClick={() => linkTo(`MiGrupo/${user.standup._id}`)} className="mlP">
+              Mi Grupo
+            </div>
+          </div>
+          <div>
+            <div onClick={() => linkTo(`MisDatos/${user._id}`)} className="mlP">
               Rendimiento
             </div>
           </div>
@@ -161,7 +171,7 @@ const Nav = () => {
             </div>
             {display1 === "a" ? (
               <div className="containermlH">
-                <div className="mlH">Mi Perfil</div>
+                  <div className="mlH" onClick={() => linkTo("profile/miPerfil")}> Mi Perfil</div>
                 <div className="mlH" onClick={LogOut}>
                   Logout
                 </div>

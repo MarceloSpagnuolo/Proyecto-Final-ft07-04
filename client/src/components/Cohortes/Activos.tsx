@@ -10,7 +10,8 @@ import {
 import Modal from "components/Modal/Modal";
 import { getCohorte, putInstructor } from "Store/Actions/Cohortes";
 import axios from "axios";
-import { Formik, Field, ErrorMessage, Form } from "formik";
+// import { Formik, Field, ErrorMessage, Form } from "formik";
+import { Link } from "react-router-dom";
 
 function Activos(props: any) {
   const dispatch = useDispatch();
@@ -164,6 +165,12 @@ function Activos(props: any) {
           <button className="Activos-Boton" onClick={() => cambiaInst()}>Cambiar/Cargar</button>
         </div>
         <br />
+        <div>
+          <span>Grupos</span>
+          <Link to={`/grupos/${id}`}>
+          <button className="Activos-Boton">Ir al grupo</button>
+          </Link>
+        </div>
         <div>
           <span>Alumnos: {users.length}</span>
         </div>

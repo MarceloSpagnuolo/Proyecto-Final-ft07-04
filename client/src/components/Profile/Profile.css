@@ -1,0 +1,13 @@
+.app__btn {
+    margin-top: 50px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: yellow;
+    color: black;
+    transition: background-color 250ms ease;
+  }
+  
+  .app__btn:hover {
+    background-color: rgb(255, 196, 1);
+  }
