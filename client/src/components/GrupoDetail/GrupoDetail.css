@@ -73,17 +73,21 @@
     margin: 0px auto;
 }
 
-.pmContainerName {
+#container-seccion-pms {
     border: none;
     padding: 2%;
     border-radius: 15px;
     margin-bottom: 3%;
     background-color: hsl(51, 98%, 47%);
-    box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418);   
+    box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418);
+    
+
+
+   
 }
 
-.pmContainerName img{
-    border: 3px solid black;
+#container-seccion-pms img{
+    border: 9px solid black;
     display: flex;
     border-radius: 100%;
     max-height: 100px;
@@ -203,11 +207,13 @@
     margin-left: 5%;
 }
 
-/* @media only screen and (min-device-width : 320px) and (max-device-width : 768px) {
+@media only screen and (min-device-width : 320px) and (max-device-width : 768px) {
+   
+    /*TITULO Y ENCABEZADO*/
     .divsoteGroupAdd {
         background-color: hsl(54, 100%, 48%);
         padding: 2% 4%;
-        width: auto;
+        width: 94%;
         font-family: 'Roboto', sans-serif;
     }
     
@@ -216,20 +222,21 @@
         font-size: 2.441rem;
         text-transform: capitalize;
         color: #252525;
-        margin-bottom: 25px;
-        margin-top: 5px;
+        margin: 2% auto;
     }
     
     .subTitleG {
         font-size: 1.563rem;
         font-weight: 400;
-        margin-bottom: 45px;
+        margin: 2% auto 6% auto;
     }
-    
+   
+    /*SECCION AÑADIR PM */
     #grupo-detalle-header {
         background-color: #F8F8F8;
         display: grid;
         grid-template: 1fr/ 1fr;
+        width: 80%;
         padding: 5% 10%;
         border-radius: 20px;
     }
@@ -238,11 +245,12 @@
         font-size: 3.6rem;
         text-transform: uppercase;
         line-height: 0.96;
+        width: 95%;
         padding: 0% 5%;
     }
     #col-izq-grupo-detalle h3{
         margin-top: 2%;
-        font-size: 2.3rem;    
+        font-size: 1.8rem;    
         line-height: 1.3;
         font-weight: 400;
         padding: 0% 5%;
@@ -253,84 +261,94 @@
     }
     
     #elige-pm select{
-        width: 63%;
+        width: 95%;
         color: black;
         border-radius: 5px;
         border: none;
         height: 40px;
-        margin-right: 5%;
-        box-shadow: 6px 6px 5px rgba(219, 219, 219, 0.418);
+        box-shadow: 6px 6px 5px rgba(219, 219, 219, 0.527);
+        
+    }
+    #boton-elige-pm{
+        margin-top: 5%;
+        margin-bottom: 5%;
+        width: 95%;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        height: 40px;
+        box-shadow: 6px 6px 5px rgba(219, 219, 219, 0.527);
         
     }
     
     #col-der-grupo-detalle img{
-        width: 80%;
-        display: none;
-        height: 80%;
-    }
+        display: none;       
+    }    
     
+    
+    /*SECCION DE PMS*/
+  
     .pmtitle {
         font-size: 1.563rem;
         font-weight: 600;
         margin: 3% 0%;
     }
     
-    #container-pms-asignados {
-        margin: 1.5% 3%;
-    }
-    
     #container-seccion-pms {
         border: none;
-        padding: 2%;
+        width: 96%;
         border-radius: 15px;
         margin: 3%, auto;
         background-color: hsl(51, 98%, 47%);
-        box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418);
+        box-shadow: 3px 3px 5px rgba(255, 115, 0, 0.418);
         justify-self: center;  
+        height: auto;
     }
+  
     
-    #container-seccion-pms img{
+    #pm-asignado-grupo{
+        display: flex;
+        flex-direction: column;
+        padding: 0% 0%;
+         
+    }
+    #pm-asignado-grupo p{
+        text-align: center;
+        padding: 0% 0%;
+        font-size: 1.25rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+        
+    }
+    #pm-asignado-grupo img{
+        margin:5% auto;
         border: 9px solid black;
         display: flex;
         border-radius: 100%;
         max-height: 100px;
-        max-width: 100px;
-        margin: 0px auto;
-        box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418)
-    }
-    
-    
-    
-    
-    #pm-asignado-grupo p{
-        text-align: center;
-        padding: 10% 0%;
-        font-size: 1.25rem;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 600;
-    
+        max-width: 100px;       
+        box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418)        
     }
     #pm-asignado-grupo button{
+        margin:5% auto;
         text-align: center;
-        padding: 10% ;
         font-size: 0.8rem;
-        font-family: 'Roboto', sans-serif;
         font-weight: 800;
         border-radius: 35px;
-        width: 200px;
+        width: 66%;
         border: none;
         background-color: black;
         color: white;
-        margin-bottom: 9%;
-        margin-left: 5%;
+       
     }
-    .pmContainerName {
-        width: auto;
-        display: flex;
-        flex-direction: column;
-       padding: 15%;
+  
+    /*SECCION DE AÑADIR ESTUDIANTES*/
+      
+    #grupo-agrega h1{
+        font-size: 3rem;
+        
     }
-    
+
     #add-students {
         text-align: center;
         padding: 1%;
@@ -421,9 +439,9 @@
     }  
     
   
-} */
+}
 
-@media screen and (max-width:1100px) {
+/*@media screen and (max-width:1100px) {
     .subTitleG {
         text-align: center;
     }
@@ -562,7 +580,7 @@
     }
 }
 
-/* @media screen and (min-width:1100px) {
+@media screen and (min-width:1100px) {
     .DivProfileCDetail {
         display: grid;
         grid-template-columns: 300px 300px 300px 300px;
@@ -590,4 +608,4 @@
         right: -200px;
         bottom: 360px;
     }
-} */
+}*/

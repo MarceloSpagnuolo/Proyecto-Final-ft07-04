@@ -89,7 +89,7 @@ const GrupoDetail = (props: any): JSX.Element => {
                                             }
                                         })}
                                     </select>
-                                    <input type="submit" value="seleccionar" />
+                                    <input id='boton-elige-pm' type="submit" value="seleccionar" />
                                 </form>
                             </div>
                         </div>
@@ -100,53 +100,52 @@ const GrupoDetail = (props: any): JSX.Element => {
                 </>
                 : <div>Este grupo tiene el número máximo de PMs</div>}
             <br />
-            <p className="pmtitle">PMs del grupo</p>
             <div id='container-seccion-pms'>
-                <div className="pmContainerName">
-                    {alumnos.length > 0 && alumnos.map((p: any) => {
-                        if (p.role === "PM" && p.standup !== null) {
-                            return (
-                                <div id='container-pms-asignados' key={"PM" + p._id} className="wq">
-                                    <div id='pm-asignado-grupo'>
-                                        <img className="roundPM" src="https://i.pinimg.com/236x/22/cd/5b/22cd5bf661c3d8a8550752b981901531.jpg" alt="user" />
-                                        <p>{p.name.firstname} {p.name.lastname}</p>
-                                        <button onClick={() => { eliminarPM(`${p._id}`) }}>Eliminar PM</button>
-                                    </div>
-                                </div>
-                            )
+                <p className="pmtitle">PMs del grupo</p>
+
+                {alumnos.length > 0 && alumnos.map((p: any) => {
+                    if (p.role === "PM" && p.standup !== null) {
+                        return (
+                            <div id='pm-asignado-grupo' key={"PM" + p._id}>
+                                <img className="roundPM" src="https://i.pinimg.com/236x/22/cd/5b/22cd5bf661c3d8a8550752b981901531.jpg" alt="user" />
+                                <p>{p.name.firstname} {p.name.lastname}</p>
+                                <button onClick={() => { eliminarPM(`${p._id}`) }}>Eliminar PM</button>
+                            </div>
+                        )
+                    }
+                })}
+
+            </div>
+            <div id='add-students-interface'>
+                <div id='grupo-agrega'>
+                    <h1>ALUMNOS DEL GRUPO 01</h1>
+                    <button id='add-students' className="btnAddRespon" onClick={() => setDisplay(!display)}>{!display ? "Agrega Alumnos" : "Cerrar"}</button>
+                </div>
+                <div id='alumnos-grupo'>
+
+                    {!!alumnos && alumnos.map((a: any) => {
+                        if (a.role === "alumno") {
+                            return (<ProfileCard key={"PC" + a._id} props={a} CG={cg} set={{ a: setUpdate, b: update }} />)
                         }
                     })}
-                </div>
-                <div id='add-students-interface'>
-                    <div id='grupo-agrega'>
-                        <h1>ALUMNOS DEL GRUPO 01</h1>
-                        <button id='add-students' className="btnAddRespon" onClick={() => setDisplay(!display)}>{!display ? "Agrega Alumnos" : "Cerrar"}</button>
-                    </div>
-                    <div id='alumnos-grupo'>
 
-                        {!!alumnos && alumnos.map((a: any) => {
+
+                </div>
+                <div id='barra-add-student'>
+                    {display ? <div className="divResponsiveAdd">
+                        <p id='alumnos-disponibles'>Alumnos Disponibles</p>
+                        {singrupo.length > 0 && singrupo.map((a: any) => {
                             if (a.role === "alumno") {
-                                return (<ProfileCard key={"PC" + a._id} props={a} CG={cg} set={{ a: setUpdate, b: update }} />)
+                                return (<div key={"SG" + a._id} className="divAddAlRespon" onClick={() => agregar(a._id)} ><img className="roundAlum" src="https://cdn.discordapp.com/attachments/764979688446885898/803132593338843146/sspider.png" alt="" /><div id='nombre-invitado'>{`${a.name.firstname} ${a.name.lastname}`}</div></div>)
                             }
                         })}
-
-
                     </div>
-                    <div id='barra-add-student'>
-                        {display ? <div className="divResponsiveAdd">
-                            <p id='alumnos-disponibles'>Alumnos Disponibles</p>
-                            {singrupo.length > 0 && singrupo.map((a: any) => {
-                                if (a.role === "alumno") {
-                                    return (<div key={"SG" + a._id} className="divAddAlRespon" onClick={() => agregar(a._id)} ><img className="roundAlum" src="https://cdn.discordapp.com/attachments/764979688446885898/803132593338843146/sspider.png" alt="" /><div id='nombre-invitado'>{`${a.name.firstname} ${a.name.lastname}`}</div></div>)
-                                }
-                            })}
-                        </div>
-                            : null}
-                    </div>
-
+                        : null}
                 </div>
+
             </div>
         </div>
+
     )
 }
 
