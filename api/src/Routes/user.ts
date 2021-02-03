@@ -87,17 +87,42 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
-/// Modificar un usuario por id
-router.put('/modify', async (req, res) => {
 
+router.put('/modify/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const user = await User.findOneAndUpdate({ _id: id}, req.body);
+
+
+  if(!user) {
+    res.status(404).send("No existe un usuario con ese id");
+  } else { res.status(200).json(user); }
+});
+
+/// Modificar un usuario por id
+router.put('/editprofile', async (req, res) => {
+  
   try {
       const user = await User.findOneAndUpdate({ _id: req.body.id}, req.body,{new:true});
       Cohorte.populate(user, { path: "cohorte" }, function (err, usersCH) {
-      Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
-        console.log(usersCOM)
-        res.json(usersCOM).status(200);
+        Group.populate(usersCH, { path: "standup" },  function (err, usersCOM:any) {
+          
+          const payload =  {
+            _id:usersCOM._id,
+            role:usersCOM.role,
+            email:usersCOM.email,
+            github:usersCOM.github,
+            cohorte:usersCOM.cohorte,
+            standup:usersCOM.standup,
+            name:usersCOM.name
+          } 
+          //res.send(jwt.sign(payload, process.env.SECRET));
+          if(usersCOM.role==="admin") return res.json({usersCOM,token:jwt.sign(payload, process.env.SECRET)});
+          res.json({usersCOM})
+         
         })
       });
+      
   } catch (error) {
     console.log(error)
     res.json({msg:'Hubo un error'}).status(400);
@@ -372,7 +397,7 @@ router.get('/:id', async (req, res) => {
     await User.findOne({_id:id }, function (err:any, users:any) {
       Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
         Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
-          res.json(usersCOM).status(200);
+          res.json({usersCOM}).status(200);
         })
       });
     });

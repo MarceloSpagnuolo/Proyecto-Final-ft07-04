@@ -1,9 +1,11 @@
 import React, { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
-import {updatePassword,getUsereEdit,updateUser} from '../../Store/Actions/Users'; 
+import {updatePassword,getUsereEdit,updateUser,getUserByToken} from '../../Store/Actions/Users'; 
 import {Modal} from "./modal";
 import "./Profile.css";
+import Swal from "sweetalert2";
+
 
 
 interface Inputs {
@@ -34,7 +36,7 @@ const Profile = (): JSX.Element => {
     const updatePass = async (data:any) => dispatch(updatePassword(data));
     const getUser = async (id:string) => dispatch(getUsereEdit(id));
     const modifyUser = async (data:any) => dispatch(updateUser(data));
-    const userToEdit =  useSelector( (state: any) => state.Users.userToEdit);
+    const userToEdit =  useSelector( (state: any) => state.Users.userToEdit.usersCOM);
 
 
     //conseguir el id que viene por la url
@@ -43,7 +45,12 @@ const Profile = (): JSX.Element => {
     useEffect(()=>{
         
         if(id === 'miPerfil' ){
+            
+            if(userToEdit && typeof userToEdit.token !== 'undefined'){
+                console.log(userToEdit.token)
+            }
             //obtener el perfil del usuario logueado
+            
             const perfil=async () =>{
                 if( Object.keys(getProfile).length !== 0){ 
                     const id = getProfile._id;
@@ -67,7 +74,10 @@ const Profile = (): JSX.Element => {
                             standup:standupNombre
                         })
                     }
+                    
+                    //putToken(userToEdit.token)
                 }
+                
             }
             perfil()
         }else{
@@ -126,17 +136,24 @@ const Profile = (): JSX.Element => {
         const {password,newPassword,confirmPassword}=inputs;
         //validar que no hayan campos vacios
         if(!password || !newPassword || !confirmPassword ){
-            console.log('Todos los campos son obligatorios')
+            Swal.fire(
+                "Todos los campos son obligatorios",
+            )
             return
         }
         //newpassword minimo de 8 caracteres
         if(newPassword.length <8 || confirmPassword.length < 8){
-            console.log('La contraseña nueva y confirmar contraseña nueva deben ser de minimo 8 caracteres')
+            Swal.fire(
+                "La contraseña nueva y confirmar contraseña nueva deben ser de minimo 8 caracteres",
+            )
             return
         }
         //verfiicar los dos passwords sean iguales
         if(newPassword !== confirmPassword){
-            console.log('Nueva contraseña y confirmar contraseña no son iguales')
+            Swal.fire(
+                "Nueva contraseña y confirmar contraseña no son iguales",
+            )
+            
             return
         }
         //si no hay errores
@@ -146,13 +163,26 @@ const Profile = (): JSX.Element => {
             confirmPassword
         }
         updatePass(data);
+        Swal.fire(
+            "Se ha actualizado la constraseña correctamente",
+        ).then(()=>{
+            setShowModal(false)
+            }
+        )
 
     }
 
-    const submitUpdateData=(e:any)=>{
+    const submitUpdateData=async(e:any)=>{
         e.preventDefault();
         const {id,email,firstname, lastname}=inputs;
+        if(!email || !firstname || !lastname ){
+            Swal.fire(
+                "Todos los campos son obligatorios",
+            )
+            return
+        }
         
+
         //si no hay errores
          const data ={
             id,
@@ -162,12 +192,15 @@ const Profile = (): JSX.Element => {
                 lastname
             }
         } 
-        console.log(data)
-        modifyUser(data);
+        
+        await modifyUser(data);
+        await Swal.fire(
+            "Se han actualizado los datos correctamente",
+        )
 
     }
     
-
+  
 
 
     return (
