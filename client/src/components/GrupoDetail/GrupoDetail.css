@@ -339,19 +339,30 @@
         border: none;
         background-color: black;
         color: white;
-       
-    }
-  
-    /*SECCION DE AÑADIR ESTUDIANTES*/
-      
-    #grupo-agrega h1{
-        font-size: 3rem;
         
     }
+    
+    /*SECCION DE AÑADIR ESTUDIANTES*/
+    
+    #add-students-interface {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #grupo-agrega {
+        display: flex;
+        flex-direction: column;        
+    }
+   
+    #grupo-agrega h1{
+        font-size: 1.563rem;
+        margin: 10px, auto;
+        text-align: center;        
+    }
 
-    #add-students {
+    #grupo-agrega button{
         text-align: center;
-        padding: 1%;
+       
         font-size: 0.8rem;
         font-family: 'Roboto', sans-serif;
         font-weight: 800;
@@ -361,7 +372,7 @@
         border: none;
         background-color: black;
         color: white;
-        margin: 3% 17% 9% 17%;
+        margin: 3% auto 9% auto;              
     }
 
     .divResponsiveAdd{
@@ -379,15 +390,7 @@
         font-size: 1.25rem;
     }
     
-    #add-students-interface {
-        display: flex;
-        flex-direction: column;
-    }
-    #add-students-interface h1{
-        font-size: 1.563rem;
-        margin: 10px, auto;
-        text-align: center;
-    }
+ 
     
     .divAddAlRespon {
         display: flex;

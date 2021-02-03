@@ -118,7 +118,7 @@ const GrupoDetail = (props: any): JSX.Element => {
             </div>
             <div id='add-students-interface'>
                 <div id='grupo-agrega'>
-                    <h1>ALUMNOS DEL GRUPO 01</h1>
+                    <h1>Alumnos del grupo 01</h1>
                     <button id='add-students' className="btnAddRespon" onClick={() => setDisplay(!display)}>{!display ? "Agrega Alumnos" : "Cerrar"}</button>
                 </div>
                 <div id='alumnos-grupo'>
