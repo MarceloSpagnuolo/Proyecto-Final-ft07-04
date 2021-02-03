@@ -3,7 +3,17 @@ const router = express.Router();
 import User from "../Models/users";
 import Cohorte from "../Models/cohorte";
 import Group from "../Models/groups";
-import axios from 'axios';
+import Historial from "../Models/historial";
+import axios from "axios";
+
+import * as bcrypt from "bcrypt";
+
+const passport = require('passport');
+const auth = require('../middleware/authenticate');
+const jwt=require('jsonwebtoken')
+
+router.use(passport.initialize())
+require('./passport-config')(passport);
 
 // Trae todos los usuarios
 router.get("/", async (req, res) => {
@@ -60,7 +70,6 @@ router.post("/register", async (req, res) => {
     let result = await usuario.save();
     res.status(200).json(result);
   } catch (error) {
-    console.log(error);
     res.sendStatus(400);
   }
 });
@@ -74,46 +83,68 @@ router.delete("/delete/:id", async (req, res) => {
 
     res.status(200).json(result);
   } catch (error) {
-    console.log(error);
     res.status(400).send({ success: false, msg: "Hubo un  error" });
   }
 });
 
-// Modificar un usuario por id
-router.put("/modify/:id", async (req, res) => {
-  const { id } = req.params;
+/// Modificar un usuario por id
+router.put('/modify', async (req, res) => {
 
-  const user = await User.findOneAndUpdate({ _id: id }, req.body);
-
-  if (!user) {
-    res.status(404).send("No existe un usuario con ese id");
-  } else {
-    res.status(200).json(user);
+  try {
+      const user = await User.findOneAndUpdate({ _id: req.body.id}, req.body,{new:true});
+      Cohorte.populate(user, { path: "cohorte" }, function (err, usersCH) {
+      Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+        console.log(usersCOM)
+        res.json(usersCOM).status(200);
+        })
+      });
+  } catch (error) {
+    console.log(error)
+    res.json({msg:'Hubo un error'}).status(400);
   }
+  
+  
+  
+  
 });
 
-//Devuelve todos los usuarios de un cohorte
+//Devuelve todos los usuarios de un cohorte o "todos"
 router.get("/cohorte/:id", async (req, res) => {
-  const { id } = req.params
+  const { id } = req.params;
 
   if (id !== "todos") {
     await User.find({ cohorte: id }, function (err, users) {
       Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
         Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
-          res.json(usersCOM).status(200);
-        })
+          Historial.populate(
+            usersCOM,
+            { path: "historia" },
+            function (err, usersHis) {
+              err
+                ? res.send("Error con los usuarios").status(400)
+                : res.json(usersHis).status(200);
+            }
+          );
+        });
       });
     }).sort({ name: 1 });
   } else {
     await User.find({ role: "alumno" || "PM" }, function (err, users) {
       Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
         Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
-          res.json(usersCOM).status(200);
-        })
+          Historial.populate(
+            usersCOM,
+            { path: "historia" },
+            function (err, usersHis) {
+              err
+                ? res.send("Error con los usuarios").status(400)
+                : res.json(usersHis).status(200);
+            }
+          );
+        });
       });
     }).sort({ name: 1 });
   }
-
 });
 
 //Elimina la asignacion de un usuario a un cohorte, recibe el id del usuario
@@ -132,7 +163,6 @@ router.delete("/cohorte/:id", async (req, res) => {
     await Cohorte.findOneAndUpdate({ _id: alumno.cohorte }, { Alumnos: newCantidad });
   }
   const usuarios = await User.findOneAndUpdate({ _id: id }, { cohorte: null });
-  console.log(usuarios);
   !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios);
 });
 
@@ -187,11 +217,12 @@ router.get("/disponibles", async (req, res) => {
 
 async function getUser(username: any) {
   try {
-    const response = await axios.get(`https://api.github.com/users/${username}`);
+    const response = await axios.get(
+      `https://api.github.com/users/${username}`
+    );
     return response;
-  }
-  catch (error) {
-    //console.error(error);
+  } catch (error) {
+    alert(error);
   }
 }
 
@@ -199,11 +230,12 @@ async function getUser(username: any) {
 router.get('/github/:username', async (req, res) => {
   let { username } = req.params;
 
-
   const userStatus = username !== undefined ? await getUser(username) : username;
 
-  (userStatus === undefined) ? res.send(false).status(200) : res.send(true).status(200);
-})
+  userStatus === undefined
+    ? res.send(false).status(200)
+    : res.send(true).status(200);
+});
 
 // Ruta para buscar un usuario por nombre y apellido (req.body)
 // NO USADA AL FINAL, DESCOMENTAR SI ES NECESARIO
@@ -211,9 +243,9 @@ router.get('/github/:username', async (req, res) => {
 // router.get('/name', async (req, res) => {
 //   const { name } = req.body;
 //   const firstname : string = name.firstname;
-//   const lastname : string = name.lastname; 
+//   const lastname : string = name.lastname;
 //   const user = await User.find({name: { firstname, lastname}});
-//   !user ? res.send('Hubo un error') : res.json(user); 
+//   !user ? res.send('Hubo un error') : res.json(user);
 
 // });
 
@@ -254,18 +286,38 @@ router.get('/search?', async (req, res) => {
 
 });
 
-// Ruta para buscar usuario por id
 
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  const user = await User.find({ _id: id }, function (err, users) {
-    Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
-      Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
-        res.json(usersCOM).status(200);
-      });
+//Ruta que actualiza las notas de un checkpoint de uma historia
+router.put("/historia/:historiaId", (req, res) => {
+  const { historiaId } = req.params;
+  let { checkpoint, cohorteId, tests } = req.body;
+  tests = parseInt(tests);
+
+  //Primero buscamos la historia del alumno
+  Historial.findById(historiaId)
+    .exec()
+    .then((historia: any) => {
+      //Despues buscamos el cohorte especifico
+      let indice: any;
+      for (let i = 0; i < historia.Checkpoints.length; i++) {
+        if ((historia.Checkpoints[i].Cohorte = cohorteId)) indice = i;
+      }
+      //Le modificamos la cantidad de tests pasados al objeto
+      historia.Checkpoints[indice][checkpoint] = tests;
+      //guardamos el objeto en la coleccion
+      historia.save();
+      return historia;
     })
-  })
-})
+    .then((historiaGuardada: any) => {
+      //Si todo salio bien devolvemos la historia
+      return res.json(historiaGuardada);
+    })
+    .catch((error: any) => {
+      //Si todo salio mal devolvemos el error con el status 400
+      return res.send(error).status(400);
+    });
+});
+
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -280,10 +332,58 @@ router.get("/groupUsers/:id", async (req, res) => {
 router.get("/usercohorte/:id", async (req, res) => {
   const { id } = req.params
   const usuarios = await User.find({ role: "alumno", cohorte: id, standup: null})
-  console.log(id)
   const PM = await User.find({role: "PM", standup: null})
   !usuarios ? res.send("hubo un error").status(400) : res.json([usuarios, PM])
 })
+
+
+//ruta para que un usuario actualice el  password 
+router.put('/change_password',auth, async(req, res, next) => {
+	const {password,newPassword,confirmPassword,email} = req.body;
+	if(!newPassword && !confirmPassword) return res.json({success:false,msg:'Inputs vacios por favor revise'}).status(400);
+	if ( newPassword === confirmPassword) {
+    try {
+      //revisar password actual coincida con el de la base de datos
+      const userdb = await User.findOne({email:email});
+      const user = new User();
+      const result =  await user.comparePassword(password, userdb.password)
+      //si password coincide con db entonces encryptar y actualizar en base de datos
+      if(result){
+        const salt = await bcrypt.genSaltSync(10);
+        const hash = await bcrypt.hashSync(newPassword, salt);
+        await User.findOneAndUpdate({ email: email}, {$set: {password: hash}});
+        res.json({success:true, msg:'El password se actualizo correctamente'}).status(200); 
+      }else{
+        res.json({success:false,msg:'El password actual no coincide'}).status(400); 
+      }
+    } catch (error) {
+      res.json({success:false,msg:'Hubo un error'}).status(400); 
+    }
+  }else{
+		res.json({success:false,msg:'Input nuevo password no coincide con input confirmar password'}).status(400); 
+	}
+});
+
+//buscar usuario por id
+router.get('/:id', async (req, res) => {
+  const { id } = req.params; 
+  
+  try {
+    await User.findOne({_id:id }, function (err:any, users:any) {
+      Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+        Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+          res.json(usersCOM).status(200);
+        })
+      });
+    });
+    
+  } catch (error) {
+    console.log(error)
+    res.json({success:false,msg:'Hubo un error'}).status(400); 
+  }
+  
+
+});
 
 
 

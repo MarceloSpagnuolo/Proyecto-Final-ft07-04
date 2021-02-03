@@ -1,8 +1,9 @@
 #student-super-container {
     padding: 0px !important;
     margin: 0px !important;
-   
+
 }
+
 #titulo-tab-estudiantes {
     color: black !important;
     font-family: 'Roboto' !important;
@@ -13,6 +14,11 @@
 #contenedor-top-estudiantes {
     margin: 22px 0px;
     display: flex;
+}
+
+#links {
+    text-decoration: none;
+    color: black;
 }
 
 .student-table {
@@ -93,18 +99,32 @@
 }
 
 @media screen and (max-width:600px) {
-    .student-titles h1 {
-        font-size: 28px;
+
+    #contenedor-top-estudiantes h1 {
+        margin-left: 10px;
     }
 
     .student-titles {
         flex-wrap: wrap;
         padding-top: 0;
-    
     }
 
-     #less {
+    .student-table-th,
+    .student-table-td {
+        width: 50%;
+    }
+
+    #tab-container {
+        padding: 3px;
+    }
+
+    #less {
         display: none;
+    }
+
+    #links {
+        text-decoration: none;
+        color: black;
     }
 
 }

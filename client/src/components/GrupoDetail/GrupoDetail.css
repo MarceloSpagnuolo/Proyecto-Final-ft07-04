@@ -1,17 +1,5 @@
-.divsoteGroupAdd {
-    background-color: hsl(54, 100%, 48%);
-    padding: 25px 100px;
-    width: auto;
-    font-family: 'Roboto', sans-serif;
-}
-
-
 .titleG {
-    font-size: 2.441rem;
-    text-transform: capitalize;
-    color: #252525;
-    margin-bottom: 25px;
-    margin-top: 5px;
+    font-family: 'Source Sans Pro';
 }
 
 .subTitleG {
@@ -19,7 +7,7 @@
     font-weight: 400;
     margin-bottom: 45px;
 }
-/*maldita rama*/
+
 #grupo-detalle-header {
     background-color: #F8F8F8;
     display: grid;
@@ -425,9 +413,10 @@
     }  
     
   
+
 }
 
-/*@media screen and (max-width:1100px) {
+@media screen and (max-width:1100px) {
     .subTitleG {
         text-align: center;
     }
@@ -529,7 +518,7 @@
         top: 570px;
         border: 1px solid rgb(129, 128, 128);
         border-radius: 5px;
-        background-color: #F8F8F8;
+        background-color: white;
         overflow: hidden;
         overflow-y: scroll;
     }
@@ -594,4 +583,4 @@
         right: -200px;
         bottom: 360px;
     }
-}*/
+}
