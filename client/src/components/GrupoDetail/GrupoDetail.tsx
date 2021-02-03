@@ -25,7 +25,9 @@ const GrupoDetail = (props: any): JSX.Element => {
     }
     async function eliminarPM(pm: any) {
         axios.delete(`http://localhost:3001/standup/PM/${id}/${pm}`,)
-
+        .then(() => {
+            setUpdate(!update)
+        })
     }
     useEffect(() => {
         disptach(getOneStandups(id))
@@ -34,31 +36,30 @@ const GrupoDetail = (props: any): JSX.Element => {
     }, [update])
     useEffect(() => {
         if (!!Grupo && Grupo.length > 0 && !!Grupo[0].Cohorte) {
-            console.log(Grupo[0].Cohorte, "useeffffectttt")
             axios.get(`http://localhost:3001/users/usercohorte/${Grupo[0].Cohorte}`)
                 .then((r) => {
                     setSingrupo(r.data[0])
                     setPMSingrupo(r.data[1])
-                    console.log(r.data, "soy el then")
                 })
         }
     }, [!!Grupo && Grupo.length, update])
 
-    console.log(Grupo)
-
     function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
-        const datos = {
-            id: id,
-            PM: pm
+        if(pm) {
+            const datos = {
+                id: id,
+                PM: pm
+            }            
+            disptach(postPm(datos))
         }
-        disptach(postPm(datos))
         e.preventDefault();
-        console.log(datos, "Agrege un PM")
+        setUpdate(!update)
     }
 
     function handleChange(e: React.ChangeEvent<HTMLSelectElement>): void {
         setPm(e.target.value)
     }
+
     return (
         <div className="divsoteGroupAdd">
             <h1 className="titleG">
@@ -68,6 +69,8 @@ const GrupoDetail = (props: any): JSX.Element => {
             <h3 className="subTitleG">
                 Aquí podra gestionar los PMs y alumnos de <br />este grupo
             </h3>
+            {!!Grupo && Grupo.length > 0 && Grupo[0].PM.length !== 2 ? 
+            <>
             <p className="subSubTitleG">Asigne un pm al grupo</p>
             <div className="divAsignarPM">
                 <form onSubmit={(e) => handleSubmit(e)}>
@@ -76,22 +79,24 @@ const GrupoDetail = (props: any): JSX.Element => {
                         {!!PMsingrupo && PMsingrupo.map((p: any) => {
                             if (p.role === "PM") {
                                 return (
-                                    <option value={p._id}>{p.name.lastname}</option>
-                                )
-                            }
-                        })}
+                                    <option value={p._id}>{p.name.firstname} {p.name.lastname}</option>
+                                    )
+                                }
+                            })}
                     </select>
                     <input type="submit" value="seleccionar" />
                 </form>
             </div>
+            </>
+                        :<div>Este grupo tiene el número máximo de PMs</div>}
             <p className="pmtitle">PMs del grupo</p>
             <div className="pmContainerName">
                 {alumnos.length > 0 && alumnos.map((p: any) => {
                     if (p.role === "PM" && p.standup !== null) {
                         return (
                             <div key={"PM" + p._id} className="wq">
-                                <img className="roundPM" src="https://i.pinimg.com/236x/22/cd/5b/22cd5bf661c3d8a8550752b981901531.jpg" alt="user" /><p>{p.name.lastname}</p>
-                                <button onClick={() => { eliminarPM(`${p._id}`); setUpdate(!update) }}>X</button>
+                                <img className="roundPM" src="https://i.pinimg.com/236x/22/cd/5b/22cd5bf661c3d8a8550752b981901531.jpg" alt="user" /><p>{p.name.firstname} {p.name.lastname}</p>
+                                <button onClick={() => { eliminarPM(`${p._id}`)}}>X</button>
                             </div>
                         )
                     }

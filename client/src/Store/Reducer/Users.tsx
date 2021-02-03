@@ -14,8 +14,10 @@ import {
   ERROR_MESSAGE,
   GET_USER_EDIT,
   UPDATE_USER_PASSWORD,
+  PUT_NOTAS,
 } from "../Constants/Users";
 import Swal from "sweetalert2";
+import { EMFILE } from "constants";
 
 interface Store {
   user: Object;
@@ -66,15 +68,25 @@ function Users(state = inicialState, action: any) {
     case SEARCH_BY_NAME:
       return {
         ...state,
-        users: action.payload
-      }
+        users: action.payload,
+      };
+    case PUT_NOTAS: {
+      return {
+        ...state,
+        users: state.users.map((user) => {
+          if (user.historia._id === action.payload._id) {
+            user.historia = action.payload;
+            return user;
+          } else {
+            return user;
+          }
+        }),
+      };
+    }
     case ERROR_MESSAGE: {
-      Swal.fire(
-        "Error",
-        action.message,
-        "error"
-      );
+      Swal.fire("Error", action.message, "error");
       return state;
+
     };
     case UPDATE_USER_PASSWORD:
       return {
@@ -91,6 +103,8 @@ function Users(state = inicialState, action: any) {
           ...state,
           userToEdit: action.payload
       };
+
+    }
     default: {
       return state;
     }

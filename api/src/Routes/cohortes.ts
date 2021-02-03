@@ -14,14 +14,10 @@ router.get("/", async (req, res) => {
 //Cualquier dato que no se pase, queda como vacío en la colección.
 router.post("/", async (req, res) => {
   const { fechaInicio, Nombre } = req.body;
-  
-  console.log(fechaInicio);
 
   const fecha = fechaInicio.substr(8,2)+"/"+
     fechaInicio.substr(5,2)+"/"+
     fechaInicio.substr(0,4)
-  
-  console.log(fecha)
 
   const cohorte = new Cohorte({
     Nombre, 
