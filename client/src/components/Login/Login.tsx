@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
-import "./Login.css"
+import "./Login.css";
 import { getUserByToken } from "../../Store/Actions/Users";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import { Redirect, useHistory } from "react-router-dom";
 import clienteAxios from '../../config/axios';
 
-
 interface Logeado {
-    email?: string,
-    password?: string
+  email?: string;
+  password?: string;
 }
 
-
 const Login = (): JSX.Element => {
-
-
     const [inputs, setInputs] = useState<Logeado>()
+    const [error, setError] = useState<boolean>(false)
 
     //utilizar usedispatch 
     const dispatch = useDispatch();
@@ -40,14 +38,15 @@ const Login = (): JSX.Element => {
     }
 
     async function handleSubmit() {
-
         try {
             const newToken = await clienteAxios.post('auth/login', inputs);
             if (newToken) {
-                console.log(newToken.data)
                 await userLogin(newToken.data);
+            } else {
+                setError(true)
             }
         } catch (error) {
+            setError(true)
 
         }
     }
@@ -72,11 +71,12 @@ const Login = (): JSX.Element => {
                     </div>
                     <div className="divFormLogin">
                         <form className="formLogin" >
-                            <div className="LoginDiv-Campos">
+                            {error ? <div className="errText"><p>Contraseña o Email incorrectos</p></div> : null}
+                            <div id={error ? "errLogin" : ""} className="LoginDiv-Campos">
                                 <label className="nameInput" htmlFor="email">Email registrado</label><br></br>
                                 <input autoFocus={true} size={40} type="email" id="emaill" name="email" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} />
                             </div>
-                            <div className="LoginDiv-Campos">
+                            <div id={error ? "errLogin" : ""} className="LoginDiv-Campos">
                                 <label className="nameInput" htmlFor="password">Contraseña</label><br></br>
                                 <input size={60} type="password" id="passs" name="password" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} />
                             </div>
@@ -87,9 +87,8 @@ const Login = (): JSX.Element => {
                     </div>
                 </div>
             </div>
-        </>
-
-    )
-}
+                </>
+  );
+};
 
 export default Login;

@@ -1,0 +1,31 @@
+.MiCohorte-Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
+    overflow-y: auto;
+  }
+    
+  #Prueba22 {
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    #Prueba22 {
+      display: none;
+    }
+    .MiCohorte-Table {
+      overflow-y: scroll;
+      height: 300px;
+      width: 100%;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .MiCohorte-Table {
+      overflow-y: scroll;
+      height: 100%;
+      width: 100%;
+    }
+  }

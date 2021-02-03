@@ -1,17 +1,51 @@
-.student-super-container {
-    padding: 30px;
-    background-color: yellow;
+#student-super-container {
+    padding: 0px !important;
+    margin: 0px !important;
+
+}
+
+#titulo-tab-estudiantes {
+    color: black !important;
+    font-family: 'Roboto' !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+#contenedor-top-estudiantes {
+    margin: 22px 0px;
+    display: flex;
+}
+
+#links {
+    text-decoration: none;
+    color: black;
+}
+
+.student-table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Roboto' !important;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #252525;
+}
+
+.student-table-titles {
+    color: black;
+    background-color: #d6d6d6;
 }
 
 .student-container {
-    border: 2px solid black;
+    border: none;
     border-radius: 15px;
+    box-shadow: 5px 5px 30px;
 }
 
 .student-titles {
     display: flex;
     align-items: center;
-    background-color: black;
+    border: none;
     border-radius: 15px 15px 0px 0px;
     color: white;
     justify-content: space-around;
@@ -44,23 +78,18 @@
     padding: 7px;
 }
 
-.student-table {
-    text-align: center;
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.student-table-titles {
-    color: white;
-    background-color: #0f6151;
-}
-
 #student-table-tr:nth-child(even) {
-    background-color: rgb(190, 182, 182);
+    background-color: rgb(216, 216, 216);
 }
 
 .student-table-body {
     background-color: white;
+}
+
+#links-table {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
 }
 
 .student-table-th,
@@ -70,8 +99,9 @@
 }
 
 @media screen and (max-width:600px) {
-    .student-titles h1 {
-        font-size: 28px;
+
+    #contenedor-top-estudiantes h1 {
+        margin-left: 10px;
     }
 
     .student-titles {
@@ -79,12 +109,22 @@
         padding-top: 0;
     }
 
-    .student-super-container {
-        padding: 3.5%;
+    .student-table-th,
+    .student-table-td {
+        width: 50%;
+    }
+
+    #tab-container {
+        padding: 3px;
     }
 
     #less {
         display: none;
+    }
+
+    #links {
+        text-decoration: none;
+        color: black;
     }
 
 }
