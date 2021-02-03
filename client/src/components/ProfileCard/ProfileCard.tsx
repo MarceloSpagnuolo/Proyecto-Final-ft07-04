@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import {useSelector } from "react-redux";
 import axios from "axios";
 import "./ProfileCard.css";
 
 
 
 const ProfileCard = (props: any): JSX.Element => {
-
+    const { user } = useSelector((state: any) => state.Users);
     async function eliminar(id: any) {
         const res = await axios.put(`http://localhost:3001/users/modify/${id}`, { standup: null })
         return
@@ -19,9 +20,11 @@ const ProfileCard = (props: any): JSX.Element => {
     return (
         <div className="divsitoProfileCard">
             <div className="card-container">
+                {!!user && user.role === "admin" || user.role === "instructor" ? 
                 <button className="btnXPC" onClick={() => { eliminar(props.props._id); props.set.a(!props.set.b) }}>
                     X
                     </button>
+                : null}
                 <img className="round" src={image} alt="user" />
                 <div className="divCGP"><span>C{props.CG.c}</span><span>G{props.CG.g}</span></div>
                 <h3 className="namePCard" >{fullName}</h3>
