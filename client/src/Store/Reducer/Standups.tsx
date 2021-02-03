@@ -47,6 +47,7 @@ function Standups(state = inicialState, action: any) {
         standups: state.standups.filter((s) => s._id !== action.payload._id)
       }
     }
+
     case ERROR_MESSAGE: {
       Swal.fire(
         "Error",
