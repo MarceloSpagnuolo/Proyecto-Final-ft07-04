@@ -15,12 +15,29 @@
 .btnLogin:hover {
     background-color: #f0c91d;
 }
-.gridLogin{
-    overflow-x:none;
-    overflow-y:none;
+
+.gridLogin {
+    overflow-x: none;
+    overflow-y: none;
 }
+
+.errText {
+    color: red;
+    margin-left: 80px;
+}
+
+#errLogin label {
+    color: red
+}
+
+#errLogin input {
+    color: red;
+    border: 1px solid rgb(255, 0, 0);
+    background-color: rgba(255, 255, 255, 0.212);
+}
+
 @media screen and (max-width: 1100px) {
-    .gridLogin{
+    .gridLogin {
         margin-right: 0;
         position: relative;
         bottom: 30px;
