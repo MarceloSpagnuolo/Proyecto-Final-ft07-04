@@ -14,7 +14,8 @@ module.exports = function(req:any, res:any, next:any) {
 
     // validar el token
     try {
-        const cifrado = jwt.verify(token[1], process.env.TOKEN_SECRET);
+        console.log(token[1])
+        const cifrado = jwt.verify(token[1], process.env.SECRET);
         req.body.email = cifrado.email;
         next();
     } catch (error) {

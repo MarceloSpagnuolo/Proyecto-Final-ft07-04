@@ -227,11 +227,16 @@ export const getUsereEdit = (id:string) => async (dispatch: any) => {
 export const updateUser = (data:Object) => async (dispatch: any) => {
   
   try {
-    const res = await axios.put(`${url}/users/modify`,data);
+    const res = await axios.put(`${url}/users/editprofile`,data);
+    
     await dispatch({
       type: PUT_USERS,
       payload: res.data,
     });
+    if(res.data.token){
+      dispatch(getUserByToken(res.data.token))
+      //localStorage.setItem("userToken", res.data.token);
+    }
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
