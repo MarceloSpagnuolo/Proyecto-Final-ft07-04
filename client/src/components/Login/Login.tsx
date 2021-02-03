@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
-import "./Login.css"
+import "./Login.css";
 import { getUserByToken } from "../../Store/Actions/Users";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import { Redirect, useHistory } from "react-router-dom";
 import clienteAxios from '../../config/axios';
 
-
 interface Logeado {
-    email?: string,
-    password?: string
+  email?: string;
+  password?: string;
 }
 
-
 const Login = (): JSX.Element => {
-
-
     const [inputs, setInputs] = useState<Logeado>()
     const [error, setError] = useState<boolean>(false)
 
@@ -90,9 +87,11 @@ const Login = (): JSX.Element => {
                     </div>
                 </div>
             </div>
-        </>
-
-    )
-}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Login;
