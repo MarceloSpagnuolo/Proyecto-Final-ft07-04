@@ -3,7 +3,417 @@
 }
 
 .subTitleG {
-    font-family: 'Source Sans Pro';
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 45px;
+}
+
+#grupo-detalle-header {
+    background-color: #F8F8F8;
+    display: grid;
+    grid-template: 1fr/1fr 1fr;
+    padding: 5% 10%;
+    border-radius: 20px;
+}
+#col-izq-grupo-detalle h1{
+    margin: 0;
+    font-size: 5.2rem;
+    text-transform: uppercase;
+    line-height: 0.96;
+    padding: 0% 15%;
+}
+#col-izq-grupo-detalle h3{
+    margin-top: 2%;
+    font-size: 2.7rem;    
+    line-height: 1.3;
+    font-weight: 400;
+    padding: 0% 15%;
+}
+
+#elige-pm{
+    padding: 0% 15%;
+}
+
+#elige-pm select{
+    width: 200px;
+    color: black;
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    margin-right: 5%;
+    box-shadow: 6px 6px 5px rgba(219, 219, 219, 0.418);
+    
+}
+
+#col-der-grupo-detalle img{
+    width: 80%;
+    height: 80%;
+}
+
+.pmtitle {
+    font-size: 1.563rem;
+    font-weight: 600;
+    margin: 3% 0%;
+}
+
+#container-pms-asignados {
+    margin: 1.5% 3%;
+    margin: 0px auto;
+}
+
+#container-seccion-pms {
+    border: none;
+    padding: 2%;
+    border-radius: 15px;
+    margin-bottom: 3%;
+    background-color: hsl(51, 98%, 47%);
+    box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418);
+    
+
+
+   
+}
+
+#container-seccion-pms img{
+    border: 9px solid black;
+    display: flex;
+    border-radius: 100%;
+    max-height: 100px;
+    max-width: 100px;
+    margin: 0px auto;
+    box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418)
+}
+
+
+
+
+#pm-asignado-grupo p{
+    text-align: center;
+    padding: 10% 0%;
+    font-size: 1.25rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+
+}
+#pm-asignado-grupo button{
+    text-align: center;
+    padding: 10% 0%;
+    font-size: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    border-radius: 35px;
+    width: 200px;
+    border: none;
+    background-color: black;
+    color: white;
+    margin-bottom: 9%;
+}
+.pmContainerName {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+#add-students {
+    text-align: center;
+    padding: 10% 0%;
+    font-size: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    border-radius: 35px;
+    width: 200px;
+    border: none;
+    background-color: black;
+    color: white;
+    margin-bottom: 9%;
+}
+.divResponsiveAdd{
+    margin: 0px;
+    padding: 0px;
+    background-color: tomato;
+}
+
+#alumnos-disponibles {
+    border-bottom: 1px solid rgb(218, 218, 218);
+    margin: 3% 3% 9% 3%;
+    padding-bottom: 20px;
+    text-align: center;
+    color: darkgray;
+    font-size: 1.25rem;
+}
+
+#add-students-interface {
+    display: grid;
+    grid-template: 1fr / 1fr 6fr 2fr;
+}
+
+.divAddAlRespon {
+    display: flex;
+    margin: 3% 3% 6% 3%;
+    padding-bottom: 3%;
+    border-bottom: 1px solid rgb(218, 218, 218);
+}
+#nombre-invitado {
+    padding: 6% 10%;
+}
+
+
+#alumnos-grupo-card {
+    background-color: teal;
+    padding: 0px;
+    margin: 0px;
+}
+
+.divResponsiveAdd {
+    padding: 5%;
+    background-color: #F8F8F8;
+    margin-left: 3%;
+    border-radius: 9px;
+}
+.divResponsiveAdd img{
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+}
+
+.DivProfileCDetail {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(30, 255, 0);
+    width: 700px !important;
+    overflow: auto;
+    display: flex;
+    flex-wrap:wrap;
+}
+
+#alumnos-grupo {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #F8F8F8;
+    padding: 4%;
+    border-radius: 15px;
+    margin-left: 5%;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 768px) {
+    .divsoteGroupAdd {
+        background-color: hsl(54, 100%, 48%);
+        padding: 2% 4%;
+        width: auto;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    
+    .titleG {
+        font-size: 2.441rem;
+        text-transform: capitalize;
+        color: #252525;
+        margin-bottom: 25px;
+        margin-top: 5px;
+    }
+    
+    .subTitleG {
+        font-size: 1.563rem;
+        font-weight: 400;
+        margin-bottom: 45px;
+    }
+    
+    #grupo-detalle-header {
+        background-color: #F8F8F8;
+        display: grid;
+        grid-template: 1fr/ 1fr;
+        padding: 5% 10%;
+        border-radius: 20px;
+    }
+    #col-izq-grupo-detalle h1{
+        margin: 0;
+        font-size: 3.6rem;
+        text-transform: uppercase;
+        line-height: 0.96;
+        padding: 0% 5%;
+    }
+    #col-izq-grupo-detalle h3{
+        margin-top: 2%;
+        font-size: 2.3rem;    
+        line-height: 1.3;
+        font-weight: 400;
+        padding: 0% 5%;
+    }
+    
+    #elige-pm{
+        padding: 0% 5%;
+    }
+    
+    #elige-pm select{
+        width: 63%;
+        color: black;
+        border-radius: 5px;
+        border: none;
+        height: 40px;
+        margin-right: 5%;
+        box-shadow: 6px 6px 5px rgba(219, 219, 219, 0.418);
+        
+    }
+    
+    #col-der-grupo-detalle img{
+        width: 80%;
+        display: none;
+        height: 80%;
+    }
+    
+    .pmtitle {
+        font-size: 1.563rem;
+        font-weight: 600;
+        margin: 3% 0%;
+    }
+    
+    #container-pms-asignados {
+        margin: 1.5% 3%;
+    }
+    
+    #container-seccion-pms {
+        border: none;
+        padding: 2%;
+        border-radius: 15px;
+        margin: 3%, auto;
+        background-color: hsl(51, 98%, 47%);
+        box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418);
+        justify-self: center;  
+    }
+    
+    #container-seccion-pms img{
+        border: 9px solid black;
+        display: flex;
+        border-radius: 100%;
+        max-height: 100px;
+        max-width: 100px;
+        margin: 0px auto;
+        box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418)
+    }
+    
+    
+    
+    
+    #pm-asignado-grupo p{
+        text-align: center;
+        padding: 10% 0%;
+        font-size: 1.25rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+    
+    }
+    #pm-asignado-grupo button{
+        text-align: center;
+        padding: 10% ;
+        font-size: 0.8rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 800;
+        border-radius: 35px;
+        width: 200px;
+        border: none;
+        background-color: black;
+        color: white;
+        margin-bottom: 9%;
+        margin-left: 5%;
+    }
+    .pmContainerName {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+       padding: 15%;
+    }
+    
+    #add-students {
+        text-align: center;
+        padding: 1%;
+        font-size: 0.8rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 800;
+        border-radius: 35px;
+        width: 66%;
+        height: 66px;
+        border: none;
+        background-color: black;
+        color: white;
+        margin: 3% 17% 9% 17%;
+    }
+
+    .divResponsiveAdd{
+        margin: 0px;
+        padding: 0px;
+        background-color: tomato;
+    }
+    
+    #alumnos-disponibles {
+        border-bottom: 1px solid rgb(218, 218, 218);
+        margin: 3% 3% 9% 3%;
+        padding-bottom: 20px;
+        text-align: center;
+        color: darkgray;
+        font-size: 1.25rem;
+    }
+    
+    #add-students-interface {
+        display: flex;
+        flex-direction: column;
+    }
+    #add-students-interface h1{
+        font-size: 1.563rem;
+        margin: 10px, auto;
+        text-align: center;
+    }
+    
+    .divAddAlRespon {
+        display: flex;
+        margin: 3% 3% 6% 3%;
+        padding-bottom: 3%;
+        border-bottom: 1px solid rgb(218, 218, 218);
+    }
+    #nombre-invitado {
+        padding: 6% 10%;
+    }
+    
+    
+    #alumnos-grupo-card {
+        background-color: teal;
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    .divResponsiveAdd {
+        padding: 5%;
+        background-color: #F8F8F8;
+        margin-left: 3%;
+        border-radius: 9px;
+    }
+    .divResponsiveAdd img{
+        border-radius: 50%;
+        height: 55px;
+        width: 55px;
+    }
+    
+    .DivProfileCDetail {
+        margin: 0px;
+        padding: 0px;
+        background-color: rgb(30, 255, 0);
+        width: 700px !important;
+        overflow: auto;
+        display: flex;
+        flex-wrap:wrap;
+    }
+    
+    #alumnos-grupo {
+     
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #F8F8F8;
+        padding: 4%;
+        border-radius: 15px;
+        margin-left: 5%;
+    }  
+    
+  
+
 }
 
 @media screen and (max-width:1100px) {
