@@ -1,6 +1,7 @@
 import User from "./src/Models/users";
 import Group from "./src/Models/groups";
 import Cohorte from "./src/Models/cohorte";
+import Historial from "./src/Models/historial";
 
 export default async function Insert() {
   const users = [
@@ -23,6 +24,7 @@ export default async function Insert() {
       created: new Date(),
       cohorte: "600b9852935003272c8b6902",
       standup: "600b9852935003272c8b6801",
+      historia: "600b9852935003272c8b6701",
     },
     
     {
@@ -35,6 +37,7 @@ export default async function Insert() {
       created: new Date(),
       cohorte: "600b9852935003272c8b6902",
       standup: "600b9852935003272c8b6801",
+      historia: "600b9852935003272c8b6702",
     },
     {
       _id: "600b9852935003272c8b6103",
@@ -46,6 +49,7 @@ export default async function Insert() {
       created: new Date(),
       cohorte: "600b9852935003272c8b6902",
       standup: "600b9852935003272c8b6801",
+      historia: "600b9852935003272c8b6703",
     },
     {
       _id: "600b9852935003272c8b6104",
@@ -57,6 +61,7 @@ export default async function Insert() {
       created: new Date(),
       cohorte: "600b9852935003272c8b6902",
       standup: "600b9852935003272c8b6801",
+      historia: "600b9852935003272c8b6704",
     },
     {
       _id: "600b9852935003272c8b6105",
@@ -68,6 +73,7 @@ export default async function Insert() {
       created: new Date(),
       cohorte: "600b9852935003272c8b6902",
       standup: "600b9852935003272c8b6801",
+      historia: "600b9852935003272c8b6705",
     },
     {
       _id: "600b9852935003272c8b6106",
@@ -79,6 +85,7 @@ export default async function Insert() {
       created: new Date(),
       cohorte: "600b9852935003272c8b6902",
       standup: "600b9852935003272c8b6802",
+      historia: "600b9852935003272c8b6706",
     },
     {
       _id: "600b9852935003272c8b6107",
@@ -90,6 +97,7 @@ export default async function Insert() {
       created: new Date(),
       cohorte: "600b9852935003272c8b6902",
       standup: "600b9852935003272c8b6802",
+      historia: "600b9852935003272c8b6707",
     },
     {
       _id: "600b9852935003272c8b6108",
@@ -101,6 +109,7 @@ export default async function Insert() {
       created: new Date(),
       cohorte: "600b9852935003272c8b6902",
       standup: "600b9852935003272c8b6802",
+      historia: "600b9852935003272c8b6708",
     },
     {
       _id: "600b9852935003272c8b6109",
@@ -112,6 +121,7 @@ export default async function Insert() {
       created: new Date(),
       cohorte: "600b9852935003272c8b6902",
       standup: "600b9852935003272c8b6802",
+      historia: "600b9852935003272c8b6709",
     },
     {
       _id: "600b9852935003272c8b6110",
@@ -123,6 +133,7 @@ export default async function Insert() {
       created: new Date(),
       cohorte: "600b9852935003272c8b6902",
       standup: "600b9852935003272c8b6802",
+      historia: "600b9852935003272c8b6710",
     },
     {
       _id: "600b9852935003272c8b6111",
@@ -143,6 +154,7 @@ export default async function Insert() {
       created: new Date(),
       standup: "600b9852935003272c8b6802",
       cohorte: "600b9852935003272c8b6901",
+      historia: "600b9852935003272c8b6712",
     },
     
     {
@@ -155,6 +167,7 @@ export default async function Insert() {
       created: new Date(),
       standup: "600b9852935003272c8b6802",
       cohorte: "600b9852935003272c8b6901",
+      historia: "600b9852935003272c8b6713",
     },
     {
       _id: "600b9852935003272c8b6114",
@@ -166,6 +179,7 @@ export default async function Insert() {
       created: new Date(),
       standup: "600b9852935003272c8b6801",
       cohorte: "600b9852935003272c8b6901",
+      historia: "600b9852935003272c8b6714",
     },
     
     {
@@ -178,6 +192,7 @@ export default async function Insert() {
       password: "contraseñasDuras123",
       standup: "600b9852935003272c8b6801",
       cohorte: "600b9852935003272c8b6901",
+      historia: "600b9852935003272c8b6715",
     },
     {
       _id: "600b9852935003272c8b6116",
@@ -325,6 +340,65 @@ export default async function Insert() {
     },
   ];
 
+  const historia = [
+    {
+      _id: "600b9852935003272c8b6701",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6702",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6703",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6704",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6705",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6706",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6707",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6708",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6709",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6710",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6712",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6901" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6713",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6901" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6714",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6901" } ]
+    },
+    {
+      _id: "600b9852935003272c8b6715",
+      Checkpoints: [ { Cohorte: "600b9852935003272c8b6901" } ]
+    },
+  ]
+
   users.forEach(async (c) => {
     await User.create(c);
   });
@@ -334,5 +408,8 @@ export default async function Insert() {
   cohortes.forEach(async (c) => {
     await Cohorte.create(c);
   });
+  historia.forEach(async (c) => {
+    await Historial.create(c);
+  })
   console.log("Insert completo");
 }

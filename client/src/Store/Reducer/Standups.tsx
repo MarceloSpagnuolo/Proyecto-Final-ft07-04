@@ -1,7 +1,6 @@
 import Swal from "sweetalert2";
 import {
   GET_STANDUPS,
-  PUT_STANDUPS,
   POST_PM,
   GET_ONE_STANDUP,
   POST_STANDUP,
@@ -31,8 +30,8 @@ function Standups(state = inicialState, action: any) {
         standup: action.payload
       }
     }
-    case POST_PM:{
-      return{
+    case POST_PM: {
+      return {
         standup: action.payload
       }
     }
@@ -55,7 +54,7 @@ function Standups(state = inicialState, action: any) {
         "error"
       );
       return state;
-      }
+    }
     default: {
       return state;
     }
