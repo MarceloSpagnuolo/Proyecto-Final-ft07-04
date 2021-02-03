@@ -1,0 +1,24 @@
+.Carga-Select {
+  font-size: 1.2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.Carga-Tabla {
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.Carga-Td {
+  border: 1px solid lightgray;
+}
+
+.Carga-Th {
+  border: 1px solid lightgray;
+}
+
+#Carga-Tr:nth-child(even) {
+  background-color: rgb(220, 220, 220);
+}
+
+#Carga-Nro {
+  width: 4rem;
+}
