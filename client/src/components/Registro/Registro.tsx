@@ -175,7 +175,7 @@ const Registro = (props: any): JSX.Element => {
               </ErrorMessage>
             </div>
             <div className="iconGitRegistro">
-              <img src="https://cdn.discordapp.com/attachments/764979688446885898/803751928596004926/GitHubLogo.png" />
+              <img src="https://cdn.discordapp.com/attachments/764979688446885898/803751928596004926/GitHubLogo.png" alt=""/>
             </div>
             <div className="gitRegistro">
               <Field

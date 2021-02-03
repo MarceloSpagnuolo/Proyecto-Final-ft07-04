@@ -38,8 +38,6 @@ router.post("/register", async (req, res) => {
     role,
     email,
     password,
-    cohorte,
-    standup,
   } = req.body;
 
   try {
@@ -96,6 +94,7 @@ router.put("/modify/:id", async (req, res) => {
 //Devuelve todos los usuarios de un cohorte o "todos"
 router.get("/cohorte/:id", async (req, res) => {
   const { id } = req.params;
+
   if (id !== "todos") {
     await User.find({ cohorte: id }, function (err, users) {
       Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
@@ -135,6 +134,7 @@ router.get("/cohorte/:id", async (req, res) => {
 //Resta la cantidad de alumnos del modelo cohorte
 router.delete("/cohorte/:id", async (req, res) => {
   const { id } = req.params;
+
   //primero traemos el alumno
   const alumno = await User.findById(id);
   if (alumno) {
@@ -143,10 +143,7 @@ router.delete("/cohorte/:id", async (req, res) => {
     //Restamos 1 la cantidad actual de alumnos
     const newCantidad = cohorte.Alumnos - 1;
     //Updateamos la informacion
-    await Cohorte.findOneAndUpdate(
-      { _id: alumno.cohorte },
-      { Alumnos: newCantidad }
-    );
+    await Cohorte.findOneAndUpdate({ _id: alumno.cohorte }, { Alumnos: newCantidad });
   }
   const usuarios = await User.findOneAndUpdate({ _id: id }, { cohorte: null });
   !usuarios ? res.send("hubo un error").status(400) : res.json(usuarios);
@@ -161,8 +158,7 @@ router.put("/cohorte/:id", async (req, res) => {
   var usuarios;
   //Primero buscamos el alumno para ver en que cohorte está
   const alumno = await User.findById(id);
-  if (alumno.cohorte) {
-    // si tiene cohorte asignado
+  if (alumno.cohorte) {       // si tiene cohorte asignado
     //Buscamos el cohorte del que migra
     const oldCohorte = await Cohorte.findById(alumno.cohorte);
     if (oldCohorte) {
@@ -170,8 +166,8 @@ router.put("/cohorte/:id", async (req, res) => {
       const cantidad = oldCohorte.Alumnos - 1;
       //Updateamos la cantidad en el cohorte que abandona
       await Cohorte.findByIdAndUpdate(oldCohorte._id, { Alumnos: cantidad });
-    }
-  }
+    };
+  };
   //Buscamos el cohorte al que migra
   const cohorte = await Cohorte.findOne({ Nombre: cohorteName });
   if (cohorte) {
@@ -190,16 +186,15 @@ router.get("/disponibles", async (req, res) => {
   const instructores = await User.find({ role: "instructor" });
   let final = [];
   for (let i = 0; i < instructores.length; i++) {
-    let disponible = await Cohorte.find({
-      Instructor: instructores[i]._id,
-      Active: true,
-    });
+    let disponible = await Cohorte.find({ Instructor: instructores[i]._id, Active: true });
     if (disponible.length === 0) {
-      final.push(instructores[i]);
+      final.push(instructores[i])
     }
   }
   final ? res.json(final) : res.sendStatus(400);
 });
+
+
 
 // Ruta para verificar el usuario de GitHub
 
@@ -214,11 +209,11 @@ async function getUser(username: any) {
   }
 }
 
-router.get("/github/:username", async (req, res) => {
+
+router.get('/github/:username', async (req, res) => {
   let { username } = req.params;
 
-  const userStatus =
-    username !== undefined ? await getUser(username) : username;
+  const userStatus = username !== undefined ? await getUser(username) : username;
 
   userStatus === undefined
     ? res.send(false).status(200)
@@ -238,35 +233,45 @@ router.get("/github/:username", async (req, res) => {
 // });
 
 // Ruta para buscar un usuario por nombre y apellido (queryStrings)
-router.get("/search?", async (req, res) => {
-  const { firstname, lastname } = req.query;
+router.get('/search?', async (req, res) => {
+  let { firstname, lastname } = req.query;
+  if (firstname !== "undefined" && firstname !== "" && !!firstname) {
+    firstname = firstname.toString()
+    firstname = firstname.charAt(0).toUpperCase() + firstname.slice(1).toLowerCase()
+  }
+  if (lastname !== "undefined" && lastname !== "" && !!lastname) {
+    lastname = lastname.toString()
+    lastname = lastname.charAt(0).toUpperCase() + lastname.slice(1).toLowerCase()
+  }
+
   let user;
 
   if (lastname === "undefined" || lastname === "") {
-    user = await User.find(
-      {
-        $or: [{ "name.firstname": firstname }, { "name.lastname": firstname }],
-      },
-      "+name"
-    );
+    user = await User.find({ $or: [{ "name.firstname": firstname }, { "name.lastname": firstname }] }, "+name", null, function (err, us) {
+      Cohorte.populate(us, { path: "cohorte" }, function (err, usIncCoh) {
+        Group.populate(usIncCoh, { path: "standup" }, function (err, usfull) {
+          err ? res.send('Hubo un error').status(400) : res.json(usfull);
+        })
+      })
+    });
   } else {
-    user = await User.find(
-      {
-        $or: [
-          { "name.firstname": firstname, "name.lastname": lastname },
-          { "name.firstname": lastname, "name.lastname": firstname },
-        ],
-      },
-      "+name"
-    );
+    user = await User.find({
+      $or: [{ "name.firstname": firstname, "name.lastname": lastname },
+      { "name.firstname": lastname, "name.lastname": firstname }]
+    }, "+name", null, function (err, us) {
+      Cohorte.populate(us, { path: "cohorte" }, function (err, usIncCoh) {
+        Group.populate(usIncCoh, { path: "standup" }, function (err, usfull) {
+          err ? res.send('Hubo un error').status(400) : res.json(usfull);
+        })
+      })
+    });
   }
 
-  !user ? res.send("Hubo un error") : res.json(user);
 });
 
 // Ruta para buscar usuario por id
 
-router.get("/:id", async (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
   const user = await User.find({ _id: id }, function (err, users) {
     Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
@@ -307,5 +312,31 @@ router.put("/historia/:historiaId", (req, res) => {
       return res.send(error).status(400);
     });
 });
+
+//////////////////////////////////////////////////////////////////////////////
+
+/// Rutas para usar en grupos///////
+
+router.get("/groupUsers/:id", async (req, res) => {
+  const { id } = req.params;
+  const users = await User.find({ standup: id, });
+  res.json(users)
+})
+
+router.get("/usercohorte/:id", async (req, res) => {
+  const { id } = req.params
+  const usuarios = await User.find({ role: "alumno", cohorte: id, standup: null})
+  console.log(id)
+  const PM = await User.find({role: "PM", standup: null})
+  !usuarios ? res.send("hubo un error").status(400) : res.json([usuarios, PM])
+})
+
+
+
+//"Rol === alumno => standup === standup vigente///
+ // |       O
+ //\ /     /|\
+ //        / \   persone ne binare
+//rol === PM => standup === standup de OTRO COHORTE MAS NUevO.//// holi //
 
 export default router;

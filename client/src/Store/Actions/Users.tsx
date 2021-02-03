@@ -1,6 +1,6 @@
-import axios from "axios";
-import jwt from "jsonwebtoken";
 import { uploadAction } from "../../components/PanelControlStudents/InvitacionAlumnos/actionUpdate";
+import axios, { AxiosAdapter, AxiosRequestConfig, AxiosResponse, AxiosStatic } from "axios";
+import jwt from 'jsonwebtoken';
 import {
   GET_USERS,
   POST_USER,
@@ -12,42 +12,40 @@ import {
   MIGRAR_USER_COHORTE,
   GET_USER_BY_TOKEN,
   GET_STUDENTS,
+  USERS_GROUP,
   SEARCH_BY_NAME,
   PUT_NOTAS,
 } from "../Constants/Users";
-
 const url = "http://localhost:3001";
 
 export const sendInvitation = (payload: any) => async (dispatch: any) => {
   try {
-    if (payload.file) {
-      const upFile: any = await uploadAction(payload);
-      const res: any = await axios.post(`${url}/mails`, upFile);
-    } else {
-      const res: any = await axios.post(`${url}/mails`, payload);
-    }
-  } catch (e) {
+
+    const res: any = await axios.post(`${url}/mails`, payload)
+  }
+  catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      payload: "Error al invitar alumnos",
-    });
+      payload: "Error al invitar alumnos"
+    })
   }
-};
+}
 
 export const getStudents = () => async (dispatch: any) => {
   try {
     const res: any = await axios.get(`${url}/users/estudiantes`);
     dispatch({
       type: GET_STUDENTS,
-      payload: res.data,
-    });
-  } catch (e) {
+      payload: res.data
+    })
+  }
+  catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      payload: "Error al traer alumnos",
-    });
+      payload: "Error al traer alumnos"
+    })
   }
-};
+}
 
 export const postUser = (payload: any) => async (dispatch: any) => {
   try {
@@ -57,10 +55,8 @@ export const postUser = (payload: any) => async (dispatch: any) => {
       const datos = { email, password };
       const newToken = await axios.post(`${url}/auth/login`, datos);
       if (newToken) {
-        localStorage.setItem("userToken", newToken.data);
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${newToken.data}`;
+        localStorage.setItem('userToken', newToken.data);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${newToken.data}`;
       }
     }
     dispatch({
@@ -77,7 +73,7 @@ export const postUser = (payload: any) => async (dispatch: any) => {
 
 export const getUsersbyCohorte = (id: any) => async (dispatch: any) => {
   try {
-    const res = await axios.get(`${url}/users/cohorte/${id}`);
+    const res = await axios.get(`${url}/users/cohorte/${id}`,);
     dispatch({
       type: GET_USERS_BY_COHORTE,
       payload: res.data,
@@ -92,8 +88,8 @@ export const getUsersbyCohorte = (id: any) => async (dispatch: any) => {
 
 export const getUserByToken = (payload: any) => async (dispatch: any) => {
   try {
-    localStorage.setItem("userToken", payload);
-    axios.defaults.headers.common["Authorization"] = `Bearer ${payload}`;
+    localStorage.setItem('userToken', payload);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${payload}`;
     const usuario = jwt.decode(payload);
     dispatch({
       type: GET_USER_BY_TOKEN,
@@ -102,7 +98,7 @@ export const getUserByToken = (payload: any) => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      message: "No se encuentra el usuario",
+      message: 'No se encuentra el usuario',
     });
   }
 };
@@ -122,9 +118,7 @@ export const deleteUserCohorte = (id: any) => async (dispatch: any) => {
   }
 };
 
-export const migrarUserCohorte = (id: any, cohorteName: string) => async (
-  dispatch: any
-) => {
+export const migrarUserCohorte = (id: string, cohorteName: string) => async (dispatch: any) => {
   try {
     const res = await axios.put(`${url}/users/cohorte/${id}`, { cohorteName });
     dispatch({
@@ -139,6 +133,22 @@ export const migrarUserCohorte = (id: any, cohorteName: string) => async (
   }
 };
 
+export const usersGroup = (id: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.get(`${url}/users/groupUsers/${id}`,);
+    dispatch({
+      type: USERS_GROUP,
+      payload: res.data
+    })
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Problemas para traer usuarios",
+    });
+  }
+}
+
+
 export const SearchByName = (payload: any) => async (dispatch: any) => {
   try {
     const res = await axios.get(
@@ -151,7 +161,7 @@ export const SearchByName = (payload: any) => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      message: "Problemas para crear el usuario",
+      message: "Problemas para buscar alumno",
     });
   }
 };

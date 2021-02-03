@@ -26,6 +26,7 @@ export default async function Insert() {
       standup: "600b9852935003272c8b6801",
       historia: "600b9852935003272c8b6701",
     },
+    
     {
       _id: "600b9852935003272c8b6102",
       name: { firstname: "Marcelo", lastname: "Spagnuolo" },
@@ -155,6 +156,7 @@ export default async function Insert() {
       cohorte: "600b9852935003272c8b6901",
       historia: "600b9852935003272c8b6712",
     },
+    
     {
       _id: "600b9852935003272c8b6113",
       name: { firstname: "Miguel", lastname: "Hernandez" },
@@ -179,6 +181,7 @@ export default async function Insert() {
       cohorte: "600b9852935003272c8b6901",
       historia: "600b9852935003272c8b6714",
     },
+    
     {
       _id: "600b9852935003272c8b6115",
       name: { firstname: "Tony", lastname: "Tralice" },
@@ -259,9 +262,39 @@ export default async function Insert() {
       name: { firstname: "Esteban", lastname: "Quito" },
       role: "instructor",
       email: "esteban@quito.com",
-      github: "QuitoEsteban",
+      github: "EstebanQuito",
       created: new Date(),
       password: "esteban2021",
+    },
+    {
+      _id: "600b9852935003272c8b6124",
+      name: { firstname: "Alicia", lastname: "Maravilla" },
+      role: "alumno",
+      email: "alicia@gmail.com",
+      password: "Password5238",
+      github: "AliciaMaravilla",
+      created: Date(),
+      cohorte: "600b9852935003272c8b6902",
+    },
+    {
+      _id: "600b9852935003272c8b6125",
+      name: { firstname: "Mike", lastname: "Tyson" },
+      role: "PM",
+      email: "Mikecito@gmail.com",
+      password: "ComeOrjeas2",
+      github: "MikeTyson",
+      created: Date(),
+      cohorte: "600b9852935003272c8b6902",
+    },
+    {
+      _id: "600b9852935003272c8b6126",
+      name: { firstname: "Ali", lastname: "Baba" },
+      role: "PM",
+      email: "Alibabi@gmail.com",
+      password: "Ylos40Ladrones",
+      github: "AliBaba",
+      created: Date(),
+      cohorte: "600b9852935003272c8b6902",
     },
   ];
   const groups = [
@@ -269,13 +302,13 @@ export default async function Insert() {
       _id: "600b9852935003272c8b6802",
       PM: ["600b9852935003272c8b6112", "600b9852935003272c8b6113"],
       Grupo: 1,
-      Cohorte: "600b9852935003272c8b6801",
+      Cohorte: "600b9852935003272c8b6902",
     },
     {
       _id: "600b9852935003272c8b6801",
       PM: ["600b9852935003272c8b6114", "600b9852935003272c8b6115"],
       Grupo: 2,
-      Cohorte: "600b9852935003272c8b6801",
+      Cohorte: "600b9852935003272c8b6902",
     },
   ];
 

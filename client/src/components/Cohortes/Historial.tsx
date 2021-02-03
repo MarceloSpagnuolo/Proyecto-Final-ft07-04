@@ -10,11 +10,12 @@ function Listado() {
 
   useEffect(() => {
     dispatch(getActiveCohortes(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="Listado-Container">
-      <h2>Cohortes Activos</h2>
+      <h2>Cohortes Inactivos</h2>
       <table className="Listado-Table">
         <tbody>
           <tr>

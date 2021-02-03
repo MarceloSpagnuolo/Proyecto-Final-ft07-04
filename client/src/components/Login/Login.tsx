@@ -47,7 +47,7 @@ const Login = (): JSX.Element => {
             })
             history.push('/home');  
         } 
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user])
 
     function handleInput(e: React.ChangeEvent<HTMLInputElement>) {

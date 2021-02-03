@@ -74,19 +74,7 @@ const Nav = () => {
             id="divIdList"
           >
             <div className="divListasMobile">
-              <div>
-                <div onClick={() => divChange("a")} className="mlP">
-                  {user.name && user.name.firstname}
-                </div>
-                {display1 === "a" ? (
-                  <div className="containermlH">
-                    <div className="mlH">Mi Perfil</div>
-                    <div className="mlH" onClick={LogOut}>
-                      Logout
-                    </div>
-                  </div>
-                ) : null}
-              </div>
+              
               <div>
                 <div onClick={() => linkTo("PanelControlStudent")} className="mlP">
                   Alumnos
@@ -97,14 +85,6 @@ const Nav = () => {
                   Cohortes
                 </div>
               </div>
-            </div>
-          </div> : (user.role === "PM") ?
-            // LOGICA PARA RENDERIZAR PARA EL PM
-            <div
-            className={display ? "containerNavList" : "activeDiv"}
-            id="divIdList"
-          >
-            <div className="divListasMobile">
               <div>
                 <div onClick={() => divChange("a")} className="mlP">
                   {user.name && user.name.firstname}
@@ -118,20 +98,42 @@ const Nav = () => {
                   </div>
                 ) : null}
               </div>
+            </div>
+          </div> : (user.role === "PM") ?
+            // LOGICA PARA RENDERIZAR PARA EL PM
+            <div
+            className={display ? "containerNavList" : "activeDiv"}
+            id="divIdList"
+          >
+            <div className="divListasMobile">
+              
               <div>
-                <div onClick={() => linkTo("MisAlumnos")} className="mlP">
+                <div onClick={() => linkTo(`Standup/${user.standup}`)} className="mlP">
                   Mi Standup
                 </div>
               </div>
               <div>
-                <div onClick={() => linkTo("MiCohorte")} className="mlP">
+                <div onClick={() => linkTo(`MiCohorte/${user.cohorte}`)} className="mlP">
                   Mi Cohorte
                 </div>
               </div>
               <div>
-                <div onClick={() => linkTo("MisDatos")} className="mlP">
+                <div onClick={() => linkTo(`MisDatos/${user._id}`)} className="mlP">
                   Rendimiento
                 </div>
+              </div>
+              <div>
+                <div onClick={() => divChange("a")} className="mlP">
+                  {user.name && user.name.firstname}
+                </div>
+                {display1 === "a" ? (
+                  <div className="containermlH">
+                    <div className="mlH">Mi Perfil</div>
+                    <div className="mlH" onClick={LogOut}>
+                      Logout
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
@@ -142,6 +144,17 @@ const Nav = () => {
         id="divIdList"
       >
         <div className="divListasMobile">
+          
+          <div>
+            <div onClick={() => linkTo("MiCohorte")} className="mlP">
+              Mi Cohorte
+            </div>
+          </div>
+          <div>
+            <div onClick={() => linkTo("MisDatos")} className="mlP">
+              Rendimiento
+            </div>
+          </div>
           <div>
             <div onClick={() => divChange("a")} className="mlP">
               {user.name && user.name.firstname}
@@ -154,16 +167,6 @@ const Nav = () => {
                 </div>
               </div>
             ) : null}
-          </div>
-          <div>
-            <div onClick={() => linkTo("MiCohorte")} className="mlP">
-              Mi Cohorte
-            </div>
-          </div>
-          <div>
-            <div onClick={() => linkTo("MisDatos")} className="mlP">
-              Rendimiento
-            </div>
           </div>
         </div>
       </div>

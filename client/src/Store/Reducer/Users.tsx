@@ -1,3 +1,4 @@
+
 import {
   GET_USERS,
   POST_USER,
@@ -8,6 +9,7 @@ import {
   MIGRAR_USER_COHORTE,
   GET_USER_BY_TOKEN,
   GET_STUDENTS,
+  USERS_GROUP,
   SEARCH_BY_NAME,
   ERROR_MESSAGE,
   PUT_NOTAS,
@@ -17,7 +19,7 @@ import { EMFILE } from "constants";
 
 interface Store {
   user: Object;
-  users: Array<any>;
+  users: Array<any>  ;
 }
 
 const inicialState: Store = {
@@ -32,6 +34,12 @@ function Users(state = inicialState, action: any) {
         ...state,
         users: action.payload,
       };
+    }
+    case USERS_GROUP: {
+      return {
+        ...state,
+        users: action.payload
+      }
     }
     case POST_USER:
       return {
@@ -54,7 +62,6 @@ function Users(state = inicialState, action: any) {
         users: state.users.filter((user) => user._id !== action.payload._id),
       };
     case SEARCH_BY_NAME:
-      console.log("ENTRE AL REDUCER");
       return {
         ...state,
         users: action.payload,

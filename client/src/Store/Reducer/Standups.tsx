@@ -1,7 +1,8 @@
 import Swal from "sweetalert2";
 import {
   GET_STANDUPS,
-  PUT_STANDUPS,
+  POST_PM,
+  GET_ONE_STANDUP,
   POST_STANDUP,
   DEL_STANDUP,
   ERROR_MESSAGE,
@@ -19,6 +20,33 @@ const inicialState: Store = {
 
 function Standups(state = inicialState, action: any) {
   switch (action.type) {
+    case GET_STANDUPS: {
+      return {
+        standups: action.payload,
+      }
+    }
+    case GET_ONE_STANDUP: {
+      return {
+        standup: action.payload
+      }
+    }
+    case POST_PM: {
+      return {
+        standup: action.payload
+      }
+    }
+    case POST_STANDUP: {
+      return {
+        ...state,
+        standups: state.standups.concat(action.payload)
+      }
+    }
+    case DEL_STANDUP: {
+      return {
+        ...state,
+        standups: state.standups.filter((s) => s._id !== action.payload._id)
+      }
+    }
     case ERROR_MESSAGE: {
       Swal.fire(
         "Error",
@@ -26,7 +54,7 @@ function Standups(state = inicialState, action: any) {
         "error"
       );
       return state;
-      }
+    }
     default: {
       return state;
     }
