@@ -2,15 +2,22 @@
   display: flex;
 }
 
+.Add-Image img {
+  margin-top: 45px;
+  border-radius: 10px;
+  opacity: 0.8;
+  box-shadow: 2px 2px 4px #b3b3b3;
+}
+
 .Add-Form-Body {
   padding: 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 40%;
   z-index: 1;
 }
 
 .Add-Cohorte-Title {
-  text-align: center;
+  margin-top: 22px;
+  text-align: left;
 }
 
 .Add-Form {
@@ -23,14 +30,28 @@
   margin-bottom: 10px;
 }
 
+.Add-Frase {
+  text-align: left;
+  line-height: 25px;
+}
+
 .Add-Form-Input-Fecha {
-  height: 3rem;
-  font-size: 2.5rem;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  color: #b3b3b3;
+  height: 35px;
+  padding-left: 5px;
+  font-size: 18px;
+  box-shadow: 2px 2px 4px #b3b3b3;
   border-radius: 10px;
 }
 
+.Add-Form-Input-Cohorte {
+  height: 35px;
+  width: 190px;
+}
+
 .Add-Form-Input-Fecha:focus {
-  background-color: lightyellow;
   outline: none;
 }
 
@@ -38,7 +59,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: lightsalmon;
   animation-name: error;
-  animation-duration: 0.7s;
+  animation-duration: 1.4s;
   animation-iteration-count: infinite;
 }
 
@@ -46,9 +67,11 @@
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -79,10 +102,8 @@
     max-height: 700px;
   }
 
-  .Add-Frase {
-    text-align: center;
-    font-size: 1.2rem;
-    font-family: cursive;
+  input {
+    font-size: 20px;
   }
 
   #Add-Btn-Submit {
@@ -92,6 +113,9 @@
     font-size: 1.2rem;
     border-radius: 25px;
     cursor: pointer;
+    background-color: hsl(54, 100%, 48%);
+    color: black;
+    box-shadow: 2px 2px 4px #b3b3b3;
   }
 
   #Add-Btn-Submit:disabled {
@@ -103,14 +127,13 @@
   }
 
   .Add-Form-Input-Cohorte {
-    width: 18rem;
-    height: 3rem;
+    margin: 5px 0;
     font-size: 2rem;
     border-radius: 10px;
+    box-shadow: 2px 2px 4px #b3b3b3;
   }
 
   .Add-Form-Input-Cohorte:focus {
-    background-color: lightyellow;
     outline: none;
   }
 }
@@ -124,10 +147,9 @@
   }
 
   .Add-Frase {
-    text-align: center;
+    text-align: left;
     width: 100%;
     font-size: 0.8rem;
-    font-family: cursive;
   }
 
   .Add-Form {
@@ -143,7 +165,6 @@
   }
 
   .Add-Frase {
-    text-align: center;
     width: 100%;
   }
 
@@ -154,28 +175,5 @@
     font-size: 1.2rem;
     border-radius: 10px;
     cursor: pointer;
-  }
-
-  .Add-Form-Input-Cohorte {
-    width: 14rem;
-    height: 2rem;
-    font-size: 1.5rem;
-    border-radius: 10px;
-  }
-
-  .Add-Form-Input-Cohorte:focus {
-    background-color: lightyellow;
-    outline: none;
-  }
-
-  .Add-Form-Input-Fecha {
-    height: 2rem;
-    font-size: 1.85rem;
-    border-radius: 10px;
-  }
-
-  .Add-Form-Input-Fecha:focus {
-    background-color: lightyellow;
-    outline: none;
   }
 }

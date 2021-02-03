@@ -100,10 +100,6 @@
 
 @media screen and (max-width:600px) {
 
-    #contenedor-top-estudiantes h1 {
-        margin-left: 10px;
-    }
-
     .student-titles {
         flex-wrap: wrap;
         padding-top: 0;

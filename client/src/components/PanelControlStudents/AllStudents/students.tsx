@@ -17,7 +17,7 @@ const Students = (): JSX.Element => {
     return (
         <div id="student-super-container">
             <div id='contenedor-top-estudiantes'>
-                <h1 id='titulo-tab-estudiantes'>Alumnos</h1>
+                <h2 id='titulo-tab-estudiantes'>Alumnos</h2>
                 <SearchBar id='busqueda-estudiantes' />
             </div>
             <div className="student-container">
