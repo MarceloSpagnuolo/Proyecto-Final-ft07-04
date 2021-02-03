@@ -1,4 +1,3 @@
-
 import {
   GET_USERS,
   POST_USER,
@@ -12,6 +11,8 @@ import {
   USERS_GROUP,
   SEARCH_BY_NAME,
   ERROR_MESSAGE,
+  GET_USER_EDIT,
+  UPDATE_USER_PASSWORD,
   PUT_NOTAS,
 } from "../Constants/Users";
 import Swal from "sweetalert2";
@@ -19,12 +20,14 @@ import { EMFILE } from "constants";
 
 interface Store {
   user: Object;
-  users: Array<any>  ;
+  users: Array<any>;
+  userToEdit: Array<any>;
 }
 
 const inicialState: Store = {
   user: {},
   users: [],
+  userToEdit: [],
 };
 
 function Users(state = inicialState, action: any) {
@@ -38,8 +41,8 @@ function Users(state = inicialState, action: any) {
     case USERS_GROUP: {
       return {
         ...state,
-        users: action.payload
-      }
+        users: action.payload,
+      };
     }
     case POST_USER:
       return {
@@ -82,6 +85,22 @@ function Users(state = inicialState, action: any) {
     case ERROR_MESSAGE: {
       Swal.fire("Error", action.message, "error");
       return state;
+    }
+    case UPDATE_USER_PASSWORD:
+      return {
+        ...state,
+        msg: action.payload,
+      };
+    case GET_USER_EDIT:
+      return {
+        ...state,
+        userToEdit: action.payload,
+      };
+    case PUT_USERS: {
+      return {
+        ...state,
+        userToEdit: action.payload,
+      };
     }
     default: {
       return state;

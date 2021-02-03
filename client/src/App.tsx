@@ -13,6 +13,7 @@ import Carga from "components/Notas/Carga";
 import Grupos from 'components/Grupos/GruposCreate';
 import MiCohorte from "./components/PMsYAlumnos/MiCohorte"
 import Rendimiento from "./components/PMsYAlumnos/Rendimiento"
+import Profile from './components/Profile/Profile'
 import MiGrupo from "./components/PMsYAlumnos/MiGrupo"
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
       <Route exact path="/activos/:id" component={Activos} />
       <Route exact path="/inactivos/:id" component={Inactivos} />
       <Route exact path='/PanelControlStudent' component={PanelControlStudents} />
+      <Route exact path='/Grupos' component={Grupos} />
+      <Route path='/Profile/:id' component={Profile} />
       <Route exact path='/Grupos/:id' component={Grupos} />
       <Route exact path='/MiGrupo/:id' component={MiGrupo} />
       <Route exact path="/cargaNotas" component={Carga} />

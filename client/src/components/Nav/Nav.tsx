@@ -91,7 +91,7 @@ const Nav = () => {
                 </div>
                 {display1 === "a" ? (
                   <div className="containermlH">
-                    <div className="mlH">Mi Perfil</div>
+                     <div className="mlH" onClick={() => linkTo("profile/miPerfil")}> Mi Perfil</div>
                     <div className="mlH" onClick={LogOut}>
                       Logout
                     </div>
@@ -128,7 +128,7 @@ const Nav = () => {
                 </div>
                 {display1 === "a" ? (
                   <div className="containermlH">
-                    <div className="mlH">Mi Perfil</div>
+                      <div className="mlH" onClick={() => linkTo("profile/miPerfil")}> Mi Perfil</div>
                     <div className="mlH" onClick={LogOut}>
                       Logout
                     </div>
@@ -166,7 +166,7 @@ const Nav = () => {
             </div>
             {display1 === "a" ? (
               <div className="containermlH">
-                <div className="mlH">Mi Perfil</div>
+                  <div className="mlH" onClick={() => linkTo("profile/miPerfil")}> Mi Perfil</div>
                 <div className="mlH" onClick={LogOut}>
                   Logout
                 </div>
