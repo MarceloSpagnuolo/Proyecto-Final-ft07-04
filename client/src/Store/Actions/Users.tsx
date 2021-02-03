@@ -1,4 +1,3 @@
-import { uploadAction } from "../../components/PanelControlStudents/InvitacionAlumnos/actionUpdate";
 import axios, { AxiosAdapter, AxiosRequestConfig, AxiosResponse, AxiosStatic } from "axios";
 import jwt from 'jsonwebtoken';
 import {
@@ -31,9 +30,9 @@ export const sendInvitation = (payload: any) => async (dispatch: any) => {
   }
 }
 
-export const getStudents = () => async (dispatch: any) => {
+export const getStudents = (id: any) => async (dispatch: any) => {
   try {
-    const res: any = await axios.get(`${url}/users/estudiantes`);
+    const res: any = await axios.get(`${url}/users/estudiantes/${id}`);
     dispatch({
       type: GET_STUDENTS,
       payload: res.data

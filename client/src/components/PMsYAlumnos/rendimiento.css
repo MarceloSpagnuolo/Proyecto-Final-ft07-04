@@ -1,0 +1,29 @@
+.rend-container {
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.rend-table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rend-table-titles {
+    color: white;
+    background-color: #0f6151;
+}
+
+#rend-table-tr:nth-child(even) {
+    background-color: rgb(190, 182, 182);
+}
+
+.rend-table-body {
+    background-color: white;
+}
+
+.rend-table-th,
+.rend-table-td {
+    padding: 1%;
+    box-shadow: inset 0px 1px 2px #949090;
+}

@@ -10,7 +10,7 @@ const Students = (): JSX.Element => {
     const users: any = useSelector((state: any) => state.Users.users)
 
     useEffect(() => {
-        dispatch(getStudents())
+        dispatch(getStudents("all"))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

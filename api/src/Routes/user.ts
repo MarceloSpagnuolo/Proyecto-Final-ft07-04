@@ -15,17 +15,41 @@ router.get("/", async (req, res) => {
 
 //Devuelve todos los usarios que son alumnos o pm con los datos completos del
 //cohorte y del grupo al que pertenecen
-router.get("/estudiantes", async (req, res) => {
-  await User.find(
-    { $or: [{ role: "alumno" }, { role: "PM" }] },
-    function (err, users) {
-      Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
-        Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
-          res.json(usersCOM).status(200);
-        });
-      });
+router.get("/estudiantes/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    if (id !== "all") {
+      await User.findOne(
+        { _id: id }, function (err: any, users: any) {
+          Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+            Group.populate(usersCH, { path: "standup" }, function (err, usersGrp) {
+              Historial.populate(usersGrp, { path: "historia" }, function (err, usersCOM) {
+                res.json(usersCOM).status(200);
+
+              })
+            });
+          });
+        }
+      );
+    } else {
+      await User.find(
+        { $or: [{ role: "alumno" }, { role: "PM" }] },
+        function (err, users) {
+          Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+            Group.populate(usersCH, { path: "standup" }, function (err, usersGrp) {
+              Historial.populate(usersGrp, { path: "historia" }, function (err, usersCOM) {
+                res.json(usersCOM).status(200);
+              })
+            });
+          });
+        }
+      );
     }
-  );
+  } catch (e) {
+    console.log(e, "Este es el error")
+  }
+
+
 });
 
 //guardar usuario
@@ -325,17 +349,17 @@ router.get("/groupUsers/:id", async (req, res) => {
 
 router.get("/usercohorte/:id", async (req, res) => {
   const { id } = req.params
-  const usuarios = await User.find({ role: "alumno", cohorte: id, standup: null})
-  const PM = await User.find({role: "PM", standup: null})
+  const usuarios = await User.find({ role: "alumno", cohorte: id, standup: null })
+  const PM = await User.find({ role: "PM", standup: null })
   !usuarios ? res.send("hubo un error").status(400) : res.json([usuarios, PM])
 })
 
 
 
 //"Rol === alumno => standup === standup vigente///
- // |       O
- //\ /     /|\
- //        / \   persone ne binare
+// |       O
+//\ /     /|\
+//        / \   persone ne binare
 //rol === PM => standup === standup de OTRO COHORTE MAS NUevO.//// holi //
 
 export default router;

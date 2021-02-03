@@ -26,7 +26,7 @@ export default async function Insert() {
       standup: "600b9852935003272c8b6801",
       historia: "600b9852935003272c8b6701",
     },
-    
+
     {
       _id: "600b9852935003272c8b6102",
       name: { firstname: "Marcelo", lastname: "Spagnuolo" },
@@ -156,7 +156,7 @@ export default async function Insert() {
       cohorte: "600b9852935003272c8b6901",
       historia: "600b9852935003272c8b6712",
     },
-    
+
     {
       _id: "600b9852935003272c8b6113",
       name: { firstname: "Miguel", lastname: "Hernandez" },
@@ -181,7 +181,7 @@ export default async function Insert() {
       cohorte: "600b9852935003272c8b6901",
       historia: "600b9852935003272c8b6714",
     },
-    
+
     {
       _id: "600b9852935003272c8b6115",
       name: { firstname: "Tony", lastname: "Tralice" },
@@ -275,6 +275,7 @@ export default async function Insert() {
       github: "AliciaMaravilla",
       created: Date(),
       cohorte: "600b9852935003272c8b6902",
+      historia: "600b9852935003272c8b6718",
     },
     {
       _id: "600b9852935003272c8b6125",
@@ -285,6 +286,7 @@ export default async function Insert() {
       github: "MikeTyson",
       created: Date(),
       cohorte: "600b9852935003272c8b6902",
+      historia: "600b9852935003272c8b6717",
     },
     {
       _id: "600b9852935003272c8b6126",
@@ -295,6 +297,7 @@ export default async function Insert() {
       github: "AliBaba",
       created: Date(),
       cohorte: "600b9852935003272c8b6902",
+      historia: "600b9852935003272c8b6716",
     },
   ];
   const groups = [
@@ -343,59 +346,71 @@ export default async function Insert() {
   const historia = [
     {
       _id: "600b9852935003272c8b6701",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
     },
     {
       _id: "600b9852935003272c8b6702",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
     },
     {
       _id: "600b9852935003272c8b6703",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
     },
     {
       _id: "600b9852935003272c8b6704",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
     },
     {
       _id: "600b9852935003272c8b6705",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
     },
     {
       _id: "600b9852935003272c8b6706",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
     },
     {
       _id: "600b9852935003272c8b6707",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
     },
     {
       _id: "600b9852935003272c8b6708",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
     },
     {
       _id: "600b9852935003272c8b6709",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
     },
     {
       _id: "600b9852935003272c8b6710",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6902" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
     },
     {
       _id: "600b9852935003272c8b6712",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6901" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6901" }]
     },
     {
       _id: "600b9852935003272c8b6713",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6901" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6901" }]
     },
     {
       _id: "600b9852935003272c8b6714",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6901" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6901" }]
     },
     {
       _id: "600b9852935003272c8b6715",
-      Checkpoints: [ { Cohorte: "600b9852935003272c8b6901" } ]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6901" }]
+    },
+    {
+      _id: "600b9852935003272c8b6716",
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+    },
+    {
+      _id: "600b9852935003272c8b6717",
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+    },
+    {
+      _id: "600b9852935003272c8b6718",
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
     },
   ]
 
