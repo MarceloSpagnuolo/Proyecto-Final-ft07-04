@@ -7,23 +7,25 @@ import "components/Cohortes/Cohortes.css";
 
 function Cohortes() {
   return (
-    <div>
-      <Tabs id="Cohorte-Tab">
-        <TabList id="Cohorte-TabList">
-          <Tab>Cohortes</Tab>
-          <Tab>Nuevo Cohorte</Tab>
-          <Tab>Historial</Tab>
-        </TabList>
-        <TabPanel>
-          <Listado />
-        </TabPanel>
-        <TabPanel>
-          <AddCohorte />
-        </TabPanel>
-        <TabPanel>
-          <Historial />
-        </TabPanel>
-      </Tabs>
+    <div id="cohortes">
+      <div id="subcohor">
+        <Tabs id="Cohorte-Tab">
+          <TabList id="Cohorte-TabList">
+            <Tab>Cohortes</Tab>
+            <Tab>Nuevo Cohorte</Tab>
+            <Tab>Historial</Tab>
+          </TabList>
+          <TabPanel>
+            <Listado />
+          </TabPanel>
+          <TabPanel>
+            <AddCohorte />
+          </TabPanel>
+          <TabPanel>
+            <Historial />
+          </TabPanel>
+        </Tabs>
+      </div>
     </div>
   );
 }

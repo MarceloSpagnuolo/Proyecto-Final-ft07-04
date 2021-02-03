@@ -38,7 +38,7 @@ function Listado() {
                   <td className="Listado-Td" id="Listado-Align">
                     {elem.Alumnos}
                   </td>
-                  <td className="Listado-Td">
+                  <td className="Listado-Td" id="instruct">
                     {!!elem.Instructor && !!elem.Instructor.name && elem.Instructor.name.firstname +
                       " " +
                       elem.Instructor.name.lastname}
