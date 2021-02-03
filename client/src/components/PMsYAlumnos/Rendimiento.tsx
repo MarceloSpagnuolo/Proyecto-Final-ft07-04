@@ -14,7 +14,7 @@ function Rendimiento(props: any) {
   useEffect(() => {
     if (user._id && user._id !== id) {
       window.location.href = "/home"
-    } else {
+    } else if (!!user._id) {
       dispatch(getStudents(user._id))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
