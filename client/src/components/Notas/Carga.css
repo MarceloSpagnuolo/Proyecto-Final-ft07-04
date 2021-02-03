@@ -22,3 +22,28 @@
 #Carga-Nro {
   width: 4rem;
 }
+
+.Carga-Input-Imagen {
+  width: 30px;
+}
+
+.Carga-Body {
+  display: flex;
+}
+
+.Carga-Listas {
+  display: flex;
+  width: 100%;
+  margin: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.Carga-Lista {
+  width: 25%;
+  border: 1px solid lightgray;
+}
+
+.Carga-Lista span {
+  width: 100%;
+  text-align: center;
+}

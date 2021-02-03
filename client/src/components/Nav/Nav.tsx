@@ -84,10 +84,12 @@ const Nav = () => {
                   <div onClick={() => linkTo("cohortes")} className="mlP">
                     Cohortes
                 </div>
-                </div>
-                <div>
-                  <div onClick={() => divChange("a")} className="mlP">
-                    {user.name && user.name.firstname}
+                {display1 === "a" ? (
+                  <div className="containermlH">
+                     <div className="mlH" onClick={() => linkTo("profile/miPerfil")}> Mi Perfil</div>
+                    <div className="mlH" onClick={LogOut}>
+                      Logout
+                    </div>
                   </div>
                   {display1 === "a" ? (
                     <div className="containermlH">
@@ -121,16 +123,11 @@ const Nav = () => {
                     <div onClick={() => linkTo(`MisDatos/${user._id}`)} className="mlP">
                       Rendimiento
                 </div>
-                  </div>
-                  <div>
-                    <div onClick={() => divChange("a")} className="mlP">
-                      {user.name && user.name.firstname}
-                    </div>
-                    {display1 === "a" ? (
-                      <div className="containermlH">
-                        <div className="mlH">Mi Perfil</div>
-                        <div className="mlH" onClick={LogOut}>
-                          Logout
+                {display1 === "a" ? (
+                  <div className="containermlH">
+                      <div className="mlH" onClick={() => linkTo("profile/miPerfil")}> Mi Perfil</div>
+                    <div className="mlH" onClick={LogOut}>
+                      Logout
                     </div>
                       </div>
                     ) : null}
@@ -154,16 +151,11 @@ const Nav = () => {
                       <div onClick={() => linkTo(`MisDatos/${user._id}`)} className="mlP">
                         Rendimiento
             </div>
-                    </div>
-                    <div>
-                      <div onClick={() => divChange("a")} className="mlP">
-                        {user.name && user.name.firstname}
-                      </div>
-                      {display1 === "a" ? (
-                        <div className="containermlH">
-                          <div className="mlH">Mi Perfil</div>
-                          <div className="mlH" onClick={LogOut}>
-                            Logout
+            {display1 === "a" ? (
+              <div className="containermlH">
+                  <div className="mlH" onClick={() => linkTo("profile/miPerfil")}> Mi Perfil</div>
+                <div className="mlH" onClick={LogOut}>
+                  Logout
                 </div>
                         </div>
                       ) : null}
