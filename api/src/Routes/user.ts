@@ -6,6 +6,15 @@ import Group from "../Models/groups";
 import Historial from "../Models/historial";
 import axios from "axios";
 
+import * as bcrypt from "bcrypt";
+
+const passport = require('passport');
+const auth = require('../middleware/authenticate');
+const jwt=require('jsonwebtoken')
+
+router.use(passport.initialize())
+require('./passport-config')(passport);
+
 // Trae todos los usuarios
 router.get("/", async (req, res) => {
   const result = await User.find();
@@ -78,17 +87,25 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
-// Modificar un usuario por id
-router.put("/modify/:id", async (req, res) => {
-  const { id } = req.params;
+/// Modificar un usuario por id
+router.put('/modify', async (req, res) => {
 
-  const user = await User.findOneAndUpdate({ _id: id }, req.body);
-
-  if (!user) {
-    res.status(404).send("No existe un usuario con ese id");
-  } else {
-    res.status(200).json(user);
+  try {
+      const user = await User.findOneAndUpdate({ _id: req.body.id}, req.body,{new:true});
+      Cohorte.populate(user, { path: "cohorte" }, function (err, usersCH) {
+      Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+        console.log(usersCOM)
+        res.json(usersCOM).status(200);
+        })
+      });
+  } catch (error) {
+    console.log(error)
+    res.json({msg:'Hubo un error'}).status(400);
   }
+  
+  
+  
+  
 });
 
 //Devuelve todos los usuarios de un cohorte o "todos"
@@ -269,18 +286,6 @@ router.get('/search?', async (req, res) => {
 
 });
 
-// Ruta para buscar usuario por id
-
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  const user = await User.find({ _id: id }, function (err, users) {
-    Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
-      Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
-        res.json(usersCOM).status(200);
-      });
-    });
-  });
-});
 
 //Ruta que actualiza las notas de un checkpoint de uma historia
 router.put("/historia/:historiaId", (req, res) => {
@@ -313,6 +318,7 @@ router.put("/historia/:historiaId", (req, res) => {
     });
 });
 
+
 //////////////////////////////////////////////////////////////////////////////
 
 /// Rutas para usar en grupos///////
@@ -329,6 +335,55 @@ router.get("/usercohorte/:id", async (req, res) => {
   const PM = await User.find({role: "PM", standup: null})
   !usuarios ? res.send("hubo un error").status(400) : res.json([usuarios, PM])
 })
+
+
+//ruta para que un usuario actualice el  password 
+router.put('/change_password',auth, async(req, res, next) => {
+	const {password,newPassword,confirmPassword,email} = req.body;
+	if(!newPassword && !confirmPassword) return res.json({success:false,msg:'Inputs vacios por favor revise'}).status(400);
+	if ( newPassword === confirmPassword) {
+    try {
+      //revisar password actual coincida con el de la base de datos
+      const userdb = await User.findOne({email:email});
+      const user = new User();
+      const result =  await user.comparePassword(password, userdb.password)
+      //si password coincide con db entonces encryptar y actualizar en base de datos
+      if(result){
+        const salt = await bcrypt.genSaltSync(10);
+        const hash = await bcrypt.hashSync(newPassword, salt);
+        await User.findOneAndUpdate({ email: email}, {$set: {password: hash}});
+        res.json({success:true, msg:'El password se actualizo correctamente'}).status(200); 
+      }else{
+        res.json({success:false,msg:'El password actual no coincide'}).status(400); 
+      }
+    } catch (error) {
+      res.json({success:false,msg:'Hubo un error'}).status(400); 
+    }
+  }else{
+		res.json({success:false,msg:'Input nuevo password no coincide con input confirmar password'}).status(400); 
+	}
+});
+
+//buscar usuario por id
+router.get('/:id', async (req, res) => {
+  const { id } = req.params; 
+  
+  try {
+    await User.findOne({_id:id }, function (err:any, users:any) {
+      Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+        Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+          res.json(usersCOM).status(200);
+        })
+      });
+    });
+    
+  } catch (error) {
+    console.log(error)
+    res.json({success:false,msg:'Hubo un error'}).status(400); 
+  }
+  
+
+});
 
 
 
