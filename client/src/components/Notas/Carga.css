@@ -1,0 +1,58 @@
+.Carga-Select {
+  font-size: 1.2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.Carga-Tabla {
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 100%;
+}
+
+.Carga-Td {
+  border: 1px solid lightgray;
+}
+
+.Carga-Th {
+  border: 1px solid lightgray;
+}
+
+#Carga-Tr:nth-child(even) {
+  background-color: rgb(220, 220, 220);
+}
+
+#Carga-Nro {
+  width: 4rem;
+}
+
+.Carga-Input-Imagen {
+  width: 30px;
+}
+
+.Carga-Body {
+  display: flex;
+}
+
+.Carga-Listas {
+  display: flex;
+  width: 100%;
+  margin: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.Carga-Lista {
+  width: 25%;
+  border: 1px solid lightgray;
+}
+
+.Carga-Lista span {
+  width: 100%;
+  text-align: center;
+}
+
+.Carga-Notas {
+  width: 100%;
+}
+
+.Carga-Check {
+  width: fit-content;
+}
