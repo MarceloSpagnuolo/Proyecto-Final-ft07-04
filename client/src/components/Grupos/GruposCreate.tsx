@@ -13,7 +13,7 @@ const GrupoCreate = (props: any) => {
         dispatch(getStandupsByCohorte(id))
     }, []);
 
-    function newGrupo() {
+    function newGrupo() {        
         let index: null | number = null;
 
 
@@ -26,7 +26,7 @@ const GrupoCreate = (props: any) => {
         const grupo = index ?? grupos.length + 1;
         const datos = {
             NumeroGrupo: grupo,
-            CohorteId: props
+            CohorteId: id
         }
         dispatch(postStandup(datos))
         window.location.reload()

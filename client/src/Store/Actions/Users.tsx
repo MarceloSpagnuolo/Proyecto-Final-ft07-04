@@ -19,6 +19,8 @@ import {
   USERS_GROUP,
   SEARCH_BY_NAME,
   PUT_NOTAS,
+  GET_USER_EDIT,
+  UPDATE_USER_PASSWORD,
 } from "../Constants/Users";
 const url = "http://localhost:3001";
 
@@ -183,6 +185,62 @@ export const putNotas = (historiaId: any, payload: any) => async (
     dispatch({
       type: ERROR_MESSAGE,
       message: "Problema para guardar la nota del checkpoint",
+    });
+  }
+};
+
+export const updatePassword = (data:Object) => async (dispatch: any) => {
+  try {
+    const res = await axios.put(`${url}/users/change_password`, data);
+    dispatch({
+      type: UPDATE_USER_PASSWORD,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Hubo un problema al intentar actualizar la contraseña",
+    });
+  }
+};
+
+//obtener datos para el perfil de un usuario
+
+export const getUsereEdit = (id:string) => async (dispatch: any) => {
+  
+  try {
+    const res = await axios.get(`${url}/users/${id}`);
+    await dispatch({
+      type: GET_USER_EDIT,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Hubo un problema al obtener el usuario para editar",
+    });
+  }
+};
+
+
+//actualizar usuario 
+export const updateUser = (data:Object) => async (dispatch: any) => {
+  
+  try {
+    const res = await axios.put(`${url}/users/editprofile`,data);
+    
+    await dispatch({
+      type: PUT_USERS,
+      payload: res.data,
+    });
+    if(res.data.token){
+      dispatch(getUserByToken(res.data.token))
+      //localStorage.setItem("userToken", res.data.token);
+    }
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Hubo un problema al actualizar el usuario",
     });
   }
 };
