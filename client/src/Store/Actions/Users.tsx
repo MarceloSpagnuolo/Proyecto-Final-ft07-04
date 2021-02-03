@@ -1,3 +1,4 @@
+import { uploadAction } from "../../components/PanelControlStudents/InvitacionAlumnos/actionUpdate";
 import axios, { AxiosAdapter, AxiosRequestConfig, AxiosResponse, AxiosStatic } from "axios";
 import jwt from 'jsonwebtoken';
 import {
@@ -13,9 +14,9 @@ import {
   GET_STUDENTS,
   USERS_GROUP,
   SEARCH_BY_NAME,
+  PUT_NOTAS,
 } from "../Constants/Users";
 const url = "http://localhost:3001";
-
 
 export const sendInvitation = (payload: any) => async (dispatch: any) => {
   try {
@@ -29,7 +30,6 @@ export const sendInvitation = (payload: any) => async (dispatch: any) => {
     })
   }
 }
-
 
 export const getStudents = () => async (dispatch: any) => {
   try {
@@ -46,8 +46,6 @@ export const getStudents = () => async (dispatch: any) => {
     })
   }
 }
-
-
 
 export const postUser = (payload: any) => async (dispatch: any) => {
   try {
@@ -83,11 +81,10 @@ export const getUsersbyCohorte = (id: any) => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      message: 'Problemas para crear el usuario',
+      message: "Problemas para encontrar los usuarios",
     });
   }
 };
-
 
 export const getUserByToken = (payload: any) => async (dispatch: any) => {
   try {
@@ -105,7 +102,6 @@ export const getUserByToken = (payload: any) => async (dispatch: any) => {
     });
   }
 };
-
 
 export const deleteUserCohorte = (id: any) => async (dispatch: any) => {
   try {
@@ -155,7 +151,9 @@ export const usersGroup = (id: any) => async (dispatch: any) => {
 
 export const SearchByName = (payload: any) => async (dispatch: any) => {
   try {
-    const res = await axios.get(`${url}/users/search?firstname=${payload[0]}&lastname=${payload[1]}`);
+    const res = await axios.get(
+      `${url}/users/search?firstname=${payload[0]}&lastname=${payload[1]}`
+    );
     dispatch({
       type: SEARCH_BY_NAME,
       payload: res.data,
@@ -164,6 +162,23 @@ export const SearchByName = (payload: any) => async (dispatch: any) => {
     dispatch({
       type: ERROR_MESSAGE,
       message: "Problemas para buscar alumno",
+    });
+  }
+};
+
+export const putNotas = (historiaId: any, payload: any) => async (
+  dispatch: any
+) => {
+  try {
+    const res = await axios.put(`${url}/users/historia/${historiaId}`, payload);
+    dispatch({
+      type: PUT_NOTAS,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Problema para guardar la nota del checkpoint",
     });
   }
 };

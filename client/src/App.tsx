@@ -9,10 +9,10 @@ import Cohortes from "components/Cohortes/Cohortes";
 import Activos from "components/Cohortes/Activos";
 import Inactivos from "components/Cohortes/Inactivos";
 import PanelControlStudents from 'components/PanelControlStudents/panelControl';
+import Carga from "components/Notas/Carga";
 import Grupos from 'components/Grupos/GruposCreate';
 import MiCohorte from "./components/PMsYAlumnos/MiCohorte"
 import Rendimiento from "./components/PMsYAlumnos/Rendimiento"
-
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
       <Route exact path="/activos/:id" component={Activos} />
       <Route exact path="/inactivos/:id" component={Inactivos} />
       <Route exact path='/PanelControlStudent' component={PanelControlStudents} />
+      <Route exact path="/cargaNotas" component={Carga} />
       <Route exact path='/Grupos' component={Grupos} />
     </>
   );
