@@ -41,9 +41,11 @@ const Students = (): JSX.Element => {
                                 <td className="student-table-td" id="less">{alum.created}</td>
                                 <td className="student-table-td">{alum.email}</td>
                                 <td className="student-table-td" id="less">{alum.github}</td>
+                                <td className="student-table-td" id="links-table">
                                 <Link id="links" to={`/activos/${alum.cohorte && alum.cohorte._id}`}>
-                                    <td className="student-table-td" id="links-table">{alum.cohorte && alum.cohorte.Nombre}</td>
+                                    {alum.cohorte && alum.cohorte.Nombre}
                                 </Link>
+                                </td>
                                 <td className="student-table-td" id="less">{alum.standup && alum.standup.Grupo}</td>
                             </tr>
                         ) : null)}

@@ -86,6 +86,11 @@ const Nav = () => {
                 </div>
               </div>
               <div>
+                <div onClick={() => linkTo("cargaNotas")} className="mlP">
+                  Checkpoints
+                </div>
+              </div>
+              <div>
                 <div onClick={() => divChange("a")} className="mlP">
                   {user.name && user.name.firstname}
                 </div>
