@@ -31,8 +31,8 @@ function Standups(state = inicialState, action: any) {
         standup: action.payload
       }
     }
-    case POST_PM:{
-      return{
+    case POST_PM: {
+      return {
         standup: action.payload
       }
     }
@@ -48,8 +48,7 @@ function Standups(state = inicialState, action: any) {
         standups: state.standups.filter((s) => s._id !== action.payload._id)
       }
     }
-    case ERROR_MESSAGE: {
-      alert(action.message);
+
     case ERROR_MESSAGE: {
       Swal.fire(
         "Error",
@@ -57,7 +56,7 @@ function Standups(state = inicialState, action: any) {
         "error"
       );
       return state;
-      }
+    }
     default: {
       return state;
     }
