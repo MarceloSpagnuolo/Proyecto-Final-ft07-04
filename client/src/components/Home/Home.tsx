@@ -58,13 +58,13 @@ const Home = () => {
                         </div>
                         <div id='panel-estudiantes'>
                             <p>Para gestionar tu StandUp haz click en el botón, o accede a través de la barra de navegacion</p>
-                            <Link rel="stylesheet" to={`/Standup/${user.standup}`}>
+                            <Link rel="stylesheet" to={`/MiGrupo/${user.standup._id}`}>
                                 <button id='home-estudiantes-boton'>Mi Standup</button>
                             </Link>
                         </div>
                         <div id='panel-cohortes'>
                             <p id="home-estudiantes-h4-instrucciones">Para ver tu Cohorte haz click en el botón o usa los controles de la barra de navegacion</p>
-                            <Link rel="stylesheet" to={`/MiCohorte/${user.cohorte}`}>
+                            <Link rel="stylesheet" to={`/MiCohorte/${user.cohorte._id}`}>
                                 <button id='home-estudiantes-boton'>Mi Cohorte</button>
                             </Link>
                         </div>
@@ -89,7 +89,7 @@ const Home = () => {
                             </div>
                             <div id='panel-estudiantes'>
                                 <p>Para ver tu cohorte puedes hacer click en este botón, o acceder a través de la barra de navegacion</p>
-                                <Link rel="stylesheet" to={`/MiCohorte/${user.cohorte}`}>
+                                <Link rel="stylesheet" to={`/MiCohorte/${user.cohorte._id}`}>
                                     <button id='home-estudiantes-boton' >Mi Cohorte</button>
                                 </Link>
                             </div>
