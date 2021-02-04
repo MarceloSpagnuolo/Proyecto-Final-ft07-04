@@ -30,11 +30,12 @@
 
 .Carga-Body {
   display: flex;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .Carga-Listas {
   display: flex;
-  width: 100%;
+  width: 50%;
   margin: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -50,9 +51,32 @@
 }
 
 .Carga-Notas {
-  width: 100%;
+  width: 50%;
+  margin: 10px;
 }
 
 .Carga-Check {
   width: fit-content;
+}
+
+.Carga-Estilo-Lista {
+  list-style-type: none;
+  margin-left: -20px;
+}
+
+.Oculta {
+  display: none;
+}
+
+.Carga-Titulo {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
+.Carga-CP {
+  margin: 10px 0 10px 0;
+}
+
+.Carga-CP input {
+  margin: 5px;
 }

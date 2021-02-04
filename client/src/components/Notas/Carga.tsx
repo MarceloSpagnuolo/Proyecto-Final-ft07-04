@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { createElement, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getActiveCohortes, getCohorte } from "Store/Actions/Cohortes";
+import { getActiveCohortes, getCohorte, changeTests } from "Store/Actions/Cohortes";
 import { getUsersbyCohorte, putNotas } from "Store/Actions/Users";
 import "./Carga.css";
 
@@ -34,8 +34,21 @@ function Carga() {
     );
   }
 
+  function handleTests(e: any) {
+    const datos = e.target.name.split("/");
+    const cohorteId = datos[0];
+    const checkpoint = datos[1];
+    const dato = datos[2];
+    console.log("Cohorte: ",cohorteId);
+    console.log("Checkpoint: ", checkpoint);
+    console.log("Tests: ", dato);
+    console.log("Tests: ", e.target.value)
+    dispatch(changeTests(cohorteId, {checkpoint, dato, valor: e.target.value}));
+  }
+
   return (
     <>
+    <h2 className="Carga-Titulo">Carga de Notas y Control de Checkpoints</h2>
     <div className="Carga-Body">
       <div className="Carga-Notas">
         <div className="Carga-Check">
@@ -54,6 +67,63 @@ function Carga() {
               ))}
           </select>
         </div>
+        {cohorte && cohorte.length > 0 && (
+        <div className="Carga-CP">
+          <span>
+            Checkpoint 1: Tests:{" "}
+            <input
+              defaultValue={cohorte[0].Checkpoints.CP1.totalTests}
+              onChange={(e) => handleTests(e)} 
+              name={cohorte[0]._id+"/CP1/totalTests"} 
+              id="Carga-Nro" type="number" /> 
+            Requeridos:{" "}
+            <input 
+              defaultValue={cohorte[0].Checkpoints.CP1.testsReq}
+              onChange={(e) => handleTests(e)}
+              name={cohorte[0]._id+"/CP1/testsReq"} 
+              id="Carga-Nro" type="number" />
+          </span><br />
+          <span>Checkpoint 2: Tests:{" "}
+            <input 
+              defaultValue={cohorte[0].Checkpoints.CP2.totalTests}
+              onChange={(e) => handleTests(e)} 
+              name={cohorte[0]._id+"/CP2/totalTests"} 
+              id="Carga-Nro" type="number" />
+            Requeridos:{" "}
+            <input 
+              defaultValue={cohorte[0].Checkpoints.CP2.testsReq}
+              onChange={(e) => handleTests(e)} 
+              name={cohorte[0]._id+"/CP2/testsReq"} 
+              id="Carga-Nro" type="number" />
+            </span><br />
+          <span>Checkpoint 3: Tests:{" "}
+            <input 
+              defaultValue={cohorte[0].Checkpoints.CP3.totalTests}
+              onChange={(e) => handleTests(e)} 
+              name={cohorte[0]._id+"/CP3/totalTests"} 
+              id="Carga-Nro" type="number" /> 
+            Requeridos:{" "}
+            <input 
+              defaultValue={cohorte[0].Checkpoints.CP3.testsReq}
+              onChange={(e) => handleTests(e)} 
+              name={cohorte[0]._id+"/CP3/testsReq"} 
+              id="Carga-Nro" type="number" />
+          </span><br />
+          <span>Checkpoint 4: Tests:{" "}
+            <input 
+              defaultValue={cohorte[0].Checkpoints.CP4.totalTests}
+              onChange={(e) => handleTests(e)} 
+              name={cohorte[0]._id+"/CP4/totalTests"} 
+              id="Carga-Nro" type="number" /> 
+            Requeridos:{" "}
+            <input
+              defaultValue={cohorte[0].Checkpoints.CP4.testsReq}
+              onChange={(e) => handleTests(e)} 
+              name={cohorte[0]._id+"/CP4/testsReq"} 
+              id="Carga-Nro" type="number" />
+          </span><br />
+        </div>
+          )}
         <div>
           <table className="Carga-Tabla">
             <thead>
@@ -186,15 +256,59 @@ function Carga() {
       <div className="Carga-Listas">
         <div className="Carga-Lista">
           <span>Aprobados CP1</span>
+          <ul className="Carga-Estilo-Lista">
+            {users && users.length > 0 &&
+              users.map((user: any) => {
+                const historia = user.historia.Checkpoints.filter(
+                    (e: any) => e.Cohorte === cohorte[0]._id
+                  );
+                return <li className={historia[0].CP1 >=
+                          cohorte[0].Checkpoints.CP1.testsReq ? "" : "Oculta"}>
+                            {user.github}</li>
+              })}
+          </ul>
         </div>
         <div className="Carga-Lista">
           <span>Aprobados CP2</span>
+         <ul className="Carga-Estilo-Lista">
+            {users && users.length > 0 &&
+              users.map((user: any) => {
+                const historia = user.historia.Checkpoints.filter(
+                    (e: any) => e.Cohorte === cohorte[0]._id
+                  );
+                return <li className={historia[0].CP2 >=
+                          cohorte[0].Checkpoints.CP2.testsReq ? "" : "Oculta"}>
+                            {user.github}</li>
+              })}
+          </ul>
         </div>
         <div className="Carga-Lista">
           <span>Aprobados CP3</span>
+          <ul className="Carga-Estilo-Lista">
+            {users && users.length > 0 &&
+              users.map((user: any) => {
+                const historia = user.historia.Checkpoints.filter(
+                    (e: any) => e.Cohorte === cohorte[0]._id
+                  );
+                return <li className={historia[0].CP3 >=
+                          cohorte[0].Checkpoints.CP3.testsReq ? "" : "Oculta"}>
+                            {user.github}</li>
+              })}
+          </ul>
         </div>
         <div className="Carga-Lista">
           <span>Aprobados CP4</span>
+          <ul className="Carga-Estilo-Lista">
+            {users && users.length > 0 &&
+              users.map((user: any) => {
+                const historia = user.historia.Checkpoints.filter(
+                    (e: any) => e.Cohorte === cohorte[0]._id
+                  );
+                return <li className={historia[0].CP4 >=
+                          cohorte[0].Checkpoints.CP4.testsReq ? "" : "Oculta"}>
+                            {user.github}</li>
+              })}
+          </ul>
         </div>
       </div>
       </div>

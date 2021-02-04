@@ -6,3 +6,4 @@ export const ERROR_MESSAGE = "ERROR_MESSAGE";
 export const GET_ACTIVE_COHORTES = "GET_ACTIVE_COHORTES";
 export const GET_COHORTE = "GET_COHORTE";
 export const PUT_INSTRUCTOR = "PUT_INSTRUCTOR";
+export const PUT_TESTS = "PUT_TESTS";
