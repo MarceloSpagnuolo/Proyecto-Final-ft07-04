@@ -80,11 +80,7 @@
     border-radius: 15px;
     margin-bottom: 3%;
     background-color: hsl(51, 98%, 47%);
-    box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418);
-    
-
-
-   
+    box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418);  
 }
 
 #container-seccion-pms img{
