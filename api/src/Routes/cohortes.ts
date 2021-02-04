@@ -5,7 +5,7 @@ import User from "../Models/users";
 
 //TRAE TODOS LOS COHORTES
 router.get("/", async (req, res) => {
-  const result = await Cohorte.find();
+  const result = await Cohorte.find().sort({Nombre: 1});
 
   !result ? res.send("hubo un error").status(400) : res.json(result);
 });
@@ -102,5 +102,21 @@ router.get("/nombre/:nombre", async (req, res) => {
   }
   cohorte !== null ? res.send(true).status(200) : res.send(false).status(200);
 })
+
+//Devuelve el nombre de un cohorte
+router.get("/CohorteName/:id", async(req, res) => {
+  const { id } = req.params;
+  const cohorte = Cohorte.findOne({_id: id})
+
+  !cohorte ? res.sendStatus(400) : res.send(cohorte.Nombre)
+})
+
+router.get("/CohortesNames/:id", async (req, res) => {
+  const { id } = req.params
+
+  const result = await Cohorte.find({_id: id})
+
+  !result ? res.send("hubo un error").status(400) : res.json(result);
+});
 
 export default router;

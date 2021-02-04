@@ -285,7 +285,7 @@ export default async function Insert() {
       password: "ComeOrjeas2",
       github: "MikeTyson",
       created: Date(),
-      cohorte: "600b9852935003272c8b6902",
+      cohorte: "600b9852935003272c8b6901",
       historia: "600b9852935003272c8b6717",
     },
     {
@@ -296,7 +296,7 @@ export default async function Insert() {
       password: "Ylos40Ladrones",
       github: "AliBaba",
       created: Date(),
-      cohorte: "600b9852935003272c8b6902",
+      cohorte: "600b9852935003272c8b6901",
       historia: "600b9852935003272c8b6716",
     },
   ];

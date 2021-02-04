@@ -14,6 +14,7 @@ import {
   GET_USER_EDIT,
   UPDATE_USER_PASSWORD,
   PUT_NOTAS,
+  SEARCH_GITHUB,
 } from "../Constants/Users";
 import Swal from "sweetalert2";
 import { EMFILE } from "constants";
@@ -69,6 +70,11 @@ function Users(state = inicialState, action: any) {
         ...state,
         users: action.payload,
       };
+      case SEARCH_GITHUB:
+        return {
+          ...state,
+          users: action.payload,
+        }
     case PUT_NOTAS: {
       return {
         ...state,

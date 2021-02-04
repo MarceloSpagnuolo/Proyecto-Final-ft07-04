@@ -12,6 +12,7 @@ import { getCohorte, putInstructor } from "Store/Actions/Cohortes";
 import axios from "axios";
 // import { Formik, Field, ErrorMessage, Form } from "formik";
 import { Link } from "react-router-dom";
+import SearchBar from "../PanelControlStudents/searchBar"
 
 function Activos(props: any) {
   const dispatch = useDispatch();
@@ -173,6 +174,9 @@ function Activos(props: any) {
         </div>
         <div>
           <span>Alumnos: {users.length}</span>
+        </div>
+        <div>
+            <SearchBar id={id}/>
         </div>
         <div className="Listado-Container">
           <h3>Alumnos</h3>

@@ -14,11 +14,13 @@ const Students = (): JSX.Element => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+
+
     return (
         <div id="student-super-container">
             <div id='contenedor-top-estudiantes'>
                 <h2 id='titulo-tab-estudiantes'>Alumnos</h2>
-                <SearchBar id='busqueda-estudiantes' />
+                <SearchBar id={"todos"} />
             </div>
             <div className="student-container">
                 <div className="student-titles">

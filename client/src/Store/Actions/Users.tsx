@@ -16,6 +16,7 @@ import {
   PUT_NOTAS,
   GET_USER_EDIT,
   UPDATE_USER_PASSWORD,
+  SEARCH_GITHUB,
 } from "../Constants/Users";
 const url = "http://localhost:3001";
 
@@ -153,7 +154,7 @@ export const usersGroup = (id: any) => async (dispatch: any) => {
 export const SearchByName = (payload: any) => async (dispatch: any) => {
   try {
     const res = await axios.get(
-      `${url}/users/search?firstname=${payload[0]}&lastname=${payload[1]}`
+      `${url}/users/search?firstname=${payload[0]}&lastname=${payload[1]}&id=${payload.pop()}`
     );
     dispatch({
       type: SEARCH_BY_NAME,
@@ -166,6 +167,22 @@ export const SearchByName = (payload: any) => async (dispatch: any) => {
     });
   }
 };
+
+export const searchGithub = (payload: any) => async (dispatch:any) => {
+  try {
+    const res = await axios.get(
+      `${url}/users/searchgithub?git=${payload}`);
+      dispatch({
+        type: SEARCH_GITHUB,
+        payload: res.data,
+      });
+  } catch(e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Problemas para buscar alumno",
+    });
+  }
+}
 
 export const putNotas = (historiaId: any, payload: any) => async (
   dispatch: any

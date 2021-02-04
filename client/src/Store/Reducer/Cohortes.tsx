@@ -8,6 +8,7 @@ import {
   GET_ACTIVE_COHORTES,
   GET_COHORTE,
   PUT_INSTRUCTOR,
+  COHORTES_NAMES,
 } from "../Constants/Cohortes";
 
 interface Store {
@@ -52,6 +53,12 @@ function Cohortes(state = inicialState, action: any) {
       return {
         ...state,
         cohorte: action.payload,
+      }
+    }
+    case COHORTES_NAMES: {
+      return {
+        ...state,
+        cohortes: state.cohortes.concat(action.payload),
       }
     }
     default: {

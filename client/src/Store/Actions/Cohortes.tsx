@@ -9,6 +9,7 @@ import {
   GET_ACTIVE_COHORTES,
   GET_COHORTE,
   PUT_INSTRUCTOR,
+  COHORTES_NAMES,
 } from "../Constants/Cohortes";
 
 const url = "http://localhost:3001";
@@ -88,3 +89,18 @@ export const putInstructor = (cohorteId: any, instructorId: any) => async (dispa
     });
   };
 };
+
+export const cohortesNames = (id: string) => async (dispatch : any) => {
+  try {
+    const res = await axios.get(`${url}/cohorte/${id}`);
+    dispatch({
+      type: COHORTES_NAMES,
+      payload: res.data
+    })
+  } catch(e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      payload: "Error al traer cohortes",
+    });
+  }
+}
