@@ -9,6 +9,7 @@ import {
   GET_ACTIVE_COHORTES,
   GET_COHORTE,
   PUT_INSTRUCTOR,
+  PUT_TESTS,
 } from "../Constants/Cohortes";
 
 const url = "http://localhost:3001";
@@ -88,3 +89,18 @@ export const putInstructor = (cohorteId: any, instructorId: any) => async (dispa
     });
   };
 };
+
+export const changeTests = (cohorteId: any, payload: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.put(`${url}/cohorte/tests/${cohorteId}`, payload);
+    dispatch({
+      type: PUT_TESTS,
+      payload: res.data
+    })
+  } catch(e) {
+  dispatch({
+      type: ERROR_MESSAGE,
+      payload: "Error al actualizar valores de tests",
+    });
+  }
+}

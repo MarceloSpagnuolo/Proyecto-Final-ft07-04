@@ -103,4 +103,18 @@ router.get("/nombre/:nombre", async (req, res) => {
   cohorte !== null ? res.send(true).status(200) : res.send(false).status(200);
 })
 
+//ruta que actualiza los valores de los tests en los cohortes
+router.put("/tests/:cohorteId", async (req, res) => {
+  const { cohorteId } = req.params;
+  let { checkpoint, dato, valor } = req.body;
+  valor = parseInt(valor);
+
+  await Cohorte.findByIdAndUpdate(cohorteId, { Checkpoints: {[checkpoint]: {[dato]: valor}}});
+  await Cohorte.findById(cohorteId, function(err: any, cohorte: any) {
+    User.populate(cohorte, { path: "Instructor" }, function(err: any, cohorteCOM: any) {
+      err ? res.send(err).status(400) : res.json(cohorteCOM);
+    })
+  })
+})
+
 export default router;
