@@ -1,11 +1,11 @@
-#super-invitation h1{
+#super-invitation h1 {
     margin: 0px;
     font-family: 'Roboto', sans-serif;
     color: #252525;
     padding: 22px 0px;
 }
 
-thead p{
+thead p {
     color: whitesmoke;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
@@ -19,14 +19,14 @@ thead p{
     color: #F6DE00;
 }
 
-#invita-por-email{
+#invita-por-email {
     width: 100%;
     height: 40px;
     border-radius: 6px;
     padding-left: 20px;
 }
 
-#mensaje-invitacion{
+#mensaje-invitacion {
     margin-top: 33px;
     width: 100%;
     height: 300px;
@@ -38,7 +38,7 @@ thead p{
     font-size: 1rem;
     font-weight: 600;
     border: none;
-    background-color:#F6DE00;
+    background-color: #F6DE00;
     margin: 33px 0px;
     height: 40px;
     border-radius: 6px;
@@ -53,7 +53,7 @@ thead p{
     margin: 50px auto 20px auto;
     text-align: center;
     color: #414141;
-    
+
 }
 
 #super h1 {
@@ -64,8 +64,8 @@ thead p{
     font-weight: 300;
 }
 
-#fondonegro-invitacion{
-    background-color: #111111;    
+#fondonegro-invitacion {
+    background-color: #111111;
 }
 
 .container-invitation-students {
@@ -100,12 +100,15 @@ thead p{
     flex-wrap: wrap;
     margin: 30px;
     margin-bottom: 0;
+    border-radius: 5px;
 }
 
 #file {
     display: flex;
     margin-bottom: 5px;
     margin-right: 5px;
+    color: white;
+    font-size: 16px;
 }
 
 
@@ -120,7 +123,7 @@ thead p{
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    
+
     #link-template {
         width: 80%;
         margin-left: 9%;
@@ -128,54 +131,54 @@ thead p{
         font-size: 1rem;
         color: #F6DE00;
     }
-   
+
     #super-invitation {
-        
+
         margin: 0;
         max-width: 100%;
         padding: 0;
     }
-    
-    #super-invitation h1{
+
+    #super-invitation h1 {
         margin: 0px;
         font-family: 'Roboto', sans-serif;
         font-size: 1.25rem;
         color: #252525;
         padding: 22px 0px;
     }
-    
-    thead p{
+
+    thead p {
         color: whitesmoke;
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
         font-weight: 300;
         margin: 25px 25px;
     }
-    
-    #invita-por-email{
+
+    #invita-por-email {
         width: 80%;
         margin-left: 9%;
         height: 40px;
         border-radius: 6px;
         padding-left: 0px;
     }
-    
-    
-    #mensaje-invitacion{
+
+
+    #mensaje-invitacion {
         width: 80%;
         margin-left: 9%;
         margin-top: 33px;
-        
+
         height: 200px;
         border-radius: 6px;
     }
-    
+
     #enviar-invitacion {
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
         font-weight: 600;
         border: none;
-        background-color:#F6DE00;
+        background-color: #F6DE00;
         margin: 33px 0px 33px 9%;
         height: 40px;
         border-radius: 6px;
@@ -183,7 +186,7 @@ thead p{
         cursor: pointer;
         width: 80%;
     }
-    
+
     #texto-decorativo-invitacion {
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
@@ -191,21 +194,21 @@ thead p{
         margin: 30px auto 10px auto;
         text-align: center;
         color: #414141;
-        
+
     }
-    
+
     #super h1 {
         font-weight: 500;
     }
-    
+
     #super h2 {
         font-weight: 300;
     }
-    
-    #fondonegro-invitacion{
-        background-color: #000000;    
+
+    #fondonegro-invitacion {
+        background-color: #000000;
     }
-    
+
     .container-invitation-students {
         background-color: blueviolet;
         overflow: hidden;
@@ -215,42 +218,42 @@ thead p{
         border-radius: 15px !important;
         grid-template: 1fr / 1fr;
         padding: 0;
-       
+
     }
-    
+
     #imagen-invitacion-estudiantes {
         display: none;
     }
-    
+
     .container-invitation-students h3 {
         font-weight: 300;
         margin-bottom: 0;
     }
-    
+
     #tittle {
         margin: 30px;
         margin-top: 0px;
         margin-bottom: 0px;
     }
-    
+
     #recibe {
         display: flex;
         flex-wrap: wrap;
         margin: 30px;
         margin-bottom: 0;
     }
-    
+
     #file {
         padding-left: 8%;
     }
-    
-    
+
+
     #submit {
         display: flex;
         justify-content: center;
         margin: 0px 20px 20px 20px;
     }
-    
+
     #email {
         width: 100%;
     }
@@ -260,9 +263,9 @@ thead p{
 
     #tabla-panel-control {
         margin: 0px !important;
-    
+
     }
-    
+
     #link-template {
         width: 80%;
         margin-left: 9%;
@@ -270,24 +273,24 @@ thead p{
         font-size: 1rem;
         color: #F6DE00;
     }
-   
+
     #super-invitation {
-        
+
         margin: 0;
         max-width: 100%;
         padding: 0;
         height: auto;
     }
-    
-    #super-invitation h1{
+
+    #super-invitation h1 {
         margin: 0px;
         font-family: 'Roboto', sans-serif;
         font-size: 1.563rem;
         color: #252525;
         padding: 22px 0px;
     }
-    
-    thead p{
+
+    thead p {
         color: whitesmoke;
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
@@ -295,31 +298,31 @@ thead p{
         margin: 25px 25px;
         margin-left: 8%;
     }
-    
-    #invita-por-email{
+
+    #invita-por-email {
         width: 80%;
         margin-left: 9%;
         height: 40px;
         border-radius: 6px;
         padding-left: 0px;
     }
-    
-    
-    #mensaje-invitacion{
+
+
+    #mensaje-invitacion {
         width: 80%;
         margin-left: 9%;
         margin-top: 33px;
-        
+
         height: 200px;
         border-radius: 6px;
     }
-    
+
     #enviar-invitacion {
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
         font-weight: 600;
         border: none;
-        background-color:#F6DE00;
+        background-color: #F6DE00;
         margin: 33px 0px 33px 9%;
         height: 40px;
         border-radius: 6px;
@@ -327,7 +330,7 @@ thead p{
         cursor: pointer;
         width: 80%;
     }
-    
+
     #texto-decorativo-invitacion {
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
@@ -335,21 +338,21 @@ thead p{
         margin: 30px auto 10px auto;
         text-align: center;
         color: #414141;
-        
+
     }
-    
+
     #super h1 {
         font-weight: 500;
     }
-    
+
     #super h2 {
         font-weight: 300;
     }
-    
-    #fondonegro-invitacion{
-        background-color: #000000;    
+
+    #fondonegro-invitacion {
+        background-color: #000000;
     }
-    
+
     .container-invitation-students {
         background-color: blueviolet;
         overflow: hidden;
@@ -359,42 +362,42 @@ thead p{
         border-radius: 15px !important;
         grid-template: 1fr / 1fr;
         padding: 0;
-       
+
     }
-    
+
     #imagen-invitacion-estudiantes {
         display: none;
     }
-    
+
     .container-invitation-students h3 {
         font-weight: 300;
         margin-bottom: 0;
     }
-    
+
     #tittle {
         margin: 30px;
         margin-top: 0px;
         margin-bottom: 0px;
     }
-    
+
     #recibe {
         display: flex;
         flex-wrap: wrap;
         margin: 30px;
         margin-bottom: 0;
     }
-    
+
     #file {
         padding-left: 8%;
     }
-    
-    
+
+
     #submit {
         display: flex;
         justify-content: center;
         margin: 0px 20px 20px 20px;
     }
-    
+
     #email {
         width: 100%;
     }
@@ -405,9 +408,9 @@ thead p{
 
     #tabla-panel-control {
         margin: 0px !important;
-    
+
     }
-    
+
     #link-template {
         width: 80%;
         margin-left: 9%;
@@ -415,24 +418,24 @@ thead p{
         font-size: 1rem;
         color: #F6DE00;
     }
-   
+
     #super-invitation {
-        
+
         margin: 0;
         max-width: 100%;
         padding: 0;
         height: auto;
     }
-    
-    #super-invitation h1{
+
+    #super-invitation h1 {
         margin: 0px;
         font-family: 'Roboto', sans-serif;
         font-size: 1.563rem;
         color: #252525;
         padding: 22px 0px;
     }
-    
-    thead p{
+
+    thead p {
         color: whitesmoke;
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
@@ -440,31 +443,31 @@ thead p{
         margin: 25px 25px;
         margin-left: 8%;
     }
-    
-    #invita-por-email{
+
+    #invita-por-email {
         width: 80%;
         margin-left: 9%;
         height: 40px;
         border-radius: 6px;
         padding-left: 0px;
     }
-    
-    
-    #mensaje-invitacion{
+
+
+    #mensaje-invitacion {
         width: 80%;
         margin-left: 9%;
         margin-top: 33px;
-        
+
         height: 200px;
         border-radius: 6px;
     }
-    
+
     #enviar-invitacion {
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
         font-weight: 600;
         border: none;
-        background-color:#F6DE00;
+        background-color: #F6DE00;
         margin: 33px 0px 33px 9%;
         height: 40px;
         border-radius: 6px;
@@ -472,7 +475,7 @@ thead p{
         cursor: pointer;
         width: 80%;
     }
-    
+
     #texto-decorativo-invitacion {
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
@@ -480,21 +483,21 @@ thead p{
         margin: 30px auto 10px auto;
         text-align: center;
         color: #414141;
-        
+
     }
-    
+
     #super h1 {
         font-weight: 500;
     }
-    
+
     #super h2 {
         font-weight: 300;
     }
-    
-    #fondonegro-invitacion{
-        background-color: #000000;    
+
+    #fondonegro-invitacion {
+        background-color: #000000;
     }
-    
+
     .container-invitation-students {
         background-color: blueviolet;
         overflow: hidden;
@@ -504,44 +507,43 @@ thead p{
         border-radius: 15px !important;
         grid-template: 1fr / 1fr;
         padding: 0;
-       
+
     }
-    
+
     #imagen-invitacion-estudiantes {
         display: none;
     }
-    
+
     .container-invitation-students h3 {
         font-weight: 300;
         margin-bottom: 0;
     }
-    
+
     #tittle {
         margin: 30px;
         margin-top: 0px;
         margin-bottom: 0px;
     }
-    
+
     #recibe {
         display: flex;
         flex-wrap: wrap;
         margin: 30px;
         margin-bottom: 0;
     }
-    
+
     #file {
         padding-left: 8%;
     }
-    
-    
+
+
     #submit {
         display: flex;
         justify-content: center;
         margin: 0px 20px 20px 20px;
     }
-    
+
     #email {
         width: 100%;
     }
 }
-
