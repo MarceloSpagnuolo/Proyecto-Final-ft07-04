@@ -15,12 +15,25 @@
   border: 1px solid lightgray;
 }
 
+
+
 .Listado-Th {
   border: 1px solid lightgray;
 }
 
+#instruct {
+  padding-left: 10px;
+}
+
 #Listado-Align {
   text-align: center;
+}
+
+.Listado-Boton {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: hsl(54, 100%, 48%);
 }
 
 #Listado-Tr:nth-child(even) {
@@ -36,7 +49,7 @@
   }
 
   .Listado-Boton {
-    height: 40px;
+    height: 30px;
     width: 100%;
     background-color: #fede00;
     border-radius: 10px;
@@ -51,11 +64,11 @@
   }
 
   .Listado-Boton {
-    height: 60px;
+
+    height: 40px;
     width: 100%;
     border-radius: 10px;
     background-color: #fede00;
-    font-size: 1.2rem;
   }
 
   .Listado-Boton:hover {

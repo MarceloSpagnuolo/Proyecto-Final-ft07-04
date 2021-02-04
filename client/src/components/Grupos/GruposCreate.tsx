@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import { postStandup, getStandups, delStandup, getStandupsByCohorte } from "Store/Actions/Standups";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import "./GruposCreate.css";
 
 const GrupoCreate = (props: any) => {
     const dispatch = useDispatch();
     const grupos: any = useSelector((state: any) => state.Standups.standups);
     const { id } = props.match.params;
     // const prueba = "600b9852935003272c8b6902"
-    
+
     useEffect(() => {
         dispatch(getStandupsByCohorte(id))
     }, []);
 
-    function newGrupo() {        
+    function newGrupo() {
         let index: null | number = null;
 
 
@@ -38,23 +39,25 @@ const GrupoCreate = (props: any) => {
         dispatch(delStandup(id))
     }
     return (
-        <div>
-            <h1>Holi</h1>
-            <div>
+        <div className="Activos-Container">
+            <div id="nd">
+                <h1>Grupos</h1>
+                <div>
 
-            </div>
-            {!!grupos && grupos.map((g: any) => {
-                return (
-                    <div key={g.Grupo + g.Cohorte}> <p>Grupo: {g.Grupo}</p> <Link to={`/GruopDetail/${g._id}`}> ir</Link> <button onClick={() => { deletGroup(g._id); }}>X</button></div>
+                </div>
+                {!!grupos && grupos.map((g: any) => {
+                    return (
+                        <div key={g.Grupo + g.Cohorte}> <p>Grupo: {g.Grupo}</p> <Link to={`/GruopDetail/${g._id}`}> ir</Link> <button onClick={() => { deletGroup(g._id); }}>X</button></div>
 
-                )
+                    )
 
-            })}
-            <div>
-                <p>
-                    crear nuevo grupo?
+                })}
+                <div>
+                    <p>
+                        crear nuevo grupo?
                     <button onClick={() => newGrupo()}>Crear</button>
-                </p>
+                    </p>
+                </div>
             </div>
         </div>
     )

@@ -1,3 +1,17 @@
+#cohortes {
+  background-color: hsl(54, 100%, 48%);
+  padding: 25px 60px;
+  width: auto;
+}
+
+#subcohor {
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 95%);
+  padding: 50px 70px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 30px;
+  color: #25252538;
+}
+
 .react-tabs {
   -webkit-tap-highlight-color: transparent;
 }
@@ -56,6 +70,18 @@
   display: block;
 }
 
+h2,
+th,
+td {
+  color: black;
+  font-family: 'Roboto';
+}
+
+th,
+td {
+  font-size: 16px;
+}
+
 @media screen and (max-width: 768px) {
 
   #Cohorte-Tab {
@@ -67,6 +93,7 @@
   }
 
 }
+
 @media screen and (min-width: 768px) {
   #Cohorte-TabList {
     font-size: 1.2rem;

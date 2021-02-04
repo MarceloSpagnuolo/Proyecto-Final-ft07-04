@@ -5,6 +5,7 @@ import { getOneStandups, postPm } from "Store/Actions/Standups"
 import "./GrupoDetail.css";
 import ProfileCard from "components/ProfileCard/ProfileCard";
 import axios, { AxiosRequestConfig } from "axios";
+import lider from '../../assets/peak.png'
 
 
 const GrupoDetail = (props: any): JSX.Element => {
@@ -25,9 +26,9 @@ const GrupoDetail = (props: any): JSX.Element => {
     }
     async function eliminarPM(pm: any) {
         axios.delete(`http://localhost:3001/standup/PM/${id}/${pm}`,)
-        .then(() => {
-            setUpdate(!update)
-        })
+            .then(() => {
+                setUpdate(!update)
+            })
     }
     useEffect(() => {
         disptach(getOneStandups(id))
@@ -45,11 +46,11 @@ const GrupoDetail = (props: any): JSX.Element => {
     }, [!!Grupo && Grupo.length, update])
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
-        if(pm) {
+        if (pm) {
             const datos = {
                 id: id,
                 PM: pm
-            }            
+            }
             disptach(postPm(datos))
         }
         e.preventDefault();
@@ -62,64 +63,95 @@ const GrupoDetail = (props: any): JSX.Element => {
 
     return (
         <div className="divsoteGroupAdd">
-            <h1 className="titleG">
-                
+            <br></br>
+            <h1 id="titleGrupo">
+
                 Grupo {!!Grupo && Grupo.length > 0 && Grupo[0].Grupo}
             </h1>
             <h3 className="subTitleG">
-                Aquí podra gestionar los PMs y alumnos de <br />este grupo
+                Aquí podra gestionar los PMs y alumnos de este grupo
             </h3>
-            {!!Grupo && Grupo.length > 0 && Grupo[0].PM.length !== 2 ? 
-            <>
-            <p className="subSubTitleG">Asigne un pm al grupo</p>
-            <div className="divAsignarPM">
-                <form onSubmit={(e) => handleSubmit(e)}>
-                    <select className="selectPMG" value={pm} onChange={(e) => handleChange(e)}>
-                        <option value=""></option>
-                        {!!PMsingrupo && PMsingrupo.map((p: any) => {
-                            if (p.role === "PM") {
-                                return (
-                                    <option value={p._id}>{p.name.firstname} {p.name.lastname}</option>
-                                    )
-                                }
-                            })}
-                    </select>
-                    <input type="submit" value="seleccionar" />
-                </form>
-            </div>
-            </>
-                        :<div>Este grupo tiene el número máximo de PMs</div>}
-            <p className="pmtitle">PMs del grupo</p>
-            <div className="pmContainerName">
-                {alumnos.length > 0 && alumnos.map((p: any) => {
-                    if (p.role === "PM" && p.standup !== null) {
-                        return (
-                            <div key={"PM" + p._id} className="wq">
-                                <img className="roundPM" src="https://i.pinimg.com/236x/22/cd/5b/22cd5bf661c3d8a8550752b981901531.jpg" alt="user" /><p>{p.name.firstname} {p.name.lastname}</p>
-                                <button onClick={() => { eliminarPM(`${p._id}`)}}>X</button>
+            {!!Grupo && Grupo.length > 0 && Grupo[0].PM.length !== 2 ?
+                <>
+                    <div id='grupo-detalle-header'>
+                        <div id='col-izq-grupo-detalle'>
+                            <h1 className="subSubTitleG">Todo gran grupo necesita un gran líder</h1>
+                            <h3 className="subSubTitleG">comienza asignando un PM al grupo que quieres crear</h3>
+                            <div className="divAsignarPM">
+                                <form id='elige-pm' onSubmit={(e) => handleSubmit(e)}>
+                                    <select className="selectPMG" value={pm} onChange={(e) => handleChange(e)}>
+                                        <option value=""></option>
+                                        {!!PMsingrupo && PMsingrupo.map((p: any) => {
+                                            if (p.role === "PM") {
+                                                return (
+                                                    <option value={p._id}>{p.name.firstname} {p.name.lastname}</option>
+                                                )
+                                            }
+                                        })}
+                                    </select>
+                                    <input id='boton-elige-pm' type="submit" value="seleccionar" />
+                                </form>
                             </div>
-                        )
-                    }
-                })}
+                        </div>
+                        <div id='col-der-grupo-detalle'>
+                            <img src={lider} alt="lider" />
+                        </div>
+                    </div>
+                </>
+                : <div>Este grupo tiene el número máximo de PMs</div>}
+            <br />
+            <div id='container-seccion-pms'>
+                <p id="pmtitle">PMs del grupo</p>
+                <div id='dos-pms-row'>
+                    {alumnos.length > 0 && alumnos.map((p: any) => {
+                        if (p.role === "PM" && p.standup !== null) {
+                            return (
+                                <div id='pm-asignado-grupo' key={"PM" + p._id}>
+                                    <button id='elimina-pm' onClick={() => { eliminarPM(`${p._id}`) }}>x</button>
+                                    <img className="roundPM" src="https://i.pinimg.com/236x/22/cd/5b/22cd5bf661c3d8a8550752b981901531.jpg" alt="user" />
+                                    <p>{p.name.firstname} {p.name.lastname}</p>
+                                </div>
+                            )
+                        }
+                    })}
+                </div>
+
+
             </div>
-            <button className="btnAddRespon" onClick={() => setDisplay(!display)}>{!display ? "Agrege Alumnos" : "Cerrar"}</button>
-            {display ? <div className="divResponsiveAdd">
-                {singrupo.length > 0 && singrupo.map((a: any) => {
-                    if (a.role === "alumno") {
-                        return (<div key={"SG" + a._id} className="divAddAlRespon" onClick={() => agregar(a._id)} ><img className="roundAlum" src="https://cdn.discordapp.com/attachments/764979688446885898/803132593338843146/sspider.png" alt="" /><div>{`${a.name.firstname} ${a.name.lastname}`}</div></div>)
-                    }
-                })}
-            </div>
-                : null}
-            <div className="DivProfileCDetail">
-                {!!alumnos && alumnos.map((a: any) => {
-                    if (a.role === "alumno") {
-                        return (<ProfileCard key={"PC" + a._id} props={a} CG={cg} set={{ a: setUpdate, b: update }} />)
-                    }
-                })}
+            <div id='add-students-interface'>
+                <div id='grupo-agrega'>
+                    <h1>Alumnos del grupo 01</h1>
+                    <button id='add-students' className="btnAddRespon" onClick={() => setDisplay(!display)}>{!display ? "Agrega Alumnos" : "Cerrar"}</button>
+                </div>
+                <div id='alumnos-grupo'>
+
+                    {!!alumnos && alumnos.map((a: any) => {
+                        if (a.role === "alumno") {
+                            return (<ProfileCard key={"PC" + a._id} props={a} CG={cg} set={{ a: setUpdate, b: update }} />)
+                        }
+                    })}
+
+
+                </div>
+                <div id='barra-add-student'>
+                    {display ? <div id="divResponsiveAdd">
+                        <p id='alumnos-disponibles'>Alumnos Disponibles</p>
+                        {singrupo.length > 0 && singrupo.map((a: any) => {
+                            if (a.role === "alumno") {
+                                return (<div key={"SG" + a._id} className="divAddAlRespon" onClick={() => agregar(a._id)} >
+                                    <img className="roundAlum" src="https://cdn.discordapp.com/attachments/764979688446885898/803132593338843146/sspider.png" alt="" />
+                                    <div id='nombre-invitado'>{`${a.name.firstname} ${a.name.lastname}`}
+                                    </div>
+                                </div>)
+                            }
+                        })}
+                    </div>
+                        : null}
+                </div>
 
             </div>
         </div>
+
     )
 }
 
