@@ -25,7 +25,7 @@ function Listado() {
             <th className="Listado-Th">Instructor</th>
           </tr>
           {cohortes &&
-            cohortes.length > 0 && 
+            cohortes.length > 0 &&
             cohortes.map((elem: any) => {
               return elem.Active === false ? (
                 <tr key={elem._id} id="Listado-Tr">
@@ -38,7 +38,7 @@ function Listado() {
                   <td className="Listado-Td" id="Listado-Align">
                     {elem.Alumnos}
                   </td>
-                  <td className="Listado-Td">
+                  <td className="Listado-Td" id="instruct">
                     {elem.Instructor.name.firstname +
                       " " +
                       elem.Instructor.name.lastname}
