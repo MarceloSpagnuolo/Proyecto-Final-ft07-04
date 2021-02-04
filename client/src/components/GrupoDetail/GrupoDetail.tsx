@@ -64,7 +64,7 @@ const GrupoDetail = (props: any): JSX.Element => {
     return (
         <div className="divsoteGroupAdd">
             <br></br>
-            <h1 className="titleG">
+            <h1 id="titleGrupo">
 
                 Grupo {!!Grupo && Grupo.length > 0 && Grupo[0].Grupo}
             </h1>
@@ -101,19 +101,21 @@ const GrupoDetail = (props: any): JSX.Element => {
                 : <div>Este grupo tiene el número máximo de PMs</div>}
             <br />
             <div id='container-seccion-pms'>
-                <p className="pmtitle">PMs del grupo</p>
+                <p id="pmtitle">PMs del grupo</p>
+                <div id='dos-pms-row'>
+                    {alumnos.length > 0 && alumnos.map((p: any) => {
+                        if (p.role === "PM" && p.standup !== null) {
+                            return (
+                                <div id='pm-asignado-grupo' key={"PM" + p._id}>
+                                    <button id='elimina-pm' onClick={() => { eliminarPM(`${p._id}`) }}>x</button>
+                                    <img className="roundPM" src="https://i.pinimg.com/236x/22/cd/5b/22cd5bf661c3d8a8550752b981901531.jpg" alt="user" />
+                                    <p>{p.name.firstname} {p.name.lastname}</p>
+                                </div>
+                            )
+                        }
+                    })}
+                </div>
 
-                {alumnos.length > 0 && alumnos.map((p: any) => {
-                    if (p.role === "PM" && p.standup !== null) {
-                        return (
-                            <div id='pm-asignado-grupo' key={"PM" + p._id}>
-                                <img className="roundPM" src="https://i.pinimg.com/236x/22/cd/5b/22cd5bf661c3d8a8550752b981901531.jpg" alt="user" />
-                                <p>{p.name.firstname} {p.name.lastname}</p>
-                                <button onClick={() => { eliminarPM(`${p._id}`) }}>Eliminar PM</button>
-                            </div>
-                        )
-                    }
-                })}
 
             </div>
             <div id='add-students-interface'>
@@ -132,11 +134,15 @@ const GrupoDetail = (props: any): JSX.Element => {
 
                 </div>
                 <div id='barra-add-student'>
-                    {display ? <div className="divResponsiveAdd">
+                    {display ? <div id="divResponsiveAdd">
                         <p id='alumnos-disponibles'>Alumnos Disponibles</p>
                         {singrupo.length > 0 && singrupo.map((a: any) => {
                             if (a.role === "alumno") {
-                                return (<div key={"SG" + a._id} className="divAddAlRespon" onClick={() => agregar(a._id)} ><img className="roundAlum" src="https://cdn.discordapp.com/attachments/764979688446885898/803132593338843146/sspider.png" alt="" /><div id='nombre-invitado'>{`${a.name.firstname} ${a.name.lastname}`}</div></div>)
+                                return (<div key={"SG" + a._id} className="divAddAlRespon" onClick={() => agregar(a._id)} >
+                                    <img className="roundAlum" src="https://cdn.discordapp.com/attachments/764979688446885898/803132593338843146/sspider.png" alt="" />
+                                    <div id='nombre-invitado'>{`${a.name.firstname} ${a.name.lastname}`}
+                                    </div>
+                                </div>)
                             }
                         })}
                     </div>
