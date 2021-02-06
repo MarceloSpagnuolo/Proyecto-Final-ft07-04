@@ -340,8 +340,8 @@ router.get('/search?', async (req, res) => {
 router.put("/historia/:historiaId", (req, res) => {
   const { historiaId } = req.params;
   let { checkpoint, cohorteId, tests } = req.body;
+  console.log(historiaId, checkpoint, cohorteId, tests);
   tests = parseInt(tests);
-
   //Primero buscamos la historia del alumno
   Historial.findById(historiaId)
     .exec()
@@ -349,7 +349,9 @@ router.put("/historia/:historiaId", (req, res) => {
       //Despues buscamos el cohorte especifico
       let indice: any;
       for (let i = 0; i < historia.Checkpoints.length; i++) {
-        if ((historia.Checkpoints[i].Cohorte = cohorteId)) indice = i;
+        if (historia.Checkpoints[i].Cohorte == cohorteId) {
+          indice = i;
+        }
       }
       //Le modificamos la cantidad de tests pasados al objeto
       historia.Checkpoints[indice][checkpoint] = tests;
@@ -374,8 +376,11 @@ router.put("/historia/:historiaId", (req, res) => {
 
 router.get("/groupUsers/:id", async (req, res) => {
   const { id } = req.params;
-  const users = await User.find({ standup: id, });
-  res.json(users)
+  await User.find({ standup: id }, async function(err, users) {
+    await Historial.populate(users, { path: "historia"}, function(err, usersCOM) {
+      err ? res.send(err).status(400) : res.json(usersCOM);
+    })
+  });
 })
 
 router.get("/usercohorte/:id", async (req, res) => {
@@ -430,10 +435,30 @@ router.get('/:id', async (req, res) => {
     console.log(error)
     res.json({ success: false, msg: 'Hubo un error' }).status(400);
   }
+});
 
+router.put("/asistencia/:historiaId", async ( req, res) => {
+  const { historiaId } = req.params;
+  const { modulo, clase, valor } = req.body;
+
+  let historia = await Historial.findById(historiaId);
+  historia.Modulos[modulo].Clases[clase].Asistencia = valor;
+  historia.save();
+
+  historia ? res.json(historia) : res.send("Error al actualizar la asistencia").status(400);
 
 });
 
+router.put("/participa/:historiaId", async ( req, res ) => {
+  const { historiaId } = req.params;
+  const { modulo, clase, valor } = req.body;
+
+  let historia = await Historial.findById(historiaId);
+  historia.Modulos[modulo].Clases[clase].Participa = valor;
+  historia.save();
+
+  historia ? res.json(historia) : res.send("Error al actualizar la asistencia").status(400);
+})
 
 
 //"Rol === alumno => standup === standup vigente///

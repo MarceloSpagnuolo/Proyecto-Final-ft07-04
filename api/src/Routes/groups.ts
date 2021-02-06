@@ -16,6 +16,7 @@ router.get("/byCohorte/:id", async (req, res) => {
 
   !result ? res.send("Hubo un error").status(400) : res.json(result);
 });
+
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   const result = await Group.find({ _id: id }).sort({Grupo: 'asc'});;
@@ -108,4 +109,16 @@ router.delete("/PM/:id/:PM", async (req, res) => {
   !group ? res.send("hubo un error").status(400) : res.json(group);
 });
 
+
+//DEVUELVE EL STANDUP AL QUE PERTENECE EL PM
+//RECIBE EL ID DEL PM
+router.get("/search/:pmId", async (req, res) => {
+  const { pmId } = req.params;
+
+  await Group.findOne({ PM: pmId}, function (err: any, standup: any) {
+    User.populate(standup, { path: "PM"}, function (err: any, standupCOM: any) {
+      err ? res.send(err).status(400) : res.json(standupCOM);    })
+  });
+
+})
 export default router;

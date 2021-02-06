@@ -79,8 +79,16 @@ h1 {
 
 #card button {
     margin-left: 50px;
-    color: red;
+    background-color: red;
+    color: white;
     font-weight: 600;
+    border: 0;
+    border-radius: 5px;
+}
+
+#card button:hover {
+    cursor: pointer;
+    opacity: .6;
 }
 
 ul {

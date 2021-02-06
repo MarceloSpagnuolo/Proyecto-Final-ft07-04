@@ -39,11 +39,8 @@ function Carga() {
     const cohorteId = datos[0];
     const checkpoint = datos[1];
     const dato = datos[2];
-    console.log("Cohorte: ", cohorteId);
-    console.log("Checkpoint: ", checkpoint);
-    console.log("Tests: ", dato);
-    console.log("Tests: ", e.target.value)
-    dispatch(changeTests(cohorteId, { checkpoint, dato, valor: e.target.value }));
+    dispatch(changeTests(cohorteId, {checkpoint, dato, valor: e.target.value}));
+
   }
 
   return (

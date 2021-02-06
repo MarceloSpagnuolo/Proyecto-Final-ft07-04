@@ -2,17 +2,21 @@ import express from "express";
 const router = express.Router();
 import Historial from "../Models/historial";
 import User from "../Models/users";
+import Modulos from "../Models/modulos";
 
 //Ruta que genera el historial del alumno cuando se registra
 //O agrega un nuevo cohorte a su historia cuando migra
 router.post("/", async (req, res) => {
     const { userId, cohorteId } = req.body;
+    console.log(userId, cohorteId);
 
     //Primero nos fijamos si el alumno ya tiene historia
-    var alumno = User.findById(userId);
+    var alumno = await User.findById(userId);
     if(alumno.historia) {
         //Si ya tiene historia le agregamos un nuevo cohorte (está migrando)
-        const historia = await Historial.findOneAndUpdate({ User: userId}, { $push: {Checkpoints: {Cohorte: cohorteId}}});
+        let historia = await Historial.findById(alumno.historia);
+        historia.Checkpoints.push({Cohorte: cohorteId});
+        historia.save()
         historia ? res.json(historia) : res.send("No se pudo agregar el cohorte al historia del alumno").status(400);
     } else {
         //Si el alumno no tiene historia generamos la historia (es alumno nuevo)
@@ -68,5 +72,12 @@ router.get("/cohorte/:cohorteId", async (req, res) => {
         })
     });
 });
+
+router.get("/modulos", async (req, res) => {
+
+    const modulos = await Modulos.find();
+
+    modulos ? res.json(modulos) : res.send("No se encontraton módulos").status(400);
+})
 
 export default router;

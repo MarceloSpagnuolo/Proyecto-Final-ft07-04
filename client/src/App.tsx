@@ -15,6 +15,7 @@ import MiCohorte from "./components/PMsYAlumnos/MiCohorte"
 import Rendimiento from "./components/PMsYAlumnos/Rendimiento"
 import Profile from './components/Profile/Profile'
 import MiGrupo from "./components/PMsYAlumnos/MiGrupo"
+import Panel from "components/PMs/Panel";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
       <Route exact path='/Grupos/:id' component={Grupos} />
       <Route exact path='/MiGrupo/:id' component={MiGrupo} />
       <Route exact path="/cargaNotas" component={Carga} />
+      <Route exact path="/panel" component={Panel} />
     </>
   );
 }
