@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStadupByUser } from "Store/Actions/Standups";
-import { putAsistencia, putParticipa, usersGroup } from "Store/Actions/Users";
+import { putAsistencia, putParticipa, usersGroup, alumnosGroup } from "Store/Actions/Users";
 import Swal from "sweetalert2";
 import "./Panel.css";
 
@@ -36,7 +36,7 @@ useEffect(() => {
 },[user])
 
 useEffect(() => {
-    if(standup._id) dispatch(usersGroup(standup._id))
+    if(standup._id) dispatch(alumnosGroup(standup._id))
 },[standup])
 
 function handleSelect(e: any) {

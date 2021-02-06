@@ -376,11 +376,8 @@ router.put("/historia/:historiaId", (req, res) => {
 
 router.get("/groupUsers/:id", async (req, res) => {
   const { id } = req.params;
-  await User.find({ standup: id }, async function(err, users) {
-    await Historial.populate(users, { path: "historia"}, function(err, usersCOM) {
-      err ? res.send(err).status(400) : res.json(usersCOM);
-    })
-  });
+  const users = await User.find({ standup: id, });
+  res.json(users)
 })
 
 //Ruta que devuelve solo los alumnos del standup (NO LOS PMS !!!!)
