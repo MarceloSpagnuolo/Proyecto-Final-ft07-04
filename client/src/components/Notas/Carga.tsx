@@ -39,10 +39,6 @@ function Carga() {
     const cohorteId = datos[0];
     const checkpoint = datos[1];
     const dato = datos[2];
-    console.log("Cohorte: ",cohorteId);
-    console.log("Checkpoint: ", checkpoint);
-    console.log("Tests: ", dato);
-    console.log("Tests: ", e.target.value)
     dispatch(changeTests(cohorteId, {checkpoint, dato, valor: e.target.value}));
   }
 
@@ -170,6 +166,7 @@ function Carga() {
                   const historia = elem.historia.Checkpoints.filter(
                     (e: any) => e.Cohorte === cohorte[0]._id
                   );
+                  console.log(historia[0]);
                   return (
                     elem.historia && (
                       <tr key={elem._id} id="Carga-Tr">

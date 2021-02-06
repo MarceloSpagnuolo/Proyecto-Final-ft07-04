@@ -16,6 +16,8 @@ import {
   PUT_NOTAS,
   GET_USER_EDIT,
   UPDATE_USER_PASSWORD,
+  PUT_ASISTENCIA,
+  PUT_PARTICIPA,
 } from "../Constants/Users";
 const url = "http://localhost:3001";
 
@@ -238,4 +240,34 @@ export const updateUser = (data:Object) => async (dispatch: any) => {
       message: "Hubo un problema al actualizar el usuario",
     });
   }
+};
+
+export const putAsistencia = (historiaId: any, payload: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.put(`${url}/users/asistencia/${historiaId}`, payload);
+    dispatch({
+      type: PUT_ASISTENCIA,
+      payload: res.data
+    });
+  } catch(e) {
+dispatch({
+      type: ERROR_MESSAGE,
+      payload: "No se pudo actualizar la asistencia"
+    });
+  };
+};
+
+export const putParticipa = (historiaId: any, payload: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.put(`${url}/users/participa/${historiaId}`, payload);
+    dispatch({
+      type: PUT_PARTICIPA,
+      payload: res.data
+    });
+  } catch(e) {
+dispatch({
+      type: ERROR_MESSAGE,
+      payload: "No se pudo actualizar la participación"
+    });
+  };
 };

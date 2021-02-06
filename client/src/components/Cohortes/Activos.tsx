@@ -13,6 +13,8 @@ import axios from "axios";
 // import { Formik, Field, ErrorMessage, Form } from "formik";
 import { Link } from "react-router-dom";
 
+const url = "http://localhost:3001";
+
 function Activos(props: any) {
   const dispatch = useDispatch();
   const { users } = useSelector((state: any) => state.Users);
@@ -22,6 +24,7 @@ function Activos(props: any) {
   const [disponibles, setDisp] = useState([]);   //Cohortes disponibles
   const [migra, setMigra] = useState({ alumnoId: "", nombre: "" });
   const [nvoCohorte, setCohorte] = useState(""); //Variable para seleccionar un nuevo cohorte al alumno
+  const [nroCohorte, setNroCohorte ] = useState("");
   const [showInst, setInst] = useState(false);   //Variable para mostrar el modal par asignar instructor
   const [nvoInst, setNvoInst] = useState("");  //Variable para el nuevo Instructor
   const [instDisp, setInstDisp] = useState([]); //Instructores disponibles
@@ -67,12 +70,15 @@ function Activos(props: any) {
   };
 
   function handleOnchange(e: any) {
-    setCohorte(e.target.value);
+    const datos = e.target.value.split("/");
+    setCohorte(datos[0]);
+    setNroCohorte(datos[1]);
   };
 
-  function handleSubmit(e: any) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
     dispatch(migrarUserCohorte(migra.alumnoId, nvoCohorte));
+    await axios.post(`${url}/historia`, {userId: migra.alumnoId, cohorteId: nroCohorte});
     Swal.fire(
       "Migrado!",
       `${migra.nombre} ha sido migrado al cohorte ${nvoCohorte}.`,
@@ -117,12 +123,12 @@ function Activos(props: any) {
     <>
       {/* Migración de Cohorte */}
       <Modal title="Migración de Cohorte" show={display} onClose={() => setDisplay((val) => !val)}>
-        <h4>Seleccione el cohorte al que migra {migra.nombre}</h4>
+        <h4 className="Activos-h4">Seleccione el cohorte al que migra {migra.nombre}</h4>
         <form>
           <div className="Listado-Container-Select">
             <select name="select" className="Listado-Select" onChange={(e) => handleOnchange(e)}>
               <option value="">Seleccionar Cohorte</option>
-              {disponibles.map((elem: any) => <option value={elem.Nombre}>{elem.Nombre} - Inicio: {elem.Start}</option>)
+              {disponibles.map((elem: any) => <option value={elem.Nombre+"/"+elem._id}>{elem.Nombre} - Inicio: {elem.Start}</option>)
               }
             </select>
           </div>
@@ -136,7 +142,7 @@ function Activos(props: any) {
 
       {/* Selección de Instructor */}
       <Modal title="Asignación de Instructor al Cohorte" show={showInst} onClose={() => setInst((val) => !val)}>
-        <h4>Seleccione el instructor a asignar al cohorte {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</h4>
+        <h4 className="Activos-h4">Seleccione el instructor a asignar al cohorte {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</h4>
         <form>
           <div className="Listado-Container-Select">
             <select name="select" className="Listado-Select" onChange={(e) => handleChangeInst(e)}>
@@ -154,29 +160,29 @@ function Activos(props: any) {
       <div className="Activos-Container">
         <div id="nd">
           <h2>Cohorte Activo</h2>
-          <span>Cohorte: {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</span>
+          <span className="Activos-span">Cohorte: {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</span>
           <br />
           <div>
-            <span>Inicio: {cohorte && cohorte.length > 0 && cohorte[0].Start}</span>
+            <span className="Activos-span">Inicio: {cohorte && cohorte.length > 0 && cohorte[0].Start}</span>
           </div>
           <br />
           <div>
-            <span>Instructor: {cohorte && cohorte.length > 0 && cohorte[0].Instructor !== null &&
+            <span className="Activos-span">Instructor: {cohorte && cohorte.length > 0 && cohorte[0].Instructor !== null &&
               cohorte[0].Instructor.name.firstname + " " + cohorte[0].Instructor.name.lastname}</span>
             <button className="Activos-Boton" onClick={() => cambiaInst()}>Cambiar o Asignar</button>
           </div>
           <br />
           <div>
-            <span>Grupos</span>
+            <span className="Activos-span">Grupos</span>
             <Link to={`/grupos/${id}`}>
               <button className="Activos-Boton">Ver todos</button>
             </Link>
           </div>
           <div>
-            <span>Alumnos: {users.length}</span>
+            <span className="Activos-span">Alumnos: {users.length}</span>
           </div>
           <div className="Listado-Container">
-            <h3>Alumnos</h3>
+            <h3 className="Activos-h3">Alumnos</h3>
             <div className="Activos-Table">
               <table className="Activos-Table">
                 <tbody>
