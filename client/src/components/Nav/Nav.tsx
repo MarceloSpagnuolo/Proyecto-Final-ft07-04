@@ -76,6 +76,11 @@ const Nav = () => {
             <div className="divListasMobile">
               
               <div>
+                <div onClick={() => linkTo("home")} className="mlP">
+                  Inicio
+                </div>
+              </div>
+              <div>
                 <div onClick={() => linkTo("PanelControlStudent")} className="mlP">
                   Alumnos
                 </div>
@@ -112,6 +117,11 @@ const Nav = () => {
           >
             <div className="divListasMobile">
               
+              <div>
+                <div onClick={() => linkTo("home")} className="mlP">
+                  Inicio
+                </div>
+              </div>
               <div>
                 <div onClick={() => linkTo(`panel`)} className="mlP">
                   Mi Standup
@@ -150,6 +160,11 @@ const Nav = () => {
       >
         <div className="divListasMobile">
           
+          <div>
+                <div onClick={() => linkTo("home")} className="mlP">
+                  Inicio
+                </div>
+              </div>
           <div>
             <div onClick={() => linkTo(`MiCohorte/${user.cohorte._id}`)} className="mlP">
               Mi Cohorte
