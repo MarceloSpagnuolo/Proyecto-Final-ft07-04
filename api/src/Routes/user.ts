@@ -383,6 +383,16 @@ router.get("/groupUsers/:id", async (req, res) => {
   });
 })
 
+//Ruta que devuelve solo los alumnos del standup (NO LOS PMS !!!!)
+router.get("/groupAlumnos/:standupId", async (req, res) => {
+  const { standupId } = req.params;
+  await User.find({ standup: standupId, role: "alumno" }, async function(err, alumnos) {
+    await Historial.populate(alumnos, { path: "historia"}, function(err, alumnosCOM) {
+      err ? res.send(err).status(400) : res.json(alumnosCOM);
+    });
+  });
+});
+
 router.get("/usercohorte/:id", async (req, res) => {
   const { id } = req.params
   const usuarios = await User.find({ role: "alumno", cohorte: id, standup: null })

@@ -4,7 +4,7 @@ import { usersGroup } from "Store/Actions/Users";
 import { getOneStandups, postPm } from "Store/Actions/Standups"
 import "./GrupoDetail.css";
 import ProfileCard from "components/ProfileCard/ProfileCard";
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 import lider from '../../assets/peak.png'
 
 

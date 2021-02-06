@@ -139,7 +139,7 @@ export const migrarUserCohorte = (id: string, cohorteName: string) => async (
 
 export const usersGroup = (id: any) => async (dispatch: any) => {
   try {
-    const res = await axios.get(`${url}/users/groupUsers/${id}`);
+    const res = await axios.get(`${url}/users/groupAlumnos/${id}`);
     dispatch({
       type: USERS_GROUP,
       payload: res.data,

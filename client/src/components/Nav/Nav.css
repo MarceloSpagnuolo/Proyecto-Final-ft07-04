@@ -4,7 +4,8 @@
     height: 100px;
     background-color: black;
     width: 102.7%;
-    z-index: 1;
+    z-index: 2;
+    top: 0;
   }
   .nombre {
     display: none;
@@ -108,6 +109,8 @@
     height: 100px;
     background-color: black;
     width: 100%;
+    z-index: 2;
+    top: 0;
   }
   #divIdList {
     color: white;

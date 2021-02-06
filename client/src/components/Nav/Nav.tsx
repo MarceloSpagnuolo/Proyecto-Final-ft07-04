@@ -113,7 +113,7 @@ const Nav = () => {
             <div className="divListasMobile">
               
               <div>
-                <div onClick={() => linkTo(`MiGrupo/${user.standup._id}`)} className="mlP">
+                <div onClick={() => linkTo(`panel`)} className="mlP">
                   Mi Standup
                 </div>
               </div>
@@ -157,7 +157,7 @@ const Nav = () => {
           </div>
           <div>
             <div onClick={() => linkTo(`MiGrupo/${user.standup._id}`)} className="mlP">
-              Mi Grupo
+              Mi Standup
             </div>
           </div>
           <div>

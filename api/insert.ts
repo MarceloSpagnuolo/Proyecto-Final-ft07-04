@@ -286,6 +286,7 @@ export default async function Insert() {
       github: "JorgeMalo",
       created: new Date(),
       cohorte: "600b9852935003272c8b6901",
+      standup: "600b9852935003272c8b6802",
       historia: "600b9852935003272c8b6712",
     },
 
@@ -298,6 +299,7 @@ export default async function Insert() {
       github: "MiguelHernandez",
       created: new Date(),
       cohorte: "600b9852935003272c8b6901",
+      standup: "600b9852935003272c8b6802",
       historia: "600b9852935003272c8b6713",
     },
     {
@@ -309,6 +311,7 @@ export default async function Insert() {
       github: "AgusMineto",
       created: new Date(),
       cohorte: "600b9852935003272c8b6901",
+      standup: "600b9852935003272c8b6801",
       historia: "600b9852935003272c8b6714",
     },
 
@@ -321,6 +324,7 @@ export default async function Insert() {
       created: new Date(),
       password: "contraseñasDuras123",
       cohorte: "600b9852935003272c8b6901",
+      standup: "600b9852935003272c8b6801",
       historia: "600b9852935003272c8b6715",
     },
     {
