@@ -8,7 +8,6 @@ import Modulos from "../Models/modulos";
 //O agrega un nuevo cohorte a su historia cuando migra
 router.post("/", async (req, res) => {
     const { userId, cohorteId } = req.body;
-    console.log(userId, cohorteId);
 
     //Primero nos fijamos si el alumno ya tiene historia
     var alumno = await User.findById(userId);

@@ -443,7 +443,6 @@ router.get("/searchgithub", async (req, res) => {
 router.put("/historia/:historiaId", (req, res) => {
   const { historiaId } = req.params;
   let { checkpoint, cohorteId, tests } = req.body;
-  console.log(historiaId, checkpoint, cohorteId, tests);
   tests = parseInt(tests);
   //Primero buscamos la historia del alumno
   Historial.findById(historiaId)

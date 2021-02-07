@@ -46,9 +46,9 @@ const Profile = (): JSX.Element => {
 
         if (id === 'miPerfil') {
 
-            if (userToEdit && typeof userToEdit.token !== 'undefined') {
-                console.log(userToEdit.token)
-            }
+            // if (userToEdit && typeof userToEdit.token !== 'undefined') {
+            //     console.log(userToEdit.token)
+            // }
             //obtener el perfil del usuario logueado
 
             const perfil = async () => {

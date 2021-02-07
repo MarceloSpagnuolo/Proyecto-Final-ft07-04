@@ -109,11 +109,13 @@ export const cohortesNames = (id: string) => async (dispatch : any) => {
 export const countAlumnos = () => async (dispatch: any) => {
   try {
     const res = await axios.get(`${url}/cohorte/CountAlumnos`)
-    console.log(res.data)
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
       payload: "Error al contar alumnos",
+    })
+  }
+}
 
 export const changeTests = (cohorteId: any, payload: any) => async (dispatch: any) => {
   try {
