@@ -6,6 +6,7 @@ import {
   POST_STANDUP,
   DEL_STANDUP,
   ERROR_MESSAGE,
+  GET_STANDUP_BY_USER,
 } from "../Constants/Standups";
 
 interface Store {
@@ -45,6 +46,12 @@ function Standups(state = inicialState, action: any) {
       return {
         ...state,
         standups: state.standups.filter((s) => s._id !== action.payload._id)
+      }
+    }
+    case GET_STANDUP_BY_USER: {
+      return {
+        ...state,
+        standup: action.payload
       }
     }
     case ERROR_MESSAGE: {

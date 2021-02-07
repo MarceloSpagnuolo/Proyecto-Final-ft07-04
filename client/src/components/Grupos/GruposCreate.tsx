@@ -3,6 +3,7 @@ import { postStandup, delStandup, getStandupsByCohorte } from "Store/Actions/Sta
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./GruposCreate.css";
+import Swal from "sweetalert2";
 
 const GrupoCreate = (props: any) => {
     const dispatch = useDispatch();
@@ -35,10 +36,25 @@ const GrupoCreate = (props: any) => {
         window.location.reload()
     }
     function deletGroup(id: any) {
-        // const datos = {
-        //     id: id
-        // }
-        dispatch(delStandup(id))
+        Swal.fire({
+            title: "¿Está seguro?",
+            text: `Está por eliminar definitivamente a este grupo de Standup`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "Cancelar",
+            confirmButtonText: "Si, eliminar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(delStandup(id));
+                Swal.fire(
+                "Eliminado!",
+                `El grupo ha sido eliminado del sistema`,
+                "success"
+                );
+            }
+        });
     }
 
     useEffect(() => {
@@ -53,7 +69,6 @@ const GrupoCreate = (props: any) => {
                 <li>Son grupos de StandUp dirigidos por PM´s.</li>
                 <li>Al dar clic en "Ver" puedes ver el detalle del grupo.</li>
                 <li>Puedes eliminarlo dando clic en la "X".</li>
-                <li>La eliminación no requiere confirmación, ten cuidado.</li>
             </ul>
             <div id="top-nd">
                 <div id="tit">Grupos</div>

@@ -14,9 +14,11 @@ import {
   GET_USER_EDIT,
   UPDATE_USER_PASSWORD,
   PUT_NOTAS,
+  SEARCH_GITHUB,
+  PUT_ASISTENCIA,
+  PUT_PARTICIPA,
 } from "../Constants/Users";
 import Swal from "sweetalert2";
-import { EMFILE } from "constants";
 
 interface Store {
   user: Object;
@@ -69,6 +71,11 @@ function Users(state = inicialState, action: any) {
         ...state,
         users: action.payload,
       };
+      case SEARCH_GITHUB:
+        return {
+          ...state,
+          users: action.payload,
+        }
     case PUT_NOTAS: {
       return {
         ...state,
@@ -101,6 +108,32 @@ function Users(state = inicialState, action: any) {
         ...state,
         userToEdit: action.payload,
       };
+    }
+    case PUT_ASISTENCIA: {
+      return {
+        ...state,
+        users: state.users.map((user: any) => {
+          if(user.historia._id === action.payload._id) {
+            user.historia = action.payload;
+            return user;
+          } else {
+            return user;
+          }
+        })
+      }
+    }
+     case PUT_PARTICIPA: {
+      return {
+        ...state,
+        users: state.users.map((user: any) => {
+          if(user.historia._id === action.payload._id) {
+            user.historia = action.payload;
+            return user;
+          } else {
+            return user;
+          }
+        })
+      }
     }
     default: {
       return state;

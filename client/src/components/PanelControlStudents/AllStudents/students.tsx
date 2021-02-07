@@ -46,6 +46,8 @@ const Students = (): JSX.Element => {
         setSee(true)
     }
 
+
+
     return (
         <>
             <Modal title="Asignar Cohorte" show={see} onClose={() => setSee((val) => !val)}>
@@ -66,13 +68,14 @@ const Students = (): JSX.Element => {
                     </div>
                 </form>
             </Modal>
-            <div id="student-super-container">
-                <div id='contenedor-top-estudiantes'>
-                    <h2 id='titulo-tab-estudiantes'>Alumnos</h2>
-                    <SearchBar id='busqueda-estudiantes' />
-                </div>
-                <div className="student-container">
-                    <div className="student-titles">
+        <div id="student-super-container">
+            <div id='contenedor-top-estudiantes'>
+                <h2 id='titulo-tab-estudiantes'>Alumnos</h2>
+                <SearchBar id={"todos"} />
+            </div>
+            <div className="student-container">
+                <div className="student-titles">
+
                     </div>
                     <table className="student-table">
                         <thead className="student-table-titles">

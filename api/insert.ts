@@ -2,8 +2,141 @@ import User from "./src/Models/users";
 import Group from "./src/Models/groups";
 import Cohorte from "./src/Models/cohorte";
 import Historial from "./src/Models/historial";
+import Modulos from "./src/Models/modulos";
 
 export default async function Insert() {
+
+  const modulos = [
+    {
+      Numero: 1,
+      Clases: [
+        {
+          Nombre: "Intro CS"
+        },
+        {
+          Nombre: "JS I"
+        },
+        {
+          Nombre: "JS II"
+        },
+        {
+          Nombre: "JS III"
+        },
+        {
+          Nombre: "EDA I"
+        },
+        {
+          Nombre: "EDA II"
+        },
+        {
+          Nombre: "Algoritmos I"
+        },
+        {
+          Nombre: "Algoritmos II"
+        },
+        {
+          Nombre: "Consulta"
+        }
+    ]
+    },
+    {
+      Numero: 2,
+      Clases: [
+        {
+          Nombre: "DOM"
+        },
+        {
+          Nombre: "CSS"
+        },
+        {
+          Nombre: "ES6"
+        },
+        {
+          Nombre: "Ajax"
+        },
+        {
+          Nombre: "Bundlers"
+        },
+        {
+          Nombre: "React-Intro"
+        },
+        {
+          Nombre: "React-Estilos"
+        },
+        {
+          Nombre: "React-LifeCycle"
+        },
+        {
+          Nombre: "React-Routing"
+        },
+        {
+          Nombre: "React-Forms"
+        },
+        {
+          Nombre: "Redux"
+        },
+        {
+          Nombre: "React-Redux"
+        },
+        {
+          Nombre: "React-Hooks"
+        },
+        {
+          Nombre: "Consulta"
+        }
+      ]
+    },
+    {
+      Numero: 3,
+      Clases: [
+        {
+          Nombre: "Node"
+        },
+        {
+          Nombre: "Promises"
+        },
+        {
+          Nombre: "Web Server"
+        },
+        {
+          Nombre: "Advance Promises"
+        },
+        {
+          Nombre: "Advance Promises"
+        },
+        {
+          Nombre: "Espress"
+        },
+        {
+          Nombre: "Testing"
+        },
+        {
+          Nombre: "Consulta"
+        }
+      ]
+    },
+    {
+      Numero: 4,
+      Clases: [
+        {
+          Nombre: "DBMS"
+        },
+        {
+          Nombre: "SQL"
+        },
+        {
+          Nombre: "Sequelize"
+        },
+        {
+          Nombre: "Authentication"
+        },
+        {
+          Nombre: "Async Await"
+        }
+      ]
+    }
+  ]
+
   const users = [
     {
       _id: "600b9852935003272c8b6100",
@@ -152,8 +285,8 @@ export default async function Insert() {
       password: "SoyunPM123",
       github: "JorgeMalo",
       created: new Date(),
-      standup: "600b9852935003272c8b6802",
       cohorte: "600b9852935003272c8b6901",
+      standup: "600b9852935003272c8b6802",
       historia: "600b9852935003272c8b6712",
     },
 
@@ -165,8 +298,8 @@ export default async function Insert() {
       password: "SoyotrindePM23",
       github: "MiguelHernandez",
       created: new Date(),
-      standup: "600b9852935003272c8b6802",
       cohorte: "600b9852935003272c8b6901",
+      standup: "600b9852935003272c8b6802",
       historia: "600b9852935003272c8b6713",
     },
     {
@@ -177,8 +310,8 @@ export default async function Insert() {
       password: "Cansadodepass1234",
       github: "AgusMineto",
       created: new Date(),
-      standup: "600b9852935003272c8b6801",
       cohorte: "600b9852935003272c8b6901",
+      standup: "600b9852935003272c8b6801",
       historia: "600b9852935003272c8b6714",
     },
 
@@ -190,8 +323,8 @@ export default async function Insert() {
       github: "TonyTralice",
       created: new Date(),
       password: "contraseñasDuras123",
-      standup: "600b9852935003272c8b6801",
       cohorte: "600b9852935003272c8b6901",
+      standup: "600b9852935003272c8b6801",
       historia: "600b9852935003272c8b6715",
     },
     {
@@ -285,7 +418,7 @@ export default async function Insert() {
       password: "ComeOrjeas2",
       github: "MikeTyson",
       created: Date(),
-      cohorte: "600b9852935003272c8b6902",
+      cohorte: "600b9852935003272c8b6901",
       historia: "600b9852935003272c8b6717",
     },
     {
@@ -296,7 +429,7 @@ export default async function Insert() {
       password: "Ylos40Ladrones",
       github: "AliBaba",
       created: Date(),
-      cohorte: "600b9852935003272c8b6902",
+      cohorte: "600b9852935003272c8b6901",
       historia: "600b9852935003272c8b6716",
     },
   ];
@@ -346,74 +479,94 @@ export default async function Insert() {
   const historia = [
     {
       _id: "600b9852935003272c8b6701",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6702",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6703",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6704",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6705",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6706",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6707",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6708",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6709",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6710",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6712",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6901" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6901" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6713",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6901" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6901" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6714",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6901" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6901" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6715",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6901" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6901" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6716",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6717",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
     {
       _id: "600b9852935003272c8b6718",
-      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }]
+      Checkpoints: [{ Cohorte: "600b9852935003272c8b6902" }],
+      Modulos: new Array
     },
   ]
 
+  modulos.forEach(async(c) => {
+    await Modulos.create(c);
+  });
   users.forEach(async (c) => {
     await User.create(c);
   });
@@ -424,6 +577,9 @@ export default async function Insert() {
     await Cohorte.create(c);
   });
   historia.forEach(async (c) => {
+    modulos.forEach((d) => {
+      c.Modulos.push(d);
+    })
     await Historial.create(c);
   })
   console.log("Insert completo");
