@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePassword, getUsereEdit, updateUser, getUserByToken } from '../../Store/Actions/Users';
 import { Modal } from "./modal";
+import {File} from "./File"
 import "./Profile.css";
 import Swal from "sweetalert2";
 
@@ -17,7 +18,8 @@ interface Inputs {
     standup?: string,
     password?: string,
     newPassword?: string,
-    confirmPassword?: string
+    confirmPassword?: string,
+    thumbnail?:string
 }
 
 export interface IdUserProfileParams {
@@ -28,10 +30,14 @@ const Profile = (): JSX.Element => {
     const [inputs, setInputs] = useState<Inputs>({});
     const [inputDisabled, setinputDisabled] = useState(true)
     const getProfile: any = useSelector((state: any) => state.Users.user);
+   
+
     const { firstname, lastname, email, cohorte, standup, password, newPassword, confirmPassword } = inputs;
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
-    const [editOtherProfile, seteditOtherProfile] = useState(false)
+    const [editOtherProfile, seteditOtherProfile] = useState(false);
+    const [userId, setuserId] = useState('');
+    const [profileImg, setprofileImg] = useState('https://previews.123rf.com/images/thesomeday123/thesomeday1231712/thesomeday123171200008/91087328-icono-de-perfil-de-avatar-predeterminado-para-mujer-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilustra.jpg');
     //mandar llamar las action de producto action
     const updatePass = async (data: any) => dispatch(updatePassword(data));
     const getUser = async (id: string) => dispatch(getUsereEdit(id));
@@ -39,21 +45,22 @@ const Profile = (): JSX.Element => {
     const userToEdit = useSelector((state: any) => state.Users.userToEdit.usersCOM);
 
 
+    const [titleProfile, setTitleProfile] = useState('profile')
     //conseguir el id que viene por la url
     const { id } = useParams<IdUserProfileParams>();
 
     useEffect(() => {
-
+        
         if (id === 'miPerfil') {
-
-            // if (userToEdit && typeof userToEdit.token !== 'undefined') {
-            //     console.log(userToEdit.token)
-            // }
             //obtener el perfil del usuario logueado
 
             const perfil = async () => {
                 if (Object.keys(getProfile).length !== 0) {
                     const id = getProfile._id;
+                    if( typeof userToEdit !== 'undefined' && typeof userToEdit.thumbnail !== 'undefined' ){
+                        setprofileImg(userToEdit.thumbnail);
+                    }
+                    setuserId(id)
                     //habilitar edicion de todos los campos solo para el admin
                     if (getProfile.role === 'admin') {
                         setinputDisabled(false)
@@ -62,6 +69,7 @@ const Profile = (): JSX.Element => {
 
                     if (userToEdit && Object.keys(userToEdit).length !== 0) {
                         const { _id, name, email, cohorte, standup } = userToEdit;
+                      
                         if (typeof userToEdit.cohorte !== 'undefined') var cohorteNombre = cohorte.Nombre;
                         if (typeof userToEdit.standup !== 'undefined') var standupNombre = standup.Grupo;
 
@@ -74,24 +82,27 @@ const Profile = (): JSX.Element => {
                             standup: standupNombre
                         })
                     }
-
-                    //putToken(userToEdit.token)
                 }
-
             }
             perfil()
+            
+
         } else {
             //admin puede obtener perfil de otro usuario para editarlo
             if (getProfile.role === 'admin') {
                 setinputDisabled(false)
+               
                 const profileOtherUser = async () => {
                     getUserEdit('')
-
+                    
                     if (userToEdit && Object.keys(userToEdit).length !== 0) {
+
+                        
+
                         const { _id, name, email, cohorte, standup } = userToEdit;
                         if (typeof userToEdit.cohorte !== 'undefined') var cohorteNombre = cohorte.Nombre;
                         if (typeof userToEdit.standup !== 'undefined') var standupNombre = standup.Grupo;
-
+                        setuserId(_id);
                         setInputs({
                             id: _id,
                             firstname: name.firstname,
@@ -100,11 +111,17 @@ const Profile = (): JSX.Element => {
                             cohorte: cohorteNombre,
                             standup: standupNombre
                         })
+                    }
+
+                    if( typeof userToEdit !== 'undefined' && typeof userToEdit.thumbnail !== 'undefined' ){
+                        setprofileImg(userToEdit.thumbnail);
                     }
                 }
                 profileOtherUser()
             }
         }
+        if(firstname && lastname)  setTitleProfile(`${firstname} ${lastname}`);
+      
         //eslint-disable-next-line
     }, [getProfile, userToEdit, id])
 
@@ -200,12 +217,17 @@ const Profile = (): JSX.Element => {
 
     }
 
-
-
-
     return (
-        <div className="divsitoProfileCard">
-            <h1>Mi perfil</h1>
+        <div className="profileContent">
+            <h1>Perfil de {titleProfile}</h1>
+           
+            <File
+                idUser={userId}
+                img={profileImg}
+            >
+
+            </File>
+           
             <form className="formLogin" onSubmit={submitUpdateData}>
                 <div className="LoginDiv-Campos">
                     <label className="nameInput" htmlFor="email">Nombre</label><br></br>
@@ -254,7 +276,7 @@ const Profile = (): JSX.Element => {
                         onClick={openModal}
 
                     >
-                        Cambiar mi contraseña
+                        Cambiar contraseña
                     </button>
                 </div>
             </form>

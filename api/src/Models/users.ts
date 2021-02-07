@@ -23,7 +23,7 @@ const UserSchema: Schema<Props> = new Schema({
   },
   githubId: String,
   googleId: String,
-  thumbnail: Buffer,
+  thumbnail: { data: Buffer, contentType: String },
   role: { type: String, default: "alumno" },
   github: { type: String, unique: true },
   email: { type: String, trim: true, unique: true },

@@ -91,7 +91,7 @@ const Students = (): JSX.Element => {
                         <tbody className="student-table-body">
                             {users && users.length > 0 && users.map((alum: any) => (alum.role !== "instructor") ? (
                                 <tr id="student-table-tr">
-                                    <td className="student-table-td" id="less">{`${alum.name.firstname} ${alum.name.lastname}`}</td>
+                                    <td className="student-table-td" id="less"><Link id="links" to={`/profile/${alum._id}`}> {`${alum.name.firstname} ${alum.name.lastname}`}</Link></td>
                                     <td className="student-table-td" id="less">{alum.created}</td>
                                     <td className="student-table-td">{alum.email}</td>
                                     <td className="student-table-td" id="less">{alum.github}</td>
