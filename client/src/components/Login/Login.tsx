@@ -51,6 +51,12 @@ const Login = (): JSX.Element => {
         }
     }
 
+    function enterKey(e: any) {
+        if (e.keyCode === 13) {
+            handleSubmit()
+        }
+    }
+
 
     return (
         <>
@@ -70,15 +76,15 @@ const Login = (): JSX.Element => {
                         <p>Soy un texto de relleno solo diré que esta es una página mas chiquita que la grande pero igualmente de útil</p>
                     </div>
                     <div className="divFormLogin">
-                        <form className="formLogin" >
+                        <form className="formLogin" onSubmit={handleSubmit}>
                             {error ? <div className="errText"><p>Contraseña o Email incorrectos</p></div> : null}
                             <div id={error ? "errLogin" : ""} className="LoginDiv-Campos">
                                 <label className="nameInput" htmlFor="email">Email registrado</label><br></br>
-                                <input autoFocus={true} size={40} type="email" id="emaill" name="email" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} />
+                                <input autoFocus={true} size={40} type="email" id="emaill" name="email" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} onKeyDown={(e) => enterKey(e) }/>
                             </div>
                             <div id={error ? "errLogin" : ""} className="LoginDiv-Campos">
                                 <label className="nameInput" htmlFor="password">Contraseña</label><br></br>
-                                <input size={60} type="password" id="passs" name="password" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} />
+                                <input size={60} type="password" id="passs" name="password" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} onKeyDown={(e) => enterKey(e) }/>
                             </div>
                         </form>
                         <div className="divBtnLogin">

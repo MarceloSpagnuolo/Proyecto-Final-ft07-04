@@ -9,6 +9,7 @@ import {
   GET_ACTIVE_COHORTES,
   GET_COHORTE,
   PUT_INSTRUCTOR,
+  COHORTES_NAMES,
   PUT_TESTS,
 } from "../Constants/Cohortes";
 
@@ -89,6 +90,30 @@ export const putInstructor = (cohorteId: any, instructorId: any) => async (dispa
     });
   };
 };
+
+export const cohortesNames = (id: string) => async (dispatch : any) => {
+  try {
+    const res = await axios.get(`${url}/cohorte/${id}`);
+    dispatch({
+      type: COHORTES_NAMES,
+      payload: res.data
+    })
+  } catch(e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      payload: "Error al traer cohortes",
+    });
+  }
+}
+
+export const countAlumnos = () => async (dispatch: any) => {
+  try {
+    const res = await axios.get(`${url}/cohorte/CountAlumnos`)
+    console.log(res.data)
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      payload: "Error al contar alumnos",
 
 export const changeTests = (cohorteId: any, payload: any) => async (dispatch: any) => {
   try {

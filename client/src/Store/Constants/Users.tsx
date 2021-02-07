@@ -14,6 +14,6 @@ export const SEARCH_BY_NAME = "SEARCH_BY_NAME"
 export const GET_USER_EDIT = "GET_USER_EDIT"
 export const UPDATE_USER_PASSWORD = " UPDATE_USER_PASSWORD,"
 export const PUT_NOTAS = "PUT_NOTAS";
+export const SEARCH_GITHUB = "SEARCH_GITHUB";
 export const PUT_ASISTENCIA = "PUT_ASISTENCIA";
 export const PUT_PARTICIPA = "PUT_PARTICIPA";
-
