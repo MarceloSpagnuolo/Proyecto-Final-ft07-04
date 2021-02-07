@@ -24,7 +24,7 @@ function Activos(props: any) {
   const [disponibles, setDisp] = useState([]);   //Cohortes disponibles
   const [migra, setMigra] = useState({ alumnoId: "", nombre: "" });
   const [nvoCohorte, setCohorte] = useState(""); //Variable para seleccionar un nuevo cohorte al alumno
-  const [nroCohorte, setNroCohorte ] = useState("");
+  const [nroCohorte, setNroCohorte] = useState("");
   const [showInst, setInst] = useState(false);   //Variable para mostrar el modal par asignar instructor
   const [nvoInst, setNvoInst] = useState("");  //Variable para el nuevo Instructor
   const [instDisp, setInstDisp] = useState([]); //Instructores disponibles
@@ -78,7 +78,7 @@ function Activos(props: any) {
   async function handleSubmit(e: any) {
     e.preventDefault();
     dispatch(migrarUserCohorte(migra.alumnoId, nvoCohorte));
-    await axios.post(`${url}/historia`, {userId: migra.alumnoId, cohorteId: nroCohorte});
+    await axios.post(`${url}/historia`, { userId: migra.alumnoId, cohorteId: nroCohorte });
     Swal.fire(
       "Migrado!",
       `${migra.nombre} ha sido migrado al cohorte ${nvoCohorte}.`,
@@ -128,7 +128,7 @@ function Activos(props: any) {
           <div className="Listado-Container-Select">
             <select name="select" className="Listado-Select" onChange={(e) => handleOnchange(e)}>
               <option value="">Seleccionar Cohorte</option>
-              {disponibles.map((elem: any) => <option value={elem.Nombre+"/"+elem._id}>{elem.Nombre} - Inicio: {elem.Start}</option>)
+              {disponibles.map((elem: any) => <option value={elem.Nombre + "/" + elem._id}>{elem.Nombre} - Inicio: {elem.Start}</option>)
               }
             </select>
           </div>
@@ -213,7 +213,7 @@ function Activos(props: any) {
                           </td>
                           <td className="Listado-Td">
                             <button
-                              className="Listado-Boton"
+                              id="activo-boton-quitar"
                               onClick={() =>
                                 handleDel(
                                   elem._id,
@@ -226,7 +226,7 @@ function Activos(props: any) {
                           </td>
                           <td className="Listado-Td">
                             <button
-                              className="Listado-Boton"
+                              id="activo-boton-migrar"
                               onClick={() =>
                                 handleMig(
                                   elem._id,

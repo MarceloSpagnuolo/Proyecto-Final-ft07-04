@@ -25,25 +25,27 @@ const Home = () => {
         <div id='fondo-amarillo'>
             <br />
             <div id='fondo-blanco'>
-                <div id='titulo-home'>
-                    <h4>Bienvenid@ al Henry manager</h4>
-                    <h2>Gestiona Tus Cohortes y Alumnos</h2>
-                    <p>Henry Manager te permite hacer seguimiento a tus estudiantes, revisar su desempeño, y organizar a los futuros henrys en grupos de estudio</p>
-                </div>
                 <img id="foto-header" src={topImg} alt="banner superior" />
                 <div id='contenido-home'>
-                    <div></div>
-                    <div id='panel-estudiantes'>
-                        <p>Para gestionar alumnos puedes hacer click en el botón, o acceder a través de la barra de navegacion</p>
-                        <Link rel="stylesheet" to="/PanelControlStudent">
-                            <button id='home-estudiantes-boton' onClick={() => PanelControlStudents}>Panel Alumnos</button>
-                        </Link>
+                    <div id='titulo-home'>
+                        <h2>Gestiona Tus Cohortes y Alumnos</h2>
+                        <h4>Bienvenid@ al Henry manager</h4>
+                        <p>Henry Manager te permite hacer seguimiento a tus estudiantes, revisar su desempeño, y organizar a los futuros henrys en grupos de estudio</p>
                     </div>
-                    <div id='panel-cohortes'>
-                        <p id="home-estudiantes-h4-instrucciones">Para administrar cohortes haz click en el botón o usa los controles de la barra de navegacion</p>
-                        <Link rel="stylesheet" to="/Cohortes">
-                            <button id='home-estudiantes-boton' onClick={() => Cohortes}>Panel cohortes</button>
-                        </Link>
+                    <div id='home-paneles'>
+                        <div id='panel-estudiantes'>
+                            <p>Para gestionar alumnos puedes hacer click en el botón, o acceder a través de la barra de navegacion</p>
+                            <Link rel="stylesheet" to="/PanelControlStudent">
+                                <button id='home-estudiantes-boton' onClick={() => PanelControlStudents}>Panel Alumnos</button>
+                            </Link>
+                        </div>
+                        <div id='panel-cohortes'>
+                            <p id="home-estudiantes-h4-instrucciones">Para administrar cohortes haz click en el botón o usa los controles de la barra de navegacion</p>
+                            <Link rel="stylesheet" to="/Cohortes">
+                                <button id='home-estudiantes-boton' onClick={() => Cohortes}>Panel cohortes</button>
+                            </Link>
+                        </div>
+
                     </div>
                 </div>
             </div>

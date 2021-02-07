@@ -1,0 +1,11 @@
+
+  .Listado-Boton-Detalle-cohorte {
+    height: 30px;
+    width: 100%;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 1rem;;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
