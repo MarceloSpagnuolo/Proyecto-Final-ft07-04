@@ -16,6 +16,7 @@ import {
   PUT_NOTAS,
   GET_USER_EDIT,
   UPDATE_USER_PASSWORD,
+  POST_COHORTE_TO_USER,
 } from "../Constants/Users";
 const url = "http://localhost:3001";
 
@@ -184,7 +185,7 @@ export const putNotas = (historiaId: any, payload: any) => async (
   }
 };
 
-export const updatePassword = (data:Object) => async (dispatch: any) => {
+export const updatePassword = (data: Object) => async (dispatch: any) => {
   try {
     const res = await axios.put(`${url}/users/change_password`, data);
     dispatch({
@@ -201,8 +202,8 @@ export const updatePassword = (data:Object) => async (dispatch: any) => {
 
 //obtener datos para el perfil de un usuario
 
-export const getUsereEdit = (id:string) => async (dispatch: any) => {
-  
+export const getUsereEdit = (id: string) => async (dispatch: any) => {
+
   try {
     const res = await axios.get(`${url}/users/${id}`);
     await dispatch({
@@ -219,16 +220,16 @@ export const getUsereEdit = (id:string) => async (dispatch: any) => {
 
 
 //actualizar usuario 
-export const updateUser = (data:Object) => async (dispatch: any) => {
-  
+export const updateUser = (data: Object) => async (dispatch: any) => {
+
   try {
-    const res = await axios.put(`${url}/users/editprofile`,data);
-    
+    const res = await axios.put(`${url}/users/editprofile`, data);
+
     await dispatch({
       type: PUT_USERS,
       payload: res.data,
     });
-    if(res.data.token){
+    if (res.data.token) {
       dispatch(getUserByToken(res.data.token))
       //localStorage.setItem("userToken", res.data.token);
     }
@@ -239,3 +240,17 @@ export const updateUser = (data:Object) => async (dispatch: any) => {
     });
   }
 };
+
+//Asignar cohorte a un alumno sin
+export const postCohorteToUser = (us: any, payload: any) => async (dispatch: any) => {
+
+  try {
+    await axios.post(`${url}/users/assignCohorte/${us._id}`, payload)
+
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Problema al asignarle cohorte al usuario",
+    });
+  }
+}

@@ -431,6 +431,19 @@ router.get('/:id', async (req, res) => {
     res.json({ success: false, msg: 'Hubo un error' }).status(400);
   }
 
+});
+
+//Ruta que asigna cohorte a un usuario SIN
+router.post("/assignCohorte/:id", async (req, res) => {
+  const { id } = req.params;
+  const { nvoCohorte } = req.body;
+  var cohorte = await Cohorte.findOne({ Nombre: nvoCohorte })
+  if (cohorte) {
+    var usuario = await User.findOneAndUpdate({ _id: id }, { cohorte: cohorte._id }, { upsert: true })
+    !usuario ? res.sendStatus(400) : res.json(usuario)
+  } else {
+    res.sendStatus(400)
+  }
 
 });
 

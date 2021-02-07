@@ -44,7 +44,7 @@ export default function SearchBar(props: any) {
                 <label htmlFor="cohorte" id="SearchBarLabel">Filtrar por Cohorte:</label>
                 <select name="cohorte" onChange={(e) => handleSelect(e)}>
                     <option value="todos">Todos</option>
-                    {cohortes.length > 0 && cohortes.map((c: any) => {
+                    {cohortes && cohortes.length > 0 && cohortes.map((c: any) => {
                         return (
 
                             <option key={c._id} value={c._id} >{c.Nombre}</option>
