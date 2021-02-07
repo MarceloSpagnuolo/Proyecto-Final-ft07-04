@@ -19,8 +19,8 @@ function Cohortes() {
   }, []);
 
   return (
-    <div id="cohortes">
-      <div id="subcohor">
+    <div id="contenedor-seccion-cohortes">
+      <div id="contenedor-interfaz-cohortes">
         <Tabs id="Cohorte-Tab">
           <TabList id="Cohorte-TabList">
             <Tab>Cohortes</Tab>

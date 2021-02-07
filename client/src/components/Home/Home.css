@@ -1,60 +1,100 @@
 #fondo-amarillo {
-    display: flex;
-    justify-content: center;
-    background-color: #F6DE00;
-    padding: 20px 100px;
-    height: 80vh;
+
+    background-color: #F6DE00;    
+    height: 100vh;
+    padding: 0%;
+
 }
 
 #fondo-blanco {
-    width: 90%;
+    width: auto;
     background-color: white;
-    padding: 30px;
-    border-radius: 50px;
+
+    padding: 3%;
+    border-radius: 1rem;
     color: rgba(199, 108, 85, 0.74);
     box-shadow: 5px 5px 30px;
-    margin-right: 0px;
-    height: 90%;
+    margin: 2% 4%;
+    overflow: hidden;
 }
 
 #foto-header {
-    width: 100%;
+    border-radius: 1rem;
+    width: auto;
     height: 300px;
-    border-radius: 50px 50px 0px 0px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    display: none;
+
 }
 
 #contenido-home {
     display: grid;
     margin: 0px;
     width: 100%;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 #titulo-home {
-    padding-left: 25%;
+    padding-left: 0;
 
 }
-#panel-estudiantes {
-    padding-left: 10%;
-}
 
-#panel-estudiantes p {
+#titulo-home h4{
+    margin: 0px;
     font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 1.25rem;
+    text-transform: none !important;
+    color: #FE6E0E;
+}
+
+#titulo-home h2{
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.441rem;
+    
+    color: #414141;
+    margin: 0px;
+}
+
+#titulo-home p{
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.563rem;
+    max-width: 30%;    
+    color: #414141;
+    margin-top: 2%;
+    text-transform: none !important;
+}
+
+#panel-estudiantes {
+
+    padding-left: 0%;
+    margin: 3%;
+}
+
+#panel-estudiantes p{
+    text-transform: none !important;
+    padding: 5%;    
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.6;
+
     color: #414141;
     margin-bottom: 25px;
     text-align: left;
 }
 #panel-cohortes {
-    padding-left: 25%;
+    margin: 3%;
+    padding-left: 0%;
     }
 
 #panel-cohortes p{
-    
+    text-transform: none !important;
+    padding: 5%;    
     font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    line-height: 1.8;
+
+    font-size: 1.25rem;
+    line-height: 1.6;
+
     color: #414141;
     margin-bottom: 25px;
     text-align: left;
@@ -78,45 +118,33 @@
     font-family: 'Roboto', sans-serif;
     font-size: 1.25rem;
     color: white;
-    width: 66%;       
+    width: 100%;       
     height: 60px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 50px;
     border: none;
-    background-color: #414141;
+    background-color: #FE6E0E;
     cursor: pointer;
 }
 
-#titulo-home h4 {
-    margin: 0px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    text-transform: uppercase;
-    color: #FE6E0E;
-}
 
-#titulo-home h2 {
-    
-    font-family: 'Roboto', sans-serif;
-    font-size: 2rem;
-    text-transform: capitalize;
-    color: #414141;
-    margin: 0px;
-}
 
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     #fondo-amarillo {
-        width: 100%;
-        background-color: #F6DE00;
-        padding: 15px;
-        height: 100%;
-    }
+
+        background-color: #F6DE00;    
+        min-height: 100vh;
+        height: auto;
+        padding: 0%;
+
 
     #fondo-blanco {
         width: 80%;
         background-color: white;
         padding: 20px;
-        border-radius: 25px;
+        border-radius: 0.8rem;
         color: rgba(199, 108, 85, 0.74);
         box-shadow: 5px 5px 30px;
     }
@@ -202,14 +230,26 @@
 
     #home-estudiantes-boton {
         font-family: 'Roboto', sans-serif;
-        font-size: 1rem;
+        font-size: 1.25rem;
         color: white;
         width: 100%;       
         height: 40px;
+        margin-left: auto;
+        margin-right: auto;
         border-radius: 50px;
         border: none;
-        background-color: #414141;
-        margin-bottom: 25px;
+        background-color: #FE6E0E;
+        cursor: pointer;
+    }
+
+    #titulo-home p{
+    
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.563rem;
+        max-width: 700%;    
+        color: #414141;
+        margin-top: 2%;
+        text-transform: none !important;
     }
     
 
@@ -309,14 +349,30 @@
         background-color: #414141;
         margin-bottom: 25px;
     }
+    
+
+    #titulo-home p{
+    
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.563rem;
+        max-width: 700%;    
+        color: #414141;
+        margin-top: 2%;
+        text-transform: none !important;
+    }
+
+
+
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
     #fondo-amarillo {
-        width: 100%;
+        width: 100wv;
         background-color: #F6DE00;
         padding: 35px;
-        height: 100%;
+
+        min-height: 100hw;
+
     }
 
     #fondo-blanco {
@@ -374,7 +430,7 @@
     }
     
     #panel-estudiantes p{
-        max-width: 370px;        
+        max-width: 570px;        
         font-family: 'Roboto', sans-serif;
         font-size: 1.25rem;
         line-height: 1.5;
@@ -388,7 +444,7 @@
     }
     
     #panel-cohortes p{
-        max-width: 370px;                
+        max-width: 570px;                
         font-family: 'Roboto', sans-serif;
         font-size: 1.25rem;
         line-height: 1.5;
@@ -408,5 +464,27 @@
         background-color: #414141;
         margin-bottom: 25px;
         justify-self: center;
+    }
+    #home-estudiantes-boton {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.25rem;
+        color: white;
+        width: 100%;       
+        height: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50px;
+        border: none;
+        background-color: #FE6E0E;
+        cursor: pointer;
+    }
+    #titulo-home p{
+    
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.563rem;
+        max-width: 700%;    
+        color: #414141;
+        margin-top: 2%;
+        text-transform: none !important;
     }
 }

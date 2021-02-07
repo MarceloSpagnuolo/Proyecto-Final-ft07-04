@@ -21,13 +21,16 @@ const Home = () => {
     return (user.role === "admin" || user.role === "instructor") ? (
         // LOGICA PARA RENDERIZAR LO QUE VE EL ADMIN
         <div id='fondo-amarillo'>
+            <br />
             <div id='fondo-blanco'>
+                <div id='titulo-home'>
+                    <h4>Bienvenid@ al Henry manager</h4>
+                    <h2>Gestiona Tus Cohortes y Alumnos</h2>
+                    <p>Henry Manager te permite hacer seguimiento a tus estudiantes, revisar su desempeño, y organizar a los futuros henrys en grupos de estudio</p>
+                </div>
                 <img id="foto-header" src={topImg} alt="banner superior" />
                 <div id='contenido-home'>
-                    <div id='titulo-home'>
-                        <h4>ESTA ES LA HENRY APP</h4>
-                        <h2>Gestiona Tus Cohortes y Alumnos</h2>
-                    </div>
+                    <div></div>
                     <div id='panel-estudiantes'>
                         <p>Para gestionar alumnos puedes hacer click en el botón, o acceder a través de la barra de navegacion</p>
                         <Link rel="stylesheet" to="/PanelControlStudent">
