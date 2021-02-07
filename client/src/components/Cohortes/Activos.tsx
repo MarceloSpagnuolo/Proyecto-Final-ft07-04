@@ -12,6 +12,7 @@ import { getCohorte, putInstructor } from "Store/Actions/Cohortes";
 import axios from "axios";
 // import { Formik, Field, ErrorMessage, Form } from "formik";
 import { Link } from "react-router-dom";
+import SearchBar from "../PanelControlStudents/searchBar"
 
 const url = "http://localhost:3001";
 
@@ -159,38 +160,41 @@ function Activos(props: any) {
       </Modal>
       <div className="Activos-Container">
         <div id="nd">
-          <h2>Cohorte Activo</h2>
-          <span className="Activos-span">Cohorte: {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</span>
-          <br />
-          <div>
-            <span className="Activos-span">Inicio: {cohorte && cohorte.length > 0 && cohorte[0].Start}</span>
-          </div>
-          <br />
-          <div>
-            <span className="Activos-span">Instructor: {cohorte && cohorte.length > 0 && cohorte[0].Instructor !== null &&
-              cohorte[0].Instructor.name.firstname + " " + cohorte[0].Instructor.name.lastname}</span>
-            <button className="Activos-Boton" onClick={() => cambiaInst()}>Cambiar o Asignar</button>
-          </div>
-          <br />
-          <div>
-            <span className="Activos-span">Grupos</span>
-            <Link to={`/grupos/${id}`}>
-              <button className="Activos-Boton">Ver todos</button>
-            </Link>
-          </div>
-          <div>
-            <span className="Activos-span">Alumnos: {users.length}</span>
-          </div>
-          <div className="Listado-Container">
-            <h3 className="Activos-h3">Alumnos</h3>
-            <div className="Activos-Table">
-              <table className="Activos-Table">
-                <tbody>
-                  <tr>
-                    <th className="Listado-Th">Nombre</th>
-                    <th className="Listado-Th">Email</th>
-                    <th className="Listado-Th" id="Prueba">
-                      Alta
+        <h2>Cohorte Activo</h2>
+        <span className="Activos-span">Cohorte: {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</span>
+        <br />
+        <div>          
+          <span className="Activos-span">Inicio: {cohorte && cohorte.length > 0 && cohorte[0].Start}</span>
+        </div>
+        <br />
+        <div>          
+          <span>Instructor: {cohorte && cohorte.length > 0 && cohorte[0].Instructor !== null &&
+            cohorte[0].Instructor.name.firstname + " " + cohorte[0].Instructor.name.lastname}</span>
+          <button className="Activos-Boton" onClick={() => cambiaInst()}>Cambiar/Cargar</button>
+        </div>
+        <br />
+        <div>          
+          <span className="Activos-span">Grupos</span>
+          <Link to={`/grupos/${id}`}>
+          <button className="Activos-Boton">Ir al grupo</button>
+          </Link>
+        </div>        
+        <div>
+          <span>Alumnos: {users.length}</span>
+        </div>
+        <div>
+            <SearchBar id={id}/>
+        </div>        
+        <div className="Listado-Container">
+          <h3 className="Activos-h3">Alumnos</h3>
+          <div className="Activos-Table">
+            <table className="Activos-Table">
+              <tbody>
+                <tr>
+                  <th className="Listado-Th">Nombre</th>
+                  <th className="Listado-Th">Email</th>
+                  <th className="Listado-Th" id="Prueba">
+                    Alta
                 </th>
                     <th className="Listado-Th" id="Prueba">
                       StandUp

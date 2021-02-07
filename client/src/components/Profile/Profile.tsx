@@ -52,7 +52,6 @@ const Profile = (): JSX.Element => {
     useEffect(() => {
         
         if (id === 'miPerfil') {
-           
             //obtener el perfil del usuario logueado
 
             const perfil = async () => {

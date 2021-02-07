@@ -21,7 +21,6 @@ function Carga() {
   }
 
   function handleInputs(e: any) {
-    console.log(e.target.name);
     const datos = e.target.name.split("/");
     const historia = datos[0];
     const checkpoint = datos[2];

@@ -29,7 +29,6 @@ useEffect(() => {
         axios.get(`${url}/historia/modulos`)
             .then((response: any) => {
                 setModulos(response.data);
-                console.log(response.data);
             });
         dispatch(getStadupByUser(user._id));
     }
