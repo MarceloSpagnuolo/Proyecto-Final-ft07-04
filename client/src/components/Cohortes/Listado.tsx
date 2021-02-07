@@ -45,7 +45,7 @@ function Listado() {
                   </td>
                   <td className="Listado-Td">
                     <Link to={`/activos/${elem._id}`}>
-                      <button className="Listado-Boton">Detalle</button>
+                      <button className="Listado-Boton-Detalle-cohorte">Detalle</button>
                     </Link>
                   </td>
                 </tr>

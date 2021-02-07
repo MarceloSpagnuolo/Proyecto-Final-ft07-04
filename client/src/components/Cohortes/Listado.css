@@ -3,8 +3,9 @@
   flex-direction: column;
   align-items: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  width: 100%;
+  width: auto;
 }
+
 
 .Listado-Table {
   overflow-y: auto;
@@ -29,50 +30,71 @@
   text-align: center;
 }
 
-.Listado-Boton {
-  font-size: 16px;
-  font-weight: 500;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: hsl(54, 100%, 48%);
+.Listado-Boton-Detalle-cohorte {
+  height: 30px;
+  width: 100%;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 1rem;;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 #Listado-Tr:nth-child(even) {
   background-color: rgb(236, 236, 236);
 }
 
-@media screen and (max-width: 758px) {
+
+
+
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 768px) {
   .Listado-Table {
     width: 100%;
     border-collapse: collapse;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'roboto', sans-serif;
     font-size: 0.8rem;
   }
 
-  .Listado-Boton {
+  .Listado-Boton-Detalle-cohorte {
     height: 30px;
     width: 100%;
-    background-color: #fede00;
-    border-radius: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 1rem;;
+    font-size: 0.8rem;
+    font-weight: 600;
   }
 }
 
-@media screen and (min-width: 758px) {
+
+
+
+
+@media only screen and (min-device-width : 769px) and (max-device-width : 1024px) {
+
   .Listado-Table {
     border-collapse: collapse;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'roboto', sans-serif;
     font-size: 1.4rem;
   }
 
-  .Listado-Boton {
+  .Listado-Boton-Detalle-cohorte {
 
     height: 40px;
     width: 100%;
-    border-radius: 10px;
-    background-color: #fede00;
+    border: none;
+    border-radius: 1rem;
+    background-color: #000000;
+    color: white;
   }
 
   .Listado-Boton:hover {
-    background-color: lightyellow;
+    background-color: #fede00;
     cursor: pointer;
   }
+
 }
