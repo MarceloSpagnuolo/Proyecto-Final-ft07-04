@@ -9,6 +9,7 @@ import {
   GET_COHORTE,
   PUT_INSTRUCTOR,
   COHORTES_NAMES,
+  PUT_TESTS,
 } from "../Constants/Cohortes";
 
 interface Store {
@@ -59,6 +60,12 @@ function Cohortes(state = inicialState, action: any) {
       return {
         ...state,
         cohortes: state.cohortes.concat(action.payload),
+      }
+    }
+    case PUT_TESTS: {
+      return {
+        ...state,
+        cohorte: [action.payload],
       }
     }
     default: {

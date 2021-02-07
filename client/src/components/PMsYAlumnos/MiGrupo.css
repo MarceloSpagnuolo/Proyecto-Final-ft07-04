@@ -1,9 +1,81 @@
-.titleG {
-    font-family: 'Source Sans Pro';
+#grilla-companeros {
+    display: grid;
+    width: 100%;
+    grid-template: 1fr / 1fr ;
+}
+#grilla-companeros p{
+   font-size: 1.563rem;
+   padding: 2% 5%;
+   line-height: 3rem;
 }
 
-.subTitleG {
-    font-family: 'Source Sans Pro';
+#pm-mi-grupo{ 
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 3%;
+}
+
+#linea-horizontal {
+    width: 100%;
+    border: 5px solid black;
+    margin-bottom: 3%;
+}
+
+#camino-henry {
+    font-size: 4rem;
+}
+
+#container-seccion-mis-pms {
+    border: none;
+    height: auto;
+    display: flex;
+    padding: 0%;
+    max-height: 80%;
+    border-radius: 15px;
+    margin-bottom: 3%;
+    background-color: hsl(51, 98%, 47%);
+    box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418);  
+}
+
+#container-seccion-mis-pms img{
+    border: 9px solid black;
+    display: flex;
+    border-radius: 100%;
+    max-height: 100px;
+    max-width: 100px;
+    margin: 0px auto;
+    box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418)
+}
+
+#pm-asignado-mi-grupo {
+  margin: 6% 15%;
+}
+
+#pm-asignado-mi-grupo p{
+    text-align: center;
+    padding: 10% 0%;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+#cabezote-mi-grupo {
+display: grid;
+grid-template: 1fr / 1fr 3fr;
+}
+#cabezote-mi-grupo h1{
+    padding: 2% 5%;
+    font-size: 4rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin: 0%;
+    letter-spacing: 0.05em;
+}
+
+#cabezote-mi-grupo h3{
+    text-transform: uppercase;
+    padding: 0% 5%;
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 @media screen and (max-width:1100px) {

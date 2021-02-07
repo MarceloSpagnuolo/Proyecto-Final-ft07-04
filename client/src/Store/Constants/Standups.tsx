@@ -5,5 +5,6 @@ export const PUT_STANDUPS = "PUT_STANDUPS";
 export const GET_ONE_STANDUP = "GET_ONE_STANDUP";
 export const POST_PM = "POST_PM";
 export const ERROR_MESSAGE = "ERROR_MESSAGE";
+export const GET_STANDUP_BY_USER = "GET_STANDUP_BY_USER";
 
 

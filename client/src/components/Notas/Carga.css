@@ -1,23 +1,111 @@
-.Carga-Select {
-  font-size: 1.2rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+/*CONTENEDOR DE ESTILOS*/
+
+#container-seccion-carga {
+  background-color: hsl(54, 100%, 48%);
+  padding: 2% 6%;
+  width: 88%;
+  font-family: 'Roboto', sans-serif;
 }
+/*SECCION ENCABEZADO*/
+/*CONTENEDOR DEL HEADER*/
+.container-header-carga {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;  
+  justify-content: space-evenly;
+  padding: 0% 0%;
+  margin-bottom: 3%;
+}
+.padding-container-header-carga {
+  padding: 0% 0%;  
+}
+/*SELECCIONA UN COHORTE*/
+
+.Carga-Check {
+  width: fit-content;
+  padding: 0% 0%;
+}
+
+/*CONTENEDOR TEST TOTALES Y REQUERIDOS*/
+.Carga-CP {
+  width: 70%;
+  background-color: black;
+  border-radius: 9px;
+  padding: 3% 15%;
+  margin: 0% auto;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+.Carga-CP input {
+ margin: 1% 2%;
+ border-radius: 3px;
+ border: none;
+}
+/*TITULO SECCION*/
+.Carga-Titulo {
+  
+  font-size: 1.563rem;
+  text-align: left;
+  margin: 2% 0% 3% 0%;
+}
+
+/*TEXTO ENCABEZADO*/
+#texto-intro-carga-notas {
+  padding: 0% 0%;
+  font-size: 1.25rem;
+  text-transform: none;
+}
+
+.Carga-Select {
+  font-size: 1rem;
+  font-family: 'Roboto',  sans-serif;
+  border: none;
+  height: 23%;
+  width: 40%;
+  border-radius: 9px;
+  padding-left: 2%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+
+.Carga-Body {
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 3%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+.Carga-Notas {
+  width: 100%;
+  margin: 10px;
+}
+
+#encabezado-tabla-notas {
+  height: 6vh;
+}
+
 .Carga-Tabla {
   font-size: 1rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  width: 100%;
+  font-family: Tahoma, 'Roboto',  sans-serif;
+  width: 80vw;
+  border-collapse: collapse;
 }
 
 .Carga-Td {
-  border: 1px solid lightgray;
+  padding: 0% 2%;
+  border-right: 1px solid lightgray;
 }
 
 .Carga-Th {
+  padding: 0% 2%;
   border: 1px solid lightgray;
 }
 
+
+
 #Carga-Tr:nth-child(even) {
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(255, 255, 255);
 }
 
 #Carga-Nro {
@@ -28,31 +116,785 @@
   width: 30px;
 }
 
-.Carga-Body {
+
+.container-lista-aprobados {
+  margin: 5% 0%;
   display: flex;
+  width: 86vw;
 }
 
-.Carga-Listas {
-  display: flex;
-  width: 100%;
-  margin: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+#aprobados-por-cohorte{ 
+  margin: 5% 0%;
+  font-size: 1.563rem;
+  font-weight: 600;
+}
+
+.container-lista-aprobados span{
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  color: black;
+}
+.container-lista-aprobados ul{
+  margin: 8% 4%;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: black;
+}
+.container-lista-aprobados li{
+  margin: 4% auto;
+  padding: 2% 0%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.116);
+  width: 12vw;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: black;
+  
 }
 
 .Carga-Lista {
-  width: 25%;
-  border: 1px solid lightgray;
+  width: 20%;
+  background-color: #EDCA02;
+  padding: 3%;
+  margin: 1%;
+  border-radius: 9px;
+
 }
 
 .Carga-Lista span {
-  width: 100%;
-  text-align: center;
+ margin: 0% auto;
+ display: block;
+ text-align: center;
 }
 
-.Carga-Notas {
-  width: 100%;
+
+
+
+
+.Carga-Estilo-Lista {
+  list-style-type: none;
+  margin-left: -20px;
 }
+
+.Oculta {
+  display: none;
+}
+
+#carga-nombres-aprobados-cohorte{
+  background-color: #f8f8f8;
+  border-radius: 9px;
+  padding: 2% 5%;
+  margin: 7% 2%;
+  height: 80%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  /*CONTENEDOR DE ESTILOS*/
+
+#container-seccion-carga {
+  background-color: hsl(54, 100%, 48%);
+  padding: 2% 4%;
+  width: 92%;
+  font-family: Tahoma, 'Roboto', sans-serif;
+  
+}
+/*SECCION ENCABEZADO*/
+/*CONTENEDOR DEL HEADER*/
+.container-header-carga {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr;  
+  justify-content: space-evenly;
+  padding: 0% 0%;
+  margin-bottom: 3%;
+}
+.padding-container-header-carga {
+  padding: 0% 0%;  
+}
+/*SELECCIONA UN COHORTE*/
 
 .Carga-Check {
   width: fit-content;
+  padding: 0% 0%;
+}
+
+/*CONTENEDOR TEST TOTALES Y REQUERIDOS*/
+.Carga-CP {
+  width: 96%;
+  background-color: black;
+  font-size: 0.9rem;
+  border-radius: 9px;
+  padding: 3% 2%;
+  margin: 6% 0%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+.Carga-CP input {
+ margin: 1% 2%;
+ max-width: 10%;
+ border-radius: 3px;
+ border: none;
+}
+/*TITULO SECCION*/
+.Carga-Titulo {
+  
+  font-size: 1.563rem;
+  text-align: left;
+  margin: 2% 0%;
+}
+
+/*TEXTO ENCABEZADO*/
+#texto-intro-carga-notas {
+  padding: 0% 0%;
+  font-size: 1.25rem;
+  text-transform: none;
+}
+
+.Carga-Select {
+  margin-top: 2%;
+  font-size: 1rem;
+  font-family: 'Roboto',  sans-serif;
+  border: none;
+  height: 23%;
+  width: 55%;
+  border-radius: 9px;
+  padding-left: 2%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+
+.Carga-Body {
+ 
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 1%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+.Carga-Notas {
+  width: 50%;
+  margin: 10px;
+}
+
+#encabezado-tabla-notas {
+  height: 6vh;
+}
+
+.Carga-Tabla {
+  font-size: 1rem;
+  font-family: Tahoma, 'Roboto',  sans-serif;
+  width: 40vw;
+  border-collapse: collapse;
+}
+
+.Carga-Td {
+  padding: 0% 0%;
+  border-right: 0.3px solid lightgray;
+  font-size: 9.5px;
+  max-width: 30px;
+  margin: 3% 6%;
+}
+.Carga-Td img{
+  max-width: 9px;
+  max-height: 9px;
+}
+
+.Carga-Th {
+  padding: 0% 1%;
+  border-right: 1px solid lightgray;
+  font-size: 10px;
+  text-align: left;
+}
+
+#Carga-Tr {
+  padding: 0% 0%;
+  border: none;
+}
+
+#Carga-Tr:nth-child(even) {
+  background-color: rgb(255, 255, 255);
+}
+
+#Carga-Nro {
+  width: 2.5rem;
+}
+
+.Carga-Input-Imagen {
+  width: 30px;
+}
+
+
+.container-lista-aprobados {
+  margin: 5% 0%;
+  display: flex;
+  flex-direction: column;
+  width: 86vw;
+}
+
+#aprobados-por-cohorte{ 
+  margin: 5% 0%;
+  font-size: 1.563rem;
+  font-weight: 600;
+}
+
+.container-lista-aprobados span{
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  color: black;
+}
+.container-lista-aprobados ul{
+  margin: 8% 4%;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: black;
+}
+.container-lista-aprobados li{
+  margin: 4% 0%;
+  padding: 2% 0%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.116);
+  width: 90%;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: black;
+  overflow: auto;
+}
+
+.Carga-Lista {
+  width: 100%;
+  background-color: #EDCA02;
+  padding: 3%;
+  margin: 1%;
+  border-radius: 9px;
+
+}
+
+#carga-nombres-aprobados-cohorte{
+  background-color: #f8f8f8;
+  border-radius: 9px;
+  padding: 2% 5%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+.Carga-Lista span {
+ margin: 0% auto;
+ margin-bottom: 4%;
+ display: block;
+ text-align: center;
+}
+
+
+
+
+
+.Carga-Estilo-Lista {
+  list-style-type: none;
+  margin-left: -20px;
+}
+
+.Oculta {
+  display: none;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-device-width : 481px) and (max-device-width : 768px) {
+  /*CONTENEDOR DE ESTILOS*/
+
+#container-seccion-carga {
+  background-color: hsl(54, 100%, 48%);
+  padding: 2% 4%;
+  width: 92%;
+  font-family: Tahoma, 'Roboto', sans-serif;
+  
+}
+/*SECCION ENCABEZADO*/
+/*CONTENEDOR DEL HEADER*/
+.container-header-carga {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;  
+  justify-content: space-evenly;
+  padding: 0% 0%;
+  margin-bottom: 3%;
+}
+.padding-container-header-carga {
+  padding: 0% 0%;  
+}
+/*SELECCIONA UN COHORTE*/
+
+.Carga-Check {
+  width: fit-content;
+  padding: 0% 0%;
+  height: 200px;
+}
+.Carga-container-Check {
+  width: fit-content;
+  padding: 0% 0%;
+}
+
+/*CONTENEDOR TEST TOTALES Y REQUERIDOS*/
+.Carga-CP {
+  width: 96%;
+  background-color: black;
+  font-size: 0.9rem;
+  border-radius: 9px;
+  padding: 3% 2%;
+  margin: 6% 0%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+.Carga-CP input {
+ margin: 1% 2%;
+ max-width: 10%;
+ border-radius: 3px;
+ border: none;
+}
+/*TITULO SECCION*/
+.Carga-Titulo {
+  
+  font-size: 1.563rem;
+  text-align: left;
+  margin: 2% 0%;
+}
+
+/*TEXTO ENCABEZADO*/
+#texto-intro-carga-notas {
+  padding: 0% 0%;
+  font-size: 1rem;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.Carga-Select {
+  margin-top: 2%;
+  font-size: 1rem;
+  font-family: 'Roboto',  sans-serif;
+  border: none;
+  height: 23%;
+  width: 55%;
+  border-radius: 9px;
+  padding-left: 2%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+
+.Carga-Body {
+ 
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 1%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+.Carga-Notas {
+  width: 50%;
+  margin: 10px;
+}
+
+#encabezado-tabla-notas {
+  height: 6vh;
+}
+
+.Carga-Tabla {
+  font-size: 1rem;
+  font-family: Tahoma, 'Roboto',  sans-serif;
+  width: 85vw;
+  border-collapse: collapse;
+}
+
+.Carga-Td {
+  padding: 0% 0%;
+  border-right: 0.3px solid lightgray;
+  font-size: 13px;
+  margin: 3% 6%;
+}
+.Carga-Td img{
+  margin: 0 auto;
+  max-width: 13px;
+  max-height: 13px;
+}
+
+.Carga-Th {
+  padding: 0% 1%;
+  border-right: 1px solid lightgray;
+  font-size: 12.5px;
+  text-align: left;
+}
+
+#Carga-Tr {
+  padding: 0% 0%;
+  border: none;
+}
+
+#Carga-Tr:nth-child(even) {
+  background-color: rgb(255, 255, 255);
+}
+
+#Carga-Nro {
+  width: 2.5rem;
+}
+
+.Carga-Input-Imagen {
+  width: 30px;
+}
+
+
+.container-lista-aprobados {
+  margin: 5% 0%;
+  display: flex;
+  flex-direction: column;
+  width: 86vw;
+}
+
+#aprobados-por-cohorte{ 
+  margin: 5% 0%;
+  font-size: 1.563rem;
+  font-weight: 600;
+}
+
+.container-lista-aprobados span{
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  color: black;
+}
+.container-lista-aprobados ul{
+  margin: 8% 4%;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: black;
+}
+.container-lista-aprobados li{
+  margin: 4% 0%;
+  padding: 2% 0%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.116);
+  width: 90%;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: black;
+  overflow: auto;
+}
+
+.Carga-Lista {
+  width: 100%;
+  background-color: #EDCA02;
+  padding: 3%;
+  margin: 1%;
+  border-radius: 9px;
+
+}
+
+#carga-nombres-aprobados-cohorte{
+  background-color: #f8f8f8;
+  border-radius: 9px;
+  padding: 2% 5%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+.Carga-Lista span {
+ margin: 0% auto;
+ margin-bottom: 4%;
+ display: block;
+ text-align: center;
+}
+
+
+
+
+
+.Carga-Estilo-Lista {
+  list-style-type: none;
+  margin-left: -20px;
+}
+
+.Oculta {
+  display: none;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-device-width : 769px) and (max-device-width : 1024px) {
+  /*CONTENEDOR DE ESTILOS*/
+
+#container-seccion-carga {
+  background-color: hsl(54, 100%, 48%);
+  padding: 2% 4%;
+  width: 92%;
+  font-family: Tahoma, 'Roboto', sans-serif;
+  
+}
+/*SECCION ENCABEZADO*/
+/*CONTENEDOR DEL HEADER*/
+.container-header-carga {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;  
+  justify-content: space-evenly;
+  padding: 0% 0%;
+  margin-bottom: 3%;
+}
+.padding-container-header-carga {
+  padding: 0% 0%;  
+}
+/*SELECCIONA UN COHORTE*/
+
+.Carga-Check {
+  width: fit-content;
+  padding: 0% 0%;
+  height: 200px;
+}
+.Carga-container-Check {
+  width: fit-content;
+  padding: 0% 0%;
+}
+
+/*CONTENEDOR TEST TOTALES Y REQUERIDOS*/
+.Carga-CP {
+  width: 96%;
+  background-color: black;
+  font-size: 0.9rem;
+  border-radius: 9px;
+  padding: 3% 2%;
+  margin: 6% 0%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+.Carga-CP input {
+ margin: 1% 2%;
+ max-width: 10%;
+ border-radius: 3px;
+ border: none;
+}
+/*TITULO SECCION*/
+.Carga-Titulo {
+  
+  font-size: 1.563rem;
+  text-align: left;
+  margin: 2% 0%;
+}
+
+/*TEXTO ENCABEZADO*/
+#texto-intro-carga-notas {
+  padding: 0% 0%;
+  font-size: 1rem;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.Carga-Select {
+  margin-top: 2%;
+  font-size: 1rem;
+  font-family: 'Roboto',  sans-serif;
+  border: none;
+  height: 23%;
+  width: 55%;
+  border-radius: 9px;
+  padding-left: 2%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+
+.Carga-Body {
+ 
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 1%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+.Carga-Notas {
+  width: 50%;
+  margin: 10px;
+}
+
+#encabezado-tabla-notas {
+  height: 6vh;
+}
+
+.Carga-Tabla {
+  font-size: 1rem;
+  font-family: Tahoma, 'Roboto',  sans-serif;
+  width: 85vw;
+  border-collapse: collapse;
+}
+
+.Carga-Td {
+  padding: 0% 0%;
+  border-right: 0.3px solid lightgray;
+  font-size: 13px;
+  margin: 3% 6%;
+}
+.Carga-Td img{
+  margin: 0 auto;
+  max-width: 13px;
+  max-height: 13px;
+}
+
+.Carga-Th {
+  padding: 0% 1%;
+  border-right: 1px solid lightgray;
+  font-size: 12.5px;
+  text-align: left;
+}
+
+#Carga-Tr {
+  padding: 0% 0%;
+  border: none;
+}
+
+#Carga-Tr:nth-child(even) {
+  background-color: rgb(255, 255, 255);
+}
+
+#Carga-Nro {
+  width: 2.5rem;
+}
+
+.Carga-Input-Imagen {
+  width: 30px;
+}
+
+
+.container-lista-aprobados {
+  margin: 5% 0%;
+  display: flex;
+  flex-direction: column;
+  width: 86vw;
+}
+
+#aprobados-por-cohorte{ 
+  margin: 5% 0%;
+  font-size: 1.563rem;
+  font-weight: 600;
+}
+
+.container-lista-aprobados span{
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  color: black;
+}
+.container-lista-aprobados ul{
+  margin: 2% 4%;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: black;
+}
+.container-lista-aprobados li{
+  margin: 4% 0%;
+  padding: 2% 0%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.116);
+  width: 90%;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: black;
+  overflow: auto;
+}
+
+.Carga-Lista {
+  width: 100%;
+  background-color: #EDCA02;
+  padding: 3%;
+  margin: 1%;
+  border-radius: 9px;
+
+}
+
+#carga-nombres-aprobados-cohorte{
+  background-color: #f8f8f8;
+  border-radius: 9px;
+  padding: 1% 0%;
+  box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
+}
+
+.Carga-Lista span {
+ margin: 0% auto;
+ margin-bottom: 4%;
+ display: block;
+ text-align: center;
+}
+
+
+.Carga-Estilo-Lista li{
+  margin: 0%;
+  padding: 0.666%;
+}
+
+
+
+.Carga-Estilo-Lista {
+  margin: 0%;
+  
+}
+
+.Oculta {
+  display: none;
+}
 }

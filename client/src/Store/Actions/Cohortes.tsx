@@ -10,6 +10,7 @@ import {
   GET_COHORTE,
   PUT_INSTRUCTOR,
   COHORTES_NAMES,
+  PUT_TESTS,
 } from "../Constants/Cohortes";
 
 const url = "http://localhost:3001";
@@ -113,6 +114,18 @@ export const countAlumnos = () => async (dispatch: any) => {
     dispatch({
       type: ERROR_MESSAGE,
       payload: "Error al contar alumnos",
+
+export const changeTests = (cohorteId: any, payload: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.put(`${url}/cohorte/tests/${cohorteId}`, payload);
+    dispatch({
+      type: PUT_TESTS,
+      payload: res.data
+    })
+  } catch(e) {
+  dispatch({
+      type: ERROR_MESSAGE,
+      payload: "Error al actualizar valores de tests",
     });
   }
 }
