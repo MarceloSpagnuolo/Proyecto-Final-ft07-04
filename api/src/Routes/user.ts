@@ -428,7 +428,6 @@ router.put('/change_password', auth, async (req, res, next) => {
 //buscar usuario por id
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
-
   try {
     await User.findOne({ _id: id }, function (err: any, users: any) {
       Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
@@ -468,6 +467,19 @@ router.put("/participa/:historiaId", async ( req, res ) => {
 })
 
 
+
+router.put("/update/img_profile", async ( req, res ) => {
+  const { id,img } = req.body;
+  try {
+    await User.findOneAndUpdate({ _id: id }, { $set: { thumbnail: img } });
+    res.json({msg:'la imagen se actualizo correctamente'}).status(400)
+
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+
 //"Rol === alumno => standup === standup vigente///
 // |       O
 //\ /     /|\
@@ -475,3 +487,5 @@ router.put("/participa/:historiaId", async ( req, res ) => {
 //rol === PM => standup === standup de OTRO COHORTE MAS NUevO.//// holi //
 
 export default router;
+
+
