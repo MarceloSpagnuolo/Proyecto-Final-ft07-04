@@ -1,12 +1,15 @@
 #fondo-amarillo {
+
     background-color: #F6DE00;    
     height: 100vh;
     padding: 0%;
+
 }
 
 #fondo-blanco {
     width: auto;
     background-color: white;
+
     padding: 3%;
     border-radius: 1rem;
     color: rgba(199, 108, 85, 0.74);
@@ -21,6 +24,7 @@
     height: 300px;
     margin-bottom: 30px;
     display: none;
+
 }
 
 #contenido-home {
@@ -62,6 +66,7 @@
 }
 
 #panel-estudiantes {
+
     padding-left: 0%;
     margin: 3%;
 }
@@ -72,6 +77,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 1.25rem;
     line-height: 1.6;
+
     color: #414141;
     margin-bottom: 25px;
     text-align: left;
@@ -85,8 +91,10 @@
     text-transform: none !important;
     padding: 5%;    
     font-family: 'Roboto', sans-serif;
+
     font-size: 1.25rem;
     line-height: 1.6;
+
     color: #414141;
     margin-bottom: 25px;
     text-align: left;
@@ -97,7 +105,7 @@
     grid-column: 2;
 }
 
-#panel-rendimiento p{
+#panel-rendimiento p {
     font-family: 'Roboto', sans-serif;
     font-size: 1.25rem;
     line-height: 1.8;
@@ -125,11 +133,12 @@
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     #fondo-amarillo {
+
         background-color: #F6DE00;    
         min-height: 100vh;
         height: auto;
         padding: 0%;
-    }
+
 
     #fondo-blanco {
         width: 80%;
@@ -253,6 +262,7 @@
         width: 100%;
         background-color: #F6DE00;
         padding: 15px;
+        height: 100%;
     }
 
     #fondo-blanco {
@@ -270,7 +280,6 @@
         border-radius: 15px 15px 0px 0px;
         margin-bottom: 30px;
     }
-
 
     #contenido-home {
         display: grid;
@@ -353,18 +362,17 @@
     }
 
 
+
 }
-
-
-
-
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
     #fondo-amarillo {
         width: 100wv;
         background-color: #F6DE00;
         padding: 35px;
+
         min-height: 100hw;
+
     }
 
     #fondo-blanco {
