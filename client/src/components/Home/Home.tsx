@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
-// import alumnos from '../../assets/boton-estudiantes.jpg';
-// import cohortes from '../../assets/Cohortes.png';
 import topImg from '../../assets/topBanner.png';
 import PanelControlStudents from 'components/PanelControlStudents/panelControl';
 import Cohortes from 'components/Cohortes/Cohortes';
