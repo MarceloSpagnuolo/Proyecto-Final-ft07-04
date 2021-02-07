@@ -546,6 +546,19 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+//Ruta que asigna cohorte a un usuario SIN
+router.post("/assignCohorte/:id", async (req, res) => {
+  const { id } = req.params;
+  const { nvoCohorte } = req.body;
+  var cohorte = await Cohorte.findOne({ Nombre: nvoCohorte })
+  if (cohorte) {
+    var usuario = await User.findOneAndUpdate({ _id: id }, { cohorte: cohorte._id }, { upsert: true })
+    !usuario ? res.sendStatus(400) : res.json(usuario)
+  } else {
+    res.sendStatus(400)
+  }
+ });
+
 router.put("/asistencia/:historiaId", async ( req, res) => {
   const { historiaId } = req.params;
   const { modulo, clase, valor } = req.body;
@@ -555,7 +568,6 @@ router.put("/asistencia/:historiaId", async ( req, res) => {
   historia.save();
 
   historia ? res.json(historia) : res.send("Error al actualizar la asistencia").status(400);
-
 });
 
 router.put("/participa/:historiaId", async ( req, res ) => {

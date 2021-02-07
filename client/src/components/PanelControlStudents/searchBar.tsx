@@ -74,11 +74,9 @@ export default function SearchBar(props: any) {
                 <select name="cohorte" onChange={(e) => handleSelect(e)}>
                     <option value="todos">Todos</option>
                     <option value="none">Sin Cohorte</option>
-                    {cohortes.length > 0 && cohortes.map((c: any) => {
+                    {cohortes && cohortes.length > 0 && cohortes.map((c: any) => {
                         return (
-                            
                             <option key={c._id} value={c._id} >{c.Nombre}</option>
-                            
                             )
                         })}
                 </select>
