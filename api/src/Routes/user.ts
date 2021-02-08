@@ -34,7 +34,6 @@ router.get("/estudiantes/:id", async (req, res) => {
             Group.populate(usersCH, { path: "standup" }, function (err, usersGrp) {
               Historial.populate(usersGrp, { path: "historia" }, function (err, usersCOM) {
                 res.json(usersCOM).status(200);
-
               })
             });
           });
@@ -52,7 +51,7 @@ router.get("/estudiantes/:id", async (req, res) => {
             });
           });
         }
-      );
+      ).sort({name: 1});
     }
   } catch (e) {
     console.log(e, "Este es el error")
@@ -161,8 +160,8 @@ router.put('/editprofile', async (req, res) => {
 router.get("/cohorte/:id", async (req, res) => {
   const { id } = req.params;
 
-  if (id !== "todos") {
-    await User.find({ cohorte: id }, function (err, users) {
+  if (id === "todos") {
+    await User.find({$or: [{ role: "alumno" }, { role: "PM" }]}, function (err, users) {
       Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
         Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
           Historial.populate(
@@ -177,8 +176,29 @@ router.get("/cohorte/:id", async (req, res) => {
         });
       });
     }).sort({ name: 1 });
+  } else if(id === "none") {
+
+    await User.find({$and: [
+      {$or: [{ role: "alumno" }, { role: "PM" }]},
+      {cohorte: undefined}
+  ]}, function (err, users) {
+      Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+        Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+          Historial.populate(
+            usersCOM,
+            { path: "historia" },
+            function (err, usersHis) {
+              err
+                ? res.send("Error con los usuarios").status(400)
+                : res.json(usersHis).status(200);
+            }
+          );
+        });
+      });
+    }).sort({ name: 1 });    
+
   } else {
-    await User.find({ role: "alumno" || "PM" }, function (err, users) {
+    await User.find({ cohorte: id }, function (err, users) {
       Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
         Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
           Historial.populate(
@@ -300,10 +320,14 @@ router.get('/github/:username', async (req, res) => {
 
 // Ruta para buscar un usuario por nombre y apellido (queryStrings)
 router.get('/search?', async (req, res) => {
-  let { firstname, lastname } = req.query;
+  let { firstname, lastname, id } = req.query;
+
   if (firstname !== "undefined" && firstname !== "" && !!firstname) {
     firstname = firstname.toString()
     firstname = firstname.charAt(0).toUpperCase() + firstname.slice(1).toLowerCase()
+  }
+  if(lastname === id) {
+    lastname = ""
   }
   if (lastname !== "undefined" && lastname !== "" && !!lastname) {
     lastname = lastname.toString()
@@ -312,35 +336,113 @@ router.get('/search?', async (req, res) => {
 
   let user;
 
-  if (lastname === "undefined" || lastname === "") {
-    user = await User.find({ $or: [{ "name.firstname": firstname }, { "name.lastname": firstname }] }, "+name", null, function (err, us) {
-      Cohorte.populate(us, { path: "cohorte" }, function (err, usIncCoh) {
-        Group.populate(usIncCoh, { path: "standup" }, function (err, usfull) {
-          err ? res.send('Hubo un error').status(400) : res.json(usfull);
+  
+  if(id?.length === 24){
+    if(firstname === id){
+      user = await User.find({$and:[
+        {cohorte: id},
+        {role: "alumno"}
+      ]}, "+name", null, function (err, us) {
+        Cohorte.populate(us, { path: "cohorte" }, function (err, usIncCoh) {
+          Group.populate(usIncCoh, { path: "standup" }, function (err, usfull) {
+            err ? res.send('Hubo un error').status(400) : res.json(usfull);
+          })
         })
-      })
-    });
-  } else {
-    user = await User.find({
-      $or: [{ "name.firstname": firstname, "name.lastname": lastname },
-      { "name.firstname": lastname, "name.lastname": firstname }]
-    }, "+name", null, function (err, us) {
-      Cohorte.populate(us, { path: "cohorte" }, function (err, usIncCoh) {
-        Group.populate(usIncCoh, { path: "standup" }, function (err, usfull) {
-          err ? res.send('Hubo un error').status(400) : res.json(usfull);
+      });  
+    } else if (lastname === "") {
+      user = await User.find({$and: [
+        {cohorte: id}, 
+        {$or: [{ "name.firstname": firstname }, { "name.lastname": firstname }]}
+      ]}, "+name", null, function (err, us) {
+        Cohorte.populate(us, { path: "cohorte" }, function (err, usIncCoh) {
+          Group.populate(usIncCoh, { path: "standup" }, function (err, usfull) {
+            err ? res.send('Hubo un error').status(400) : res.json(usfull);
+          })
         })
-      })
-    });
-  }
+      });
+    } else if(firstname !== id && lastname !== id) {
+      user = await User.find({$and: [
+        {cohorte: id}, 
+        {
+          $or: [{ "name.firstname": firstname, "name.lastname": lastname },
+          { "name.firstname": lastname, "name.lastname": firstname }]},
+        {role: "alumno"}
+      ]}, "+name", null, function (err, us) {
+        Cohorte.populate(us, { path: "cohorte" }, function (err, usIncCoh) {
+          Group.populate(usIncCoh, { path: "standup" }, function (err, usfull) {
+            err ? res.send('Hubo un error').status(400) : res.json(usfull);
+          })
+        })
+      });
+    }
 
-});
+
+  }else if(firstname === "Todos"){
+    user = await User.find({ $or: [{ role: "alumno" }, { role: "PM" }]}, "+name", null, function (err, us) {
+      Cohorte.populate(us, { path: "cohorte" }, function (err, usIncCoh) {
+        Group.populate(usIncCoh, { path: "standup" }, function (err, usfull) {
+          err ? res.send('Hubo un error').status(400) : res.json(usfull);
+        })
+      })
+    });  
+  }else if(lastname === "All"){
+    user = await User.find({cohorte: firstname}, "+name", null, function (err, us) {
+      Cohorte.populate(us, { path: "cohorte" }, function (err, usIncCoh) {
+        Group.populate(usIncCoh, { path: "standup" }, function (err, usfull) {
+          err ? res.send('Hubo un error').status(400) : res.json(usfull);
+        })
+      })
+    });  
+  } else if (lastname === "undefined" || lastname === "") {
+      user = await User.find({$and : 
+        [{ $or: [{ "name.firstname": firstname }, { "name.lastname": firstname }]},
+         {$or: [{role: "alumno"}, {role: "PM"}]}]},
+         "+name", null, function (err, us) {
+        Cohorte.populate(us, { path: "cohorte" }, function (err, usIncCoh) {
+          Group.populate(usIncCoh, { path: "standup" }, function (err, usfull) {
+            err ? res.send('Hubo un error').status(400) : res.json(usfull);
+          })
+        })
+      });
+    } else {
+      user = await User.find({$and :
+        [{
+        $or: [{ "name.firstname": firstname, "name.lastname": lastname },
+        { "name.firstname": lastname, "name.lastname": firstname }]},
+      {$or: [{role: "alumno"}, {role: "PM"}]} ]},
+       "+name", null, function (err, us) {
+        Cohorte.populate(us, { path: "cohorte" }, function (err, usIncCoh) {
+          Group.populate(usIncCoh, { path: "standup" }, function (err, usfull) {
+            err ? res.send('Hubo un error').status(400) : res.json(usfull);
+          })
+        })
+      });
+    }
+  
+    
+  });
+
+
+//Ruta para buscar por github
+router.get("/searchgithub", async (req, res) => {
+  const { git} = req.query;
+
+  const github = Array.isArray(git) ? git[0] : git
+
+ const user = await User.find({github: github}, "+name", null, function (err, us) {
+      Cohorte.populate(us, { path: "cohorte" }, function (err, usIncCoh) {
+        Group.populate(usIncCoh, { path: "standup" }, function (err, usfull) {
+          err ? res.send('Hubo un error').status(400) : res.json(usfull);
+        })
+      })
+    }); 
+})
 
 
 //Ruta que actualiza las notas de un checkpoint de uma historia
 router.put("/historia/:historiaId", (req, res) => {
   const { historiaId } = req.params;
   let { checkpoint, cohorteId, tests } = req.body;
-  console.log(historiaId, checkpoint, cohorteId, tests);
   tests = parseInt(tests);
   //Primero buscamos la historia del alumno
   Historial.findById(historiaId)
@@ -428,7 +530,6 @@ router.put('/change_password', auth, async (req, res, next) => {
 //buscar usuario por id
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
-
   try {
     await User.findOne({ _id: id }, function (err: any, users: any) {
       Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
@@ -444,6 +545,19 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+//Ruta que asigna cohorte a un usuario SIN
+router.post("/assignCohorte/:id", async (req, res) => {
+  const { id } = req.params;
+  const { nvoCohorte } = req.body;
+  var cohorte = await Cohorte.findOne({ Nombre: nvoCohorte })
+  if (cohorte) {
+    var usuario = await User.findOneAndUpdate({ _id: id }, { cohorte: cohorte._id }, { upsert: true })
+    !usuario ? res.sendStatus(400) : res.json(usuario)
+  } else {
+    res.sendStatus(400)
+  }
+ });
+
 router.put("/asistencia/:historiaId", async ( req, res) => {
   const { historiaId } = req.params;
   const { modulo, clase, valor } = req.body;
@@ -453,7 +567,6 @@ router.put("/asistencia/:historiaId", async ( req, res) => {
   historia.save();
 
   historia ? res.json(historia) : res.send("Error al actualizar la asistencia").status(400);
-
 });
 
 router.put("/participa/:historiaId", async ( req, res ) => {
@@ -468,6 +581,19 @@ router.put("/participa/:historiaId", async ( req, res ) => {
 })
 
 
+
+router.put("/update/img_profile", async ( req, res ) => {
+  const { id,img } = req.body;
+  try {
+    await User.findOneAndUpdate({ _id: id }, { $set: { thumbnail: img } });
+    res.json({msg:'la imagen se actualizo correctamente'}).status(400)
+
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+
 //"Rol === alumno => standup === standup vigente///
 // |       O
 //\ /     /|\
@@ -475,3 +601,5 @@ router.put("/participa/:historiaId", async ( req, res ) => {
 //rol === PM => standup === standup de OTRO COHORTE MAS NUevO.//// holi //
 
 export default router;
+
+

@@ -102,8 +102,7 @@ const Invitacion = (): JSX.Element => {
                     <img id='imagen-invitacion-estudiantes' src={grupoEstudiantes}></img>
                 </div>
 
-            </div>
-            <p id='texto-decorativo-invitacion'> Aqui podriamos decir algo elegantisimo, como de forma y no de fondo </p>
+            </div>            
         </div>
     )
 }

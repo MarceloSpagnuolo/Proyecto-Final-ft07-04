@@ -14,6 +14,7 @@ import {
   GET_USER_EDIT,
   UPDATE_USER_PASSWORD,
   PUT_NOTAS,
+  SEARCH_GITHUB,
   PUT_ASISTENCIA,
   PUT_PARTICIPA,
 } from "../Constants/Users";
@@ -70,6 +71,11 @@ function Users(state = inicialState, action: any) {
         ...state,
         users: action.payload,
       };
+      case SEARCH_GITHUB:
+        return {
+          ...state,
+          users: action.payload,
+        }
     case PUT_NOTAS: {
       return {
         ...state,
