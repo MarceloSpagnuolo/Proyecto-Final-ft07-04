@@ -66,7 +66,7 @@ function Add() {
                   <Form className="Add-Form">
                     <div className="Add-Form-Campos">
                       <label htmlFor="Add" className="Add-Form-Label">
-                        * Próxima Cohorte
+                        * Próximo Cohorte
                       </label>
                       <br />
                       <Field
@@ -82,7 +82,7 @@ function Add() {
                       </ErrorMessage>
                     </div>
                     <div className="Add-Form-Campos">
-                      <label htmlFor="Add" className="Add-From-Label">
+                      <label htmlFor="Add" className="Add-Form-Label">
                         * Fecha de Inicio
                       </label>
                       <br />
@@ -97,7 +97,7 @@ function Add() {
                         )}
                       </ErrorMessage>
                     </div>
-                    <span>* Campos obligatorios</span>
+                    <span id='campos-obligatorios-nuevo-cohorte'>* Campos obligatorios</span>
                     <br />
                     <button
                       type="submit"
