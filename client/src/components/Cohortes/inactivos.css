@@ -1,0 +1,31 @@
+
+
+#container-inactivos-total{
+    font-family: 'Roboto', sans-serif;
+    background-color: hsl(54, 100%, 48%);
+    padding: 25px 60px;
+    width: auto;
+    min-height: 82vh;
+}
+#container-inactivos{
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 95%);
+    padding: 50px 70px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 30px #25252528;
+    color: #252525;
+    min-height: 66vh;
+}
+
+#titulo-cohorte-inactivo{
+    font-size: 2.44rem;
+    color: #252525;
+}
+
+#container-inactivos p{
+    font-size: 1.563rem;
+    color: #313131;
+}
+
+.Listado-Container h3{
+    font-size: 1.95rem;
+}

@@ -16,6 +16,7 @@ function Listado(props: any) {
   return (
     <div className="Listado-Container">
       <h2>Cohortes Activos</h2>
+
       <table className="Listado-Table">
         <tbody>
           <tr>

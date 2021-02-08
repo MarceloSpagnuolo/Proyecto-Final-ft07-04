@@ -59,7 +59,7 @@ function Add() {
             {({ isSubmitting, isValid }) => (
               <>
                 <div className="Add-Cohorte-Body">
-                  <h2 className="Add-Cohorte-Title">Nuevo Cohorte</h2>
+                  <h2 className="Add-Cohorte-Title">Crea Un Nuevo Cohorte</h2>
                   <p className="Add-Frase">
                     Agrega a la base de datos a los nuevos integrantes de HENRY.
                   </p>

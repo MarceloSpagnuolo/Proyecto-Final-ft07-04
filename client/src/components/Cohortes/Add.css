@@ -16,16 +16,18 @@
   width: 100%;
 }
 
-
 .Add-Cohorte-Title {
   margin-top: 9%;
+  margin-bottom: 3%;
   text-align: left;
   font-family: 'Roboto', sans-serif;
-  font-size: 1.563rem;
+  font-size: 3rem;
 }
 
 .Add-Frase {
+  margin-bottom: 5%;
   text-align: left;
+  color: #252525;
   font-family: 'Roboto', sans-serif;
   font-size: 1.25rem;
 }
@@ -47,18 +49,22 @@
 
 .Add-Form-Input-Cohorte {
   height: 30px;
-  width: 66%;
+  width: 56%;
   border: none;
   border-radius: 1rem;
   box-shadow: 2px 2px 4px #b3b3b3;
   margin: 3% 0%;
   height: 4vh;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .Add-Form-Input-Fecha {
+  padding-left: 5%;
+  padding-right: 5%;
   height: 30px;
   color: #333333;
-  width: 66%;
+  width: 56%;
   border: none;
   border-radius: 1rem;
   box-shadow: 2px 2px 4px #b3b3b3;
