@@ -20,6 +20,7 @@ import {
   SEARCH_GITHUB,
   PUT_ASISTENCIA,
   PUT_PARTICIPA,
+  PUT_PASS_FOR_EMAIL,
 } from "../Constants/Users";
 const url = "http://localhost:3001";
 
@@ -318,3 +319,38 @@ dispatch({
     });
   };
 };
+
+
+export const newPassReturn = (mailToken: any, payload: any) => async (dispatch: any) => {
+  try {
+    // console.log(payload, "SOY EL PAYLOAD")
+    // console.log(mailToken, "SOY EL MAILTOKEN")
+    //traigo el id del user del token del mail
+    const token: any = jwt.decode(mailToken)
+    //busco el usuario por id
+    const resUser = await axios.get(`${url}/users/${token.userId}`);  
+    //lo guardo en una variable
+    var user = resUser.data;
+    //le agrego una key con la newPassword
+    user["confirmPass"] = payload.password;
+    //hago el pedido de la ruta y le envio el objeto con todos los datos a modificar la pass del usuario
+    const res = await axios.put(`${url}/users/newPassReturn`, user);
+    //me devuelve el token y lo agrego al localStorage
+    localStorage.setItem('userToken', res.data);
+    //autoriza el token que sea valido para logearse
+    // axios.defaults.headers.common['Authorization'] = `Bearer ${res.data}`;
+    //decodifico el token y lo envio al reducer para pisar el user del redux con el nuevo actualizado
+    const usuario = jwt.decode(res.data);
+    dispatch({
+      type: GET_USER_BY_TOKEN,
+      payload: usuario,
+    });
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: 'Problemas al reestablecer contraseña',
+    });
+  }
+
+
+}

@@ -5,6 +5,7 @@ import Cohorte from "../Models/cohorte";
 import Group from "../Models/groups";
 import Historial from "../Models/historial";
 import axios from "axios";
+import {passwordReset} from "../MailModel/ResetPass"
 
 import * as bcrypt from "bcrypt";
 
@@ -579,6 +580,45 @@ router.put("/participa/:historiaId", async ( req, res ) => {
   historia.save();
 
   historia ? res.json(historia) : res.send("Error al actualizar la asistencia").status(400);
+})
+
+
+//Ruta que envía email de reseteo de contraseña
+router.get("/newPassSend/:email", async (req, res) => {
+  const { email } = req.params;
+  
+  if(!email) {
+    return res.sendStatus(404);
+  }
+
+  const user = await User.findOne({email: email})
+  
+  if (!user) {
+    return res.sendStatus(404)
+  } else {
+     passwordReset(user.toJSON())
+     res.sendStatus(200)
+  }
+
+})
+
+//Ruta que reemplaza la contraseña identificando al usuario por token
+//Nota: es necesario encriptar la contraseña acá mismo
+router.put("/newPassReturn", async (req, res) => {
+ const {_id } = req.body.usersCOM
+ const {confirmPass} = req.body
+ const salt = await bcrypt.genSaltSync(10);
+ const hash = await bcrypt.hashSync(confirmPass, salt);
+
+  const reseteo = await User.findOneAndUpdate({ _id: _id },{password: hash}, null, function (err: any, users: any) {
+    Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+      Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+        if(err) return res.sendStatus
+        res.json(jwt.sign(usersCOM.toJSON(), process.env.SECRET)).status(200);
+      })
+    });
+  });
+
 })
 
 

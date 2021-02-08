@@ -1,13 +1,18 @@
-import React, { createElement, useEffect, useState } from "react";
+import React, {useRef, createElement, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getActiveCohortes, getCohorte, changeTests } from "Store/Actions/Cohortes";
 import { getUsersbyCohorte, putNotas } from "Store/Actions/Users";
 import "./Carga.css";
+import Swal from "sweetalert2";
 
 function Carga() {
   const { cohorte, cohortes } = useSelector((state: any) => state.Cohortes);
   const { users } = useSelector((state: any) => state.Users);
   const dispatch = useDispatch();
+  const textAreaRef1: any = useRef(null);
+  const textAreaRef2: any = useRef(null);
+  const textAreaRef3: any = useRef(null);
+  const textAreaRef4: any = useRef(null);
 
   useEffect(() => {
     dispatch(getActiveCohortes(true));
@@ -40,6 +45,35 @@ function Carga() {
     const dato = datos[2];
     dispatch(changeTests(cohorteId, {checkpoint, dato, valor: e.target.value}));
 
+  }
+
+  function copyToClipboard(e: any) {
+    // console.log(e.currentTarget)
+    let arreglo;
+    if(e.target.name === "CP1") {
+      arreglo = textAreaRef1.current.childNodes
+    } else if (e.target.name === "CP2") {
+      arreglo = textAreaRef2.current.childNodes      
+    } else if (e.target.name === "CP3") {
+      arreglo = textAreaRef3.current.childNodes      
+    } else if (e.target.name === "CP4") {
+      arreglo = textAreaRef4.current.childNodes
+    }
+
+    let copia: any = [];
+
+    arreglo.forEach((c: any) => {
+      if(c.attributes.class.nodeValue !== "Oculta") {
+        copia.push("\n"+c.innerHTML)
+      }
+    })
+    navigator.clipboard.writeText(copia);
+    Swal.fire({
+      icon: 'success',
+      title: 'Copiado al portapapeles!',
+      showConfirmButton: false,
+      timer: 1200
+    })
   }
 
   return (
@@ -260,8 +294,9 @@ function Carga() {
         <div className="container-lista-aprobados">
           <div className="Carga-Lista">
             <span>Aprobados CP1</span>
+            <button name="CP1" onClick={(e) =>  copyToClipboard(e)}>Copiar Lista</button>
             <div id='carga-nombres-aprobados-cohorte'>
-              <ul className="Carga-Estilo-Lista">
+              <ul ref={textAreaRef1} className="Carga-Estilo-Lista">
                 {users && users.length > 0 &&
                   users.map((user: any) => {
                     const historia = user.historia.Checkpoints.filter(
@@ -276,8 +311,9 @@ function Carga() {
           </div>
           <div className="Carga-Lista">
             <span>Aprobados CP2</span>
+            <button name="CP2" onClick={(e) =>  copyToClipboard(e)}>Copiar Lista</button>
             <div id='carga-nombres-aprobados-cohorte'>
-              <ul className="Carga-Estilo-Lista">
+              <ul ref={textAreaRef2} className="Carga-Estilo-Lista">
                 {users && users.length > 0 &&
                   users.map((user: any) => {
                     const historia = user.historia.Checkpoints.filter(
@@ -292,8 +328,9 @@ function Carga() {
           </div>
           <div className="Carga-Lista">
             <span>Aprobados CP3</span>
+            <button name="CP3" onClick={(e) =>  copyToClipboard(e)}>Copiar Lista</button>
             <div id='carga-nombres-aprobados-cohorte'>
-              <ul className="Carga-Estilo-Lista">
+              <ul ref={textAreaRef3} className="Carga-Estilo-Lista">
                 {users && users.length > 0 &&
                   users.map((user: any) => {
                     const historia = user.historia.Checkpoints.filter(
@@ -308,8 +345,9 @@ function Carga() {
           </div>
           <div className="Carga-Lista">
             <span>Aprobados CP4</span>
+            <button name="CP4" onClick={(e) =>  copyToClipboard(e)}>Copiar Lista</button>
             <div id='carga-nombres-aprobados-cohorte'>
-              <ul className="Carga-Estilo-Lista">
+              <ul ref={textAreaRef4} className="Carga-Estilo-Lista">
                 {users && users.length > 0 &&
                   users.map((user: any) => {
                     const historia = user.historia.Checkpoints.filter(

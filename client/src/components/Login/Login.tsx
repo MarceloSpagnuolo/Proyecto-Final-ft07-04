@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { Redirect, useHistory } from "react-router-dom";
 import clienteAxios from '../../config/axios';
+import Modal from "../Modal/Modal"
 
 interface Logeado {
   email?: string;
@@ -14,6 +15,9 @@ interface Logeado {
 const Login = (): JSX.Element => {
     const [inputs, setInputs] = useState<Logeado>()
     const [error, setError] = useState<boolean>(false)
+    const [display, setDisplay] = useState(false); //Muestra el reseteo de contraseña
+    const [email, setEmail] = useState("");
+
 
     //utilizar usedispatch 
     const dispatch = useDispatch();
@@ -57,9 +61,55 @@ const Login = (): JSX.Element => {
         }
     }
 
+    function sendPassReset() {
+        setDisplay(true)
+        console.log("hola")
+    }
+
+    function handlerInputEmail(e: any) {
+        setEmail(e.target.value)
+    }
+
+    async function handleSubmitEmail(e: any) {
+        e.preventDefault()
+        console.log(email)
+        try {
+            await clienteAxios.get(`users/newPassSend/${email}`)
+            Swal.fire(
+                "Mail enviado a su casilla",
+                `Revise su correo, incluyendo la sección de spam`,
+                "success"
+                );
+                setDisplay(false)
+            } catch (e) {
+                Swal.fire(
+                    "Mail no encontrado",
+                    `El mail proveido no concuerda con un usuario`,
+                    "error"
+                    );
+            }
+    }
+
 
     return (
         <>
+
+<Modal title="Reseteo de contraseña" show={display} onClose={() => setDisplay((val) => !val)}>
+        <h4 className="Activos-h4">Ingrese el email al usuario asociado</h4>
+        <form>
+        <div className="Listado-Container-Select">
+            <label>
+                <input onChange={(e) => handlerInputEmail(e)}></input>
+            </label>
+          </div>
+          
+          <div className="Modal-Botones">
+            <button className="Modal-Cancel" onClick={() => setDisplay(false)}>Cancelar</button>
+            <button className="Modal-Migrar" type="submit" onClick={(e) => handleSubmitEmail(e)} 
+              >Aceptar</button>
+          </div>
+        </form>
+      </Modal>
             <div className="gridLogin">
                 <div className="imgLoginMax">
                     <img src="https://cdn.discordapp.com/attachments/764979688446885898/802048383844876298/cowork.png" />
@@ -87,6 +137,9 @@ const Login = (): JSX.Element => {
                                 <input size={60} type="password" id="passs" name="password" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} onKeyDown={(e) => enterKey(e) }/>
                             </div>
                         </form>
+                        <div>
+                            <button onClick={sendPassReset}>¿Olvidó su contraseña?</button>
+                        </div>
                         <div className="divBtnLogin">
                             <button className="btnLogin" onClick={handleSubmit}>Entrar</button>
                         </div>
