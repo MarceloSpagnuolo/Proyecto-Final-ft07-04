@@ -10,6 +10,24 @@
   min-height: 85vh;
 }
 
+#activos-container-instructor-grupo {
+  margin-top: 2%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+}
+
+#activos-cohorte-grupos{
+  margin-bottom: 5.1%;
+  font-size: 1.95rem;
+  font-weight: 600;
+}
+
+#activos-instructor{
+  font-size: 1.95rem;
+  font-weight: 600;
+}
+
 #nd {
   background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 95%);
   padding: 20px 30px;
@@ -21,7 +39,8 @@
 }
 
 #nd h2 {
-  color: black;
+  color: #252525;
+  font-size: 3rem;
 }
 
 .Activos-h3 {
@@ -34,6 +53,7 @@
 
 .Activos-span {
   color: #333;
+  font-size: 1.25rem;
 }
 
 .content {

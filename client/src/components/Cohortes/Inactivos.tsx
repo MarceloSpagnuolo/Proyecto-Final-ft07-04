@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsersbyCohorte } from "../../Store/Actions/Users";
 import { getCohorte } from "Store/Actions/Cohortes";
 import SearchBar from "../PanelControlStudents/searchBar"
+import './inactivos.css'
 
 function Inactivos(props: any) {
   const dispatch = useDispatch();
@@ -19,28 +20,31 @@ function Inactivos(props: any) {
 
   return (
     <>
-      <div className="Activos-Container">
-        <div id="nd">
-          <h2>Cohorte Inactivo</h2>
-          <span>Cohorte: {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</span>
-          <br />
+      <div id="container-inactivos-total">
+        <div id="container-inactivos">
+          <h2 id='titulo-cohorte-inactivo'>Cohorte Inactivo</h2>
+          <hr></hr>
+          <br></br>
+          <p>Cohorte: {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</p>
+
           <div>
-            <span>Inicio: {cohorte && cohorte.length > 0 && cohorte[0].Start}</span>
+            <p>Inicio: {cohorte && cohorte.length > 0 && cohorte[0].Start}</p>
           </div>
-          <br />
+
           <div>
-            <span>Instructor: {cohorte && cohorte.length > 0 && cohorte[0].Instructor !== null &&
-              cohorte[0].Instructor.name.firstname + " " + cohorte[0].Instructor.name.lastname}</span>
+            <p>Instructor: {cohorte && cohorte.length > 0 && cohorte[0].Instructor !== null &&
+              cohorte[0].Instructor.name.firstname + " " + cohorte[0].Instructor.name.lastname}</p>
           </div>
-          <br />
+
           <div>
-            <span>Alumnos: {users.length}</span>
+            <p>Alumnos: {users.length}</p>
           </div>
           <div className="Listado-Container">
             <h3>Alumnos</h3>
             <div>
-            <SearchBar id={id}/>
+              <SearchBar id={id} />
             </div>
+            <br />
             <div className="Activos-Table">
               <table className="Activos-Table">
                 <tbody>

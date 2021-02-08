@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getCohortes } from "../../Store/Actions/Cohortes"
-import { getUsersbyCohorte, SearchByName,searchGithub } from "../../Store/Actions/Users"
+import { getUsersbyCohorte, SearchByName, searchGithub } from "../../Store/Actions/Users"
 import "./searchBar.css"
 
 export default function SearchBar(props: any) {
@@ -41,46 +41,46 @@ export default function SearchBar(props: any) {
         //borra los estados locales para evitar problemas de búsqueda
         setAlumno("")
         setGithub("")
-        
-        if(github !== ""){
+
+        if (github !== "") {
             dispatch(searchGithub(paylud))
-        }else if(payload[0] === "") {
+        } else if (payload[0] === "") {
             payload = [props.id, "all", props.id]
             dispatch(SearchByName(payload))
         } else {
             payload.push(props.id)
             dispatch(SearchByName(payload))
         }
-        
+
     }
 
     return (
         <div className="search-nav">
-            <form onSubmit={(e) => onSubmit(e)}>
+            <form id='pc-campos-busqueda' onSubmit={(e) => onSubmit(e)}>
                 <input name="Buscador" type="search" id='inlineFormInputGroup' placeholder='Filtrar por nombre...'
                     onChange={(e) => handlerInput(e)} />
                 <button className="button-search" type='submit'>
                     <img className="icon-S" src={lupita} alt="img-lupa"></img>
                 </button>
-                {(window.location.pathname === "/PanelControlStudent") ? 
-                <>
-                <input name="Buscador2" type="search" id='inlineFormInputGroup' placeholder='Filtrar por github...'
-                    onChange={(e) => handlerInput2(e)} />
-                <button className="button-search" type='submit'>
-                    <img className="icon-S" src={lupita} alt="img-lupa"></img>
-                </button>
-                <br/>
-                <label htmlFor="cohorte" id="SearchBarLabel">Filtrar por Cohorte:</label>
-                <select name="cohorte" onChange={(e) => handleSelect(e)}>
-                    <option value="todos">Todos</option>
-                    <option value="none">Sin Cohorte</option>
-                    {cohortes && cohortes.length > 0 && cohortes.map((c: any) => {
-                        return (
-                            <option key={c._id} value={c._id} >{c.Nombre}</option>
-                            )
-                        })}
-                </select>
-                </>
+                {(window.location.pathname === "/PanelControlStudent") ?
+                    <>
+                        <input name="Buscador2" type="search" id='inlineFormInputGroup' placeholder='por github...'
+                            onChange={(e) => handlerInput2(e)} />
+                        <button className="button-search" type='submit'>
+                            <img className="icon-S" src={lupita} alt="img-lupa"></img>
+                        </button>
+                        <br />
+                        <label htmlFor="cohorte" id="pc-label-filtro-cohorte">o por Cohorte:</label>
+                        <select id='pc-filtro-cohorte' name="cohorte" onChange={(e) => handleSelect(e)}>
+                            <option value="todos">Todos</option>
+                            <option value="none">Sin Cohorte</option>
+                            {cohortes && cohortes.length > 0 && cohortes.map((c: any) => {
+                                return (
+                                    <option key={c._id} value={c._id} >{c.Nombre}</option>
+                                )
+                            })}
+                        </select>
+                    </>
                     : null}
 
             </form>

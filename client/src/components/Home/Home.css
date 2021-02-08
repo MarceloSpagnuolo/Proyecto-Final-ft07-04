@@ -1,7 +1,7 @@
 #fondo-amarillo {
-
     background-color: #F6DE00;    
-    height: 100%;
+    height: auto;
+    min-height: 88vh;
     padding: 0%;
 
 }
