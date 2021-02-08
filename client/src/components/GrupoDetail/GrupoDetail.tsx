@@ -139,7 +139,7 @@ const GrupoDetail = (props: any): JSX.Element => {
                         {singrupo.length > 0 && singrupo.map((a: any) => {
                             if (a.role === "alumno") {
                                 return (<div key={"SG" + a._id} className="divAddAlRespon" onClick={() => agregar(a._id)} >
-                                    <img className="roundAlum" src="https://cdn.discordapp.com/attachments/764979688446885898/803132593338843146/sspider.png" alt="" />
+                                    <img className="roundAlum" src={a.thumbnail || 'http://localhost:3001/imagenes/default-user-image.png'} alt="" />
                                     <div id='nombre-invitado'>{`${a.name.firstname} ${a.name.lastname}`}
                                     </div>
                                 </div>)

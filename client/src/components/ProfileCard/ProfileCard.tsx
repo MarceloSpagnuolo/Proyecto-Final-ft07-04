@@ -25,7 +25,7 @@ const ProfileCard = (props: any): JSX.Element => {
                     X
                     </button>
                 : null}
-                <img className="round" src={image} alt="user" />
+                <img className="round" src={props.props.thumbnail || image} alt="user" />
                 <div className="divCGP"><span>C{props.CG.c}</span><span>G{props.CG.g}</span></div>
                 <h3 className="namePCard" >{fullName}</h3>
                 <div className="divHub"> <img src="https://cdn.discordapp.com/attachments/764979688446885898/803015111555809310/github.png" alt="" /></div>
