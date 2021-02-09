@@ -13,6 +13,7 @@ interface Props extends Document {
   created: Date;
   cohorte: any;
   standup: any;
+  editable: any;
   comparePassword(password: string, passwordDB: string): boolean;
 }
 
@@ -32,6 +33,7 @@ const UserSchema: Schema<Props> = new Schema({
   cohorte: { type: mongoose.Schema.Types.ObjectId, ref: "Cohorte" },
   standup: { type: mongoose.Schema.Types.ObjectId, ref: "Group" },
   historia: { type: mongoose.Schema.Types.ObjectId, ref: "Histotial"},
+  editable: {type: Boolean, default: false}
 });
 
 UserSchema.pre("save", async function (next) {
