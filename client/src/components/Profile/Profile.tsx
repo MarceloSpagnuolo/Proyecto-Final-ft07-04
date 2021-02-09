@@ -216,10 +216,14 @@ const Profile = (): JSX.Element => {
         await Swal.fire(
             "Se han actualizado los datos correctamente",
         )
+            .then(() => {
+                window.location.reload()
+            })
 
     }
     const activateEdition = async () => {
         await makeEditable(id);
+        window.location.reload()
     }
 
     return (
