@@ -21,14 +21,14 @@ const Home = () => {
     return (user.role === "admin" || user.role === "instructor") ? (
         // LOGICA PARA RENDERIZAR LO QUE VE EL ADMIN
         <div id='fondo-amarillo'>
-            <br />
+            <div id='blank-space'></div>
             <div id='fondo-blanco'>
                 <img id="foto-header" src={topImg} alt="banner superior" />
                 <div id='contenido-home'>
                     <div id='titulo-home'>
                         <h2>Gestiona Tus Cohortes y Alumnos</h2>
                         <h4>Bienvenid@ al Henry manager</h4>
-                        <p>Henry Manager te permite hacer seguimiento a tus estudiantes, revisar su desempeño, y organizar a los futuros henrys en grupos de estudio</p>
+                        <h3>Henry Manager te permite hacer seguimiento a tus estudiantes, revisar su desempeño, y organizar a los futuros henrys en grupos de estudio</h3>
                     </div>
                     <div id='home-paneles'>
                         <div id='panel-estudiantes'>
@@ -83,9 +83,10 @@ const Home = () => {
             // LOGICA PARA RENDERIZAR LO QUE VE EL ALUMNO
             : (user.role === "alumno") ?
                 <div id='fondo-amarillo'>
+                    <br></br>
                     <div id='fondo-blanco'>
                         <img id="foto-header" src={topImg} alt="banner superior" />
-                        <div id='contenido-home'>
+                        <div id='contenido-home-estudiantes'>
                             <div id='titulo-home'>
                                 <h4>ESTA ES LA HENRY APP</h4>
                                 <h2>Gestiona Tu Avance Como Alumno</h2>
