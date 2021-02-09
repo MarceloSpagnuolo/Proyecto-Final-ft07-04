@@ -1,17 +1,41 @@
+.search-nav{
+  width: auto;
+}
+
+#pc-campos-busqueda {
+    width: auto;
+    display: flex;
+  }
+
 #inlineFormInputGroup {
-    padding: 10px;
-    border: 1px inset;
-    max-width: 17vw;
-    min-width: 17vw;
-    border-radius: 20px;
-    outline-style: none;
+    border: none;
+    min-width: 50%;
+    width: auto;    
+    border-radius: 0.5rem;
     background-color: white;
-    opacity: 0.4;
+    margin: 0% 3%;
+    max-height: 36px;
+    padding-left: 3%;
+    color: #252525;
+  }
+
+
+  #pc-label-filtro-cohorte{
+    color: #252525;
+    font-size: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+  }
+  #pc-filtro-cohorte {
+    border: none;
+    max-height: 36px;
+    min-width: 15%;
   }
   
   #inlineFormInputGroup:hover{
     opacity: 1;
   }
+  
+
 
   #SearchBarLabel{
     margin-left: 20px;
@@ -28,7 +52,7 @@
     background-color: rgb(255, 255, 255);
   }
   
-  
+
   
   .button-search:hover {
     cursor: pointer;
@@ -41,11 +65,7 @@
     height: 20px;
     width: 20px;
   }
-  .search-nav{
-    display: flex;
-   position: relative;
-   margin-left: 30%;
-  }
+
 
   #lupita{
       width: 3%;

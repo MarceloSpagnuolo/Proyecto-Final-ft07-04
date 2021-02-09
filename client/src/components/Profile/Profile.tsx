@@ -37,7 +37,7 @@ const Profile = (): JSX.Element => {
     const dispatch = useDispatch();
     const [editOtherProfile, seteditOtherProfile] = useState(false);
     const [userId, setuserId] = useState('');
-    const [profileImg, setprofileImg] = useState('https://previews.123rf.com/images/thesomeday123/thesomeday1231712/thesomeday123171200008/91087328-icono-de-perfil-de-avatar-predeterminado-para-mujer-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilustra.jpg');
+    const [profileImg, setprofileImg] = useState('http://localhost:3001/imagenes/default-user-image.png');
     //mandar llamar las action de producto action
     const updatePass = async (data: any) => dispatch(updatePassword(data));
     const getUser = async (id: string) => dispatch(getUsereEdit(id));
@@ -100,8 +100,9 @@ const Profile = (): JSX.Element => {
                         
 
                         const { _id, name, email, cohorte, standup } = userToEdit;
-                        if (typeof userToEdit.cohorte !== 'undefined') var cohorteNombre = cohorte.Nombre;
-                        if (typeof userToEdit.standup !== 'undefined') var standupNombre = standup.Grupo;
+                        
+                        if (typeof userToEdit.cohorte !== 'undefined' && cohorte) var cohorteNombre = cohorte.Nombre;
+                        if (typeof userToEdit.standup !== 'undefined' && standup) var standupNombre = standup.Grupo ;
                         setuserId(_id);
                         setInputs({
                             id: _id,

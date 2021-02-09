@@ -22,10 +22,11 @@ function Rendimiento(props: any) {
   }, [user._id]);
 
   useEffect(() => {
-    if(!!users && !!users.historia && users.historia.Checkpoints.lenght !== 0){
-    users.historia.Checkpoints.map((c: any) => {
-      dispatch(cohortesNames(c.Cohorte))
-    })}
+    if (!!users && !!users.historia && users.historia.Checkpoints.lenght !== 0) {
+      users.historia.Checkpoints.map((c: any) => {
+        dispatch(cohortesNames(c.Cohorte))
+      })
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [users.historia]);
 
@@ -36,8 +37,8 @@ function Rendimiento(props: any) {
   }
 
   return (
-    <div className="">
-      <h1 className="">Tus Notas</h1>
+    <div id='rendimiento-fondo-amarillo'>
+      <h1 id="rendimiento-titulo">Tus Notas</h1>
       <div className="rend-container">
         <table className="rend-table">
           <thead className="rend-table-titles">
@@ -54,7 +55,7 @@ function Rendimiento(props: any) {
             {!!users && !!users.historia && users.historia.Checkpoints.length > 0 && users.historia.Checkpoints.map((elem: any) => (
               <>
                 <tr id="rend-table-tr">
-                  <td className="rend-table-td">{getNombre(elem.Cohorte)}</td>        
+                  <td className="rend-table-td">{getNombre(elem.Cohorte)}</td>
                   <td className="rend-table-td">CP-M1</td>
                   <td className="rend-table-td">{users.cohorte.Checkpoints && users.cohorte.Checkpoints.CP1.totalTests}</td>
                   <td className="rend-table-td">{elem.CP1}</td>

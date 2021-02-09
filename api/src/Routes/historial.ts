@@ -79,4 +79,107 @@ router.get("/modulos", async (req, res) => {
     modulos ? res.json(modulos) : res.send("No se encontraton módulos").status(400);
 })
 
+
+router.get("/promedio/:grupoId", async (req, res) => {
+    console.log("entre aca")
+    const {grupoId} = req.params
+    // let promedios1: any[] = []
+    // let promedios2: any[] = []
+    // let promedios3: any[] = []
+    // let promedios4: any[] = []
+    // let promediosTotal: any[] = []
+    // let suma: number;
+    let arr1 = new Array(9)
+    let arr2 = new Array(14);
+    let arr3 = new Array(8);
+    let arr4 = new Array(5);
+    let total: any[] = []
+
+
+
+    const alumnos = await User.find({$and: [
+        {standup: grupoId},
+        {role: "alumno"}
+    ]}, (err, users) => {
+        Historial.populate(users, { path: "historia" }, function (err, usPopulated: any) {
+            if(err) return res.sendStatus(400);
+            console.log(usPopulated)
+            //TROLOO EL QUE BORRA
+            // que lástima sería que cuando estás presentando pongo un "martina calientapija" o algó así no?
+            //La conquistaba
+            usPopulated.map((a: any, index: number) => {
+                let is = index == usPopulated.length - 1
+                a.historia.Modulos.map((c: any, i: number) => {
+                    if (i == 0) {
+                        c.Clases.map((p: any, id: number) => {
+                            arr1[id] = isNaN(arr1[id]) ? 0 : arr1[id]
+                            arr1[id] += p.Participa
+                            arr1[id] = is ? arr1[id] / usPopulated.length : arr1[id]
+                            
+                            
+                        })
+                    }
+                    if (i == 1) {
+                        c.Clases.map((p: any, id: number) => {
+                            arr2[id] = isNaN(arr2[id]) ? 0 : arr2[id]
+                            arr2[id] += p.Participa
+                            arr2[id] = is ? arr2[id] / usPopulated.length : arr2[id]
+                        })
+                    }
+                    if (i == 2) {
+                        c.Clases.map((p: any, id: number) => {
+                            arr3[id] = isNaN(arr3[id]) ? 0 : arr3[id]
+                            arr3[id] += p.Participa
+                            arr3[id] = is ? arr3[id] / usPopulated.length : arr3[id]
+                        })
+                    }
+                    if (i == 3) {
+                        c.Clases.map((p: any, id: number) => {
+                            arr4[id] = isNaN(arr4[id]) ? 0 : arr4[id]
+                            arr4[id] += p.Participa
+                            arr4[id] = is ? arr4[id] / usPopulated.length : arr4[id]
+                        })
+                    }
+                })
+            })
+
+            total.push(arr1, arr2, arr3, arr4)
+            res.send(total)
+
+            // usPopulated.historia.Modulos.map((c: any, index: number) => {
+            //     if(index === 0) {
+            //        promedios1.push(c.Clases)
+            //     } else if(index === 1) {                        
+            //         promedios2.push(c.Clases)
+            //     } else if (index === 2) {                        
+            //         promedios3.push(c.Clases)
+            //     } else if (index === 3) {
+            //         promedios4.push(c.Clases)
+            //     }
+            //     c.Clases.map((p: any, id: number) => {
+                    
+            //     })
+            // })
+            
+
+            // promedios1
+            // promedios2
+            // promedios3
+        })
+    })
+
+})
+
 export default router;
+
+
+/////
+/*
+users.historia.modulos = [1,2,3,4] => 
+1 = clases:[14]
+2 = clases:[9]
+3 = clases:[8]
+4 = clases:[5]
+
+
+*/

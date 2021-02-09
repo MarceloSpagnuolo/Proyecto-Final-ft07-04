@@ -9,20 +9,22 @@ import { Formik, Field, ErrorMessage, Form } from "formik";
 import "./Registro.css";
 import axios from "axios";
 
-interface Registro {
+/* interface Registro {
   firstname?: string;
   lastname?: string;
   email?: any;
+  cohorte?: any;
   password?: string;
   comparePassword?: string;
   githubId?: string;
   googleId?: string;
   thumbnail?: Buffer;
-}
+  estado?: Object;
+} */
 
 const Registro = (props: any): JSX.Element => {
   const [mailTok, setToken] = useState(useLocation().search);
-  const [estado, setEstado] = useState<Registro>({});
+  const [estado, setEstado] = useState<any>({});
   const dispatch = useDispatch();
   const history = useHistory();
   const user: any = useSelector((state: any) => state.Users.user);
@@ -39,7 +41,8 @@ const Registro = (props: any): JSX.Element => {
         )
         .then(() => window.location.href="/")
       } else {
-        setEstado({ email: decodeToken.email });
+        const { email, cohorte } = decodeToken;
+        setEstado({ email, cohorte});
       }
     } else {
         Swal.fire(
@@ -48,7 +51,6 @@ const Registro = (props: any): JSX.Element => {
             "error"
         )
         .then(() => window.location.href="/")
-      //window.location.href = "/";
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -58,15 +60,16 @@ const Registro = (props: any): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
+
   const initialValues = {
     firstname: "",
     lastname: "",
-    email: "",
+    email: estado.email || "",
     password: "",
     comparePassword: "",
-    githubId: ""
+    githubId: "",
+    cohorte: estado.cohorte
   }
-
   return (
     <>
       <img
@@ -74,8 +77,6 @@ const Registro = (props: any): JSX.Element => {
         src="https://cdn.discordapp.com/attachments/764979688446885898/803742896964370432/fondo.png"
         alt=""
       />
-      {/* <div className="divContainerRegistro">
-        <h1 className="titleRegistro">REGISTRO</h1> */}
         {/* <form className=""> */}
         <Formik 
           initialValues={ initialValues }
@@ -97,13 +98,14 @@ const Registro = (props: any): JSX.Element => {
             };
             if(values.githubId.length === 0) {
               errors.githubId="Debe ingresar su Usuario de Github";
-            } else if(!regGithub.data) {
+            } /* else if(!regGithub.data) {
               errors.githubId="Usuario de Github incorrecto";
-            }; 
+            };  */
             return errors;
           }}
           onSubmit={(values) => {
-            dispatch(postUser(values))
+            
+            dispatch(postUser(values, estado))
             Swal.fire(
               "Registrado",
               "Se ha registrado correctamente en el sistema",
@@ -114,7 +116,7 @@ const Registro = (props: any): JSX.Element => {
         >
         {({ isSubmitting, isValid }) => (
           <>
-            <Form className="divContainerRegistro"> 
+            <Form className="divContainerRegistro">
             <h1 className="titleRegistro">REGISTRO</h1>
             <div className="nombreRegisto">
               <Field
@@ -197,7 +199,6 @@ const Registro = (props: any): JSX.Element => {
         </>
         )}
         </Formik>
-      {/* </div> */}
     </>
   );
 };

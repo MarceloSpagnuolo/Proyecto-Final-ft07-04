@@ -7,17 +7,17 @@ const router = express.Router();
 
 
 router.post('/', async (req, res, next) => {
-    const { file, email, msj } = req.body;
+    const { file, email, msj, cohorte } = req.body;
     try {
         if (file) {
             file[0].data.map((elem: any) => {
-                Registro(elem.EMAIL, msj)
+                Registro(elem.EMAIL, msj, cohorte)
             })
             if (email) {
-                Registro(email, msj)
+                Registro(email, msj, cohorte)
             }
         } else {
-            Registro(email, msj)
+            Registro(email, msj, cohorte)
 
         }
 

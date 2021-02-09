@@ -5,6 +5,7 @@ import Cohorte from "../Models/cohorte";
 import Group from "../Models/groups";
 import Historial from "../Models/historial";
 import axios from "axios";
+import {passwordReset} from "../MailModel/ResetPass"
 
 import * as bcrypt from "bcrypt";
 
@@ -70,6 +71,7 @@ router.post("/register", async (req, res) => {
     role,
     email,
     password,
+    cohorte,
   } = req.body;
 
   try {
@@ -78,7 +80,7 @@ router.post("/register", async (req, res) => {
     if (usuario) {
       return res
         .status(400)
-        .json({ success: false, msg: "El usuario ya existe" });
+        .send("El usuario ya existe");
     }
     //crear nuevo usuario
     usuario = new User({
@@ -87,6 +89,7 @@ router.post("/register", async (req, res) => {
       password,
       thumbnail,
       role,
+      cohorte,
     });
 
     //guardar usuario
@@ -291,7 +294,7 @@ async function getUser(username: any) {
     );
     return response;
   } catch (error) {
-    alert(error);
+    console.log(error);
   }
 }
 
@@ -299,7 +302,7 @@ async function getUser(username: any) {
 router.get('/github/:username', async (req, res) => {
   let { username } = req.params;
 
-  const userStatus = username !== undefined ? await getUser(username) : username;
+  const userStatus = await getUser(username);
 
   userStatus === undefined
     ? res.send(false).status(200)
@@ -549,13 +552,10 @@ router.get('/:id', async (req, res) => {
 router.post("/assignCohorte/:id", async (req, res) => {
   const { id } = req.params;
   const { nvoCohorte } = req.body;
-  var cohorte = await Cohorte.findOne({ Nombre: nvoCohorte })
-  if (cohorte) {
-    var usuario = await User.findOneAndUpdate({ _id: id }, { cohorte: cohorte._id }, { upsert: true })
-    !usuario ? res.sendStatus(400) : res.json(usuario)
-  } else {
-    res.sendStatus(400)
-  }
+  
+  var usuario = await User.findOneAndUpdate({ _id: id }, { cohorte: nvoCohorte }, { upsert: true })
+  !usuario ? res.sendStatus(400) : res.json(usuario)
+  
  });
 
 router.put("/asistencia/:historiaId", async ( req, res) => {
@@ -581,6 +581,42 @@ router.put("/participa/:historiaId", async ( req, res ) => {
 })
 
 
+//Ruta que envía email de reseteo de contraseña
+router.get("/newPassSend/:email", async (req, res) => {
+  const { email } = req.params;
+  
+  if(!email) {
+    return res.sendStatus(404);
+  }
+
+  const user = await User.findOne({email: email})
+  
+  if (!user) {
+    return res.sendStatus(404)
+  } else {
+     passwordReset(user.toJSON())
+     res.sendStatus(200)
+  }
+
+})
+
+//Ruta que reemplaza la contraseña identificando al usuario por token
+//Nota: es necesario encriptar la contraseña acá mismo
+router.put("/newPassReturn", async (req, res) => {
+ const {_id } = req.body.usersCOM
+ const {confirmPass} = req.body
+ const salt = await bcrypt.genSaltSync(10);
+ const hash = await bcrypt.hashSync(confirmPass, salt);
+
+  const reseteo = await User.findOneAndUpdate({ _id: _id },{password: hash}, null, function (err: any, users: any) {
+    Cohorte.populate(users, { path: "cohorte" }, function (err, usersCH) {
+      Group.populate(usersCH, { path: "standup" }, function (err, usersCOM) {
+        if(err) return res.sendStatus
+        res.json(jwt.sign(usersCOM.toJSON(), process.env.SECRET)).status(200);
+      })
+    });
+  });
+});
 
 router.put("/update/img_profile", async ( req, res ) => {
   const { id,img } = req.body;
@@ -590,6 +626,41 @@ router.put("/update/img_profile", async ( req, res ) => {
 
   } catch (error) {
     console.log(error)
+  }
+})
+
+router.get("/asistancePromed/:standupId", async (req, res) => {
+  const { standupId } = req.params;
+  try {
+    let modulos: any = [{},{},{},{}];
+
+    let asist = 0;
+    //Primero traemos a los alumnos del standup
+    await User.find({ standup: standupId, role: "alumno"}, async function(err, alumnos) {
+      Historial.populate(alumnos, { path: "historia"}, function(err, alumnosCOM: any) {
+        console.log(alumnosCOM);
+        err ? res.send(err).status(400) :
+        alumnosCOM.map((alumno: any) => {
+          alumno.historia.Modulos.map((hist: any, index: number) => {
+            hist.Clases.map((clase: any) => {
+              if (modulos[index].hasOwnProperty(clase.Nombre)) {
+                modulos[index][clase.Nombre] += clase.Asistencia ? 1 : 0;
+              } else {
+                modulos[index][clase.Nombre] = clase.Asistencia ? 1 : 0;
+              }
+            })
+          })
+        })
+/*         modulos = modulos.map((elem: any) => {
+          return elem / alumnos.length * 100;
+        }) */
+        res.json(modulos);
+      })
+    });
+
+
+  } catch(e) {
+
   }
 })
 
