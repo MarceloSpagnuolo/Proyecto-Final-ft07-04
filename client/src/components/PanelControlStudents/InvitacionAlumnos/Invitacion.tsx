@@ -79,7 +79,7 @@ const Invitacion = (): JSX.Element => {
 
 
 
-                            <p> si tienes una lista de estudiantes en un archivo de Excel puedes añadirla </p>
+                            <p id='texto-sube-lista'> si tienes una lista de estudiantes en un archivo de Excel puedes añadirla </p>
                             <input name="file" type="file" id="file" onChange={(e) => handleOnChange(e)} accept="png jpg jpeg gif xlsx" />
                             <a id='link-template' href={`${URL}/template.xlsx`} download>Descargar Plantilla</a>
                             <p> o si prefieres agregar uno a uno tambien puedes hacerlo </p>
@@ -102,8 +102,7 @@ const Invitacion = (): JSX.Element => {
                     <img id='imagen-invitacion-estudiantes' src={grupoEstudiantes}></img>
                 </div>
 
-            </div>
-            <p id='texto-decorativo-invitacion'> Aqui podriamos decir algo elegantisimo, como de forma y no de fondo </p>
+            </div>            
         </div>
     )
 }

@@ -4,14 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { getActiveCohortes } from "Store/Actions/Cohortes";
 import "./Listado.css";
 
-function Listado() {
+function Listado(props: any) {
   const { cohortes } = useSelector((state: any) => state.Cohortes);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getActiveCohortes(true));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [props.flag]);
 
   return (
     <div className="Listado-Container">
@@ -45,7 +45,7 @@ function Listado() {
                   </td>
                   <td className="Listado-Td">
                     <Link to={`/activos/${elem._id}`}>
-                      <button className="Listado-Boton">Detalle</button>
+                      <button className="Listado-Boton-Detalle-cohorte">Detalle</button>
                     </Link>
                   </td>
                 </tr>

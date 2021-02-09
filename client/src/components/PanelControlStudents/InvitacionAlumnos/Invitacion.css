@@ -5,6 +5,12 @@
     padding: 22px 0px;
 }
 
+#texto-sube-lista{
+    text-decoration: none;
+
+}
+
+
 thead p {
     color: whitesmoke;
     font-family: 'Roboto', sans-serif;

@@ -3,6 +3,7 @@ import "./Activos.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsersbyCohorte } from "../../Store/Actions/Users";
 import { getCohorte } from "Store/Actions/Cohortes";
+import SearchBar from "../PanelControlStudents/searchBar"
 
 function Inactivos(props: any) {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function Inactivos(props: any) {
           </div>
           <div className="Listado-Container">
             <h3>Alumnos</h3>
+            <div>
+            <SearchBar id={id}/>
+            </div>
             <div className="Activos-Table">
               <table className="Activos-Table">
                 <tbody>

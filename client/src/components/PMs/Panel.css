@@ -1,0 +1,65 @@
+.Panel-Body {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    max-width: 100%;
+}
+
+.Panel-Sub {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Panel-Participa {
+    width: 30px;
+    margin-left: 5px;
+}
+
+.Panel-Table-Container {
+    max-width: 100vw;
+    overflow-x: auto;
+    border: 1px solid black;
+    padding: 0;
+}
+
+.Panel-Table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.Panel-Table th,
+.Panel-Table td {
+    border: 1px solid lightgray;
+    min-width: 120px;
+    padding: 0.5rem;
+}
+
+.Panel-Table td {
+    text-align: left;
+}
+
+.Panel-Table thead th {
+    background-color: black;
+    color: white;
+}
+
+.Panel-Table tbody tr {
+    background-color: white;
+}
+
+.Panel-Table tbody tr:nth-child(2n) {
+    background-color: rgb(233, 233, 233);
+}
+
+.Panel-Sticky {
+    position: sticky;
+    left: 0;
+}
+
+.Panel-Table tbody tr .Panel-Sticky {
+    background-color: white;
+}
+
+.Panel-Table tbody tr:nth-child(2n) .Panel-Sticky {
+    background-color: rgb(233, 233, 233);
+}

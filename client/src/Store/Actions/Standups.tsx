@@ -6,8 +6,8 @@ import {
   POST_PM,
   PUT_STANDUPS,
   ERROR_MESSAGE,
+  GET_STANDUP_BY_USER,
 } from "../Constants/Standups";
-import { DefaultRootState } from "react-redux";
 import axios from "axios";
 
 
@@ -105,6 +105,21 @@ export const delStandup = (id: any) => async (dispatch: any) => {
     dispatch({
       type: ERROR_MESSAGE,
       payload: "Error al eliminar grupo"
+    })
+  }
+}
+
+export const getStadupByUser = (pmId: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.get(`${url}/standup/search/${pmId}`);
+    dispatch({
+      type: GET_STANDUP_BY_USER,
+      payload: res.data
+    })
+  } catch(e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      payload: "No se encontró el standup"
     })
   }
 }

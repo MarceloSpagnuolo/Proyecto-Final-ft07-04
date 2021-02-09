@@ -8,6 +8,12 @@
     transition: background-color 250ms ease;
   }
   
-  .app__btn:hover {
-    background-color: rgb(255, 196, 1);
-  }
+.app__btn:hover {
+  background-color: rgb(255, 196, 1);
+}
+
+.profileContent{
+  width: 30%;
+}
+
+

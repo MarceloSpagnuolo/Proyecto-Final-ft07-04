@@ -16,6 +16,10 @@ import {
   PUT_NOTAS,
   GET_USER_EDIT,
   UPDATE_USER_PASSWORD,
+  POST_COHORTE_TO_USER,
+  SEARCH_GITHUB,
+  PUT_ASISTENCIA,
+  PUT_PARTICIPA,
 } from "../Constants/Users";
 const url = "http://localhost:3001";
 
@@ -150,10 +154,25 @@ export const usersGroup = (id: any) => async (dispatch: any) => {
   }
 };
 
+export const alumnosGroup = (id: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.get(`${url}/users/groupAlumnos/${id}`);
+    dispatch({
+      type: USERS_GROUP,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Problemas para traer usuarios",
+    });
+  }
+};
+
 export const SearchByName = (payload: any) => async (dispatch: any) => {
   try {
     const res = await axios.get(
-      `${url}/users/search?firstname=${payload[0]}&lastname=${payload[1]}`
+      `${url}/users/search?firstname=${payload[0]}&lastname=${payload[1]}&id=${payload.pop()}`
     );
     dispatch({
       type: SEARCH_BY_NAME,
@@ -166,6 +185,22 @@ export const SearchByName = (payload: any) => async (dispatch: any) => {
     });
   }
 };
+
+export const searchGithub = (payload: any) => async (dispatch:any) => {
+  try {
+    const res = await axios.get(
+      `${url}/users/searchgithub?git=${payload}`);
+      dispatch({
+        type: SEARCH_GITHUB,
+        payload: res.data,
+      });
+  } catch(e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Problemas para buscar alumno",
+    });
+  }
+}
 
 export const putNotas = (historiaId: any, payload: any) => async (
   dispatch: any
@@ -184,7 +219,7 @@ export const putNotas = (historiaId: any, payload: any) => async (
   }
 };
 
-export const updatePassword = (data:Object) => async (dispatch: any) => {
+export const updatePassword = (data: Object) => async (dispatch: any) => {
   try {
     const res = await axios.put(`${url}/users/change_password`, data);
     dispatch({
@@ -201,8 +236,8 @@ export const updatePassword = (data:Object) => async (dispatch: any) => {
 
 //obtener datos para el perfil de un usuario
 
-export const getUsereEdit = (id:string) => async (dispatch: any) => {
-  
+export const getUsereEdit = (id: string) => async (dispatch: any) => {
+
   try {
     const res = await axios.get(`${url}/users/${id}`);
     await dispatch({
@@ -219,16 +254,16 @@ export const getUsereEdit = (id:string) => async (dispatch: any) => {
 
 
 //actualizar usuario 
-export const updateUser = (data:Object) => async (dispatch: any) => {
-  
+export const updateUser = (data: Object) => async (dispatch: any) => {
+
   try {
-    const res = await axios.put(`${url}/users/editprofile`,data);
-    
+    const res = await axios.put(`${url}/users/editprofile`, data);
+
     await dispatch({
       type: PUT_USERS,
       payload: res.data,
     });
-    if(res.data.token){
+    if (res.data.token) {
       dispatch(getUserByToken(res.data.token))
       //localStorage.setItem("userToken", res.data.token);
     }
@@ -239,3 +274,49 @@ export const updateUser = (data:Object) => async (dispatch: any) => {
     });
   }
 };
+
+//Asignar cohorte a un alumno sin
+export const postCohorteToUser = (us: any, payload: any) => async (dispatch: any) => {
+
+  try {
+    await axios.post(`${url}/users/assignCohorte/${us._id}`, payload)
+
+  } catch (e) {
+    dispatch({
+      type: ERROR_MESSAGE,
+      message: "Problema al asignarle cohorte al usuario",
+    });
+  }
+}
+
+export const putAsistencia = (historiaId: any, payload: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.put(`${url}/users/asistencia/${historiaId}`, payload);
+    dispatch({
+      type: PUT_ASISTENCIA,
+      payload: res.data
+    });
+  } catch(e) {
+dispatch({
+      type: ERROR_MESSAGE,
+      payload: "No se pudo actualizar la asistencia"
+    });
+  };
+};
+
+export const putParticipa = (historiaId: any, payload: any) => async (dispatch: any) => {
+  try {
+    const res = await axios.put(`${url}/users/participa/${historiaId}`, payload);
+    dispatch({
+      type: PUT_PARTICIPA,
+      payload: res.data
+    });
+  } catch(e) {
+dispatch({
+      type: ERROR_MESSAGE,
+      payload: "No se pudo actualizar la participación"
+    });
+  };
+};
+
+

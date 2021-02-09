@@ -74,8 +74,8 @@ const Registro = (props: any): JSX.Element => {
         src="https://cdn.discordapp.com/attachments/764979688446885898/803742896964370432/fondo.png"
         alt=""
       />
-      <div className="divContainerRegistro">
-        <h1 className="titleRegistro">REGISTRO</h1>
+      {/* <div className="divContainerRegistro">
+        <h1 className="titleRegistro">REGISTRO</h1> */}
         {/* <form className=""> */}
         <Formik 
           initialValues={ initialValues }
@@ -83,8 +83,6 @@ const Registro = (props: any): JSX.Element => {
             var errors: { [k: string]: any } = {};
             const regPass = (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/.test(values.password));
             const regGithub = values.githubId.length > 0 ? await axios.get(`${url}/users/github/${values.githubId}`) : {data: false};
-            console.log(values.githubId.length, regGithub.data)
-            /////////////
             if(values.firstname.length === 0) errors.firstname="Debe ingresar su nombre";
             if(values.lastname.length === 0) errors.lastname="Debe ingresar su apellido";
             if(values.password.length === 0) {
@@ -116,7 +114,8 @@ const Registro = (props: any): JSX.Element => {
         >
         {({ isSubmitting, isValid }) => (
           <>
-            <Form>
+            <Form className="divContainerRegistro"> 
+            <h1 className="titleRegistro">REGISTRO</h1>
             <div className="nombreRegisto">
               <Field
                 autoFocus={true}
@@ -198,7 +197,7 @@ const Registro = (props: any): JSX.Element => {
         </>
         )}
         </Formik>
-      </div>
+      {/* </div> */}
     </>
   );
 };
