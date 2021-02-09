@@ -14,15 +14,17 @@
     max-width: 100%;    
     font-family: 'Roboto', sans-serif;
     font-size: 4.5rem;
+    line-height: 4rem;
     color: #252525;
     margin-top: 3%;
     margin-left: 5%;
+    margin-bottom: 5%;
 }
 
 #grupos-contenedor h2{   
     margin-left: 5%;
     font-family: 'Roboto', sans-serif;
-    font-size: 3.05rem;
+    font-size: 2.44rem;
     max-width: 100%;
     color: #252525;
 }
@@ -32,7 +34,7 @@
     margin-left: 5%;
     margin-bottom: 2.5%;
     font-family: 'Roboto', sans-serif;
-    font-size: 1.95rem;
+    font-size: 1.563rem;
     max-width: 100%;
     color: #313131;
     line-height: 2.9rem;
@@ -144,11 +146,25 @@ font-weight: 800;
 }
 
 #bot-but span {
-    color: rgb(198, 196, 196);
+    color: white;
     font-size: smaller;
-    font-weight: lighter;
+    font-weight: 400;
     line-height: 15px;
     padding: 5px;
+}
+
+#bot-but button {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #313131;
+    width: 33%;       
+    height: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50px;
+    border: none;
+    background-color: #F6DE00;
+    cursor: pointer;
 }
 
 #grupo-texto-contendor {

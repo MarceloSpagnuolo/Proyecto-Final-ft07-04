@@ -162,7 +162,7 @@
 
 #add-students-interface {
     display: grid;
-    grid-template: 1fr / 1fr 6fr 2fr;
+    grid-template: 1fr / 15% 60% 25%;
 }
 
 .divAddAlRespon {
