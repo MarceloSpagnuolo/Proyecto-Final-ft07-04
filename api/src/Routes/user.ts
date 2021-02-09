@@ -616,7 +616,7 @@ router.put("/newPassReturn", async (req, res) => {
       })
     });
   });
-
+});
 
 router.put("/update/img_profile", async ( req, res ) => {
   const { id,img } = req.body;
