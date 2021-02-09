@@ -7,8 +7,8 @@ apiKey: process.env.MAILGUN_KEY,
 domain: process.env.MAILGUN_DOMAIN,
 });
 
-function Registro(email: string, msj: string) {
-  const token = jwt.sign({ email }, process.env.SECRET, { expiresIn: 259200 });
+function Registro(email: string, msj: string, cohorte: any) {
+  const token = jwt.sign({ email, cohorte }, process.env.SECRET, { expiresIn: 259200 });
 
   var modelEmail = fs.readFileSync(
     "./src/mailmodel/Registro.html",

@@ -30,7 +30,7 @@ export const sendInvitation = (payload: any) => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      payload: "Error al invitar alumnos",
+      message: "Error al invitar alumnos",
     });
   }
 };
@@ -45,15 +45,19 @@ export const getStudents = (id: any) => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      payload: "Error al traer alumnos",
+      message: "Error al traer alumnos",
     });
   }
 };
 
-export const postUser = (payload: any) => async (dispatch: any) => {
+export const postUser = (payload: any, estado: any) => async (dispatch: any) => {
+  payload.email = estado.email;
+  payload.cohorte = estado.cohorte;
   try {
     const res = await axios.post(`${url}/users/register`, payload);
     if (res) {
+      console.log(res.data, "SOY EL RES DATA DEL REGISTRO")
+      await axios.post(`${url}/historia`, { userId: res.data._id, cohorteId: res.data.cohorte});
       const { email, password } = payload;
       const datos = { email, password };
       const newToken = await axios.post(`${url}/auth/login`, datos);
@@ -71,7 +75,7 @@ export const postUser = (payload: any) => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      payload: "Problemas al registrar el usuario",
+      message: "Problemas al registrar el usuario",
     });
   }
 };
@@ -118,7 +122,7 @@ export const deleteUserCohorte = (id: any) => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      message: "Problemas para crear el usuario",
+      message: "Problemas para borrar el usuario",
     });
   }
 };
@@ -300,7 +304,7 @@ export const putAsistencia = (historiaId: any, payload: any) => async (dispatch:
   } catch(e) {
 dispatch({
       type: ERROR_MESSAGE,
-      payload: "No se pudo actualizar la asistencia"
+      message: "No se pudo actualizar la asistencia"
     });
   };
 };
@@ -315,7 +319,7 @@ export const putParticipa = (historiaId: any, payload: any) => async (dispatch: 
   } catch(e) {
 dispatch({
       type: ERROR_MESSAGE,
-      payload: "No se pudo actualizar la participación"
+      message: "No se pudo actualizar la participación"
     });
   };
 };

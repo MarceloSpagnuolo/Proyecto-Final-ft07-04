@@ -71,6 +71,7 @@ router.post("/register", async (req, res) => {
     role,
     email,
     password,
+    cohorte,
   } = req.body;
 
   try {
@@ -79,7 +80,7 @@ router.post("/register", async (req, res) => {
     if (usuario) {
       return res
         .status(400)
-        .json({ success: false, msg: "El usuario ya existe" });
+        .send("El usuario ya existe");
     }
     //crear nuevo usuario
     usuario = new User({
@@ -88,6 +89,7 @@ router.post("/register", async (req, res) => {
       password,
       thumbnail,
       role,
+      cohorte,
     });
 
     //guardar usuario
@@ -292,7 +294,7 @@ async function getUser(username: any) {
     );
     return response;
   } catch (error) {
-    alert(error);
+    console.log(error);
   }
 }
 
@@ -300,7 +302,7 @@ async function getUser(username: any) {
 router.get('/github/:username', async (req, res) => {
   let { username } = req.params;
 
-  const userStatus = username !== undefined ? await getUser(username) : username;
+  const userStatus = await getUser(username);
 
   userStatus === undefined
     ? res.send(false).status(200)
@@ -550,13 +552,10 @@ router.get('/:id', async (req, res) => {
 router.post("/assignCohorte/:id", async (req, res) => {
   const { id } = req.params;
   const { nvoCohorte } = req.body;
-  var cohorte = await Cohorte.findOne({ Nombre: nvoCohorte })
-  if (cohorte) {
-    var usuario = await User.findOneAndUpdate({ _id: id }, { cohorte: cohorte._id }, { upsert: true })
-    !usuario ? res.sendStatus(400) : res.json(usuario)
-  } else {
-    res.sendStatus(400)
-  }
+  
+  var usuario = await User.findOneAndUpdate({ _id: id }, { cohorte: nvoCohorte }, { upsert: true })
+  !usuario ? res.sendStatus(400) : res.json(usuario)
+  
  });
 
 router.put("/asistencia/:historiaId", async ( req, res) => {
