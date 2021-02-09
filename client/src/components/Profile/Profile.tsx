@@ -100,8 +100,9 @@ const Profile = (): JSX.Element => {
                         
 
                         const { _id, name, email, cohorte, standup } = userToEdit;
-                        if (typeof userToEdit.cohorte !== 'undefined') var cohorteNombre = cohorte.Nombre;
-                        if (typeof userToEdit.standup !== 'undefined') var standupNombre = standup.Grupo;
+                        
+                        if (typeof userToEdit.cohorte !== 'undefined' && cohorte) var cohorteNombre = cohorte.Nombre;
+                        if (typeof userToEdit.standup !== 'undefined' && standup) var standupNombre = standup.Grupo ;
                         setuserId(_id);
                         setInputs({
                             id: _id,
