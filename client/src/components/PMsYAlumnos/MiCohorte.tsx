@@ -1,7 +1,7 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import "./MiCohorte.css";
 import { useDispatch, useSelector } from "react-redux";
-import {  getUsersbyCohorte } from "../../Store/Actions/Users";
+import { getUsersbyCohorte } from "../../Store/Actions/Users";
 import { getCohorte } from "Store/Actions/Cohortes";
 import SearchBar from "../PanelControlStudents/searchBar"
 
@@ -18,7 +18,7 @@ function MiCohorte(props: any) {
   }, []);
 
   useEffect(() => {
-    if(user.cohorte && user.cohorte._id !== id) {
+    if (user.cohorte && user.cohorte._id !== id) {
       window.location.href = "/home"
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,22 +26,26 @@ function MiCohorte(props: any) {
 
 
   return (
-  <>
+    <>
       <div className="MiCohorte-Container">
-        <h2>Mi Cohorte</h2>
-        <span>Cohorte: {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</span>
-        <br />
-        <div>
-          <span>Inicio: {cohorte && cohorte.length > 0 && cohorte[0].Start}</span>
-        </div>
-        <br />
-        <div>
-          <span>Instructor: {cohorte && cohorte.length > 0 && cohorte[0].Instructor !== null &&
-            cohorte[0].Instructor.name.firstname + " " + cohorte[0].Instructor.name.lastname}</span>
-        </div>
-        <br />
-        <div>
-          <span>Alumnos: {users.length}</span>
+        <h2 id='mi-cohorte-titulo'>Mi Cohorte</h2>
+        <div id='mi-cohorte-header'>
+          <div id='mi-cohorte-subtitulos'>
+            <p id='mi-cohorte-instructor'>Cohorte: </p>
+            {cohorte && cohorte.length > 0 && cohorte[0].Nombre}
+
+            <div>
+              <p>Inicio: {cohorte && cohorte.length > 0 && cohorte[0].Start}</p>
+            </div>
+            <div>
+              <p>Alumnos: {users.length}</p>
+            </div>
+          </div>
+          <div id='mi-cohorte-contenedor-instructor'>
+            <p id='mi-cohorte-instructor'>Instructor: </p>{cohorte && cohorte.length > 0 && cohorte[0].Instructor !== null &&
+              cohorte[0].Instructor.name.firstname + " " + cohorte[0].Instructor.name.lastname}
+          </div>
+
         </div>
         <div>
             <SearchBar id={id}/>
@@ -75,7 +79,7 @@ function MiCohorte(props: any) {
                         </td>
                         <td className="Listado-Td" id="Prueba22">
                           {elem.github}
-                        </td>                        
+                        </td>
                       </tr>
                     ) : null;
                   })}

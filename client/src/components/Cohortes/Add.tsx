@@ -59,14 +59,14 @@ function Add() {
             {({ isSubmitting, isValid }) => (
               <>
                 <div className="Add-Cohorte-Body">
-                  <h2 className="Add-Cohorte-Title">Nuevo Cohorte</h2>
+                  <h2 className="Add-Cohorte-Title">Crea Un Nuevo Cohorte</h2>
                   <p className="Add-Frase">
                     Agrega a la base de datos a los nuevos integrantes de HENRY.
                   </p>
                   <Form className="Add-Form">
                     <div className="Add-Form-Campos">
                       <label htmlFor="Add" className="Add-Form-Label">
-                        * Próxima Cohorte
+                        * Próximo Cohorte
                       </label>
                       <br />
                       <Field
@@ -82,7 +82,7 @@ function Add() {
                       </ErrorMessage>
                     </div>
                     <div className="Add-Form-Campos">
-                      <label htmlFor="Add" className="Add-From-Label">
+                      <label htmlFor="Add" className="Add-Form-Label">
                         * Fecha de Inicio
                       </label>
                       <br />
@@ -97,7 +97,7 @@ function Add() {
                         )}
                       </ErrorMessage>
                     </div>
-                    <span>* Campos obligatorios</span>
+                    <span id='campos-obligatorios-nuevo-cohorte'>* Campos obligatorios</span>
                     <br />
                     <button
                       type="submit"

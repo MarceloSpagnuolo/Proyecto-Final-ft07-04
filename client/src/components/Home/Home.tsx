@@ -21,24 +21,29 @@ const Home = () => {
     return (user.role === "admin" || user.role === "instructor") ? (
         // LOGICA PARA RENDERIZAR LO QUE VE EL ADMIN
         <div id='fondo-amarillo'>
+            <div id='blank-space'></div>
             <div id='fondo-blanco'>
                 <img id="foto-header" src={topImg} alt="banner superior" />
                 <div id='contenido-home'>
                     <div id='titulo-home'>
-                        <h4>ESTA ES LA HENRY APP</h4>
                         <h2>Gestiona Tus Cohortes y Alumnos</h2>
+                        <h4>Bienvenid@ al Henry manager</h4>
+                        <h3>Henry Manager te permite hacer seguimiento a tus estudiantes, revisar su desempeño, y organizar a los futuros henrys en grupos de estudio</h3>
                     </div>
-                    <div id='panel-estudiantes'>
-                        <p>Para gestionar alumnos puedes hacer click en el botón, o acceder a través de la barra de navegacion</p>
-                        <Link rel="stylesheet" to="/PanelControlStudent">
-                            <button id='home-estudiantes-boton' onClick={() => PanelControlStudents}>Panel Alumnos</button>
-                        </Link>
-                    </div>
-                    <div id='panel-cohortes'>
-                        <p id="home-estudiantes-h4-instrucciones">Para administrar cohortes haz click en el botón o usa los controles de la barra de navegacion</p>
-                        <Link rel="stylesheet" to="/Cohortes">
-                            <button id='home-estudiantes-boton' onClick={() => Cohortes}>Panel cohortes</button>
-                        </Link>
+                    <div id='home-paneles'>
+                        <div id='panel-estudiantes'>
+                            <p>Para gestionar alumnos puedes hacer click en el botón, o acceder a través de la barra de navegacion</p>
+                            <Link rel="stylesheet" to="/PanelControlStudent">
+                                <button id='home-estudiantes-boton' onClick={() => PanelControlStudents}>Panel Alumnos</button>
+                            </Link>
+                        </div>
+                        <div id='panel-cohortes'>
+                            <p id="home-estudiantes-h4-instrucciones">Para administrar cohortes haz click en el botón o usa los controles de la barra de navegacion</p>
+                            <Link rel="stylesheet" to="/Cohortes">
+                                <button id='home-estudiantes-boton' onClick={() => Cohortes}>Panel cohortes</button>
+                            </Link>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -78,9 +83,10 @@ const Home = () => {
             // LOGICA PARA RENDERIZAR LO QUE VE EL ALUMNO
             : (user.role === "alumno") ?
                 <div id='fondo-amarillo'>
+                    <br></br>
                     <div id='fondo-blanco'>
                         <img id="foto-header" src={topImg} alt="banner superior" />
-                        <div id='contenido-home'>
+                        <div id='contenido-home-estudiantes'>
                             <div id='titulo-home'>
                                 <h4>ESTA ES LA HENRY APP</h4>
                                 <h2>Gestiona Tu Avance Como Alumno</h2>

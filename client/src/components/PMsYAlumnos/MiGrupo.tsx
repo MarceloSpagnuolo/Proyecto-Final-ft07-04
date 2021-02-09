@@ -22,7 +22,7 @@ const MiGrupo = (props: any): JSX.Element => {
 
 
     return (
-        <div className="divsoteGroupAdd">
+        <div id="mi-grupo-fondo-amarillo">
             <div id='cabezote-mi-grupo'>
                 <div>
                     <h1 className="titleG">
@@ -30,7 +30,7 @@ const MiGrupo = (props: any): JSX.Element => {
                         Grupo {!!Grupo && Grupo.length > 0 && Grupo[0].Grupo}
                     </h1>
                     <h3 className="subTitleG">
-                        Este es el grupo de standup al que perteneces, aqui podras encontrar a tus PM's y compañeros
+                        Este es el grupo de standup al que perteneces, aqui podras encontrar a tus PM's y compañeros, El camino que te espera en Henry no es fácil,  afortunadamente cuentas con tus compañeros, ellos seran los mejores aliados en los proximos meses
                     </h3>
                 </div>
                 <div id='container-seccion-mis-pms'>
@@ -52,8 +52,8 @@ const MiGrupo = (props: any): JSX.Element => {
             </div>
             <div id='grilla-companeros'>
 
-                <hr id='linea-horizontal' />
-                <p> <span id='camino-henry'>El camino que te espera en Henry no es fácil,</span>  afortunadamente cuentas con tus compañeros, ellos seran los mejores aliados en los proximos meses</p>
+
+
                 <div id='alumnos-grupo'>
                     {!!alumnos && alumnos.map((a: any) => {
                         if (a.role === "alumno") {

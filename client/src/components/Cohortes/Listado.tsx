@@ -16,6 +16,7 @@ function Listado(props: any) {
   return (
     <div className="Listado-Container">
       <h2>Cohortes Activos</h2>
+
       <table className="Listado-Table">
         <tbody>
           <tr>
@@ -45,7 +46,7 @@ function Listado(props: any) {
                   </td>
                   <td className="Listado-Td">
                     <Link to={`/activos/${elem._id}`}>
-                      <button className="Listado-Boton">Detalle</button>
+                      <button className="Listado-Boton-Detalle-cohorte">Detalle</button>
                     </Link>
                   </td>
                 </tr>

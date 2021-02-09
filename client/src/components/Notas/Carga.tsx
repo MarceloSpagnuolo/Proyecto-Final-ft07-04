@@ -43,7 +43,7 @@ function Carga() {
     const cohorteId = datos[0];
     const checkpoint = datos[1];
     const dato = datos[2];
-    dispatch(changeTests(cohorteId, {checkpoint, dato, valor: e.target.value}));
+    dispatch(changeTests(cohorteId, { checkpoint, dato, valor: e.target.value }));
 
   }
 
@@ -100,7 +100,7 @@ function Carga() {
           </div>
           {cohorte && cohorte.length > 0 && (
             <div className="Carga-CP">
-              <span>
+              <span className='carga-texto-caja-negra'>
                 Checkpoint 1: Tests:{" "}
                 <input
                   defaultValue={cohorte[0].Checkpoints.CP1.totalTests}
@@ -114,7 +114,7 @@ function Carga() {
                   name={cohorte[0]._id + "/CP1/testsReq"}
                   id="Carga-Nro" type="number" />
               </span><br />
-              <span>Checkpoint 2: Tests:{" "}
+              <span className='carga-texto-caja-negra'>Checkpoint 2: Tests:{" "}
                 <input
                   defaultValue={cohorte[0].Checkpoints.CP2.totalTests}
                   onChange={(e) => handleTests(e)}
@@ -127,7 +127,7 @@ function Carga() {
                   name={cohorte[0]._id + "/CP2/testsReq"}
                   id="Carga-Nro" type="number" />
               </span><br />
-              <span>Checkpoint 3: Tests:{" "}
+              <span className='carga-texto-caja-negra'>Checkpoint 3: Tests:{" "}
                 <input
                   defaultValue={cohorte[0].Checkpoints.CP3.totalTests}
                   onChange={(e) => handleTests(e)}
@@ -140,7 +140,7 @@ function Carga() {
                   name={cohorte[0]._id + "/CP3/testsReq"}
                   id="Carga-Nro" type="number" />
               </span><br />
-              <span>Checkpoint 4: Tests:{" "}
+              <span className='carga-texto-caja-negra'>Checkpoint 4: Tests:{" "}
                 <input
                   defaultValue={cohorte[0].Checkpoints.CP4.totalTests}
                   onChange={(e) => handleTests(e)}

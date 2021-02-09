@@ -25,7 +25,7 @@ function Activos(props: any) {
   const [disponibles, setDisp] = useState([]);   //Cohortes disponibles
   const [migra, setMigra] = useState({ alumnoId: "", nombre: "" });
   const [nvoCohorte, setCohorte] = useState(""); //Variable para seleccionar un nuevo cohorte al alumno
-  const [nroCohorte, setNroCohorte ] = useState("");
+  const [nroCohorte, setNroCohorte] = useState("");
   const [showInst, setInst] = useState(false);   //Variable para mostrar el modal par asignar instructor
   const [nvoInst, setNvoInst] = useState("");  //Variable para el nuevo Instructor
   const [instDisp, setInstDisp] = useState([]); //Instructores disponibles
@@ -79,7 +79,7 @@ function Activos(props: any) {
   async function handleSubmit(e: any) {
     e.preventDefault();
     dispatch(migrarUserCohorte(migra.alumnoId, nvoCohorte));
-    await axios.post(`${url}/historia`, {userId: migra.alumnoId, cohorteId: nroCohorte});
+    await axios.post(`${url}/historia`, { userId: migra.alumnoId, cohorteId: nroCohorte });
     Swal.fire(
       "Migrado!",
       `${migra.nombre} ha sido migrado al cohorte ${nvoCohorte}.`,
@@ -129,7 +129,7 @@ function Activos(props: any) {
           <div className="Listado-Container-Select">
             <select name="select" className="Listado-Select" onChange={(e) => handleOnchange(e)}>
               <option value="">Seleccionar Cohorte</option>
-              {disponibles.map((elem: any) => <option value={elem.Nombre+"/"+elem._id}>{elem.Nombre} - Inicio: {elem.Start}</option>)
+              {disponibles.map((elem: any) => <option value={elem.Nombre + "/" + elem._id}>{elem.Nombre} - Inicio: {elem.Start}</option>)
               }
             </select>
           </div>
@@ -160,41 +160,46 @@ function Activos(props: any) {
       </Modal>
       <div className="Activos-Container">
         <div id="nd">
-        <h2>Cohorte Activo</h2>
-        <span className="Activos-span">Cohorte: {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</span>
-        <br />
-        <div>          
-          <span className="Activos-span">Inicio: {cohorte && cohorte.length > 0 && cohorte[0].Start}</span>
-        </div>
-        <br />
-        <div>          
-          <span>Instructor: {cohorte && cohorte.length > 0 && cohorte[0].Instructor !== null &&
-            cohorte[0].Instructor.name.firstname + " " + cohorte[0].Instructor.name.lastname}</span>
-          <button className="Activos-Boton" onClick={() => cambiaInst()}>Cambiar/Cargar</button>
-        </div>
-        <br />
-        <div>          
-          <span className="Activos-span">Grupos</span>
-          <Link to={`/grupos/${id}`}>
-          <button className="Activos-Boton">Ir al grupo</button>
-          </Link>
-        </div>        
-        <div>
-          <span>Alumnos: {users.length}</span>
-        </div>
-        <div>
-            <SearchBar id={id}/>
-        </div>        
-        <div className="Listado-Container">
-          <h3 className="Activos-h3">Alumnos</h3>
-          <div className="Activos-Table">
-            <table className="Activos-Table">
-              <tbody>
-                <tr>
-                  <th className="Listado-Th">Nombre</th>
-                  <th className="Listado-Th">Email</th>
-                  <th className="Listado-Th" id="Prueba">
-                    Alta
+          <h2>Cohorte Activo</h2>
+          <span className="Activos-span">Cohorte: {cohorte && cohorte.length > 0 && cohorte[0].Nombre}</span>
+
+          <div>
+            <span className="Activos-span">Inicio: {cohorte && cohorte.length > 0 && cohorte[0].Start}</span>
+          </div>
+          <div>
+            <span className="Activos-span">Alumnos: {users.length}</span>
+          </div>
+          <div id='activos-container-instructor-grupo'>
+            <div>
+              <span className="Activos-span">
+                <p id='activos-instructor'>Instructor: </p>
+                {cohorte && cohorte.length > 0 && cohorte[0].Instructor !== null &&
+                  cohorte[0].Instructor.name.firstname + " " + cohorte[0].Instructor.name.lastname}</span>
+              <button className="Activos-Boton" onClick={() => cambiaInst()}>Cambiar/Cargar</button>
+            </div>
+
+            <div>
+              <span className="Activos-span"><p id='activos-cohorte-grupos'>Grupos</p></span>
+              <Link to={`/grupos/${id}`}>
+                <button className="Activos-Boton">Ir al grupo</button>
+              </Link>
+            </div>
+          </div>
+          <hr></hr>
+          <div className="Listado-Container">
+            <h3 className="Activos-h3">Alumnos</h3>
+            <div>
+              <SearchBar id={id} />
+            </div>
+            <br></br>
+            <div className="Activos-Table">
+              <table className="Activos-Table">
+                <tbody>
+                  <tr>
+                    <th className="Listado-Th">Nombre</th>
+                    <th className="Listado-Th">Email</th>
+                    <th className="Listado-Th" id="Prueba">
+                      Alta
                 </th>
                     <th className="Listado-Th" id="Prueba">
                       StandUp
@@ -217,7 +222,7 @@ function Activos(props: any) {
                           </td>
                           <td className="Listado-Td">
                             <button
-                              className="Listado-Boton"
+                              id="activo-boton-quitar"
                               onClick={() =>
                                 handleDel(
                                   elem._id,
@@ -230,7 +235,7 @@ function Activos(props: any) {
                           </td>
                           <td className="Listado-Td">
                             <button
-                              className="Listado-Boton"
+                              id="activo-boton-migrar"
                               onClick={() =>
                                 handleMig(
                                   elem._id,

@@ -1,6 +1,31 @@
+
+#rendimiento-fondo-amarillo {
+    background-color: #F6DE00;    
+    height: auto;
+    min-height: 77vh;
+    padding: 3%;
+    font-family: 'Roboto', sans-serif;
+}
+
+#rendimiento-titulo{
+    font-size: 3rem;
+}
+
 .rend-container {
-    border: 2px solid black;
-    border-radius: 15px;
+    border: none;
+    border-radius: 8px;
+    width: auto;
+    height: auto;
+    background-color: rgb(245, 245, 245);
+
+    padding: 2%;
+    border-radius: 1rem;
+    color: #313131;
+    box-shadow: 5px 5px 30px #c7181838;
+    margin: 2% 5%;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 .rend-table {
@@ -11,7 +36,7 @@
 
 .rend-table-titles {
     color: white;
-    background-color: #0f6151;
+   ;
 }
 
 #rend-table-tr:nth-child(even) {
