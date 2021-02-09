@@ -16,12 +16,14 @@ import Rendimiento from "./components/PMsYAlumnos/Rendimiento"
 import Profile from './components/Profile/Profile'
 import MiGrupo from "./components/PMsYAlumnos/MiGrupo"
 import Panel from "components/PMs/Panel";
+import ResetPassEmail from "./components/Profile/ResetPassEmail"
 
 function App() {
   return (
     <>
       <Nav />
       <Route exact path='/' component={Login} />
+      <Route exact path='/newPass/Return' component={ResetPassEmail} />
       <Route exact path='/MiCohorte/:id' component={MiCohorte} />
       <Route exact path='/MisDatos/:id' component={Rendimiento} />
       <Route exact path='/Home' component={Home} />

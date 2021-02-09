@@ -3,6 +3,7 @@ import "./MiCohorte.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsersbyCohorte } from "../../Store/Actions/Users";
 import { getCohorte } from "Store/Actions/Cohortes";
+import SearchBar from "../PanelControlStudents/searchBar"
 
 function MiCohorte(props: any) {
   const dispatch = useDispatch();
@@ -46,9 +47,10 @@ function MiCohorte(props: any) {
           </div>
 
         </div>
-
-
-        <div id="MiCohorte-listado-Container">
+        <div>
+            <SearchBar id={id}/>
+        </div>
+        <div className="MiCohorte-Container">
           <h3>Alumnos</h3>
           <div className="MiCohorte-Table">
             <table className="MiCohorte-Table">

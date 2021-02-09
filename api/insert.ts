@@ -151,7 +151,7 @@ export default async function Insert() {
       _id: "600b9852935003272c8b6101",
       name: { firstname: "Alan", lastname: "Casella" },
       role: "alumno",
-      email: "alan@gmail.com",
+      email: "alan.daniel.casella@gmail.com",
       password: "NoMerobenp1z",
       github: "AlanCasella",
       created: new Date(),
