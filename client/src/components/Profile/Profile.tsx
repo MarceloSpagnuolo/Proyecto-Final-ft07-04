@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updatePassword, getUsereEdit, updateUser, getUserByToken } from '../../Store/Actions/Users';
+import { updatePassword, getUsereEdit, updateUser, getUserByToken, makeUserEditable } from '../../Store/Actions/Users';
 import { Modal } from "./modal";
 import {File} from "./File"
 import "./Profile.css";
@@ -42,6 +42,7 @@ const Profile = (): JSX.Element => {
     const updatePass = async (data: any) => dispatch(updatePassword(data));
     const getUser = async (id: string) => dispatch(getUsereEdit(id));
     const modifyUser = async (data: any) => dispatch(updateUser(data));
+    const makeEditable = async (id: string) => dispatch(makeUserEditable(id));
     const userToEdit = useSelector((state: any) => state.Users.userToEdit.usersCOM);
 
 
@@ -62,7 +63,7 @@ const Profile = (): JSX.Element => {
                     }
                     setuserId(id)
                     //habilitar edicion de todos los campos solo para el admin
-                    if (getProfile.role === 'admin') {
+                    if (getProfile.role === 'admin' || userToEdit && userToEdit.editable === true) {
                         setinputDisabled(false)
                     }
                     getUserEdit(id)
@@ -217,6 +218,9 @@ const Profile = (): JSX.Element => {
         )
 
     }
+    const activateEdition = async () => {
+        await makeEditable(id);
+    }
 
     return (
         <div className="profileContent">
@@ -267,9 +271,48 @@ const Profile = (): JSX.Element => {
                             type="submit"
                         >
                             Actualizar datos
-                    </button>
+                        </button>
                     </div>
                     : null
+                }
+                {
+                    userToEdit && userToEdit.editable === true && (userToEdit.role === 'alumno' || userToEdit.role === 'PM') && getProfile.role !== 'admin' ?
+                        <div className="divBtnLogin">
+                            <button
+                                className={'app__btn'}
+                                type="submit"
+                            >
+                                Actualizar datos
+                            </button>
+                        </div>
+                        : null
+                }
+                {
+                    //userToEdit && (userToEdit.role === 'alumno' || userToEdit.role === 'PM') && getProfile.role === 'admin'  ? 
+
+                    (getProfile.role === 'admin' && id !== 'miPerfil')
+                        ? (userToEdit && userToEdit.editable === true ?
+                            <div className="divBtnLogin">
+                                <button
+                                    className={'app__btn'}
+                                    type="button"
+                                    onClick={activateEdition}
+                                >
+                                    Deshabilitar edición
+                                </button>
+                            </div>
+                            :
+                            <div className="divBtnLogin">
+                                <button
+                                    className={'app__btn'}
+                                    type="button"
+                                    onClick={activateEdition}
+                                >
+                                    Habilitar edición
+                                </button>
+                            </div>
+                            )
+                        : null
                 }
                 <div className="divBtnLogin">
                     <button
