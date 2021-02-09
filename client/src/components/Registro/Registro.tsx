@@ -77,8 +77,7 @@ const Registro = (props: any): JSX.Element => {
         src="https://cdn.discordapp.com/attachments/764979688446885898/803742896964370432/fondo.png"
         alt=""
       />
-      <div className="divContainerRegistro">
-        <h1 className="titleRegistro">REGISTRO</h1>
+
         {/* <form className=""> */}
         <Formik 
           initialValues={ initialValues }
@@ -118,7 +117,8 @@ const Registro = (props: any): JSX.Element => {
         >
         {({ isSubmitting, isValid }) => (
           <>
-            <Form>
+            <Form className="divContainerRegistro">
+            <h1 className="titleRegistro">REGISTRO</h1>
             <div className="nombreRegisto">
               <Field
                 autoFocus={true}
@@ -200,7 +200,6 @@ const Registro = (props: any): JSX.Element => {
         </>
         )}
         </Formik>
-      </div>
     </>
   );
 };
