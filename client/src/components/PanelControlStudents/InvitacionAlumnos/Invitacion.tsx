@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './Invitacion.css';
 import { sendInvitation } from '../../../Store/Actions/Users';
 import Swal from "sweetalert2";
 import * as XLSX from "xlsx";
 import grupoEstudiantes from '../../../assets/grupo-estudiantes.png'
+import { getActiveCohortes } from 'Store/Actions/Cohortes';
 
 const URL = "http://localhost:3001";
 
@@ -12,20 +13,28 @@ interface inv {
     file?: any;
     email?: string;
     msj?: string;
+    cohorte?: any;
 }
 
 const Invitacion = (): JSX.Element => {
 
     const dispatch = useDispatch();
     const [invitation, setInvi] = useState<inv>({})
+    const { cohortes } = useSelector((state: any) => state.Cohortes);
+
+    useEffect(() => {
+        dispatch(getActiveCohortes(true));
+    },[])
 
     const handleOnChange = (e: any) => {
         let hojas: any = [];
         if (e.target.name !== "file") {
-            setInvi({
-                ...invitation,
-                [e.target.name]: e.target.value,
-            })
+                if (e.target.value) {
+                setInvi({
+                    ...invitation,
+                    [e.target.name]: e.target.value,
+                })
+            }
         } else {
             let reader = new FileReader();  //instanciamos nuevo archivo a leer
             reader.readAsArrayBuffer(e.target.files[0]) //se lee el archivo
@@ -45,13 +54,12 @@ const Invitacion = (): JSX.Element => {
                 [e.target.name]: hojas,
 
             })
-
         }
-
     }
 
     function handleSubmit(): any {
-        if (invitation.file || invitation.email) {
+        if ((invitation.file ||  invitation.email) && invitation.cohorte) {
+            console.log(invitation);
             dispatch(sendInvitation(invitation))
             Swal.fire(
                 "Listo",
@@ -61,32 +69,32 @@ const Invitacion = (): JSX.Element => {
         } else {
             Swal.fire(
                 "Error",
-                "Por favor, debe ingresar un email",
+                "Por favor, debe ingresar un email y el cohorte",
                 "error"
             )
         }
-
     }
 
     return (
         <div id="super-invitation">
-
             <h1>Invita nuevos alumnos</h1>
             <div className="container-invitation-students">
                 <div id='fondonegro-invitacion'>
                     <table id='tabla-panel-control'>
                         <thead>
-
-
-
                             <p id='texto-sube-lista'> si tienes una lista de estudiantes en un archivo de Excel puedes añadirla </p>
                             <input name="file" type="file" id="file" onChange={(e) => handleOnChange(e)} accept="png jpg jpeg gif xlsx" />
                             <a id='link-template' href={`${URL}/template.xlsx`} download>Descargar Plantilla</a>
                             <p> o si prefieres agregar uno a uno tambien puedes hacerlo </p>
                             <input name="email" type="email" placeholder="    correo@nuevo.alumno" id="invita-por-email"
                                 onChange={(e) => handleOnChange(e)} />
-
-
+                            <p>Deberás indicar el cohorte al cual estás haciendo la invitación</p>
+                            <select name="cohorte" onChange={(e) => handleOnChange(e)}>
+                                <option value="">Seleccione un Cohorte</option>
+                                {cohortes && cohortes.length > 0 &&
+                                    cohortes.map((coho: any) => (
+                                    <option value={coho._id}>{coho.Nombre+" - Inicio: "+coho.Start}</option>))}
+                            </select>
                         </thead>
                         <tbody>
                             <tr>

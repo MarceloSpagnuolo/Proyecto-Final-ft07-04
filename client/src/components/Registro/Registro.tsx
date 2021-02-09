@@ -9,20 +9,22 @@ import { Formik, Field, ErrorMessage, Form } from "formik";
 import "./Registro.css";
 import axios from "axios";
 
-interface Registro {
+/* interface Registro {
   firstname?: string;
   lastname?: string;
   email?: any;
+  cohorte?: any;
   password?: string;
   comparePassword?: string;
   githubId?: string;
   googleId?: string;
   thumbnail?: Buffer;
-}
+  estado?: Object;
+} */
 
 const Registro = (props: any): JSX.Element => {
   const [mailTok, setToken] = useState(useLocation().search);
-  const [estado, setEstado] = useState<Registro>({});
+  const [estado, setEstado] = useState<any>({});
   const dispatch = useDispatch();
   const history = useHistory();
   const user: any = useSelector((state: any) => state.Users.user);
@@ -39,7 +41,10 @@ const Registro = (props: any): JSX.Element => {
         )
         .then(() => window.location.href="/")
       } else {
-        setEstado({ email: decodeToken.email });
+        console.log(decodeToken,"Este es el token decodificado");
+        const { email, cohorte } = decodeToken;
+        console.log( email, cohorte);
+        setEstado({ email, cohorte});
       }
     } else {
         Swal.fire(
@@ -48,7 +53,6 @@ const Registro = (props: any): JSX.Element => {
             "error"
         )
         .then(() => window.location.href="/")
-      //window.location.href = "/";
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -58,13 +62,16 @@ const Registro = (props: any): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
+  console.log(estado);
+
   const initialValues = {
     firstname: "",
     lastname: "",
-    email: "",
+    email: estado.email,
     password: "",
     comparePassword: "",
-    githubId: ""
+    githubId: "",
+    cohorte: estado.cohorte
   }
 
   return (
@@ -82,7 +89,7 @@ const Registro = (props: any): JSX.Element => {
           validate={async (values) => {
             var errors: { [k: string]: any } = {};
             const regPass = (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/.test(values.password));
-            const regGithub = values.githubId.length > 0 ? await axios.get(`${url}/users/github/${values.githubId}`) : {data: false};
+            //const regGithub = values.githubId.length > 0 ? await axios.get(`${url}/users/github/${values.githubId}`) : {data: false};
             if(values.firstname.length === 0) errors.firstname="Debe ingresar su nombre";
             if(values.lastname.length === 0) errors.lastname="Debe ingresar su apellido";
             if(values.password.length === 0) {
@@ -97,12 +104,13 @@ const Registro = (props: any): JSX.Element => {
             };
             if(values.githubId.length === 0) {
               errors.githubId="Debe ingresar su Usuario de Github";
-            } else if(!regGithub.data) {
+            } /* else if(!regGithub.data) {
               errors.githubId="Usuario de Github incorrecto";
-            }; 
+            };  */
             return errors;
           }}
           onSubmit={(values) => {
+            console.log(values, "este es el values de registro");
             dispatch(postUser(values))
             Swal.fire(
               "Registrado",

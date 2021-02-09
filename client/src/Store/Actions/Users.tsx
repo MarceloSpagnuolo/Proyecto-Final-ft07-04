@@ -29,7 +29,7 @@ export const sendInvitation = (payload: any) => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      payload: "Error al invitar alumnos",
+      message: "Error al invitar alumnos",
     });
   }
 };
@@ -44,19 +44,26 @@ export const getStudents = (id: any) => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      payload: "Error al traer alumnos",
+      message: "Error al traer alumnos",
     });
   }
 };
 
 export const postUser = (payload: any) => async (dispatch: any) => {
+  console.log(payload);
   try {
+    console.log("entre aca 1")
     const res = await axios.post(`${url}/users/register`, payload);
+    console.log("entre aca 2")
     if (res) {
+      console.log("entre a res")
       const { email, password } = payload;
+      console.log(email, password, "estos son el email y la password recibidos en la action")
       const datos = { email, password };
       const newToken = await axios.post(`${url}/auth/login`, datos);
+      console.log(newToken, "este es el nuevo token")
       if (newToken) {
+        console.log("entre al if")
         localStorage.setItem("userToken", newToken.data);
         axios.defaults.headers.common[
           "Authorization"
@@ -70,7 +77,7 @@ export const postUser = (payload: any) => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      payload: "Problemas al registrar el usuario",
+      message: "Problemas al registrar el usuario",
     });
   }
 };
@@ -117,7 +124,7 @@ export const deleteUserCohorte = (id: any) => async (dispatch: any) => {
   } catch (e) {
     dispatch({
       type: ERROR_MESSAGE,
-      message: "Problemas para crear el usuario",
+      message: "Problemas para borrar el usuario",
     });
   }
 };
@@ -299,7 +306,7 @@ export const putAsistencia = (historiaId: any, payload: any) => async (dispatch:
   } catch(e) {
 dispatch({
       type: ERROR_MESSAGE,
-      payload: "No se pudo actualizar la asistencia"
+      message: "No se pudo actualizar la asistencia"
     });
   };
 };
@@ -314,7 +321,7 @@ export const putParticipa = (historiaId: any, payload: any) => async (dispatch: 
   } catch(e) {
 dispatch({
       type: ERROR_MESSAGE,
-      payload: "No se pudo actualizar la participación"
+      message: "No se pudo actualizar la participación"
     });
   };
 };

@@ -7,6 +7,9 @@ import SearchBar from "../searchBar"
 import { Link } from "react-router-dom";
 import Modal from "../../Modal/Modal";
 import Swal from "sweetalert2";
+import axios from "axios";
+
+const url = "http://localhost:3001";
 
 const Students = (): JSX.Element => {
     const dispatch = useDispatch();
@@ -27,10 +30,11 @@ const Students = (): JSX.Element => {
         setCohorte({ nvoCohorte: e.target.value }); //seteo la variable con ese valor
     };
 
-    function handleSubmit(e: any) { //funcion para ejecutar la asignacion de cohorte
+    async function handleSubmit(e: any) { //funcion para ejecutar la asignacion de cohorte
         e.preventDefault();
         if (alumnoSelect) {
             dispatch(postCohorteToUser(alumnoSelect, nvoCohorte))
+            await axios.post(`${url}/historia`, { userId: alumnoSelect._id, cohorteId: nvoCohorte });
             Swal.fire(
                 "Asignado!",
                 `${alumnoSelect.name.firstname} ${alumnoSelect.name.lastname} se le há asignado el cohorte ${nvoCohorte.nvoCohorte}.`,
@@ -58,7 +62,7 @@ const Students = (): JSX.Element => {
                         <select name="select" className="Listado-Select" onChange={(e) => handleOnchange(e)}>
                             <option value="">Seleccionar Cohorte</option>
                             {cohortes && cohortes.length > 0 &&
-                                cohortes.map((ch: any) => <option value={ch.Nombre}>{ch.Nombre} - Inicio: {ch.Start}</option>)}
+                                cohortes.map((ch: any) => <option value={ch._id}>{ch.Nombre} - Inicio: {ch.Start}</option>)}
                         </select>
                     </div>
                     <div className="Modal-Botones">
