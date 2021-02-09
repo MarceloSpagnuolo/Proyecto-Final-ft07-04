@@ -629,6 +629,41 @@ router.put("/update/img_profile", async ( req, res ) => {
   }
 })
 
+router.get("/asistancePromed/:standupId", async (req, res) => {
+  const { standupId } = req.params;
+  try {
+    let modulos: any = [{},{},{},{}];
+
+    let asist = 0;
+    //Primero traemos a los alumnos del standup
+    await User.find({ standup: standupId, role: "alumno"}, async function(err, alumnos) {
+      Historial.populate(alumnos, { path: "historia"}, function(err, alumnosCOM: any) {
+        console.log(alumnosCOM);
+        err ? res.send(err).status(400) :
+        alumnosCOM.map((alumno: any) => {
+          alumno.historia.Modulos.map((hist: any, index: number) => {
+            hist.Clases.map((clase: any) => {
+              if (modulos[index].hasOwnProperty(clase.Nombre)) {
+                modulos[index][clase.Nombre] += clase.Asistencia ? 1 : 0;
+              } else {
+                modulos[index][clase.Nombre] = clase.Asistencia ? 1 : 0;
+              }
+            })
+          })
+        })
+/*         modulos = modulos.map((elem: any) => {
+          return elem / alumnos.length * 100;
+        }) */
+        res.json(modulos);
+      })
+    });
+
+
+  } catch(e) {
+
+  }
+})
+
 
 //"Rol === alumno => standup === standup vigente///
 // |       O
