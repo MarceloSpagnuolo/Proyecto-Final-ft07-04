@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { postCohorte } from "../../Store/Actions/Cohortes"
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import imgCreaCohorte from '../../assets/imagen-crear-cohorte.png'
 
 interface AddForm {
   Nombre: String;
@@ -116,7 +117,7 @@ function Add() {
         </div>
         <div className="Add-Image">
           <img
-            src="https://cdn.discordapp.com/attachments/801584401611620383/802716856850972683/undraw_group_chat_v059.png"
+            src={imgCreaCohorte}
             alt=""
           />
         </div>
