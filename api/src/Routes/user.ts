@@ -63,7 +63,6 @@ router.get("/estudiantes/:id", async (req, res) => {
 //guardar usuario
 // users/register
 router.post("/register", async (req, res) => {
-  console.log(req.body);
   const {
     firstname,
     lastname,
@@ -301,7 +300,6 @@ async function getUser(username: any) {
 
 router.get('/github/:username', async (req, res) => {
   let { username } = req.params;
-  console.log(username);
 
   const userStatus = await getUser(username);
 

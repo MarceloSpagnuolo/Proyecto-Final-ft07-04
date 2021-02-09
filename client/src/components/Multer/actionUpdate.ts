@@ -21,4 +21,3 @@ export const uploadAction = async (file: any) => {
     console.log(err);
   }
 }
-

@@ -59,7 +59,6 @@ const Invitacion = (): JSX.Element => {
 
     function handleSubmit(): any {
         if ((invitation.file ||  invitation.email) && invitation.cohorte) {
-            console.log(invitation);
             dispatch(sendInvitation(invitation))
             Swal.fire(
                 "Listo",

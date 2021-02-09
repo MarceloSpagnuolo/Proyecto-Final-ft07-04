@@ -41,9 +41,7 @@ const Registro = (props: any): JSX.Element => {
         )
         .then(() => window.location.href="/")
       } else {
-        console.log(decodeToken,"Este es el token decodificado");
         const { email, cohorte } = decodeToken;
-        console.log( email, cohorte);
         setEstado({ email, cohorte});
       }
     } else {
@@ -62,18 +60,16 @@ const Registro = (props: any): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
-  console.log(estado);
 
   const initialValues = {
     firstname: "",
     lastname: "",
-    email: estado.email,
+    email: estado.email || "",
     password: "",
     comparePassword: "",
     githubId: "",
     cohorte: estado.cohorte
   }
-
   return (
     <>
       <img
@@ -89,7 +85,7 @@ const Registro = (props: any): JSX.Element => {
           validate={async (values) => {
             var errors: { [k: string]: any } = {};
             const regPass = (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/.test(values.password));
-            //const regGithub = values.githubId.length > 0 ? await axios.get(`${url}/users/github/${values.githubId}`) : {data: false};
+            const regGithub = values.githubId.length > 0 ? await axios.get(`${url}/users/github/${values.githubId}`) : {data: false};
             if(values.firstname.length === 0) errors.firstname="Debe ingresar su nombre";
             if(values.lastname.length === 0) errors.lastname="Debe ingresar su apellido";
             if(values.password.length === 0) {
@@ -110,8 +106,8 @@ const Registro = (props: any): JSX.Element => {
             return errors;
           }}
           onSubmit={(values) => {
-            console.log(values, "este es el values de registro");
-            dispatch(postUser(values))
+            
+            dispatch(postUser(values, estado))
             Swal.fire(
               "Registrado",
               "Se ha registrado correctamente en el sistema",

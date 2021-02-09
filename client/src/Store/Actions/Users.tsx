@@ -49,21 +49,18 @@ export const getStudents = (id: any) => async (dispatch: any) => {
   }
 };
 
-export const postUser = (payload: any) => async (dispatch: any) => {
-  console.log(payload);
+export const postUser = (payload: any, estado: any) => async (dispatch: any) => {
+  payload.email = estado.email;
+  payload.cohorte = estado.cohorte;
   try {
-    console.log("entre aca 1")
     const res = await axios.post(`${url}/users/register`, payload);
-    console.log("entre aca 2")
     if (res) {
-      console.log("entre a res")
+      console.log(res.data, "SOY EL RES DATA DEL REGISTRO")
+      await axios.post(`${url}/historia`, { userId: res.data._id, cohorteId: res.data.cohorte});
       const { email, password } = payload;
-      console.log(email, password, "estos son el email y la password recibidos en la action")
       const datos = { email, password };
       const newToken = await axios.post(`${url}/auth/login`, datos);
-      console.log(newToken, "este es el nuevo token")
       if (newToken) {
-        console.log("entre al if")
         localStorage.setItem("userToken", newToken.data);
         axios.defaults.headers.common[
           "Authorization"
