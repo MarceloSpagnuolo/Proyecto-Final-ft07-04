@@ -212,7 +212,7 @@ function Carga() {
                         (e: any) => e.Cohorte === cohorte[0]._id
                       );
                       return (
-                        elem.historia && (
+                        elem.historia && historia.length > 0 &&(
                           <tr key={elem._id} id="Carga-Tr">
                             <td className="Carga-Td">
                               {elem.name.firstname + " " + elem.name.lastname}
@@ -222,7 +222,7 @@ function Carga() {
                               <input
                                 type="number"
                                 name={elem.historia._id + "/" + elem._id + "/CP1"}
-                                defaultValue={historia[0].CP1}
+                                defaultValue={historia[0].CP1 || 0}
                                 id="Carga-Nro"
                                 onChange={(e) => handleInputs(e)}
                               />
@@ -312,7 +312,7 @@ function Carga() {
                     const historia = user.historia.Checkpoints.filter(
                       (e: any) => e.Cohorte === cohorte[0]._id
                       );
-                      return <li className={historia[0].CP1 >=
+                      return !!historia && historia.length > 0 && <li className={historia[0].CP1 >=
                         cohorte[0].Checkpoints.CP1.testsReq ? "" : "Oculta"}>
                       {user.github}</li>
                   })}
@@ -331,7 +331,7 @@ function Carga() {
                     const historia = user.historia.Checkpoints.filter(
                       (e: any) => e.Cohorte === cohorte[0]._id
                       );
-                      return <li className={historia[0].CP2 >=
+                      return !!historia && historia.length > 0 && <li className={historia[0].CP2 >=
                         cohorte[0].Checkpoints.CP2.testsReq ? "" : "Oculta"}>
                       {user.github}</li>
                   })}
@@ -350,7 +350,7 @@ function Carga() {
                     const historia = user.historia.Checkpoints.filter(
                       (e: any) => e.Cohorte === cohorte[0]._id
                       );
-                      return <li className={historia[0].CP3 >=
+                      return !!historia && historia.length > 0 && <li className={historia[0].CP3 >=
                         cohorte[0].Checkpoints.CP3.testsReq ? "" : "Oculta"}>
                       {user.github}</li>
                   })}
@@ -369,7 +369,7 @@ function Carga() {
                     const historia = user.historia.Checkpoints.filter(
                       (e: any) => e.Cohorte === cohorte[0]._id
                       );
-                      return <li className={historia[0].CP4 >=
+                      return !!historia && historia.length > 0 && <li className={historia[0].CP4 >=
                         cohorte[0].Checkpoints.CP4.testsReq ? "" : "Oculta"}>
                       {user.github}</li>
                   })}

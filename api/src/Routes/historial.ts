@@ -75,7 +75,7 @@ router.get("/cohorte/:cohorteId", async (req, res) => {
 
 router.get("/modulos", async (req, res) => {
 
-    const modulos = await Modulos.find();
+    const modulos = await Modulos.find().sort({Numero: 1});
 
     modulos ? res.json(modulos) : res.send("No se encontraton módulos").status(400);
 })
