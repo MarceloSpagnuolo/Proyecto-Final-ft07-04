@@ -223,7 +223,7 @@ const Profile = (): JSX.Element => {
     }
     const activateEdition = async () => {
         await makeEditable(id);
-        window.location.reload()
+       
     }
 
     return (
