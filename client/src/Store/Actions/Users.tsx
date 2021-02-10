@@ -266,14 +266,19 @@ export const updateUser = (data: Object) => async (dispatch: any) => {
     const res = await axios.put(`${url}/users/editprofile`, data);
     if(res.data.usersCOM.role !== 'admin') {
       await dispatch(makeUserEditable(res.data.usersCOM._id))
+      await dispatch({
+        type: PUT_USERS,
+        payload: res.data,
+      });
+    }else{
+      await dispatch({
+        type: PUT_USERS,
+        payload: res.data,
+      });
     }
-    await dispatch({
-      type: PUT_USERS,
-      payload: res.data,
-    });
+
     if (res.data.token) {
       dispatch(getUserByToken(res.data.token))
-      //localStorage.setItem("userToken", res.data.token);
     }
   } catch (e) {
     dispatch({
