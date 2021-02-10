@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import Historial from "../Models/historial";
 import User from "../Models/users";
+import Cohorte from "../Models/cohorte";
 import Modulos from "../Models/modulos";
 
 //Ruta que genera el historial del alumno cuando se registra
@@ -79,9 +80,8 @@ router.get("/modulos", async (req, res) => {
     modulos ? res.json(modulos) : res.send("No se encontraton módulos").status(400);
 })
 
-
-router.get("/promedio/:grupoId", async (req, res) => {
-    console.log("entre aca")
+//// ruta para sacar promedio de participacion //////
+router.get("/promedioParticipacion/:grupoId", async (req, res) => {
     const {grupoId} = req.params
     // let promedios1: any[] = []
     // let promedios2: any[] = []
@@ -95,20 +95,17 @@ router.get("/promedio/:grupoId", async (req, res) => {
     let arr4 = new Array(5);
     let total: any[] = []
 
-
-
     const alumnos = await User.find({$and: [
         {standup: grupoId},
         {role: "alumno"}
     ]}, (err, users) => {
         Historial.populate(users, { path: "historia" }, function (err, usPopulated: any) {
             if(err) return res.sendStatus(400);
-            console.log(usPopulated)
-            usPopulated.map((a: any, index: number) => {
+            usPopulated.forEach((a: any, index: number) => {
                 let is = index == usPopulated.length - 1
-                a.historia.Modulos.map((c: any, i: number) => {
+                a.historia.Modulos.forEach((c: any, i: number) => {
                     if (i == 0) {
-                        c.Clases.map((p: any, id: number) => {
+                        c.Clases.forEach((p: any, id: number) => {
                             arr1[id] = isNaN(arr1[id]) ? 0 : arr1[id]
                             arr1[id] += p.Participa
                             arr1[id] = is ? arr1[id] / usPopulated.length : arr1[id]
@@ -117,21 +114,21 @@ router.get("/promedio/:grupoId", async (req, res) => {
                         })
                     }
                     if (i == 1) {
-                        c.Clases.map((p: any, id: number) => {
+                        c.Clases.forEach((p: any, id: number) => {
                             arr2[id] = isNaN(arr2[id]) ? 0 : arr2[id]
                             arr2[id] += p.Participa
                             arr2[id] = is ? arr2[id] / usPopulated.length : arr2[id]
                         })
                     }
                     if (i == 2) {
-                        c.Clases.map((p: any, id: number) => {
+                        c.Clases.forEach((p: any, id: number) => {
                             arr3[id] = isNaN(arr3[id]) ? 0 : arr3[id]
                             arr3[id] += p.Participa
                             arr3[id] = is ? arr3[id] / usPopulated.length : arr3[id]
                         })
                     }
                     if (i == 3) {
-                        c.Clases.map((p: any, id: number) => {
+                        c.Clases.forEach((p: any, id: number) => {
                             arr4[id] = isNaN(arr4[id]) ? 0 : arr4[id]
                             arr4[id] += p.Participa
                             arr4[id] = is ? arr4[id] / usPopulated.length : arr4[id]
@@ -142,29 +139,114 @@ router.get("/promedio/:grupoId", async (req, res) => {
 
             total.push(arr1, arr2, arr3, arr4)
             res.send(total)
-
-            // usPopulated.historia.Modulos.map((c: any, index: number) => {
-            //     if(index === 0) {
-            //        promedios1.push(c.Clases)
-            //     } else if(index === 1) {                        
-            //         promedios2.push(c.Clases)
-            //     } else if (index === 2) {                        
-            //         promedios3.push(c.Clases)
-            //     } else if (index === 3) {
-            //         promedios4.push(c.Clases)
-            //     }
-            //     c.Clases.map((p: any, id: number) => {
-                    
-            //     })
-            // })
-            
-
-            // promedios1
-            // promedios2
-            // promedios3
         })
     })
 
+})
+
+router.get("/promedioNotas/:cohorteId", async (req,res) => {
+    const {cohorteId} = req.params
+    let notas1: number = 0
+    let notas2: number = 0
+    let notas3: number = 0
+    let notas4: number = 0
+    let arr1: any[] = []
+    let arr2: any[] = []
+    let arr3: any[] = []
+    let arr4: any[] = []
+    let total: any[] = []
+    let CP1: any = {
+        alumnos: 0,
+        aprobados: 0,
+        promedio: 0
+    }
+    let CP2: any = {
+        alumnos: 0,
+        aprobados: 0,
+        promedio: 0
+    }
+    let CP3: any = {
+        alumnos: 0,
+        aprobados: 0,        recursantes: 0,
+        promedio: 0
+    }
+    let CP4: any = {
+        alumnos: 0,
+        aprobados: 0,
+        promedio: 0
+    }
+
+    const cohorte = await Cohorte.findOne({_id: cohorteId})
+
+    const alumnos = await User.find({$and: [
+        {cohorte: cohorteId}
+    ]}, (err, users) => {
+        Historial.populate(users, { path: "historia" }, function (err, usPopulated: any) {
+            if(err) return res.sendStatus(400);
+
+            
+
+            usPopulated.forEach((a: any, index: number) => {
+
+
+                a.historia.Checkpoints.forEach((c: any, i: number) => {
+                    if(c.CP1 > 0){
+                        CP1.alumnos++                
+                    if(c.CP1 >= cohorte.Checkpoints.CP1.testsReq){
+                        arr1.push(c.CP1)
+                        CP1.aprobados++
+                    }}
+                    if(c.CP2 > 0){
+                        CP2.alumnos++ 
+                    if(c.CP2 >= cohorte.Checkpoints.CP2.testsReq){
+                        arr2.push(c.CP2)
+                        CP2.aprobados++
+                    }}
+                    if(c.CP3 > 0){
+                        CP3.alumnos++ 
+                    if(c.CP3 >= cohorte.Checkpoints.CP3.testsReq){
+                        arr3.push(c.CP3)
+                        CP3.aprobados++
+                    }}
+                    if(c.CP4 > 0){
+                        CP4.alumnos++ 
+                    if(c.CP4 >= cohorte.Checkpoints.CP4.testsReq){
+                        arr4.push(c.CP4)
+                        CP4.aprobados++
+                    }}
+                
+                })
+
+            })
+
+            arr1.forEach((n: any) => {
+                notas1 += n
+            })
+            arr2.forEach((n: any) => {
+                notas2 += n
+            })
+            arr3.forEach((n: any) => {
+                notas3 += n
+            })
+            arr4.forEach((n: any) => {
+                notas4 += n
+            })
+            notas1 = (Math.floor(notas1 / arr1.length))
+            notas2 = (Math.floor(notas2 / arr2.length))
+            notas3 = (Math.floor(notas3 / arr3.length))
+            notas4 = (Math.floor(notas4 / arr4.length))
+
+            CP1.promedio = notas1
+            CP2.promedio = notas2
+            CP3.promedio = notas3
+            CP4.promedio = notas4
+
+            total = [CP1, CP2, CP3, CP4]
+
+
+            res.send(total)
+        })
+    })    
 })
 
 export default router;
