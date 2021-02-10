@@ -301,7 +301,10 @@ function Carga() {
         <p id='aprobados-por-cohorte'>Alumnos aprobados por cohorte</p>
         <div className="container-lista-aprobados">
           <div className="Carga-Lista">
-            <span>Aprobados CP1</span>
+            <div className="Titulos-Aprobados">
+              <span>Aprobados CP1</span>
+              <button title="Copiar lista" className="Copiar-Lista" name="CP1" onClick={(e) =>  copyToClipboard(e)}><img className="Carga-Btn-Img" src="http://localhost:3001/Imagenes/copiar.png" /></button>
+            </div>
             <div id='carga-nombres-aprobados-cohorte'>
               <ul ref={textAreaRef1} className="Carga-Estilo-Lista">
                 {users && users.length > 0 &&
@@ -315,10 +318,12 @@ function Carga() {
                   })}
               </ul>
             </div>
-            <button className="Copiar-Lista" name="CP1" onClick={(e) =>  copyToClipboard(e)}>Copiar Lista</button>
           </div>
           <div className="Carga-Lista">
-            <span>Aprobados CP2</span>
+            <div className="Titulos-Aprobados">
+              <span>Aprobados CP2</span>
+              <button title="Copiar lista" className="Copiar-Lista" name="CP2" onClick={(e) =>  copyToClipboard(e)}><img className="Carga-Btn-Img" src="http://localhost:3001/Imagenes/copiar.png" /></button>
+            </div>
             <div id='carga-nombres-aprobados-cohorte'>
               <ul ref={textAreaRef2} className="Carga-Estilo-Lista">
                 {users && users.length > 0 &&
@@ -332,10 +337,12 @@ function Carga() {
                   })}
               </ul>
             </div>
-          <button className="Copiar-Lista" name="CP2" onClick={(e) =>  copyToClipboard(e)}>Copiar Lista</button>
           </div>
           <div className="Carga-Lista">
-            <span>Aprobados CP3</span>
+            <div className="Titulos-Aprobados">
+              <span>Aprobados CP3</span>
+              <button title="Copiar lista" className="Copiar-Lista" name="CP3" onClick={(e) =>  copyToClipboard(e)}><img className="Carga-Btn-Img" src="http://localhost:3001/Imagenes/copiar.png" /></button>
+            </div>
             <div id='carga-nombres-aprobados-cohorte'>
               <ul ref={textAreaRef3} className="Carga-Estilo-Lista">
                 {users && users.length > 0 &&
@@ -349,10 +356,12 @@ function Carga() {
                   })}
               </ul>
             </div>
-          <button className="Copiar-Lista" name="CP3" onClick={(e) =>  copyToClipboard(e)}>Copiar Lista</button>
           </div>
           <div className="Carga-Lista">
-            <span>Aprobados CP4</span>
+            <div className="Titulos-Aprobados">
+              <span>Aprobados CP4</span>
+              <button title="Copiar lista" className="Copiar-Lista" name="CP4" onClick={(e) =>  copyToClipboard(e)}><img className="Carga-Btn-Img" src="http://localhost:3001/Imagenes/copiar.png" /></button>
+            </div>
             <div id='carga-nombres-aprobados-cohorte'>
               <ul ref={textAreaRef4} className="Carga-Estilo-Lista">
                 {users && users.length > 0 &&
@@ -366,7 +375,6 @@ function Carga() {
                   })}
               </ul>
             </div>
-          <button className="Copiar-Lista" name="CP4" onClick={(e) =>  copyToClipboard(e)}>Copiar Lista</button>
           </div>
         </div>
         </>
