@@ -1,6 +1,6 @@
 .Add-Body {
   display: grid; 
-  grid-template: 1fr / 2fr 3fr;
+  grid-template: 1fr / 2fr 2fr;
 }
 
 .Add-Cohorte-Body {
@@ -10,10 +10,12 @@
 
 .Add-Image img {
   margin-top: 45px;
+  margin-left: 45px;
   border-radius: 1rem;
   opacity: 0.8;
-  box-shadow: 2px 2px 4px #b3b3b3;
-  width: 100%;
+ 
+  width: auto;
+  max-height: 450px;
 }
 
 .Add-Cohorte-Title {

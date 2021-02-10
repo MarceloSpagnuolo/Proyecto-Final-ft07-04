@@ -1,4 +1,4 @@
-import React, {useRef, createElement, useEffect, useState } from "react";
+import React, { useRef, createElement, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getActiveCohortes, getCohorte, changeTests } from "Store/Actions/Cohortes";
 import { getUsersbyCohorte, putNotas } from "Store/Actions/Users";
@@ -54,12 +54,12 @@ function Carga() {
   function copyToClipboard(e: any) {
     // console.log(e.currentTarget)
     let arreglo;
-    if(e.target.name === "CP1") {
+    if (e.target.name === "CP1") {
       arreglo = textAreaRef1.current.childNodes
     } else if (e.target.name === "CP2") {
-      arreglo = textAreaRef2.current.childNodes      
+      arreglo = textAreaRef2.current.childNodes
     } else if (e.target.name === "CP3") {
-      arreglo = textAreaRef3.current.childNodes      
+      arreglo = textAreaRef3.current.childNodes
     } else if (e.target.name === "CP4") {
       arreglo = textAreaRef4.current.childNodes
     }
@@ -67,8 +67,8 @@ function Carga() {
     let copia: any = [];
 
     arreglo.forEach((c: any) => {
-      if(c.attributes.class.nodeValue !== "Oculta") {
-        copia.push("\n"+c.innerHTML)
+      if (c.attributes.class.nodeValue !== "Oculta") {
+        copia.push("\n" + c.innerHTML)
       }
     })
     navigator.clipboard.writeText(copia);

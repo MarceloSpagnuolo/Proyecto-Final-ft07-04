@@ -17,6 +17,7 @@ import {
   SEARCH_GITHUB,
   PUT_ASISTENCIA,
   PUT_PARTICIPA,
+  MAKE_USER_EDITABLE
 } from "../Constants/Users";
 import Swal from "sweetalert2";
 
@@ -133,6 +134,12 @@ function Users(state = inicialState, action: any) {
             return user;
           }
         })
+      }
+    }
+    case MAKE_USER_EDITABLE: {
+      return {
+        ...state,
+        userToEdit: action.payload
       }
     }
     default: {

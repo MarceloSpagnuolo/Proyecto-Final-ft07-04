@@ -143,9 +143,7 @@ router.put('/editprofile', async (req, res) => {
           name: usersCOM.name
         }
         //res.send(jwt.sign(payload, process.env.SECRET));
-        if (usersCOM.role === "admin") return res.json({ usersCOM, token: jwt.sign(payload, process.env.SECRET) });
-        res.json({ usersCOM })
-
+        res.json({ usersCOM, token: jwt.sign(payload, process.env.SECRET) });
       })
     });
 
@@ -627,6 +625,24 @@ router.put("/update/img_profile", async ( req, res ) => {
   } catch (error) {
     console.log(error)
   }
+})
+
+//Ruta para hacer un usuario editable
+
+router.put('/editable/:id', async(req, res) => {
+  const { id } = req.params;
+  const user = await User.findOne({ _id: id });
+  if(user.editable === false) {
+    user.editable = true;
+    await user.save();
+    res.status(200).json({usersCOM:user});
+  }
+  else {
+    user.editable = false;
+    await user.save();
+    res.status(200).json({usersCOM:user});
+  }
+
 })
 
 
