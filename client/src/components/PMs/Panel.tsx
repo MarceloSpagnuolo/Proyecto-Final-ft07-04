@@ -65,7 +65,7 @@ function Panel() {
 
     return (
         <div className="Panel-Body">
-            <h2>STANDUP No. {standup && standup.Grupo}</h2>
+            <h2>STANDUP {standup && standup.Grupo}</h2>
             <div className="Panel-Sub">
                 <div>
                     <h3>A cargo de los PM´s: {standup.PM && standup.PM.length > 0 && standup.PM[0].name.firstname}{" "}

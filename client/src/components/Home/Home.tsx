@@ -61,7 +61,7 @@ const Home = () => {
                         </div>
                         <div id='panel-estudiantes'>
                             <p>Para gestionar tu StandUp haz click en el botón, o accede a través de la barra de navegacion</p>
-                            <Link rel="stylesheet" to={`/MiGrupo/${user.standup._id}`}>
+                            <Link rel="stylesheet" to={`/panel`}>
                                 <button id='home-estudiantes-boton'>Mi Standup</button>
                             </Link>
                         </div>

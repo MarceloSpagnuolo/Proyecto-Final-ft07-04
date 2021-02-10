@@ -26,17 +26,21 @@ function Carga() {
   }
 
   function handleInputs(e: any) {
+    
     const datos = e.target.name.split("/");
     const historia = datos[0];
     const checkpoint = datos[2];
-    dispatch(
-      putNotas(historia, {
-        checkpoint: checkpoint,
-        cohorteId: cohorte[0]._id,
-        tests: e.target.value,
-      })
-    );
-  }
+    e.target.value = e.target.value < 0 ? 0 :
+       e.target.value > cohorte[0].Checkpoints[checkpoint].totalTests ? cohorte[0].Checkpoints[checkpoint].totalTests : e.target.value
+    
+      dispatch(
+        putNotas(historia, {
+          checkpoint: checkpoint,
+          cohorteId: cohorte[0]._id,
+          tests: e.target.value,
+        })
+        );
+      }
 
   function handleTests(e: any) {
     const datos = e.target.name.split("/");
@@ -82,7 +86,7 @@ function Carga() {
         <h2 className="Carga-Titulo">Carga de Notas y Control de Checkpoints</h2>
         <div className='container-header-carga padding-container-header-carga'>
           <div className="Carga-Check">
-            <p id='texto-intro-carga-notas'>Este es el panel de control de notas y checkpoints, para comenzar explorando opciones selecciona un cohorte </p>
+            <p id='texto-intro-carga-notas'>Este es el panel de control de notas y checkpoints. Para comenzar explorando opciones selecciona un cohorte </p>
             <select
               name="select"
               className="Carga-Select"
@@ -156,6 +160,7 @@ function Carga() {
             </div>
           )}
         </div>
+        {cohorte && cohorte.length > 0 && (
         <div className="Carga-Body">
 
           <div className="Carga-Notas">
@@ -290,78 +295,82 @@ function Carga() {
             </div>
           </div>
         </div>
+        )}
+        {cohorte && cohorte.length > 0 && (
+          <>
         <p id='aprobados-por-cohorte'>Alumnos aprobados por cohorte</p>
         <div className="container-lista-aprobados">
           <div className="Carga-Lista">
             <span>Aprobados CP1</span>
-            <button className='copy-to-clipboard' name="CP1" onClick={(e) => copyToClipboard(e)}>Copiar Lista</button>
             <div id='carga-nombres-aprobados-cohorte'>
               <ul ref={textAreaRef1} className="Carga-Estilo-Lista">
                 {users && users.length > 0 &&
                   users.map((user: any) => {
                     const historia = user.historia.Checkpoints.filter(
                       (e: any) => e.Cohorte === cohorte[0]._id
-                    );
-                    return <li className={historia[0].CP1 >=
-                      cohorte[0].Checkpoints.CP1.testsReq ? "" : "Oculta"}>
+                      );
+                      return <li className={historia[0].CP1 >=
+                        cohorte[0].Checkpoints.CP1.testsReq ? "" : "Oculta"}>
                       {user.github}</li>
                   })}
               </ul>
             </div>
+            <button className="Copiar-Lista" name="CP1" onClick={(e) =>  copyToClipboard(e)}>Copiar Lista</button>
           </div>
           <div className="Carga-Lista">
             <span>Aprobados CP2</span>
-            <button className='copy-to-clipboard' name="CP2" onClick={(e) => copyToClipboard(e)}>Copiar Lista</button>
             <div id='carga-nombres-aprobados-cohorte'>
               <ul ref={textAreaRef2} className="Carga-Estilo-Lista">
                 {users && users.length > 0 &&
                   users.map((user: any) => {
                     const historia = user.historia.Checkpoints.filter(
                       (e: any) => e.Cohorte === cohorte[0]._id
-                    );
-                    return <li className={historia[0].CP2 >=
-                      cohorte[0].Checkpoints.CP2.testsReq ? "" : "Oculta"}>
+                      );
+                      return <li className={historia[0].CP2 >=
+                        cohorte[0].Checkpoints.CP2.testsReq ? "" : "Oculta"}>
                       {user.github}</li>
                   })}
               </ul>
             </div>
+          <button className="Copiar-Lista" name="CP2" onClick={(e) =>  copyToClipboard(e)}>Copiar Lista</button>
           </div>
           <div className="Carga-Lista">
             <span>Aprobados CP3</span>
-            <button className='copy-to-clipboard' name="CP3" onClick={(e) => copyToClipboard(e)}>Copiar Lista</button>
             <div id='carga-nombres-aprobados-cohorte'>
               <ul ref={textAreaRef3} className="Carga-Estilo-Lista">
                 {users && users.length > 0 &&
                   users.map((user: any) => {
                     const historia = user.historia.Checkpoints.filter(
                       (e: any) => e.Cohorte === cohorte[0]._id
-                    );
-                    return <li className={historia[0].CP3 >=
-                      cohorte[0].Checkpoints.CP3.testsReq ? "" : "Oculta"}>
+                      );
+                      return <li className={historia[0].CP3 >=
+                        cohorte[0].Checkpoints.CP3.testsReq ? "" : "Oculta"}>
                       {user.github}</li>
                   })}
               </ul>
             </div>
+          <button className="Copiar-Lista" name="CP3" onClick={(e) =>  copyToClipboard(e)}>Copiar Lista</button>
           </div>
           <div className="Carga-Lista">
             <span>Aprobados CP4</span>
-            <button className='copy-to-clipboard' name="CP4" onClick={(e) => copyToClipboard(e)}>Copiar Lista</button>
             <div id='carga-nombres-aprobados-cohorte'>
               <ul ref={textAreaRef4} className="Carga-Estilo-Lista">
                 {users && users.length > 0 &&
                   users.map((user: any) => {
                     const historia = user.historia.Checkpoints.filter(
                       (e: any) => e.Cohorte === cohorte[0]._id
-                    );
-                    return <li className={historia[0].CP4 >=
-                      cohorte[0].Checkpoints.CP4.testsReq ? "" : "Oculta"}>
+                      );
+                      return <li className={historia[0].CP4 >=
+                        cohorte[0].Checkpoints.CP4.testsReq ? "" : "Oculta"}>
                       {user.github}</li>
                   })}
               </ul>
             </div>
+          <button className="Copiar-Lista" name="CP4" onClick={(e) =>  copyToClipboard(e)}>Copiar Lista</button>
           </div>
         </div>
-
+        </>
+        )}
       </div>
     </>
   );
