@@ -104,9 +104,6 @@ router.get("/promedio/:grupoId", async (req, res) => {
         Historial.populate(users, { path: "historia" }, function (err, usPopulated: any) {
             if(err) return res.sendStatus(400);
             console.log(usPopulated)
-            //TROLOO EL QUE BORRA
-            // que lástima sería que cuando estás presentando pongo un "martina calientapija" o algó así no?
-            //La conquistaba
             usPopulated.map((a: any, index: number) => {
                 let is = index == usPopulated.length - 1
                 a.historia.Modulos.map((c: any, i: number) => {

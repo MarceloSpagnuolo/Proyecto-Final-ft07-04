@@ -113,9 +113,24 @@ const Estadisticas = () => {
     useEffect(() => {
         if (participa !== "") {
             let a = ["Promedio", ...participa[0]]
+            let b = ["Promedio", ...participa[1]]
+            let c = ["Promedio", ...participa[2]]
+            let d = ["Promedio", ...participa[3]]
             setDatin({
                 ...datin1,
                 columns: [...datin1.columns, a]
+            })
+            setDatin2({
+                ...datin2,
+                columns: [...datin2.columns, b]
+            })
+            setDatin3({
+                ...datin3,
+                columns: [...datin3.columns, c]
+            })
+            setDatin4({
+                ...datin4,
+                columns: [...datin4.columns, d]
             })
         }
     }, [participa])
