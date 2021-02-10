@@ -635,12 +635,12 @@ router.put('/editable/:id', async(req, res) => {
   if(user.editable === false) {
     user.editable = true;
     await user.save();
-    res.status(200).json(user);
+    res.status(200).json({usersCOM:user});
   }
   else {
     user.editable = false;
     await user.save();
-    res.status(200).json(user);
+    res.status(200).json({usersCOM:user});
   }
 
 })
