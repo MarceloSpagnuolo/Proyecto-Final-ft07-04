@@ -3,7 +3,6 @@
     height: auto;
     min-height: 88vh;
     padding: 0%;
-
 }
 
 #blank-space {
@@ -183,10 +182,11 @@
     color: #414141;
     margin-bottom: 25px;
     text-align: left;
+    padding-right: 15%;
 }
 
 #panel-rendimiento {
-    padding-left: 25%;
+    
     grid-column: 2;
 }
 

@@ -208,19 +208,26 @@
 }
 
 .Copiar-Lista {
-  width: 15vw;
-  height: 4vh;
-  border-radius: 20px;
-  background-color: black;
+  border-radius: 5px;
+  background-color: white;
   color: white;
   border: 0;
+  padding-top: 5px;
 }
 
 .Copiar-Lista:hover {
   cursor: pointer;
-  background-color: gray;
+  box-shadow: 3px 3px 5px black;
 }
 
+.Carga-Btn-Img {
+  width: 15px;
+}
+
+.Titulos-Aprobados {
+  display: flex;
+  align-items: center;
+}
 
 
 

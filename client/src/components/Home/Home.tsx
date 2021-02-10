@@ -52,7 +52,7 @@ const Home = () => {
         // LOGICA PARA RENDERIZAR LO QUE VE EL PM
         : (user.role === "PM") ?
             <div id='fondo-amarillo'>
-                <br></br>
+                <div id='blank-space'></div>
                 <div id='fondo-blanco'>
                     <img id="foto-header" src={topImg} alt="banner superior" />
                     <div id='contenido-home-pm'>
