@@ -79,7 +79,6 @@ const Home = () => {
                                     <button id='home-pm-boton'>Mi Rendimiento</button>
                                 </Link>
                             </div>
-
                         </div>
                     </div>
                 </div>

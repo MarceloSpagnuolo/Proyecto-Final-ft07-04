@@ -13,10 +13,10 @@ export default function SearchBar(props: any) {
 
     const lupita = "https://media.istockphoto.com/vectors/magnifying-glass-icon-magnifier-symbol-concept-search-for-people-to-vector-id1173137813?k=6&m=1173137813&s=170667a&w=0&h=6Ar342lRTbRXSpIe5o8IWeGwtbDsjwzH9p7dTDagvak="
 
-    useEffect(() => {
+/*     useEffect(() => {
         dispatch(getCohortes())
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, []); */
 
     function handlerInput(e: any) {
         setAlumno(e.target.value)

@@ -170,11 +170,14 @@ const Nav = () => {
               Mi Cohorte
             </div>
           </div>
-          <div>
+          { user.standup ?
+            <div>
             <div onClick={() => linkTo(`MiGrupo/${user.standup._id}`)} className="mlP">
               Mi Standup
             </div>
+          
           </div>
+            : null}
           <div>
             <div onClick={() => linkTo(`MisDatos/${user._id}`)} className="mlP">
               Rendimiento
