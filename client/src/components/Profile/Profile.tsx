@@ -31,6 +31,7 @@ const Profile = (): JSX.Element => {
     const [inputDisabled, setinputDisabled] = useState(true)
     const getProfile: any = useSelector((state: any) => state.Users.user);
    
+    const [userEditable, setUserEditable] = useState(false)
 
     const { firstname, lastname, email, cohorte, standup, password, newPassword, confirmPassword } = inputs;
     const [showModal, setShowModal] = useState(false);
@@ -69,6 +70,7 @@ const Profile = (): JSX.Element => {
                     getUserEdit(id)
 
                     if (userToEdit && Object.keys(userToEdit).length !== 0) {
+                        setUserEditable(userToEdit.editable)
                         const { _id, name, email, cohorte, standup } = userToEdit;
                       
                         if (typeof userToEdit.cohorte !== 'undefined') var cohorteNombre = cohorte.Nombre;
@@ -112,7 +114,8 @@ const Profile = (): JSX.Element => {
                             email,
                             cohorte: cohorteNombre,
                             standup: standupNombre
-                        })
+                        });
+                        
                     }
 
                     if( typeof userToEdit !== 'undefined' && typeof userToEdit.thumbnail !== 'undefined' ){
@@ -216,14 +219,15 @@ const Profile = (): JSX.Element => {
         await Swal.fire(
             "Se han actualizado los datos correctamente",
         )
-            .then(() => {
-                window.location.reload()
-            })
+       
+        if(getProfile.role !== 'admin'){
+            setinputDisabled(true)
+            setUserEditable(false)
+        }  
 
     }
     const activateEdition = async () => {
         await makeEditable(id);
-       
     }
 
     return (
@@ -268,7 +272,8 @@ const Profile = (): JSX.Element => {
                     </>
                     : null
                 }
-                {getProfile.role === 'admin' ?
+                
+                {getProfile.role === 'admin' || userEditable ?
                     <div className="divBtnLogin">
                         <button
                             className={'app__btn'}
@@ -279,7 +284,7 @@ const Profile = (): JSX.Element => {
                     </div>
                     : null
                 }
-                {
+               {/*  {
                     userToEdit && userToEdit.editable === true && (userToEdit.role === 'alumno' || userToEdit.role === 'PM') && getProfile.role !== 'admin' ?
                         <div className="divBtnLogin">
                             <button
@@ -290,7 +295,7 @@ const Profile = (): JSX.Element => {
                             </button>
                         </div>
                         : null
-                }
+                } */}
                 {
                     //userToEdit && (userToEdit.role === 'alumno' || userToEdit.role === 'PM') && getProfile.role === 'admin'  ? 
 

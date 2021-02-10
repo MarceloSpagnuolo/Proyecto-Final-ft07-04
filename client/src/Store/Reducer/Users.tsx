@@ -104,6 +104,7 @@ function Users(state = inicialState, action: any) {
         ...state,
         userToEdit: action.payload,
       };
+    case MAKE_USER_EDITABLE:  
     case PUT_USERS: {
       return {
         ...state,
@@ -136,12 +137,7 @@ function Users(state = inicialState, action: any) {
         })
       }
     }
-    case MAKE_USER_EDITABLE: {
-      return {
-        ...state,
-        userToEdit: action.payload
-      }
-    }
+   
     default: {
       return state;
     }
