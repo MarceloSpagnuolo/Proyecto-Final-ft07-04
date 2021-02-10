@@ -61,7 +61,8 @@ function Add() {
                 <div className="Add-Cohorte-Body">
                   <h2 className="Add-Cohorte-Title">Crea Un Nuevo Cohorte</h2>
                   <p className="Add-Frase">
-                    Agrega a la base de datos a los nuevos integrantes de HENRY.
+                    Aquí podrá agregar un nuevo Cohorte indicando un nombre único
+                    y una fecha posterior a la fecha actual.
                   </p>
                   <Form className="Add-Form">
                     <div className="Add-Form-Campos">

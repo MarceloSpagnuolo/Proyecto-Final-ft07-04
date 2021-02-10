@@ -102,9 +102,6 @@ export default async function Insert() {
           Nombre: "Advance Promises"
         },
         {
-          Nombre: "Advance Promises"
-        },
-        {
           Nombre: "Espress"
         },
         {

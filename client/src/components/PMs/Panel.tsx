@@ -65,7 +65,7 @@ function handleParticipa(e: any) {
 
     return (
         <div className="Panel-Body">
-            <h2>STANDUD {standup && standup.Grupo}</h2>
+            <h2>STANDUP {standup && standup.Grupo}</h2>
             <div className="Panel-Sub">
                 <div>
                     <span>PM1: {standup.PM && standup.PM.length > 0 && standup.PM[0].name.firstname}{" "}

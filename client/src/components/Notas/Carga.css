@@ -195,7 +195,19 @@
   box-shadow: 6px 6px 5px rgba(180, 133, 133, 0.26);
 }
 
+.Copiar-Lista {
+  width: 15vw;
+  height: 4vh;
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+  border: 0;
+}
 
+.Copiar-Lista:hover {
+  cursor: pointer;
+  background-color: gray;
+}
 
 
 
