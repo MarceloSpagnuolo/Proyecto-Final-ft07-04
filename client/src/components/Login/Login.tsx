@@ -119,7 +119,7 @@ const Login = (): JSX.Element => {
                             <h1 className="loginH11" >Henry Manager</h1>
                         </div>
                         <div className="textoChiquitin">
-                            <p>Si has llegado hasta este punto es porque has sido elegido para hacer parte de nuestra comunidad</p>
+                            <p>Si has llegado hasta este punto es porque has sido elegido para ser parte de nuestra comunidad</p>
                         </div>
                         <div className="loginH2">
                             <h2> ¿list@ para cambiar tu vida?</h2>
