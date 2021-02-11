@@ -15,12 +15,13 @@
 .profileContainer {
 display: flex !important;
 background-color: var(--first-color);
-padding: 1% 3% 3% 3%;
+padding: 3%;
 height: auto;
 min-height: 85vh;
 flex-direction: row;
 justify-content: space-around;
 align-items: center;
+overflow: hidden;
 }
 
 /* Tarjeta blanca de datos personales */
