@@ -16,8 +16,8 @@
 display: flex !important;
 background-color: var(--first-color);
 padding: 3%;
-height: auto;
-min-height: 85vh;
+height: 77.2vh;
+min-height: 10vh;
 flex-direction: row;
 justify-content: space-around;
 align-items: center;
