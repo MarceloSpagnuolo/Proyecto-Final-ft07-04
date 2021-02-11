@@ -13,10 +13,10 @@ export default function SearchBar(props: any) {
 
     const lupita = "https://media.istockphoto.com/vectors/magnifying-glass-icon-magnifier-symbol-concept-search-for-people-to-vector-id1173137813?k=6&m=1173137813&s=170667a&w=0&h=6Ar342lRTbRXSpIe5o8IWeGwtbDsjwzH9p7dTDagvak="
 
-/*     useEffect(() => {
-        dispatch(getCohortes())
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []); */
+    /*     useEffect(() => {
+            dispatch(getCohortes())
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []); */
 
     function handlerInput(e: any) {
         setAlumno(e.target.value)
@@ -70,7 +70,7 @@ export default function SearchBar(props: any) {
                             <img className="icon-S" src={lupita} alt="img-lupa"></img>
                         </button>
                         <br />
-                        <label htmlFor="cohorte" id="pc-label-filtro-cohorte">o por Cohorte:</label>
+                        <label htmlFor="cohorte" id="pc-label-filtro-cohorte"> por Cohorte:</label>
                         <select id='pc-filtro-cohorte' name="cohorte" onChange={(e) => handleSelect(e)}>
                             <option value="todos">Todos</option>
                             <option value="none">Sin Cohorte</option>
