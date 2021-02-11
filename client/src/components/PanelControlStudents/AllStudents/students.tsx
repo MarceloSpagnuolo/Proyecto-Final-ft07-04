@@ -98,7 +98,11 @@ const Students = (): JSX.Element => {
                                     <td className="student-table-td" id="less"><Link id="links" to={`/profile/${alum._id}`}> {`${alum.name.firstname} ${alum.name.lastname}`}</Link></td>
                                     <td className="student-table-td" id="less">{alum.created}</td>
                                     <td className="student-table-td">{alum.email}</td>
-                                    <td className="student-table-td" id="less">{alum.github}</td>
+                                    <td className="student-table-td" id="less">
+                                        <a id="links" target="_blank" href={`https://github.com/${alum.github}`}>
+                                        {alum.github}
+                                        </a>
+                                    </td>
                                     <td className="student-table-td" id="links-table">
                                         {alum.cohorte ?
                                             <Link id="links" to={`/activos/${alum.cohorte && alum.cohorte._id}`}>

@@ -50,7 +50,7 @@ function MiCohorte(props: any) {
         <div>
             <SearchBar id={id}/>
         </div>
-        <div className="MiCohorte-Container">
+        <div className="MiCohorte-Container white-back">
           <h3>Alumnos</h3>
           <div className="MiCohorte-Table">
             <table className="MiCohorte-Table">

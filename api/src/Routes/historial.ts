@@ -9,6 +9,7 @@ import Modulos from "../Models/modulos";
 //O agrega un nuevo cohorte a su historia cuando migra
 router.post("/", async (req, res) => {
     const { userId, cohorteId } = req.body;
+    console.log(userId, cohorteId);
 
     //Primero nos fijamos si el alumno ya tiene historia
     var alumno = await User.findById(userId);
@@ -24,7 +25,7 @@ router.post("/", async (req, res) => {
             newHistoria.save( async function(err, result) {
                 err ? res.send(err).status(400) : 
                     //Guardamos el codigo de la historia en alumno
-                    alumno = await User.findById(userId, { historia: result._id})
+                    alumno = await User.findByIdAndUpdate(userId, { historia: result._id})
                     !alumno ? res.send("Error al genera historia del alumno").status(400) :
                         res.json(alumno);
             });
@@ -75,7 +76,7 @@ router.get("/cohorte/:cohorteId", async (req, res) => {
 
 router.get("/modulos", async (req, res) => {
 
-    const modulos = await Modulos.find();
+    const modulos = await Modulos.find().sort({Numero: 1});
 
     modulos ? res.json(modulos) : res.send("No se encontraton módulos").status(400);
 })

@@ -41,7 +41,7 @@ const MiGrupo = (props: any): JSX.Element => {
                             if (p.role === "PM" && p.standup !== null) {
                                 return (
                                     <div id='pm-asignado-mi-grupo' key={"PM" + p._id} >
-                                        <img className="roundPM" src="https://i.pinimg.com/236x/22/cd/5b/22cd5bf661c3d8a8550752b981901531.jpg" alt="user" />
+                                        <img className="roundPM" src={p.thumbnail || 'http://localhost:3001/imagenes/default-user-image.png'} alt="user" />
                                         <p>{p.name.firstname} {p.name.lastname}</p>
                                     </div>
                                 )

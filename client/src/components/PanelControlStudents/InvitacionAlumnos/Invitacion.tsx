@@ -81,8 +81,8 @@ const Invitacion = (): JSX.Element => {
                 <div id='fondonegro-invitacion'>
                     <table id='tabla-panel-control'>
                         <thead>
-                            <p id='texto-sube-lista'> si tienes una lista de estudiantes en un archivo de Excel puedes añadirla </p>
-                            <input name="file" type="file" id="file" onChange={(e) => handleOnChange(e)} accept="png jpg jpeg gif xlsx" />
+                            <p id='texto-sube-lista'>Si tienes una lista de estudiantes en un archivo de Excel puedes añadirla </p>
+                            <input name="file" type="file" id="file" onChange={(e) => handleOnChange(e)} accept=".xlsx, .xls" />
                             <a id='link-template' href={`${URL}/template.xlsx`} download>Descargar Plantilla</a>
                             <p> o si prefieres agregar uno a uno tambien puedes hacerlo </p>
                             <input name="email" type="email" placeholder="    correo@nuevo.alumno" id="invita-por-email"

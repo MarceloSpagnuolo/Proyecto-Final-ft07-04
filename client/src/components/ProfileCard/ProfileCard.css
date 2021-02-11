@@ -1,33 +1,21 @@
-@font-face {
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 900;
-    src: local('Source Sans Pro'), url('https://fonts.cdnfonts.com/s/12183/SourceSansPro-Black.woff') format('woff');
-}
-
 .divsitoProfileCard {
     box-sizing: border-box;
-    font-family: 'Source Sans Pro';
-    margin: 10px;
-    width: 280px;
-    height: 320px;
+    font-family: 'Roboto', sans-serif;
+    margin:1%;
+    width: 23%;
+    height: auto;
 }
 
 .namePCard {
-    margin: 10px 0;
-}
-
-.gitPC {
-    font-size: 14px;
-    line-height: 21px;
+    margin: 0%;
 }
 
 .card-container {
     background-color: #ffffff;
     border-radius: 5px;
-    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
-    color: #000000;
-    padding-top: 30px;
+    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.25);
+    color: #313131;
+    padding-top: 10px;
     position: relative;
     width: 350px;
     max-width: 100%;
@@ -40,12 +28,22 @@
     border-radius: 50%;
 }
 
+.buttons {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border-top: 1px solid #dddbdb;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
 button.primary {
     background-color: transparent;
-    border: none;
-    border-top: 1px solid #f0c91d;
+    border: none;    
     height: 40px;
-    color: #000000;
+    color: #252525;
     font-size: 30px;
     width: 100px;
     margin-bottom: 0;
@@ -57,46 +55,37 @@ button.primary:hover {
     opacity: 0.7;
 }
 
-.primary>a {
-    position: absolute;
-    bottom: 1px;
-    left: 78px;
-}
 
-.ghost>a {
-    position: absolute;
-    left: 170px;
-    bottom: 3px;
-}
+
 
 .ghost img {
-    height: 25px;
+    height: 20px;
 }
 
 button.primary.ghost {
     background-color: transparent;
-    color: #000000;
+    color: #252525;
 }
+
+
 
 .divCGP {
     display: flex;
     flex-direction: column;
     position: absolute;
-    background-color: #f5d856a8;
+    background-color: #252525;
     width: 35px;
-    height: 75px;
-    right: 10px;
+    height: 55px;
+    right: 6px;
     top: 0;
     box-shadow: 1px 1px 10px 1px rgba(187, 187, 187, 0.562);
 }
 
 .divCGP span {
     margin-top: 5px;
-    font-size: 23px;
-    font-family: 'Source Sans Pro';
-    font-weight: 900;
-    color: white;
-    -webkit-text-stroke: 1px rgb(180, 175, 175)
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(243, 243, 243);   
 }
 
 .divHub img {
@@ -114,7 +103,9 @@ button.primary.ghost {
     top:5px;
     height: 25px;
     width: 25px;
-    background-color: rgb(240, 18, 18);
+    background-color: rgb(204, 204, 204);
     color: white;
+    font-weight: 800;
     border: none;
+    border-radius: 50%;
 }

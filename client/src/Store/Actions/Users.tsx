@@ -21,6 +21,7 @@ import {
   PUT_ASISTENCIA,
   PUT_PARTICIPA,
   PUT_PASS_FOR_EMAIL,
+  MAKE_USER_EDITABLE
 } from "../Constants/Users";
 const url = "http://localhost:3001";
 
@@ -263,14 +264,21 @@ export const updateUser = (data: Object) => async (dispatch: any) => {
 
   try {
     const res = await axios.put(`${url}/users/editprofile`, data);
+    if(res.data.usersCOM.role !== 'admin') {
+      await dispatch(makeUserEditable(res.data.usersCOM._id))
+      await dispatch({
+        type: PUT_USERS,
+        payload: res.data,
+      });
+    }else{
+      await dispatch({
+        type: PUT_USERS,
+        payload: res.data,
+      });
+    }
 
-    await dispatch({
-      type: PUT_USERS,
-      payload: res.data,
-    });
     if (res.data.token) {
       dispatch(getUserByToken(res.data.token))
-      //localStorage.setItem("userToken", res.data.token);
     }
   } catch (e) {
     dispatch({
@@ -358,3 +366,20 @@ export const newPassReturn = (mailToken: any, payload: any) => async (dispatch: 
 
 
 }
+
+export const makeUserEditable = (id : string) => async (dispatch : any) => {
+
+  try {
+    const res = await axios.put(`${url}/users/editable/${id}`)
+    await dispatch({
+      type: MAKE_USER_EDITABLE,
+      payload: res.data
+    })
+  } catch (e) {
+      dispatch({
+        type: ERROR_MESSAGE,
+        message: "Hubo un problema al obtener el usuario para editar",
+      });
+  }
+};
+

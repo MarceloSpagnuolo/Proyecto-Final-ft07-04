@@ -6,10 +6,11 @@ import Swal from "sweetalert2";
 import { Redirect, useHistory } from "react-router-dom";
 import clienteAxios from '../../config/axios';
 import Modal from "../Modal/Modal"
+import imgFondo from '../../assets/fondo-login.jpg'
 
 interface Logeado {
-  email?: string;
-  password?: string;
+    email?: string;
+    password?: string;
 }
 
 const Login = (): JSX.Element => {
@@ -79,75 +80,77 @@ const Login = (): JSX.Element => {
                 "Mail enviado a su casilla",
                 `Revise su correo, incluyendo la sección de spam`,
                 "success"
-                );
-                setDisplay(false)
-            } catch (e) {
-                Swal.fire(
-                    "Mail no encontrado",
-                    `El mail proveido no concuerda con un usuario`,
-                    "error"
-                    );
-            }
+            );
+            setDisplay(false)
+        } catch (e) {
+            Swal.fire(
+                "Mail no encontrado",
+                `El mail proveido no concuerda con un usuario`,
+                "error"
+            );
+        }
     }
 
 
     return (
         <>
 
-<Modal title="Reseteo de contraseña" show={display} onClose={() => setDisplay((val) => !val)}>
-        <h4 className="Activos-h4">Ingrese el email al usuario asociado</h4>
-        <form>
-        <div className="Listado-Container-Select">
-            <label>
-                <input onChange={(e) => handlerInputEmail(e)}></input>
-            </label>
-          </div>
-          
-          <div className="Modal-Botones">
-            <button className="Modal-Cancel" onClick={() => setDisplay(false)}>Cancelar</button>
-            <button className="Modal-Migrar" type="submit" onClick={(e) => handleSubmitEmail(e)} 
-              >Aceptar</button>
-          </div>
-        </form>
-      </Modal>
-            <div className="gridLogin">
-                <div className="imgLoginMax">
-                    <img src="https://cdn.discordapp.com/attachments/764979688446885898/802048383844876298/cowork.png" />
-                </div>
-                <div className="loginManager">
-                    <div className="divLoginH1">
-                        <h1 className="loginH11" >Henry</h1>
-                        <h1 className="loginH12">Manager</h1>
+            <Modal title="Reseteo de contraseña" show={display} onClose={() => setDisplay((val) => !val)}>
+                <h4 className="Activos-h4">Ingrese el email al usuario asociado</h4>
+                <form>
+                    <div className="Listado-Container-Select">
+                        <label>
+                            <input onChange={(e) => handlerInputEmail(e)}></input>
+                        </label>
                     </div>
-                    <div className="loginH2">
-                        <h2> ¿Listo para cambiar tu vida?</h2>
+
+                    <div className="Modal-Botones">
+                        <button className="Modal-Cancel" onClick={() => setDisplay(false)}>Cancelar</button>
+                        <button className="Modal-Migrar" type="submit" onClick={(e) => handleSubmitEmail(e)}
+                        >Aceptar</button>
                     </div>
-                    <div className="textoChiquitin">
-                        <p>Soy un texto de relleno solo diré que esta es una página mas chiquita que la grande pero igualmente de útil</p>
-                    </div>
-                    <div className="divFormLogin">
-                        <form className="formLogin" onSubmit={handleSubmit}>
-                            {error ? <div className="errText"><p>Contraseña o Email incorrectos</p></div> : null}
-                            <div id={error ? "errLogin" : ""} className="LoginDiv-Campos">
-                                <label className="nameInput" htmlFor="email">Email registrado</label><br></br>
-                                <input autoFocus={true} size={40} type="email" id="emaill" name="email" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} onKeyDown={(e) => enterKey(e) }/>
-                            </div>
-                            <div id={error ? "errLogin" : ""} className="LoginDiv-Campos">
-                                <label className="nameInput" htmlFor="password">Contraseña</label><br></br>
-                                <input size={60} type="password" id="passs" name="password" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} onKeyDown={(e) => enterKey(e) }/>
-                            </div>
-                        </form>
-                        <div>
-                            <button onClick={sendPassReset}>¿Olvidó su contraseña?</button>
+                </form>
+            </Modal>
+            <div id='login-container-seccion'>
+                <div className="gridLogin">
+                    <img id='login-imagen-bienvenida' src="https://cdn.discordapp.com/attachments/764979688446885898/802048383844876298/cowork.png" />
+                    <div className="loginManager">
+                        <div className="divLoginH1">
+                            <h1 className="loginH11" >Henry Manager</h1>
                         </div>
-                        <div className="divBtnLogin">
-                            <button className="btnLogin" onClick={handleSubmit}>Entrar</button>
+                        <div className="textoChiquitin">
+                            <p>Si has llegado hasta este punto es porque has sido elegido para ser parte de nuestra comunidad</p>
+                        </div>
+                        <div className="loginH2">
+                            <h2> ¿list@ para cambiar tu vida?</h2>
+                        </div>
+                        <div className="divFormLogin">
+                            <form className="formLogin" onSubmit={handleSubmit}>
+                                <div id={error ? "errLogin" : ""} className="LoginDiv-Campos">
+                                    <label className="nameInput" htmlFor="email">email registrado</label><br></br>
+                                    <input autoFocus={true} size={40} type="email" id="emaill" name="email" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} onKeyDown={(e) => enterKey(e)} />
+                                    {error ? <div className="errText"><p>Contraseña o Email incorrectos</p></div> : null}
+                                </div>
+                                <div id={error ? "errLogin" : ""} className="LoginDiv-Campos">
+                                    <label className="nameInput" htmlFor="password">contraseña</label><br></br>
+                                    <input size={60} type="password" id="passs" name="password" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} onKeyDown={(e) => enterKey(e)} />
+                                </div>
+                            </form>
+                            <div id='login-botones'>
+                                <div className="divBtnLogin">
+                                    <button className="login-boton-entrar" onClick={handleSubmit}>Entrar</button>
+                                </div>
+                                <div >
+                                    <p id='login-olvido-pass' onClick={sendPassReset}>¿Olvidó su contraseña?</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-                </>
-  );
+        </>
+    );
 };
 
 export default Login;
