@@ -126,10 +126,10 @@ const Login = (): JSX.Element => {
                         </div>
                         <div className="divFormLogin">
                             <form className="formLogin" onSubmit={handleSubmit}>
-                                {error ? <div className="errText"><p>Contraseña o Email incorrectos</p></div> : null}
                                 <div id={error ? "errLogin" : ""} className="LoginDiv-Campos">
                                     <label className="nameInput" htmlFor="email">email registrado</label><br></br>
                                     <input autoFocus={true} size={40} type="email" id="emaill" name="email" className="LoginDivInput-Campos" onChange={(e) => handleInput(e)} onKeyDown={(e) => enterKey(e)} />
+                                    {error ? <div className="errText"><p>Contraseña o Email incorrectos</p></div> : null}
                                 </div>
                                 <div id={error ? "errLogin" : ""} className="LoginDiv-Campos">
                                     <label className="nameInput" htmlFor="password">contraseña</label><br></br>

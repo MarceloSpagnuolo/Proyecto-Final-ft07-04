@@ -111,8 +111,9 @@
 
 
 .errText {
-    color: red;
-    margin-left: 80px;
+    color: red;    
+    font-size: .8rem;
+    max-height: 3%;
 }
 
 #errLogin label {
