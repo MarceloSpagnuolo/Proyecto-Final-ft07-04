@@ -1,59 +1,127 @@
 .Activos-Container {
   display: flex;
+  padding: 2% 4%;
   flex-direction: column;
   align-items: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  width: auto;
   overflow-y: auto;
+  background-color: #F6DE00;
+  min-height: 85vh;
 }
 
-.Activos-Boton {
-  display: inline-block;
-  height: 40px;
-  background-color: #f6de00;
-  border-radius: 10px;
-  margin-left: 10px;
+#activos-container-instructor-grupo {
+  margin-top: 2%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+}
+
+#activos-cohorte-grupos{
+  margin-bottom: 5.1%;
+  font-size: 1.95rem;
+  font-weight: 600;
+}
+
+#activos-instructor{
+  font-size: 1.95rem;
+  font-weight: 600;
+}
+
+#nd {
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 95%);
+  padding: 20px 30px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 30px;
+  color: #25252538;
+  width: auto;
+  min-width: 80vw;
+}
+
+#nd h2 {
+  color: #252525;
+  font-size: 3rem;
+}
+
+.Activos-h3 {
+  color: black;
+}
+
+.Activos-h4 {
+  font-weight: 500;
+}
+
+.Activos-span {
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.content {
+  margin: 30px;
+}
+
+
+.Activos-Boton { 
+  width: 33%;
+  padding: 0.8%;
+  height: auto;
+  background-color: hsl(0, 0%, 1%);
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  margin: 1%;
+}
+
+#activo-boton-quitar {
+  height: 30px;
+  width: 100%;
+  border: none;
+ 
+  border: 1px solid rgb(231, 54, 0);
+  color: rgb(231, 54, 0);
+  border-radius: 1rem;;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+#activo-boton-quitar:hover {
+  height: 30px;
+  width: 100%;
+  border: none;
+ background-color: rgb(231, 54, 0);
+  border: none;
+  color: white;
+  border-radius: 1rem;;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+#activo-boton-migrar {
+  height: 30px;
+  width: 100%;
+  border: none;
+  background-color: rgba(5, 189, 82, 0.993);
+  color: white;
+  border-radius: 1rem;;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 #Prueba {
   text-align: center;
 }
 
-@media screen and (max-width: 768px) {
-  #Prueba {
-    display: none;
-  }
-  .Activos-Table {
-    overflow-y: scroll;
-    height: 300px;
-    width: 100%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .Activos-Table {
-    overflow-y: scroll;
-    height: 100%;
-    width: 100%;
-  }
-}
-
-.Listado-Select {
-  font-size: 1.2rem;
-  width: 80%;
-}
-
 .Modal-Botones {
-  display: flex;
-  padding: 1rem;
-  justify-content:end;
+  margin-left: 20px;
+  align-items: center;
 }
 
 .Modal-Cancel {
   width: 45%;
   margin: 5px;
   height: 40px;
-  font-size: 1.2rem;
+  font-size: 16px;
+  border-radius: 5px;
   background-color: red;
   color: white;
 }
@@ -65,9 +133,65 @@
 
 .Modal-Migrar {
   width: 45%;
+  margin: 30px;
+  height: 40px;
+  font-size: 16px;
+  background-color: rgb(87, 87, 253);
+  color: white;
+  border-radius: 5px;
+}
+
+
+@media screen and (max-width: 768px) {
+  #Prueba {
+    display: none;
+  }
+
+  .Activos-Table {
+    overflow-y: scroll;
+    height: 300px;
+    width: 100%;
+  }
+}
+
+
+
+
+@media screen and (min-width: 768px) {
+  .Activos-Table {
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.Listado-Select {
+  margin-top: 10px;
+  font-size: 16px;
+  width: 80%;
+}
+
+.Modal-Botones {
+  display: flex;
+}
+
+.Modal-Cancel {
+  width: 45%;
   margin: 5px;
   height: 40px;
-  font-size: 1.2rem;
+  background-color: red;
+  color: white;
+}
+
+.Modal-Cancel:hover {
+  opacity: .6;
+  cursor: pointer;
+}
+
+.Modal-Migrar {
+  width: 45%;
+  margin: 30px;
+  height: 40px;
   background-color: rgb(87, 87, 253);
   color: white;
   border-radius: 5px;

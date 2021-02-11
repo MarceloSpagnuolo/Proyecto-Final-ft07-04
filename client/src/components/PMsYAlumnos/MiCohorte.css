@@ -1,31 +1,134 @@
 .MiCohorte-Container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 100%;
-    overflow-y: auto;
-  }
-    
+  background-color: #F6DE00;
+  height: auto;
+  min-height: 77vh;
+  padding: 3%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.MiCohorte-Container h2 {
+  font-size: 3rem;
+  padding: 20px;
+  padding-left: 50px;
+  margin: auto;
+  justify-content: center;
+}
+
+.white-back {
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 95%);
+  padding: 20px 30px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 30px;
+  color: #25252538;
+  width: auto;
+  min-width: 80vw;
+  margin: 30px;
+  font-size: 1rem;
+}
+
+.white-back th,
+td {
+  padding: 10px;
+}
+
+.white-back h3 {
+  color: black;
+  font-size: 1.96rem;
+  margin: 30px;
+}
+
+#inlineFormInputGroup {
+  padding: 30px;
+}
+
+#mi-cohorte-titulo {
+  font-size: 3rem;
+  margin-bottom: 1%;
+}
+
+#mi-cohorte-header {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+  line-height: 25px;
+}
+
+#mi-cohorte-contenedor-instructor {
+  font-size: 1.25rem;
+  width: 20%;
+  background-color: #EDCA02;
+  padding: 30px 60px;
+  margin: 1%;
+  border-radius: 9px;
+  height: auto;
+}
+
+#mi-cohorte-contenedor-instructor>p {
+  margin: 20px;
+}
+
+#mi-cohorte-subtitulos {
+  font-size: 1.25rem;
+  width: 20%;
+  background-color: #EDCA02;
+  padding: 30px 60px;
+  margin: 1%;
+  border-radius: 9px;
+  height: auto;
+}
+
+#mi-cohorte-subtitulos>p {
+  margin: 20px
+}
+
+#mi-cohorte-instructor {
+  font-size: 2.44rem;
+  font-weight: 600;
+}
+
+#mi-cohorte-instructor {
+  margin-bottom: 20px;
+}
+
+#pc-campos-busqueda {
+  margin-left: 30%;
+}
+
+#MiCohorte-listado-Container {
+  width: auto;
+  height: auto;
+  background-color: white;
+
+  padding: 2%;
+  border-radius: 1rem;
+  color: #313131;
+  box-shadow: 5px 5px 30px #c7181838;
+  margin: 2% 5%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+#Prueba22 {
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
   #Prueba22 {
-    text-align: center;
+    display: none;
   }
-  
-  @media screen and (max-width: 768px) {
-    #Prueba22 {
-      display: none;
-    }
-    .MiCohorte-Table {
-      overflow-y: scroll;
-      height: 300px;
-      width: 100%;
-    }
+
+  .MiCohorte-Table {
+    overflow-y: scroll;
+    height: 300px;
+    width: 100%;
   }
-  
-  @media screen and (min-width: 768px) {
-    .MiCohorte-Table {
-      overflow-y: scroll;
-      height: 100%;
-      width: 100%;
-    }
+}
+
+@media screen and (min-width: 768px) {
+  .MiCohorte-Table {
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
   }
+}

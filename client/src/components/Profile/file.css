@@ -1,0 +1,70 @@
+.profile-images-card{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	margin: auto;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+	/* box-shadow: 0rem 0rem 0.5rem #ddd; */
+	background: transparent;
+	border-radius: 0.5rem;
+}
+
+.profile-images{
+	width: 150px;
+	height: 150px;
+	background: #fff;
+	border-style: solid;
+	border-color:black;
+	border-width: 0.16rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.profile-images img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.custom-file input[type='file']{
+	display: none;
+}
+
+.custom-file label{
+	cursor: pointer;
+	color: #000;
+	text-align: center;
+	display: table;
+	margin: auto;
+	margin-top: 0.5rem;
+}
+
+.contentFile {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#cameraButton {
+	background-color:black;
+	border:none;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	margin-right: -2.5rem;
+	margin-top: -1rem;
+}
+.fa {
+	padding: auto;
+	margin-top: 0.3rem;
+	color: white;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.custom-file {
+	margin-top: -1rem;
+	margin-right: -2.5rem;
+}
+

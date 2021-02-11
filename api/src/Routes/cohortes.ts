@@ -5,7 +5,7 @@ import User from "../Models/users";
 
 //TRAE TODOS LOS COHORTES
 router.get("/", async (req, res) => {
-  const result = await Cohorte.find();
+  const result = await Cohorte.find().sort({Nombre: 1});
 
   !result ? res.send("hubo un error").status(400) : res.json(result);
 });
@@ -83,15 +83,7 @@ router.get("/active/:estado", async (req, res) => {
   }).sort({Nombre: 1});
 });
 
-// Devuelve un cohorte especifico con su instructor asociado
-router.get("/:id", async (req, res) => {
-  const { id } = req.params;
-  await Cohorte.find({_id: id }, function (err, cohorte) {
-    User.populate(cohorte, { path: "Instructor"}, function (err, completo) {
-      completo ? res.json(completo) : res.send(err).status(400);
-    });
-  });
-});
+
 
 //Devuelve true si el nombre de un cohorte ya existe o false si no existe
 router.get("/nombre/:nombre", async (req, res) => {
@@ -103,4 +95,67 @@ router.get("/nombre/:nombre", async (req, res) => {
   cohorte !== null ? res.send(true).status(200) : res.send(false).status(200);
 })
 
+//Devuelve el nombre de un cohorte
+router.get("/CohorteName/:id", async(req, res) => {
+  const { id } = req.params;
+  const cohorte = Cohorte.findOne({_id: id})
+
+  !cohorte ? res.sendStatus(400) : res.send(cohorte.Nombre)
+})
+
+router.get("/CohortesNames/:id", async (req, res) => {
+  const { id } = req.params
+
+  const result = await Cohorte.find({_id: id})
+
+  !result ? res.send("hubo un error").status(400) : res.json(result);
+});
+
+router.get("/CountAlumnos", async (req, res) => {
+  try {
+    const cohortes = await Cohorte.find();
+    
+    cohortes.forEach(async (c: any)  => {
+      const alumnos = await User.find({cohorte: c._id})
+      let cantidad = alumnos.length
+      if(alumnos.length !== 0) {
+        const numero = await Cohorte.findOneAndUpdate({_id: c._id}, {Alumnos: cantidad}, {new: true})
+        numero.save()
+      }
+    })
+    
+    res.send("todo oki").status(200)
+    
+  } catch(e) {
+    res.send("algo salio mal").status(400)
+  }
+  
+  
+  })
+
+  // Devuelve un cohorte especifico con su instructor asociado
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  await Cohorte.find({_id: id }, function (err, cohorte) {
+    User.populate(cohorte, { path: "Instructor"}, function (err, completo) {
+      completo ? res.json(completo) : res.send(err).status(400);
+    });
+  });
+});
+
+//ruta que actualiza los valores de los tests en los cohortes
+router.put("/tests/:cohorteId", async (req, res) => {
+  const { cohorteId } = req.params;
+  let { checkpoint, dato, valor } = req.body;
+  valor = parseInt(valor);
+
+  await Cohorte.findByIdAndUpdate(cohorteId, { Checkpoints: {[checkpoint]: {[dato]: valor}}});
+  await Cohorte.findById(cohorteId, function(err: any, cohorte: any) {
+    User.populate(cohorte, { path: "Instructor" }, function(err: any, cohorteCOM: any) {
+      err ? res.send(err).status(400) : res.json(cohorteCOM);
+    })
+  })
+})
+
 export default router;
+

@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { postCohorte } from "../../Store/Actions/Cohortes"
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import imgCreaCohorte from '../../assets/imagen-crear-cohorte.png'
 
 interface AddForm {
   Nombre: String;
@@ -30,7 +31,7 @@ function Add() {
             validate={async (values) => {
               var errors: { [k: string]: any } = {};
               const regDate = /^\d{4}([\-/.])(0?[1-9]|1[1-2])\1(3[01]|[12][0-9]|0?[1-9])$/.test(values.fechaInicio.toString())
-              const regNombre = values.Nombre.length > 0 ? await axios.get(`${url}/cohorte/nombre/${values.Nombre}`) : { data: false};
+              const regNombre = values.Nombre.length > 0 ? await axios.get(`${url}/cohorte/nombre/${values.Nombre}`) : { data: false };
               let hoy: Date = new Date();
               if (values.Nombre.length < 1) {
                 errors.Nombre = "Debe Ingresar el nombre del Cohorte";
@@ -43,7 +44,7 @@ function Add() {
                 errors.fechaInicio = "Fecha inválida"
               } else if (new Date(values.fechaInicio) < hoy) {
                 errors.fechaInicio = "La fecha no puede ser inferior a hoy"
-              } 
+              }
               return errors;
             }}
 
@@ -59,16 +60,15 @@ function Add() {
             {({ isSubmitting, isValid }) => (
               <>
                 <div className="Add-Cohorte-Body">
-                  <h2 className="Add-Cohorte-Title">Nuevo Cohorte</h2>
+                  <h2 className="Add-Cohorte-Title">Crea Un Nuevo Cohorte</h2>
                   <p className="Add-Frase">
-                    Acá iba a poner una frase super importante y reboluda pero
-                    no se me ocurrió nada. Asi que solamente voy a decir gracias
-                    por ponerse a leer esta pelotudez
+                    Aquí podrá agregar un nuevo Cohorte indicando un nombre único
+                    y una fecha posterior a la fecha actual.
                   </p>
                   <Form className="Add-Form">
                     <div className="Add-Form-Campos">
                       <label htmlFor="Add" className="Add-Form-Label">
-                        Nombre Cohorte*
+                        * Próximo Cohorte
                       </label>
                       <br />
                       <Field
@@ -84,8 +84,8 @@ function Add() {
                       </ErrorMessage>
                     </div>
                     <div className="Add-Form-Campos">
-                      <label htmlFor="Add" className="Add-From-Label">
-                        Fecha de Inicio*
+                      <label htmlFor="Add" className="Add-Form-Label">
+                        * Fecha de Inicio
                       </label>
                       <br />
                       <Field
@@ -99,7 +99,7 @@ function Add() {
                         )}
                       </ErrorMessage>
                     </div>
-                    <span>* Campos obligatorios</span>
+                    <span id='campos-obligatorios-nuevo-cohorte'>* Campos obligatorios</span>
                     <br />
                     <button
                       type="submit"
@@ -118,7 +118,7 @@ function Add() {
         </div>
         <div className="Add-Image">
           <img
-            src="https://cdn.discordapp.com/attachments/801584401611620383/802716856850972683/undraw_group_chat_v059.png"
+            src={imgCreaCohorte}
             alt=""
           />
         </div>

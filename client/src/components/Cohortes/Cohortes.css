@@ -1,3 +1,23 @@
+#contenedor-seccion-cohortes {
+  background-color: hsl(54, 100%, 48%);
+  padding: 25px 60px;
+  width: auto;
+  min-height: 82vh;
+}
+
+#contenedor-interfaz-cohortes {
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 95%);
+  padding: 50px 70px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 30px;
+  color: #25252538;
+  min-height: 66vh;
+}
+
+#contenedor-interfaz-cohortes h2{
+  color: black;
+}
+
 .react-tabs {
   -webkit-tap-highlight-color: transparent;
 }
@@ -56,19 +76,223 @@
   display: block;
 }
 
-@media screen and (max-width: 768px) {
+.Listado-Table h2,
+th,
+td {
+  color: black;
+  font-family: 'Roboto';
+}
 
-  #Cohorte-Tab {
-    width: 100%;
+Listado-Table th,
+td {
+  font-size: 1rem;
+}
+
+
+
+
+
+
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 768px) {
+  #contenedor-seccion-cohortes {
+    background-color: hsl(54, 100%, 48%);
+    padding: 2% 4%;
+    width: auto;
+    min-height: 100vh;
+    height: auto;
   }
-
-  #Cohorte-TabList {
-    font-size: 0.9rem;
+  
+  #contenedor-interfaz-cohortes {
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 95%);
+    padding: 6% 4% 2% 4%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 30px;
+    color: #25252538;
+    min-height: 70vh;
+    width: auto;
+  }
+  
+  #contenedor-interfaz-cohortes h2{
+    color: black;
+    margin-bottom: 6%;
+  }
+  
+  .react-tabs {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .react-tabs__tab-list {
+    border-bottom: 1px solid #aaa;
+    margin: 0 0 10px;
+    padding: 0;
+  }
+  
+  .react-tabs__tab {
+    display: inline-block;
+    border: 1px solid transparent;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .react-tabs__tab--selected {
+    background: #fff;
+    border-color: #aaa;
+    color: black;
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .react-tabs__tab--disabled {
+    color: lightgray;
+    cursor: default;
+  }
+  
+  .react-tabs__tab:focus {
+    box-shadow: 0 0 5px hsl(208, 99%, 50%);
+    border-color: hsl(208, 99%, 50%);
+    outline: none;
+  }
+  
+  .react-tabs__tab:focus:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    left: -4px;
+    right: -4px;
+    bottom: -5px;
+    background: #fff;
+  }
+  
+  .react-tabs__tab-panel {
+    display: none;
+  }
+  
+  .react-tabs__tab-panel--selected {
+    display: block;
+  }
+  
+  .Listado-Table h2,
+  th,
+  td {
+    color: black;
+    font-family: 'Roboto';
+  }
+  
+  Listado-Table th,
+  td {
+    font-size: 0.8rem;
   }
 
 }
-@media screen and (min-width: 768px) {
-  #Cohorte-TabList {
-    font-size: 1.2rem;
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-device-width : 769px) and (max-device-width : 1024px) {
+  #contenedor-seccion-cohortes {
+    background-color: hsl(54, 100%, 48%);
+    padding: 2% 4%;
+    width: auto;
+    min-height: 100vh;
+    height: auto;
   }
+  
+  #contenedor-interfaz-cohortes {
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 95%);
+    padding: 6% 4% 2% 4%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 30px;
+    color: #25252538;
+    min-height: 70vh;
+    width: auto;
+  }
+  
+  #contenedor-interfaz-cohortes h2{
+    color: black;
+    margin-bottom: 6%;
+  }
+  
+  .react-tabs {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .react-tabs__tab-list {
+    border-bottom: 1px solid #aaa;
+    margin: 0 0 10px;
+    padding: 0;
+  }
+  
+  .react-tabs__tab {
+    display: inline-block;
+    border: 1px solid transparent;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .react-tabs__tab--selected {
+    background: #fff;
+    border-color: #aaa;
+    color: black;
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .react-tabs__tab--disabled {
+    color: lightgray;
+    cursor: default;
+  }
+  
+  .react-tabs__tab:focus {
+    box-shadow: 0 0 5px hsl(208, 99%, 50%);
+    border-color: hsl(208, 99%, 50%);
+    outline: none;
+  }
+  
+  .react-tabs__tab:focus:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    left: -4px;
+    right: -4px;
+    bottom: -5px;
+    background: #fff;
+  }
+  
+  .react-tabs__tab-panel {
+    display: none;
+  }
+  
+  .react-tabs__tab-panel--selected {
+    display: block;
+  }
+  
+  .Listado-Table h2,
+  th,
+  td {
+    color: black;
+    font-family: 'Roboto';
+  }
+  
+  Listado-Table th,
+  td {
+    font-size: 0.8rem;
+  }
+
 }

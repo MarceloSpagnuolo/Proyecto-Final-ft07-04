@@ -1,176 +1,722 @@
-.titleG {
-    font-family: 'Source Sans Pro';
+.divsoteGroupAdd {
+    background-color: hsl(54, 100%, 48%);
+    padding: 25px 100px;
+    width: auto;
+    font-family: 'Roboto', sans-serif;
 }
 
-.subTitleG {
-    font-family: 'Source Sans Pro';
+
+#titleGrupo {
+    font-size: 2.441rem;
+    text-transform: capitalize;
+    color: #252525;
+    margin-bottom: 25px;
+    margin-top: 5px;
 }
 
-@media screen and (max-width:1100px) {
-    .subTitleG {
-        text-align: center;
-    }
-    .subSubTitleG {
-        font-family: 'Source Sans Pro';
-        margin-top: 0;
-    }
-    .divAsignarPM {
-        position: relative;
-        right: 0px;
-        width: 300px;
-    }
-    .selectPMG {
-        font-family: 'Source Sans Pro';
-        width: 300px;
-        height: 30px;
-        border-radius: 5px 5px 0px 0px;
-        text-align-last: center;
-    }
-    .divAsignarPM input {
-        font-family: 'Source Sans Pro';
-        width: 300px;
-        height: 30px;
-        color: white;
-        background-color: black;
-        border: none;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border-radius: 0px 0px 5px 5px;
-    }
-    .titleG {
-        background-color: #f5d856a8;
-        width: 300px;
-        align-self: start;
-        text-align: center;
-        font-weight: 900;
-        color: white;
-    }
+#titleGrupo h3{
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 45px;
+}
+
+#grupo-detalle-header {
+    background-color: #F8F8F8;
+    display: grid;
+    grid-template: 1fr/1fr 1fr;
+    padding: 5% 10%;
+    border-radius: 20px;
+}
+#col-izq-grupo-detalle h1{
+    margin: 0;
+    font-size: 5.2rem;
+    text-transform: uppercase;
+    line-height: 0.96;
+    padding: 0% 15%;
+}
+#col-izq-grupo-detalle h3{
+    margin-top: 2%;
+    font-size: 2.7rem;    
+    line-height: 1.3;
+    font-weight: 400;
+    padding: 0% 15%;
+}
+
+#elige-pm{
+    padding: 0% 15%;
+}
+
+#elige-pm select{
+    width: 200px;
+    color: black;
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    margin-right: 5%;
+    box-shadow: 6px 6px 5px rgba(219, 219, 219, 0.418);
+    
+}
+
+#col-der-grupo-detalle img{
+    width: 80%;
+    height: 80%;
+}
+
+#pmtitle {
+    font-size: 1.563rem;
+    font-weight: 600;
+    margin: 3% 0%;
+}
+
+#container-pms-asignados {
+    margin: 1.5% 3%;
+    margin: 0px auto;
+}
+
+#container-seccion-pms {
+    border: none;
+    display: flex;
+    padding: 2%;
+    border-radius: 15px;
+    margin-bottom: 3%;
+    background-color: hsl(51, 98%, 47%);
+    box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418);  
+}
+
+#container-seccion-pms img{
+    border: 9px solid black;
+    display: flex;
+    border-radius: 100%;
+    max-height: 100px;
+    max-width: 100px;
+    margin: 0px auto;
+    box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418)
+}
+
+#dos-pms-row {
+    display: flex;
+}
+
+#pm-asignado-grupo {
+   margin: 1% 3%;
+
+}
+
+
+#pm-asignado-grupo p{
+    text-align: center;
+    padding: 10% 0%;
+    font-size: 1.25rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+
+}
+
+#elimina-pm{
+    font-size: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    background-color: rgb(190, 52, 10);
+    color: white;
+    text-align: center;
+    position: relative;
+    border: none;
+    border-radius: 15px;
+    float:right;
+    cursor: pointer;
+}
+
+.pmContainerName {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+#add-students {
+    text-align: center;
+    padding: 10% 0%;
+    font-size: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    border-radius: 35px;
+    width: 200px;
+    border: none;
+    background-color: black;
+    color: white;
+    margin-bottom: 9%;
+}
+#divResponsiveAdd{
+    margin: 0px;
+    padding: 0px;
+    background-color: tomato;
+}
+
+#alumnos-disponibles {
+    border-bottom: 1px solid rgb(218, 218, 218);
+    margin: 3% 3% 9% 3%;
+    padding-bottom: 20px;
+    text-align: center;
+    color: darkgray;
+    font-size: 1.25rem;
+}
+
+#add-students-interface {
+    display: grid;
+    grid-template: 1fr / 15% 60% 25%;
+}
+
+.divAddAlRespon {
+    display: flex;
+    margin: 3% 3% 6% 3%;
+    padding-bottom: 3%;
+    border-bottom: 1px solid rgb(218, 218, 218);
+}
+#nombre-invitado {
+    padding: 6% 10%;
+}
+
+
+#divResponsiveAdd {
+    padding: 5%;
+    background-color: #F8F8F8;
+    margin-left: 3%;
+    border-radius: 9px;
+}
+#divResponsiveAdd img{
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+}
+
+
+
+#alumnos-grupo {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #F8F8F8;
+    padding: 4%;
+    border-radius: 15px;
+    margin-left: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 768px) {
+   
+    /*TITULO Y ENCABEZADO*/
     .divsoteGroupAdd {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        background-color: hsl(54, 100%, 48%);
+        padding: 2% 4%;
+        width: 94%;
+        font-family: 'Roboto', sans-serif;
     }
-    .DivProfileCDetail {
-        display: block;
-        margin-bottom: 10px;
-        max-width: 300px;
-        border: 1px solid rgb(148, 148, 148);
-        border-radius: 10px;
-        overflow: hidden;
-        overflow-y: scroll;
-        max-height: 400px;
-        position: relative;
-        display: flex;
-        flex-direction: column;
+    
+    
+    #titleGrupo {
+        font-size: 2.441rem;
+        text-transform: capitalize;
+        color: #252525;
+        margin: 2% auto;
     }
-    .pmtitle {
-        font-family: 'Source Sans Pro';
-        font-weight: bold;
-        width: 300px;
-        text-align: center;
-        border-bottom: 1px solid rgb(175, 172, 172);
-        height: 25px;
+    
+    #titleGrupo h3{
+        font-size: 1.563rem;
+        font-weight: 400;
+        margin: 2% auto 6% auto;
     }
-    .pmContainerName {
-        height: 100px;
-        width: 300px;
-        max-width: 300px;
-        margin-top: 10px;
-        margin-bottom: 10px;
+   
+    /*SECCION AÑADIR PM */
+    #grupo-detalle-header {
+        background-color: #F8F8F8;
         display: grid;
-        grid-template-rows: 2;
-    }
-    .wq {
-        max-height: 50px;
-        display: flex;
-    }
-    .wq button{
-        margin-left: 100pxs;
-    }
-    .pmContainerName p {
-        position: relative;
-        top: -50px;
-        font-family: 'Source Sans Pro';
-        margin-left: 70px;
-    }
-    .roundPM {
-        width: 40px;
-        height: 40px;
+        grid-template: 1fr/ 1fr;
+        width: 80%;
+        padding: 5% 10%;
         border-radius: 20px;
     }
-    .divResponsiveAdd {
-        width: 300px;
-        height: 400px;
-        max-height: 400px;
-        position: absolute;
-        z-index: 2;
-        top: 570px;
-        border: 1px solid rgb(129, 128, 128);
+    #col-izq-grupo-detalle h1{
+        margin: 0;
+        font-size: 3.6rem;
+        text-transform: uppercase;
+        line-height: 0.96;
+        width: 95%;
+        padding: 0% 5%;
+    }
+    #col-izq-grupo-detalle h3{
+        margin-top: 2%;
+        font-size: 1.8rem;    
+        line-height: 1.3;
+        font-weight: 400;
+        padding: 0% 5%;
+    }
+    
+    #elige-pm{
+        padding: 0% 5%;
+    }
+    
+    #elige-pm select{
+        width: 95%;
+        color: black;
         border-radius: 5px;
-        background-color: white;
+        border: none;
+        height: 40px;
+        box-shadow: 6px 6px 5px rgba(219, 219, 219, 0.527);
+        
+    }
+    #boton-elige-pm{
+        margin-top: 5%;
+        margin-bottom: 5%;
+        width: 95%;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        height: 40px;
+        box-shadow: 6px 6px 5px rgba(219, 219, 219, 0.527);
+        
+    }
+    
+    #col-der-grupo-detalle img{
+        display: none;       
+    }    
+    
+    
+    /*SECCION DE PMS*/
+  
+    #pmtitle {
+        font-size: 1.563rem;
+        font-weight: 600;
+        margin: 3% 0%;
+        text-align: center;
+    }
+    
+    #container-seccion-pms {
+        border: none;
+        display: flex;
+        flex-direction: column;
+        width: 96%;
+        border-radius: 15px;
+        margin: 3%, auto;
+        background-color: hsl(51, 98%, 47%);
+        box-shadow: 3px 3px 5px rgba(255, 115, 0, 0.418);
+        justify-self: center;  
+        height: auto;
+    }
+  
+    
+    #pm-asignado-grupo{
+        display: flex;
+        flex-direction: column;
+        padding: 0% 0%;
+         
+    }
+    #pm-asignado-grupo p{
+        text-align: center;
+        padding: 0% 0%;
+        font-size: 1.25rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+        margin-bottom: 6%;
+        
+    }
+    #pm-asignado-grupo img{
+        margin:5% auto;
+        border: 9px solid black;
+        display: flex;
+        border-radius: 100%;
+        height: 200px;
+        width: 200px;       
+        box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418)        
+    }
+    #elimina-pm{
+        font-size: 0.8rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 800;
+        background-color: rgb(190, 52, 10);
+        color: white;
+        text-align: center;
+        position: relative;
+        border: none;
+        border-radius: 10px;
+        align-self: end;
+        cursor: pointer;
+        height: 25px;
+        width: 25px;
+    }
+    
+    /*SECCION DE AÑADIR ESTUDIANTES*/
+    /*contenedor*/
+    #add-students-interface {
+        display: grid;
+        grid-template: auto auto auto / 1fr;
+
+    }
+    /*primera columna*/
+    
+    #grupo-agrega {
+        display: flex;
+        flex-direction: column;  
+        order: 1;      
+    }
+   
+    #grupo-agrega h1{
+        font-size: 1.563rem;
+        margin: 10px, auto;
+        text-align: center;        
+    }
+
+    #grupo-agrega button{
+        text-align: center;        
+        font-size: 0.8rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 800;
+        border-radius: 35px;
+        width: 66%;
+        height: 66px;
+        border: none;
+        background-color: black;
+        color: white;
+        margin: 3% auto 9% auto;              
+    }
+    
+  
+    /*contenedor estudianes en grupo*/
+    
+    #alumnos-grupo {   
+        margin: 0% auto 6% auto;
+        padding: 5%;  
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 85%;
+        background-color: #F8F8F8;
+        border-radius: 15px;
+        order: 2; 
+    }  
+    
+    /*Barra de estudaintes para agregar*/
+    
+    #barra-add-student{
+        padding: 0%;
+        margin: 0%;
+        order: 3; 
+        height: auto;
+        width: 100%;
+        background-color: #F8F8F8;
+    }    
+    
+    #divResponsiveAdd {
+        border-radius: 13px;
+        padding: 0%;
+        margin: 0 auto;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        width: 90%;
+        min-height: 200px;
+        max-height: 250px;
         overflow: hidden;
         overflow-y: scroll;
     }
+
+    #divResponsiveAdd img{
+        border-radius: 50%;
+        height: 55px;
+        width: 55px;
+    }
+    
     .divAddAlRespon {
-        color: black;
-        border-bottom: 1px solid rgb(148, 147, 147);
-        margin: 10px;
-        margin-left: 20px;
-        margin-right: 20px;
-        padding: 10px;
         display: flex;
+        margin: 0% 0% 0% 0%;
+        padding-bottom: 0%;
+        border-bottom: 1px solid rgb(218, 218, 218);
     }
-    .divAddAlRespon div {
-        position: relative;
-        left: 20px;
-        top:13px;
-        font-size: 15px;
-        font-family: 'Source Sans Pro';
-        font-weight: 700;
+
+    #alumnos-disponibles {
+        border-bottom: 1px solid rgb(218, 218, 218);
+        margin: 3% 3% 9% 3%;
+        padding-bottom: 20px;
+        text-align: center;
+        color: darkgray;
+        font-size: 1.25rem;
     }
-    .roundAlum {
-        height: 50px;
-        width: 50px;
-        border-radius: 100px;
+    
+    #nombre-invitado {
+        padding: 6% 10%;
     }
-    .btnAddRespon{
-        font-family: 'Source Sans Pro';
-        font-size: 17px;
-        height: 30px;
-        width: 300px;
-        border-radius: 5px;
-        border: solid 1px rgb(128, 127, 127);
-        background: white;
-    }
+  
 }
 
-@media screen and (min-width:1100px) {
-    .DivProfileCDetail {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1366px) {
+   
+    /*TITULO Y ENCABEZADO*/
+    .divsoteGroupAdd {
+        background-color: hsl(54, 100%, 48%);
+        padding: 2% 4%;
+        width: 92%;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    
+    #titleGrupo {
+        font-size: 2.441rem;
+        text-transform: capitalize;
+        color: #252525;
+        margin: 1% auto;
+    }
+    
+    #titleGrupo h3{
+        font-size: 1.563rem;
+        font-weight: 400;
+        margin: 2% auto 6% auto;
+    }
+   
+    /*SECCION AÑADIR PM */
+    #grupo-detalle-header {
+        background-color: #F8F8F8;
         display: grid;
-        grid-template-columns: 300px 300px 300px 300px;
-        grid-template-rows: auto;
-        border: 1px solid rgb(148, 148, 148);
+        grid-template: 1fr/ 1fr;
+        width: 80%;
+        padding: 5% 10%;
+        border-radius: 20px;
+    }
+    #col-izq-grupo-detalle h1{
+        margin: 0;
+        font-size: 3.6rem;
+        text-transform: uppercase;
+        line-height: 0.96;
+        width: 95%;
+        padding: 0% 5%;
+    }
+    #col-izq-grupo-detalle h3{
+        margin-top: 2%;
+        font-size: 1.8rem;    
+        line-height: 1.3;
+        font-weight: 400;
+        padding: 0% 5%;
+    }
+    
+    #elige-pm{
+        padding: 0% 5%;
+    }
+    
+    #elige-pm select{
+        width: 95%;
+        color: black;
+        border-radius: 5px;
+        border: none;
+        height: 40px;
+        box-shadow: 6px 6px 5px rgba(219, 219, 219, 0.527);
+        
+    }
+    #boton-elige-pm{
+        margin-top: 5%;
+        margin-bottom: 5%;
+        width: 95%;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        height: 40px;
+        box-shadow: 6px 6px 5px rgba(219, 219, 219, 0.527);
+        
+    }
+    
+    #col-der-grupo-detalle img{
+        display: none;       
+    }    
+    
+    
+    /*SECCION DE PMS*/
+  
+    #pmtitle {
+        font-size: 1.563rem;
+        font-weight: 600;
+        margin: 3% 0% 0% 0%;
+        text-align: center;
+    }
+    
+    #container-seccion-pms {
+        border: none;
+        display: flex;
+        width: 96%;
         border-radius: 15px;
-        width: 1200px;
-        margin-top: 10px;
-        margin-bottom: 100px;
-        padding: 10px;
-        overflow-y: hidden;
+        margin: 3%, auto;
+        background-color: hsl(51, 98%, 47%);
+        box-shadow: 3px 3px 5px rgba(255, 115, 0, 0.418);
+        justify-self: center;  
+        height: auto;
+    }
+  
+    
+    #pm-asignado-grupo{
+        display: flex;
+        max-width: 25%;
+        flex-direction: column;
+        padding: 0% 0%;
+         
+    }
+
+    #dos-pms-row {
+        display: flex;
+    }
+    #pm-asignado-grupo p{
+        text-align: center;
+        padding: 0% 0%;
+        font-size: 1.25rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+        
+    }
+    #pm-asignado-grupo img{
+        margin:5% auto;
+        border: 9px solid black;
+        display: flex;
+        border-radius: 100%;
+        max-height: 100px;
+        max-width: 100px;       
+        box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418)        
+    }
+    #elimina-pm{
+        font-size: 0.8rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 800;
+        background-color: rgb(190, 52, 10);
+        color: white;
+        text-align: center;
         position: relative;
-        left: 90px;
+        border: none;
+        border-radius: 10px;
+        align-self: end;
+        cursor: pointer;
+        height: 25px;
+        width: 25px;
+    }
+    
+    /*SECCION DE AÑADIR ESTUDIANTES*/
+    /*contenedor*/
+    #add-students-interface {
+        margin: 0% 0%;        
+        padding: 0% 0%;        
+        display: grid;
+        grid-template: 1fr / 30% 80%;
+
+    }
+    /*primera columna*/
+    
+    #grupo-agrega {
+        display: flex;
+        flex-direction: column;  
+        order: 1;      
+    }
+   
+    #grupo-agrega h1{
+        font-size: 1.563rem;
+        margin: 10px, auto;
+        text-align: left;        
+    }
+
+    #grupo-agrega button{
+        text-align: center;        
+        font-size: 0.8rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 800;
+        border-radius: 35px;
+        width: 100%;
+        height: 44px;
+        border: none;
+        background-color: black;
+        color: white;
+                      
+    }
+    
+  
+    /*contenedor estudianes en grupo*/
+    
+    #alumnos-grupo {   
+        margin: 0% auto 6% auto;
+        padding: 5%;  
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 85%;
+        background-color: #F8F8F8;
+        border-radius: 15px;
+        order: 2; 
+    }  
+    
+    /*Barra de estudaintes para agregar*/
+    
+    #barra-add-student{
+        padding: 0%;
+        margin: 0%;
+        order: 3; 
+        height: auto;
+        width: 100%;
+        background-color: #F8F8F8;
+    }    
+    
+    #divResponsiveAdd {
+        border-radius: 13px;
+        padding: 0%;
+        margin: 0 auto;
+        position: fixed;
+        top: 26%;
+        left: 6%;
+        width: 85%;
+        min-height: 200px;
+        max-height: 250px;
+        overflow: hidden;
         overflow-y: scroll;
-        height: 800px;
     }
-    .DivProfileCDetail::-webkit-scrollbar {
-        display: none;
+
+    #divResponsiveAdd img{
+        border-radius: 50%;
+        height: 55px;
+        width: 55px;
     }
-    .divAddToGroup {
-        border: 1px solid black;
-        height: 500px;
-        width: 400px;
-        position: relative;
-        right: -200px;
-        bottom: 360px;
+    
+    .divAddAlRespon {
+        display: flex;
+        margin: 0% 0% 0% 0%;
+        padding-bottom: 0%;
+        border-bottom: 1px solid rgb(218, 218, 218);
     }
+
+    #alumnos-disponibles {
+        border-bottom: 1px solid rgb(218, 218, 218);
+        margin: 3% 3% 9% 3%;
+        padding-bottom: 20px;
+        text-align: center;
+        color: darkgray;
+        font-size: 1.25rem;
+    }
+    
+    #nombre-invitado {
+        padding: 6% 10%;
+    }
+  
 }

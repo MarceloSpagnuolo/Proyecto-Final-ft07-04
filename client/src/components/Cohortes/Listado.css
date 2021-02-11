@@ -2,9 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  width: auto;
 }
+
+.Listado-Container h2{
+  font-size: 3rem;
+  margin-bottom: 3%;
+}
+
 
 .Listado-Table {
   overflow-y: auto;
@@ -15,51 +21,85 @@
   border: 1px solid lightgray;
 }
 
+
+
 .Listado-Th {
   border: 1px solid lightgray;
+}
+
+#instruct {
+  padding-left: 10px;
 }
 
 #Listado-Align {
   text-align: center;
 }
 
+.Listado-Boton-Detalle-cohorte {
+  height: 30px;
+  width: 100%;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 1rem;;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
 #Listado-Tr:nth-child(even) {
   background-color: rgb(236, 236, 236);
 }
 
-@media screen and (max-width: 758px) {
+
+
+
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 768px) {
   .Listado-Table {
     width: 100%;
     border-collapse: collapse;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'roboto', sans-serif;
     font-size: 0.8rem;
   }
 
-  .Listado-Boton {
-    height: 40px;
+  .Listado-Boton-Detalle-cohorte {
+    height: 30px;
     width: 100%;
-    background-color: #fede00;
-    border-radius: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 1rem;;
+    font-size: 0.8rem;
+    font-weight: 600;
   }
 }
 
-@media screen and (min-width: 758px) {
+
+
+
+
+@media only screen and (min-device-width : 769px) and (max-device-width : 1024px) {
+
   .Listado-Table {
     border-collapse: collapse;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'roboto', sans-serif;
     font-size: 1.4rem;
   }
 
-  .Listado-Boton {
-    height: 60px;
+  .Listado-Boton-Detalle-cohorte {
+
+    height: 40px;
     width: 100%;
-    border-radius: 10px;
-    background-color: #fede00;
-    font-size: 1.2rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #000000;
+    color: white;
   }
 
   .Listado-Boton:hover {
-    background-color: lightyellow;
+    background-color: #fede00;
     cursor: pointer;
   }
+
 }
