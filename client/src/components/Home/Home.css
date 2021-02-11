@@ -3,8 +3,6 @@
     height: auto;
     min-height: 88vh;
     padding: 0%;
-    margin-top: -30px;
-
 }
 
 #blank-space {
@@ -51,14 +49,54 @@
     padding: 0% 15% 0% 15%;
 }
 
+/*contenido home pm*/
+#contenido-home-pm {
+    font-family: 'Roboto',sans-serif;
+    display: grid;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0px;
+    width: auto;
+    color: #313131;
+    padding: 0% 5% 0% 15%;
+}
+
+#titulo-home-pm {
+    padding-left: 0;
+    height: auto;
+}
+
+#titulo-home-pm h4{
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    text-transform: none !important;
+    color: #FE6E0E;
+}
+
+.pm-home-parrafos{
+    font-size: 1rem;
+}
+
+#titulo-home-pm h2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.95em;    
+    color: #414141;
+    margin-bottom: 10px;
+}
+
+
+
+
+
 #titulo-home {
     padding-left: 0;
     height: auto;
 
-
-}
-
-#titulo-home h4{
+    
+    }
+    
+    #titulo-home h4{
     margin: 0px;
     font-family: 'Roboto', sans-serif;
     font-size: 1.25rem;
@@ -101,6 +139,13 @@
 }
 
 
+#panel-estudiantes-pm {
+    line-height: 1.7rem;
+    padding-left: 0%;
+    margin-right: 3%;
+    color: #252525
+}
+
 #panel-estudiantes {
 
     padding-left: 0%;
@@ -117,6 +162,12 @@
     text-align: left;
 }
 
+#panel-cohortes-pm {
+    line-height: 1.7rem;
+    padding-left: 0%;
+    margin-right: 3%;
+    color: #252525
+    }
 #panel-cohortes {
     padding-left: 0%;
     margin: 1%;
@@ -131,11 +182,19 @@
     color: #414141;
     margin-bottom: 25px;
     text-align: left;
+    padding-right: 15%;
 }
 
 #panel-rendimiento {
-    padding-left: 25%;
+    
     grid-column: 2;
+}
+
+#panel-rendimiento-pm {
+    line-height: 1.7rem;
+    padding-left: 0%;
+    margin-right: 3%;
+    color: #252525
 }
 
 #panel-rendimiento p {
@@ -175,6 +234,26 @@
     cursor: pointer;
 }
 
+#home-pm-boton{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    width: 66%;       
+    height: 5vh;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50px;
+    border: none;
+    background-color: #000000;
+    cursor: pointer;
+}
+
+#pm-home-paneles-container {
+    display: grid;
+    grid-template:  50% 50% / 50% 50% ;
+}
 
 
 

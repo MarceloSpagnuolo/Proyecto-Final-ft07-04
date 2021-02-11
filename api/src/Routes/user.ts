@@ -128,6 +128,10 @@ router.put('/modify/:id', async (req, res) => {
 /// Modificar un usuario por id
 router.put('/editprofile', async (req, res) => {
 
+  const {authorization} = req.headers;
+  const token:any = authorization?.split(" ");
+  const datosUser = jwt.decode(token[1]);
+
   try {
     const user = await User.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true });
     Cohorte.populate(user, { path: "cohorte" }, function (err, usersCH) {
@@ -143,8 +147,11 @@ router.put('/editprofile', async (req, res) => {
           name: usersCOM.name
         }
         //res.send(jwt.sign(payload, process.env.SECRET));
-        if (usersCOM.role === "admin") return res.json({ usersCOM, token: jwt.sign(payload, process.env.SECRET) });
-        res.json({ usersCOM })
+       if(datosUser.role === 'admin' && usersCOM.role === 'admin')  return res.json({ usersCOM, token: jwt.sign(payload, process.env.SECRET) });
+       if(datosUser.role === 'PM' || datosUser.role === 'alumno')  return res.json({ usersCOM, token: jwt.sign(payload, process.env.SECRET) });
+       if(datosUser.role === 'admin' && usersCOM.role !== 'admin') return res.json(usersCOM);
+        
+       
 
       })
     });
@@ -153,9 +160,6 @@ router.put('/editprofile', async (req, res) => {
     console.log(error)
     res.json({ msg: 'Hubo un error' }).status(400);
   }
-
-
-
 
 });
 
@@ -629,6 +633,7 @@ router.put("/update/img_profile", async ( req, res ) => {
   }
 })
 
+
 router.get("/asistancePromed/:standupId", async (req, res) => {
   const { standupId } = req.params;
   let arr = []
@@ -663,8 +668,33 @@ router.get("/asistancePromed/:standupId", async (req, res) => {
 
 
   } catch(e) {
-
+    console.log(e)
   }
+  
+//Ruta para hacer un usuario editable
+
+router.put('/editable/:id', async(req, res) => {
+  const { id } = req.params;
+  const user = await User.findOne({ _id: id });
+  if(user.editable === false) {
+    user.editable = true;
+    var result = await user.save();
+    
+  }
+  else {
+    user.editable = false;
+    var result = await user.save();
+  }
+
+  Cohorte.populate(result, { path: "cohorte" }, function (err, usersCH) {
+    Group.populate(usersCH, { path: "standup" }, function (err, usersCOM: any) {
+      
+      res.status(200).json({usersCOM});
+
+    })
+  });
+
+
 })
 
 
