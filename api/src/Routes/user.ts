@@ -633,6 +633,44 @@ router.put("/update/img_profile", async ( req, res ) => {
   }
 })
 
+
+router.get("/asistancePromed/:standupId", async (req, res) => {
+  const { standupId } = req.params;
+  let arr = []
+  let total: any[] = []
+  try {
+    let modulos: any = [{},{},{},{}];
+
+    let asist = 0;
+    //Primero traemos a los alumnos del standup
+    const alumnos = await User.find({ standup: standupId, role: "alumno"}, async function(err, alumnos) {
+      Historial.populate(alumnos, { path: "historia"}, function(err, alumnosCOM: any) {
+        err ? res.send(err).status(400) : 
+        alumnosCOM.forEach((alumno: any) => {
+          alumno.historia.Modulos.forEach((hist: any, index: number) => {
+            hist.Clases.forEach((clase: any) => {
+              if (modulos[index].hasOwnProperty(clase.Nombre)) {
+                modulos[index][clase.Nombre] += clase.Asistencia ? 1 : 0;
+              } else {
+                modulos[index][clase.Nombre] = clase.Asistencia ? 1 : 0;
+              }
+            })
+          })
+        })
+        const superTotal = modulos.map((p: any) => {
+          arr = Object.values(p)
+          total = arr.map((c: any) => { return c / alumnos.length * 100 })
+          return total
+        })
+        res.json(superTotal);
+      })
+    });
+
+
+  } catch(e) {
+    console.log(e)
+  }
+  
 //Ruta para hacer un usuario editable
 
 router.put('/editable/:id', async(req, res) => {
@@ -655,7 +693,6 @@ router.put('/editable/:id', async(req, res) => {
 
     })
   });
-
 
 
 })

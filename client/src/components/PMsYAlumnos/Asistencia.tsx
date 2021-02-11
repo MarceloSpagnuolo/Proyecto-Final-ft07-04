@@ -2,7 +2,7 @@ import React, { useEffect} from "react";
 import "./Asistencia.css";
 import { useDispatch, useSelector } from "react-redux";
 import { } from "../../Store/Actions/Users";
-import { } from "Store/Actions/Cohortes";
+import { } from "../../Store/Actions/Cohortes";
 
 
 

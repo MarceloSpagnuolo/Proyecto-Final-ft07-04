@@ -15,8 +15,10 @@ import MiCohorte from "./components/PMsYAlumnos/MiCohorte"
 import Rendimiento from "./components/PMsYAlumnos/Rendimiento"
 import Profile from './components/Profile/Profile'
 import MiGrupo from "./components/PMsYAlumnos/MiGrupo"
+import Estadisticas from "components/Estadisticas/Estadisticas"
 import Panel from "components/PMs/Panel";
 import ResetPassEmail from "./components/Profile/ResetPassEmail"
+import EstadisticaUser from "components/Estadisticas/EstadisitcaAlmun"
 
 function App() {
   return (
@@ -39,6 +41,9 @@ function App() {
       <Route exact path='/MiGrupo/:id' component={MiGrupo} />
       <Route exact path="/cargaNotas" component={Carga} />
       <Route exact path="/panel" component={Panel} />
+      <Route exact path='/estadisticas' component={Estadisticas} />
+      <Route exact path='/estadisticaUser' component={EstadisticaUser} />
+
     </>
   );
 }

@@ -77,7 +77,6 @@ const Registro = (props: any): JSX.Element => {
         src="https://cdn.discordapp.com/attachments/764979688446885898/803742896964370432/fondo.png"
         alt=""
       />
-
         {/* <form className=""> */}
         <Formik 
           initialValues={ initialValues }
