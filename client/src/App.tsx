@@ -11,14 +11,16 @@ import Inactivos from "components/Cohortes/Inactivos";
 import PanelControlStudents from 'components/PanelControlStudents/panelControl';
 import Carga from "components/Notas/Carga";
 import Grupos from 'components/Grupos/GruposCreate';
-import MiCohorte from "./components/PMsYAlumnos/MiCohorte"
-import Rendimiento from "./components/PMsYAlumnos/Rendimiento"
-import Profile from './components/Profile/Profile'
-import MiGrupo from "./components/PMsYAlumnos/MiGrupo"
-import Estadisticas from "components/Estadisticas/Estadisticas"
+import MiCohorte from "./components/PMsYAlumnos/MiCohorte";
+import Rendimiento from "./components/PMsYAlumnos/Rendimiento";
+import Profile from './components/Profile/Profile';
+import MiGrupo from "./components/PMsYAlumnos/MiGrupo";
+import Estadisticas from "components/Estadisticas/Estadisticas";
 import Panel from "components/PMs/Panel";
-import ResetPassEmail from "./components/Profile/ResetPassEmail"
-import EstadisticaUser from "components/Estadisticas/EstadisitcaAlmun"
+import ResetPassEmail from "./components/Profile/ResetPassEmail";
+import EstadisticaUser from "components/Estadisticas/EstadisitcaAlmun";
+import EstadisticasCohorte from "components/Estadisticas/EstadisticasCohorte";
+
 
 function App() {
   return (
@@ -43,7 +45,7 @@ function App() {
       <Route exact path="/panel" component={Panel} />
       <Route exact path='/estadisticas' component={Estadisticas} />
       <Route exact path='/estadisticaUser' component={EstadisticaUser} />
-
+      <Route exact path='/estadisticasCohorte' component={EstadisticasCohorte} />
     </>
   );
 }
