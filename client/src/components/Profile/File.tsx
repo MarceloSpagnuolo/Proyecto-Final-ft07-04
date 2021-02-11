@@ -83,17 +83,21 @@ export const File: React.FC<FileProps> = ({idUser,img}) => {
     }
 
     return (
-    <div className="contentFile">
+        <div className="contentFile">
         <div className="profile-images-card">
             <div className="profile-images">
              
                     <img src={ImgUrl} id="upload-img"/>
-
+                    
              
                 
             </div>
-            <div className="custom-file">
-                <label htmlFor="fileupload" >Cambiar Imagen de Perfil</label>
+            <div className="custom-file">  
+                {/* <button type='button' id='cameraButton'><i className="fas fa-camera"></i></button> */}
+                <button id="cameraButton">
+            
+                    <label htmlFor="fileupload" ><i className="fa fa-camera"></i></label>    
+                </button>
                 <input type="file" id="fileupload" name="img" onChange={imageHandler} accept="image/x-png,image/jpeg,image/jpg"  ref={input}/>
             </div>
         </div>
