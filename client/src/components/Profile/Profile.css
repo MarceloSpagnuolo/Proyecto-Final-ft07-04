@@ -1,19 +1,231 @@
+/*===== Variables =====*/
+:root {
+  /*===== Colores =====*/
+  --first-color: #F6DE00;
+  --input-color: #616161;
+  --border-color: #DADCE0;
+  /*===== Tipografia =====*/
+  --body-font: 'Roboto', sans-serif;
+  --big-font-size: 1.5rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .75rem;
+  overflow: hidden;
+}
+/* Contenedor general */
+.profileContainer {
+display: flex !important;
+background-color: var(--first-color);
+padding: 1% 3% 3% 3%;
+height: auto;
+min-height: 85vh;
+flex-direction: row;
+justify-content: space-around;
+align-items: center;
+}
+
+/* Tarjeta blanca de datos personales */
+#whiteContainer {
+background-color: white;
+height: 45rem;
+width: 48%;
+display: flex !important;
+flex-flow: row;
+justify-content: flex-start;
+border-radius: 1rem;
+color: rgba(199, 108, 85, 0.74);
+box-shadow: 5px 5px 30px;
+padding: 1rem 1rem 1rem 1rem;
+margin-left: 2rem;
+}
+
+/* Botones de actualizar datos */
 .app__btn {
-    margin-top: 50px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 18px;
-    background-color: yellow;
-    color: black;
-    transition: background-color 250ms ease;
-  }
-  
+  border-style: none;
+  margin-top: 2rem;
+  padding: .75rem 1.2rem;
+  width: 48%;
+  border-radius: 5px;
+  font-size: 18px;
+  background-color: black;
+  color: white;
+  transition: background-color 250ms ease;
+}
+
 .app__btn:hover {
-  background-color: rgb(255, 196, 1);
+background-color: rgb(255, 196, 1);
 }
 
-.profileContent{
-  width: 30%;
+/* Form de datos personales */
+
+.l-form {
+display: flex !important;
+flex-direction: row;
+justify-content: flex-start;
+align-items: center;
+width: 75%;
+height: 100%;
+margin-left: 2rem;
 }
 
+.profile_input {
+width: 96%;
+height: 100%;
+font-size: var(--normal-font-size);
+font-family: var(--body-font);
+border: 1px solid var(--border-color);
+border-radius: .5rem;
+outline: none;
+padding: .25rem;
+background: none;
+z-index: 1;
+}
+
+.profileData {
+display: flex !important;
+flex-direction: column;
+justify-content: flex-start;
+align-items: stretch;
+width: 100%;
+height: 75%;
+margin-top: -4rem;
+}
+
+.data_div {
+position: relative;
+height: 3rem;
+margin-bottom: 2rem;
+} 
+
+.profile_label {
+position: absolute;
+left: 1rem;
+top: .5rem;
+padding: 0 .25rem;
+background-color: #fff;
+color: black;
+font-family: var(--body-font);
+font-size: var(--normal-font-size);
+transition: .3s;
+}
+
+/* Contenedor imagen de perfil */
+
+.profilePic_div {
+display: flex;
+align-self: flex-start;
+margin-top: 5rem;
+display: flex !important;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+/* Botones e iconos ON/OFF */
+#switch_on.fa {
+border-color: transparent;
+padding: auto;
+font-size: 2rem;
+color: black;
+width: 2rem;
+height: 2rem;
+margin-top: 0;
+margin-right: 0.15rem;
+}
+
+#switch_off.fa {
+padding: auto;
+font-size: 2rem;
+color: black;
+width: 2rem;
+height: 2rem;
+margin-top: 0;
+margin-right: 0.15rem;
+}
+
+.btn_on {
+border-style: none;
+margin-top: .5rem;
+border-radius: 50%;
+width: 4rem;
+height: 4rem;
+background-color: var(--first-color);
+}
+
+.btn_off {
+border-style: none;
+margin-top: .5rem;
+border-radius: 50%;
+width: 4rem;
+height: 4rem;
+background-color: var(--first-color);
+}
+
+/*Contenedor del switch*/
+.divBtnLogin {
+display: flex !important;
+flex-direction: column; 
+align-items: center;
+padding-top: 0;
+height: auto;
+}
+
+/*Boton de contraseña*/
+
+.password_btn {
+border-style: none;
+margin-top: 2rem;
+padding: .75rem 1.2rem;
+border-radius: 5px;
+width: 48%;
+font-size: 18px;
+background-color: black;
+color: white;
+transition: background-color 250ms ease;
+}
+
+/*Contenedor imagen y tarjeta blanca*/
+#tutorial_div {
+display: flex;
+flex-direction: column;
+margin-right: 2rem;
+align-items: center;
+align-self: flex-start;
+}
+
+/*Tarjeta blanca de indicaciones*/
+#tutorial_whitespace {
+display: flex !important;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 16rem;
+width: 32rem;
+background-color: white;
+margin-left: 2rem;
+margin-top: -1rem;
+border-radius: .5rem;
+z-index: 0;
+}
+
+/*Imagen personita*/
+#tutorial_img {
+margin-top: 2rem;
+}
+
+/*Contenedor parrafos de indicaciones*/
+#tutorial_ps {
+width: 88%;
+font-size: var(--big-font-size);
+font-family: var(--body-font);
+}
+
+/*Texto del boton de edicion*/
+.edicionText {
+text-align: center;
+margin-top: .5rem;
+font-size: var(--small-font-size);
+font-family: var(--body-font);
+font-weight: bold;
+color: black;
+}
 

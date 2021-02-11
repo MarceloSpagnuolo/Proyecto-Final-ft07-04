@@ -231,108 +231,143 @@ const Profile = (): JSX.Element => {
     }
 
     return (
-        <div className="profileContent">
-            <h1>Perfil de {titleProfile}</h1>
-           
-            <File
-                idUser={userId}
-                img={profileImg}
-            >
+        <div className="profileContainer">
+            {/* <h1>Perfil de {titleProfile}</h1> */}
+            <div id='whiteContainer'>
+                <div className='profilePic_div'>
+                    <File
+                        idUser={userId}
+                        img={profileImg}
+                    >
 
-            </File>
-           
-            <form className="formLogin" onSubmit={submitUpdateData}>
-                <div className="LoginDiv-Campos">
-                    <label className="nameInput" htmlFor="email">Nombre</label><br></br>
-                    <input autoFocus={true} size={40} value={firstname || ''} type="text" id="firstname" name="firstname" className="LoginDivInput-Campos" onChange={handleInputChange} disabled={(inputDisabled) ? true : false} />
+                    </File>
+                    {
+                            //userToEdit && (userToEdit.role === 'alumno' || userToEdit.role === 'PM') && getProfile.role === 'admin'  ? 
+
+                            (getProfile.role === 'admin' && id !== 'miPerfil')
+                                ? (userToEdit && userToEdit.editable === true ?
+                                    <div className="divBtnLogin">
+                                        <button
+                                            className='btn_on'
+                                            type="button"
+                                            onClick={activateEdition}
+                                        >
+                                            <i className="fa fa-toggle-on" id='switch_off'></i>
+                                        </button>
+                                        <small className="edicionText">Deshabilitar<br/> edición</small>
+                                    </div>
+                                    :
+                                    <div className="divBtnLogin">
+                                        <button
+                                            className='btn_off'
+                                            type="button"
+                                            onClick={activateEdition}
+                                        >
+                                            <i className="fa fa-toggle-off" id='switch_on'></i>
+                                        </button>
+                                        <small className="edicionText">Habilitar <br/>edición</small>
+                                    </div>
+                                    )
+                                : null
+                    }
                 </div>
-                <div className="LoginDiv-Campos">
-                    <label className="nameInput" htmlFor="email">Apellido</label><br></br>
-                    <input autoFocus={true} size={40} value={lastname || ''} type="text" id="lastname" name="lastname" className="LoginDivInput-Campos" onChange={handleInputChange} disabled={(inputDisabled) ? true : false} />
-                </div>
-                <div className="LoginDiv-Campos">
-                    <label className="nameInput" htmlFor="password">Email</label><br></br>
-                    <input size={60} type="email" value={email || ''} id="email" name="email" className="LoginDivInput-Campos" onChange={handleInputChange} disabled={(inputDisabled) ? true : false} />
-                </div>
-                {cohorte ?
-                    <>
-                        <div className="LoginDiv-Campos">
-                            <label className="nameInput" htmlFor="password">Cohorte</label><br></br>
-                            <input size={60} type="text" value={cohorte || ''} id="cohorte" name="cohorte" className="LoginDivInput-Campos" onChange={handleInputChange} disabled />
+
+                <div className='l-form'>
+
+                    <form className="profileData" onSubmit={submitUpdateData}>
+                        <div className="data_div">
+                            <label className="profile_label" >Nombre</label><br></br>
+                            <input autoFocus={true}  value={firstname || ''} type="text" name="firstname" className="profile_input" onChange={handleInputChange} disabled={(inputDisabled) ? true : false} />
                         </div>
-                    </>
-                    : null
-                }
-                {standup ?
-                    <>
-                        <div className="LoginDiv-Campos">
-                            <label className="nameInput" htmlFor="password">Standup</label><br></br>
-                            <input size={60} type="text" value={standup || ''} id="standup" name="standup" className="LoginDivInput-Campos" onChange={handleInputChange} disabled />
+                        <div className="data_div">
+                            <label className="profile_label" >Apellido</label><br></br>
+                            <input autoFocus={true}  value={lastname || ''} type="text" name="lastname" className="profile_input" onChange={handleInputChange} disabled={(inputDisabled) ? true : false} />
                         </div>
-                    </>
-                    : null
-                }
-                
-                {getProfile.role === 'admin' || userEditable ?
-                    <div className="divBtnLogin">
-                        <button
-                            className={'app__btn'}
-                            type="submit"
-                        >
-                            Actualizar datos
-                        </button>
-                    </div>
-                    : null
-                }
-               {/*  {
-                    userToEdit && userToEdit.editable === true && (userToEdit.role === 'alumno' || userToEdit.role === 'PM') && getProfile.role !== 'admin' ?
+                        <div className="data_div">
+                            <label className="profile_label" >Email</label><br></br>
+                            <input  type="email" value={email || ''} name="email" className="profile_input" onChange={handleInputChange} disabled={(inputDisabled) ? true : false} />
+                        </div>
+                        {cohorte ?
+                            <>
+                                <div className="data_div">
+                                    <label className="profile_label" >Cohorte</label><br></br>
+                                    <input  type="text" value={cohorte || ''} name="cohorte" className="profile_input" onChange={handleInputChange} disabled />
+                                </div>
+                            </>
+                            : null
+                        }
+                        {standup ?
+                            <>
+                                <div className="data_div">
+                                    <label className="profile_label" >Standup</label><br></br>
+                                    <input size={60} type="text" value={standup || ''} name="standup" className="profile_input" onChange={handleInputChange} disabled />
+                                </div>
+                            </>
+                            : null
+                        }
+                        {getProfile.role === 'admin' ?
+                            <div className="divBtnLogin">
+                                <button
+                                    className={'app__btn'}
+                                    type="submit"
+                                >
+                                    Actualizar datos
+                                </button>
+                            </div>
+                            : null
+                        }
+                        {
+                            userToEdit && userToEdit.editable === true && (userToEdit.role === 'alumno' || userToEdit.role === 'PM') && getProfile.role !== 'admin' ?
+                                <div className="divBtnLogin">
+                                    <button
+                                        className={'app_btn'}
+                                        type="submit"
+                                    >
+                                        Actualizar datos
+                                    </button>
+                                </div>
+                                : null
+                        }
+                        
                         <div className="divBtnLogin">
                             <button
-                                className={'app__btn'}
-                                type="submit"
+                                className={'password_btn'}
+                                onClick={openModal}
+
                             >
-                                Actualizar datos
+                             Cambiar contraseña   
                             </button>
                         </div>
-                        : null
-                } */}
-                {
-                    //userToEdit && (userToEdit.role === 'alumno' || userToEdit.role === 'PM') && getProfile.role === 'admin'  ? 
-
-                    (getProfile.role === 'admin' && id !== 'miPerfil')
-                        ? (userToEdit && userToEdit.editable === true ?
-                            <div className="divBtnLogin">
-                                <button
-                                    className={'app__btn'}
-                                    type="button"
-                                    onClick={activateEdition}
-                                >
-                                    Deshabilitar edición
-                                </button>
-                            </div>
-                            :
-                            <div className="divBtnLogin">
-                                <button
-                                    className={'app__btn'}
-                                    type="button"
-                                    onClick={activateEdition}
-                                >
-                                    Habilitar edición
-                                </button>
-                            </div>
-                            )
-                        : null
-                }
-                <div className="divBtnLogin">
-                    <button
-                        className={'app__btn'}
-                        onClick={openModal}
-
-                    >
-                        Cambiar contraseña
-                    </button>
+                    </form>
                 </div>
-            </form>
+
+            </div>
+            {
+                getProfile.role === 'admin' ?
+                    <div id='tutorial_div'>
+                        <img src="https://i.ibb.co/cgNTpkX/Mesa-de-trabajo-6.png" alt="" id='tutorial_img'/>
+                        <div id='tutorial_whitespace'>
+                            <div id='tutorial_ps'>
+                                <p>Desde aca podrás ver y editar tus datos y los de otros usuarios</p>
+                                <p>Utiliza el boton de edición para que un usuario pueda cambiar sus datos</p>
+                            </div>
+                        </div>
+                    </div>
+                    :null
+            }
+            {
+                getProfile.role === 'alumno' || getProfile.role === 'PM' ?
+                <div id='tutorial_div'>
+                    <img src="https://i.ibb.co/cgNTpkX/Mesa-de-trabajo-6.png" alt="" id='tutorial_img'/>
+                    <div id='tutorial_whitespace'>
+                        <div id='tutorial_ps'>
+                            <p>Desde acá podrás ver tus datos personales</p>
+                            <p>Si cometiste un error, contactate con un administrador para que te habilite a modificar tus datos</p>
+                        </div>
+                    </div>
+                </div>
+                :null
+            }
             <Modal
                 showModal={showModal}
                 setShowModal={setShowModal}
