@@ -70,7 +70,7 @@ export default function SearchBar(props: any) {
                             <img className="icon-S" src={lupita} alt="img-lupa"></img>
                         </button>
                         <br />
-                        <label htmlFor="cohorte" id="pc-label-filtro-cohorte"> por Cohorte:</label>
+                        <label htmlFor="cohorte" id="pc-label-filtro-cohorte">por Cohorte: </label>
                         <select id='pc-filtro-cohorte' name="cohorte" onChange={(e) => handleSelect(e)}>
                             <option value="todos">Todos</option>
                             <option value="none">Sin Cohorte</option>
