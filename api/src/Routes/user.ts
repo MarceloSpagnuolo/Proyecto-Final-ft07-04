@@ -670,6 +670,7 @@ router.get("/asistancePromed/:standupId", async (req, res) => {
   } catch(e) {
     console.log(e)
   }
+})
   
 //Ruta para hacer un usuario editable
 
@@ -705,5 +706,3 @@ router.put('/editable/:id', async(req, res) => {
 //rol === PM => standup === standup de OTRO COHORTE MAS NUevO.//// holi //
 
 export default router;
-
-
