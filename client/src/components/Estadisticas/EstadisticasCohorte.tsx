@@ -4,7 +4,8 @@ import C3Chart from 'react-c3js';
 import 'c3/c3.css';
 
 
-const EstadisticasCohorte = () => {
+const EstadisticasCohorte = (props: any) => {
+    const { id } = props.match.params;
     const [data, setData] = useState<any>("");
     const [checkpoint, setCheckpoint] = useState<any>({
         columns: [
@@ -15,7 +16,7 @@ const EstadisticasCohorte = () => {
         }
     })
     useEffect(() => {
-        axios.get(`http://localhost:3001/historia/promedioNotas/600b9852935003272c8b6902`)
+        axios.get(`http://localhost:3001/historia/promedioNotas/${id}`)
             .then((r) => {
                 setData(r.data);
             });

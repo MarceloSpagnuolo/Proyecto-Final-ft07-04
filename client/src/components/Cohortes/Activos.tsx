@@ -181,7 +181,13 @@ function Activos(props: any) {
             <div>
               <span className="Activos-span"><p id='activos-cohorte-grupos'>Grupos</p></span>
               <Link to={`/grupos/${id}`}>
-                <button className="Activos-Boton">Ir al grupo</button>
+                <button className="Activos-Boton" id="Activos-boton-extra">Ir al grupo</button>
+              </Link>
+            </div>
+            <div>
+              <span className="Activos-span"><p id='activos-cohorte-grupos'>Notas</p></span>
+              <Link to={`/estadisticasCohorte/${id}`}>
+                <button className="Activos-Boton" id="Activos-boton-extra">Ver notas</button>
               </Link>
             </div>
           </div>

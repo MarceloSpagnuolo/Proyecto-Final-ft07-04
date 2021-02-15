@@ -5,6 +5,7 @@ import { getUsersbyCohorte } from "../../Store/Actions/Users";
 import { getCohorte } from "Store/Actions/Cohortes";
 import SearchBar from "../PanelControlStudents/searchBar"
 import './inactivos.css'
+import { Link } from "react-router-dom";
 
 function Inactivos(props: any) {
   const dispatch = useDispatch();
@@ -39,6 +40,11 @@ function Inactivos(props: any) {
           <div>
             <p>Alumnos: {users.length}</p>
           </div>
+          <div>
+              <Link to={`/estadisticasCohorte/${id}`}>
+                <button id="Inactivos-boton-notas">Notas</button>
+              </Link>
+            </div>
           <div className="Listado-Container">
             <h3>Alumnos</h3>
             <div>

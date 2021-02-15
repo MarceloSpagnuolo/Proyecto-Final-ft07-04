@@ -13,7 +13,7 @@
 #activos-container-instructor-grupo {
   margin-top: 2%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
 }
 
@@ -70,6 +70,10 @@
   border: none;
   border-radius: 1rem;
   margin: 1%;
+}
+
+#Activos-boton-extra {
+  margin-top: 2.5%
 }
 
 #activo-boton-quitar {

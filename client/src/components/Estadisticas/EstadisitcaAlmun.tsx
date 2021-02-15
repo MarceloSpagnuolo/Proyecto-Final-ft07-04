@@ -52,7 +52,6 @@ const EstadisticaUser = () => {
     }, [d])
     return (
         <div>
-            <h2>Holi</h2>
             <h2>Notas Checkpoint</h2>
             <C3Chart data={data} axis={{
                 x: {

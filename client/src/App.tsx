@@ -43,9 +43,9 @@ function App() {
       <Route exact path='/MiGrupo/:id' component={MiGrupo} />
       <Route exact path="/cargaNotas" component={Carga} />
       <Route exact path="/panel" component={Panel} />
-      <Route exact path='/estadisticas' component={Estadisticas} />
+      <Route exact path='/estadisticas/:id' component={Estadisticas} />
       <Route exact path='/estadisticaUser' component={EstadisticaUser} />
-      <Route exact path='/estadisticasCohorte' component={EstadisticasCohorte} />
+      <Route exact path='/estadisticasCohorte/:id' component={EstadisticasCohorte} />
     </>
   );
 }

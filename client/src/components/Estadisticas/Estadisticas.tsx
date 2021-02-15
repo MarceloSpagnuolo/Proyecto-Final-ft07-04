@@ -8,8 +8,8 @@ import axios from "axios";
 import "./Estadisticas.css"
 
 
-const Estadisticas = () => {
-    const vaquita = "600b9852935003272c8b6801"
+const Estadisticas = (props: any) => {
+    const { id } = props.match.params;
     const dispatch = useDispatch()
     const [user, setUser] = useState({ value: "" })
     const [display, setDisplay] = useState(0)
@@ -88,7 +88,7 @@ const Estadisticas = () => {
     const mod = [modulo, modulo2, modulo3, modulo4]
     useEffect(() => {
         if (alumno) {
-            axios.get(`http://localhost:3001/users/asistancePromed/${vaquita}`)
+            axios.get(`http://localhost:3001/users/asistancePromed/${id}`)
                 .then(r => {
                     setModulos(r.data)
                 })
@@ -129,10 +129,10 @@ const Estadisticas = () => {
         }
     }, [modulos])
     useEffect(() => {
-        dispatch(alumnosGroup(`${vaquita}`))
+        dispatch(alumnosGroup(`${id}`))
     }, [])
     useEffect(() => {
-        axios.get(`http://localhost:3001/historia/promedioParticipacion/${vaquita}`)
+        axios.get(`http://localhost:3001/historia/promedioParticipacion/${id}`)
             .then(r => {
                 setParticipa(r.data)
             })

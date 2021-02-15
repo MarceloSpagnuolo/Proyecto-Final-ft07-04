@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./rendimiento.css";
 import { getStudents } from "Store/Actions/Users";
 import { cohortesNames } from "Store/Actions/Cohortes";
+import EstadisticaUser from "../Estadisticas/EstadisitcaAlmun";
 
 
 function Rendimiento(props: any) {
@@ -100,6 +101,7 @@ function Rendimiento(props: any) {
             ))}
           </tbody>
         </table>
+        <EstadisticaUser />
       </div>
     </div>
   )

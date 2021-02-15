@@ -6,6 +6,7 @@ import "./GrupoDetail.css";
 import ProfileCard from "components/ProfileCard/ProfileCard";
 import axios from "axios";
 import lider from '../../assets/peak.png'
+import { Link } from "react-router-dom";
 
 
 const GrupoDetail = (props: any): JSX.Element => {
@@ -68,6 +69,12 @@ const GrupoDetail = (props: any): JSX.Element => {
 
                 Grupo {!!Grupo && Grupo.length > 0 && Grupo[0].Grupo}
             </h1>
+            <div>
+              
+              <Link to={`/estadisticas/${id}`}>
+                <button className="Activos-Boton">Ver Rendimiento</button>
+              </Link>
+            </div>
             <h3 className="subTitleG">
                 Aquí podra gestionar los PMs y alumnos de este grupo
             </h3>
