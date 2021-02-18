@@ -87,8 +87,8 @@
     border: 9px solid black;
     display: flex;
     border-radius: 100%;
-    max-height: 100px;
-    max-width: 100px;
+    height: 100px;
+    width: 100px;
     margin: 0px auto;
     box-shadow: 6px 6px 5px rgba(255, 115, 0, 0.418)
 }
@@ -98,8 +98,15 @@
 }
 
 #pm-asignado-grupo {
+    display: flex;
+    flex-direction: column;
    margin: 1% 3%;
 
+}
+
+#pm-asignado-grupo button {
+    width: 20px;
+    height: 20px;
 }
 
 

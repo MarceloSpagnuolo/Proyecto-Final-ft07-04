@@ -115,7 +115,7 @@ const GrupoDetail = (props: any): JSX.Element => {
                             return (
                                 <div id='pm-asignado-grupo' key={"PM" + p._id}>
                                     <button id='elimina-pm' onClick={() => { eliminarPM(`${p._id}`) }}>x</button>
-                                    <img className="roundPM" src="https://i.pinimg.com/236x/22/cd/5b/22cd5bf661c3d8a8550752b981901531.jpg" alt="user" />
+                                    <img className="roundPM" src={p.thumbnail || 'http://localhost:3001/imagenes/default-user-image.png'} alt="user" />
                                     <p>{p.name.firstname} {p.name.lastname}</p>
                                 </div>
                             )
