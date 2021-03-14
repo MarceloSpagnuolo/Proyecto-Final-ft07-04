@@ -3,7 +3,7 @@
 PRESENTATION<br />
 This final project was realized during Henry bootcamp, in a group of several people, applying scrum methodology and technologies learnt during the bootcamp plus others that were learned during this project.
 
-TECHGNOLOGIES<br />
+TECHNOLOGIES<br />
 The principal technologies used where: <b>Typescript</b> as a general language. <b>React</b>, <b>Redux</b> and <b>Router</b> for the design in the FrontEnd components, <b>Axios</b> for reaching Backend endpoints. <b>NodeJs</b>, <b>Express</b> for Backend development. <b>Bcrypt</b> for password hashing. <b>Passport</b> for local strategies to login users along with <b>JsonWebToken</b> with protected routes. <b>Mailgun</b> as a mail delivering services. <b>Multer</b> to upload Images. <b>Xlxs</b> to manage spreadsheet and <b>C3Js</b> to create graphics.
 
 LOGIN<br />
