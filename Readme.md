@@ -1,25 +1,51 @@
 <b>HENRY MANAGER</b>
 
-PRESENTACION<br />
-Proyecto final realizado para el bootcamp de Henry, en grupo de varios integrantes, aplicando técnicas de SCRUM y tecnologías adquiridas algunas durante el bootcamp y otras durante el desarollo del propio proyecto.
+PRESENTATION<br />
+This final project was realized during Henry bootcamp, in a group of several people, applying scrum methodology and technologies learnt during the bootcamp plus others that were learned during this project.
 
-TECNOLOGÍAS<br />
-Las tecnologías principales utilizadas fueron: <b>Typescript</b> como lenguaje general del proyecto. <b>React</b>, <b>Redux</b> y <b>Router</b> para el diseño de los componentes del Frontend, <b>Axios</b> para las consultas al Backend. <b>NodeJs</b>, <b>Express</b> para el desarrollo del Backend. <b>Bcrypt</b> para el hasheo de passwords. <b>Passport</b> para estrategias locales de usuarios y protección de rutas junto a <b>JsonWebToken</b>. <b>Mailgun</b> para manejo de mails. <b>Multer</b> para uploads de imágenes. <b>Xlxs</b> para el manejo de planillas de cálculo y <b>C3Js</b> para visualizar gráficos estadísticos.
+TECHGNOLOGIES<br />
+The principal technologies used where: <b>Typescript</b> as a general language. <b>React</b>, <b>Redux</b> and <b>Router</b> for the design in the FrontEnd components, <b>Axios</b> for reaching Backend endpoints. <b>NodeJs</b>, <b>Express</b> for Backend development. <b>Bcrypt</b> for password hashing. <b>Passport</b> for local strategies to login users along with <b>JsonWebToken</b> with protected routes. <b>Mailgun</b> as a mail delivering services. <b>Multer</b> to upload Images. <b>Xlxs</b> to manage spreadsheet and <b>C3Js</b> to create graphics.
 
 LOGIN<br />
-<imagen del login>
-El home de la aplicación es directamente el login de la misma, ya que unicamente pueden acceder a ella sólo aquellos usuarios que hayan sido invitados por email. De esta forma, no se despliega ningún menú o información hasta que el usuario ingresa, y, dependiendo del rol del usuario logeado, la aplicación se adapta al mismo.
+The home of the app is the login since the users are invited through an email where they have to register. Only after they are invited, registered and logged in the app starts displaying information depending on the role the user was given.
+
+![login](./img/login.jpg)
   
-  ALUMNOS<br />
-  Tienen acceso solo a componentes read only, comos ser sus notas, sus datos estadísticos, etc.
+STUDENTS<br />
+They have access to read-only components, like their test scores, their data, etc.
+
+![alumno](./img/cohortealumno.jpg)
+![alumno](./img/estadisticas_user.jpg)
   
-  TEACHERS ASSISTANTS<br />
-  Ya que también es un alumno, tienen acceso a los mismos componentes que un alumno, pero sumado el acceso y edicion de asistencias y participación de los alumnos del grupo de StandUp al que pertenecen.
+TEACHERS ASSISTANTS<br />
+Since they are also a student, they have the same access to the read-only components, but also access to attendance editing and participation of the students in the StandUp groups they belong to.
+
+![pm](./img/tomaasistencia.jpg)
   
-  ADMINISTRADORES<br />
-  Tienen acceso a maenjo y control de alumnos.
+ADMIN<br />
+Access to student control panel and management.
+
+![alumnos](./img/alumnos1.jpg)
+![alumnos](./img/alumnos2.jpg)
   
-  Manejo, creación y control de cohortes.
+Management, creation and control of cohorts.
+
+![cohorte](./img/creacioncohorte.jpg)
   
-  Manejo y carga de notas de los diferentes checkpoints de los alumnos.
+Management and loading of student's test scores.
+
+![checkpoints](./img/checkpoint.jpg)
+![checkpoints](./img/checkpoint2.jpg)
   
+CONTRIBUTORS
+
+<ul>
+  <li><a href="https://github.com/AlanCasella">Alan Casella</a></li>
+  <li><a href="https://github.com/MarceloSpagnuolo">Marcelo Spagnuolo</a></li>
+  <li><a href="https://github.com/carlirows">Carlos Castro</a></li>
+  <li><a href="https://github.com/Daniel-Ignacio-Nieto">Daniel Ignacio Nieto</a></li>
+  <li><a href="https://github.com/babinobass">Eliezer Salazar</a></li>
+  <li><a href="https://github.com/ellyanalion">Carla Ramírez</a></li>
+  <li><a href="https://github.com/andresogc">Andres Garay</a></li>
+  <li><a href="https://github.com/v1scount">Rodigo Vellido</a></li>
+</ul>
